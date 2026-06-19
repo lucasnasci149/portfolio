@@ -1,0 +1,15 @@
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# GIF original (35MB — não subir para o repo)
+assets/projects/pedir-delivery/pedir.delivery.gif
+
+# Editor
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log

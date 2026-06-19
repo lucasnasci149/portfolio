@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('theme') === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keepeye: KPI Management Platform</title>
+  <meta name="description" content="Case study: Keepeye, a KPI management platform designed for Nidec GA. Product design, design system, and collaborative front-end development by Product Designer at Dojo Smart Ways." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Keepeye: KPI Management Platform" />
+  <meta property="og:description" content="From manual spreadsheets to an automated KPI management platform: a case study in product design, design systems, and collaborative front-end development." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <script src="../transitions.js" defer></script>
+  <noscript><style>body { opacity: 1 !important; }</style></noscript>
+
+  <style>
+    /* ── CASE HEADER ── */
+    .case-header {
+      padding-top: clamp(3rem, 5vw, 4rem);
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      color: var(--text-2);
+      margin-bottom: 1.5rem;
+      transition: color var(--transition);
+    }
+    .back-link:hover { color: var(--text-1); }
+    .back-link svg { transform: rotate(180deg); }
+
+    .case-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+
+    .case-header-title {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+    }
+    .case-header-title em { font-style: italic; color: var(--accent-text); }
+    .case-header-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-2);
+      margin-top: 0.75rem;
+      max-width: 620px;
+      line-height: 1.7;
+    }
+
+    /* META GRID */
+    .case-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .case-meta-item .section-label { margin-bottom: 0.4rem; }
+    .case-meta-value {
+      font-size: 0.9rem;
+      color: var(--text-1);
+      line-height: 1.5;
+    }
+    .case-meta-value span { display: block; color: var(--text-3); font-size: 0.8rem; margin-top: 0.15rem; }
+
+    /* HERO VISUAL */
+    .case-hero-visual {
+      margin-top: 3rem;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 480px;
+      background: linear-gradient(135deg, var(--bg-3) 0%, var(--bg-4) 100%);
+      position: relative;
+    }
+    .case-hero-visual img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    /* OVERVIEW */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    .overview-block .section-label { margin-bottom: 0.75rem; }
+    .overview-block p {
+      font-size: 0.95rem;
+      color: var(--text-2);
+      line-height: 1.8;
+    }
+    .overview-block p + p { margin-top: 1rem; }
+
+    /* PROCESS */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .process-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .process-step {
+      font-family: var(--font-serif);
+      font-size: 0.78rem;
+      color: var(--text-3);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .process-card h3 {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 1.4rem;
+    }
+    .process-card p {
+      font-size: 0.85rem;
+      color: var(--text-2);
+      line-height: 1.7;
+      flex: 1;
+    }
+    .process-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+    .process-phase-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+    }
+
+    /* RESEARCH STATS */
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+    .research-stat {
+      grid-column: span 1;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .research-stat .metric-value { font-size: 3rem; }
+    .research-stat .metric-label { font-size: 0.8rem; margin-top: 0.5rem; }
+    .research-methods {
+      grid-column: span 2;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+    }
+    .research-methods h3 {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .research-methods .case-tags { margin-bottom: 0; }
+
+    /* SOLUTION */
+    .solution-intro p {
+      font-size: 0.95rem;
+      color: var(--text-2);
+      line-height: 1.8;
+      max-width: 720px;
+    }
+    .solution-features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .feature-pill {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-1);
+    }
+    .solution-visuals {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .solution-visual {
+      border-radius: var(--radius-lg);
+      min-height: 320px;
+      background: linear-gradient(135deg, var(--bg-3) 0%, var(--bg-4) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+    }
+    .solution-visual img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* OUTCOMES */
+    .outcomes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .outcome-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+    }
+    .outcome-card .metric-value { font-size: 2.4rem; }
+    .outcome-card .metric-label { font-size: 0.8rem; margin-top: 0.4rem; }
+
+    /* NEXT PROJECT */
+    .next-project {
+      padding-block: 5rem;
+      text-align: center;
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+    }
+    .next-project .section-label { margin-bottom: 1rem; }
+    .next-project-title {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.15;
+      margin-bottom: 2rem;
+    }
+    .next-project-title em { font-style: italic; color: var(--accent-text); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .case-meta-grid { grid-template-columns: repeat(2, 1fr); }
+      .overview-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .research-grid { grid-template-columns: repeat(2, 1fr); }
+      .research-methods { grid-column: span 2; }
+      .solution-features { grid-template-columns: repeat(2, 1fr); }
+      .solution-visuals { grid-template-columns: 1fr; }
+      .outcomes-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .case-meta-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .research-grid { grid-template-columns: 1fr; }
+      .research-methods { grid-column: span 1; }
+      .editorial-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .gestor-row { grid-template-columns: 1fr; gap: 0.5rem; }
+    }
+
+    /* PULL QUOTE */
+    .pull-quote-wrap {
+      padding-block: clamp(3rem, 6vw, 5rem);
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .pull-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+      line-height: 1.55;
+      color: var(--text-1);
+      max-width: 960px;
+      border-left: 3px solid var(--accent-text);
+      padding-left: 2.5rem;
+    }
+
+    /* EDITORIAL */
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+    .editorial-num {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 4rem;
+      font-weight: 300;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .editorial-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+      margin-bottom: 0.4rem;
+    }
+    .editorial-title {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: var(--text-1);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+    .editorial-body {
+      font-size: 0.83rem;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+
+    /* TINTED SECTION */
+    .section.bg-tinted { background: var(--bg-2); }
+
+    /* FEATURE LIST (gestor-list style) */
+    .feature-list {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 2.5rem;
+    }
+    .feature-row {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      align-items: start;
+      gap: 2.5rem;
+      padding: 1.75rem 2rem;
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+    .feature-row:last-child { border-bottom: none; }
+    .feature-row:hover { background: var(--bg-3); }
+    .feature-row-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+      margin-bottom: 0.35rem;
+    }
+    .feature-row-title {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: var(--text-1);
+    }
+    .feature-row-desc {
+      font-size: 0.85rem;
+      color: var(--text-2);
+      line-height: 1.7;
+      padding-top: 0.1rem;
+    }
+
+    /* REFLECTION */
+    .reflection-block {
+      padding-block: clamp(3rem, 6vw, 5rem);
+      border-top: 1px solid var(--border);
+    }
+    .reflection-inner p {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+      line-height: 1.65;
+      color: var(--text-1);
+      max-width: 960px;
+    }
+
+    @media (max-width: 900px) {
+      .feature-row { grid-template-columns: 1fr; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-transition-bar" aria-hidden="true"></div>
+
+
+
+<div class="reading-progress" aria-hidden="true"></div>
+
+<!-- ═══ CASE HEADER ═══ -->
+<header class="case-header">
+  <div class="container">
+    <a href="index.html" class="back-link case-header-entrance">
+      <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Work
+    </a>
+    <div class="case-tags case-header-entrance" style="--delay:0.06s">
+      <span class="tag accent">Featured</span>
+      <span class="tag">Product Design</span>
+      <span class="tag">Design System</span>
+      <span class="tag">Data Viz</span>
+      <span class="tag">B2B SaaS</span>
+    </div>
+    <h1 class="case-header-title case-header-entrance" style="--delay:0.13s">Keepeye<br /><em>KPI Management Platform</em></h1>
+    <p class="case-header-subtitle case-header-entrance" style="--delay:0.21s">
+      Dojo needed a SaaS product to stabilize its business. I led the research, designed
+      the system, wrote front-end code, and mentored a developer through her transition
+      to design. The result: a KPI platform with an 8.8/10 satisfaction score that gave
+      the company its first source of recurring revenue.
+    </p>
+
+    <div class="case-meta-grid case-header-entrance" style="--delay:0.28s">
+      <div class="case-meta-item">
+        <p class="section-label">Company</p>
+        <p class="case-meta-value">Dojo Smart Ways<span>Client: Nidec GA</span></p>
+      </div>
+      <div class="case-meta-item">
+        <p class="section-label">Role</p>
+        <p class="case-meta-value">Lead Product Designer<span>&amp; Front-End Developer</span></p>
+      </div>
+      <div class="case-meta-item">
+        <p class="section-label">Timeline</p>
+        <p class="case-meta-value">2023<span>Built from scratch</span></p>
+      </div>
+      <div class="case-meta-item">
+        <p class="section-label">Stack</p>
+        <p class="case-meta-value">Figma, Angular<span>Tailwind CSS</span></p>
+      </div>
+    </div>
+
+    <div class="case-hero-visual case-header-entrance" style="--delay:0.36s">
+      <img src="../assets/projects/keepeye/keepeye-header.png" alt="Keepeye KPI Management Platform interface" />
+    </div>
+  </div>
+</header>
+
+<!-- ═══ OVERVIEW ═══ -->
+<section class="section">
+  <div class="container">
+    <div class="overview-grid">
+      <div class="overview-block reveal">
+        <p class="section-label">The Business Case</p>
+        <p>
+          Dojo Smart Ways operated entirely on project-based work: a model with variable
+          revenue and constant labour demand. When one project ended, another had to begin.
+          There was no stable recurring income, no product the company owned, no way to
+          grow without growing headcount.
+        </p>
+        <p>
+          The opportunity came from a tool Dojo had previously built for Nidec: an internal
+          metrics platform. It worked, clients liked it, and the underlying problem it solved
+          was clearly not unique to one company. The decision to productize it into a SaaS
+          was a strategic bet on recurring revenue. Keepeye was the bet.
+        </p>
+      </div>
+      <div class="overview-block reveal" style="transition-delay:0.05s">
+        <p class="section-label">The User Problem</p>
+        <p>
+          Companies that work with operational KPIs rarely have a single place to look.
+          They rely on a patchwork of Excel files, Google Sheets, and scattered Power BI
+          dashboards, each maintained by different teams and using different formulas
+          for the same metric. When leadership asks for a number, the answer depends on
+          who you ask.
+        </p>
+        <p>
+          The result: low confidence in data, time spent reconciling reports instead
+          of acting on them, and decisions made on numbers nobody fully trusts.
+          The problem was not the absence of data. It was the absence of a single
+          reliable version of it.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PULL QUOTE ═══ -->
+<div class="pull-quote-wrap">
+  <div class="container">
+    <blockquote class="pull-quote reveal-blur">
+      The problem was not the absence of data. It was the absence of a single, trustworthy version of it.
+    </blockquote>
+  </div>
+</div>
+
+<!-- ═══ PROCESS ═══ -->
+<section class="section" style="padding-top:0; padding-bottom:0;">
+  <div class="container">
+    <p class="section-label">Process</p>
+    <h2 class="section-heading" style="margin-bottom:2.5rem;">Discovery before <em>decisions.</em></h2>
+    <div class="process-grid">
+      <div class="process-card reveal">
+        <div>
+          <p class="process-phase-label">Phase 01 · Discover</p>
+          <h3>Understanding the problem from the inside out</h3>
+        </div>
+        <p>
+          The Nidec tool gave us a starting point, not a solution. We ran usability
+          sessions on it to surface what worked and what consistently broke down,
+          before designing anything new. We also interviewed professionals who worked
+          with KPIs and metrics daily: not general users, but domain experts who
+          could tell us where existing tools failed in practice, not in theory.
+        </p>
+        <div class="process-tags">
+          <span class="tag">Usability Testing</span>
+          <span class="tag">Domain Interviews</span>
+          <span class="tag">Benchmarking</span>
+        </div>
+      </div>
+      <div class="process-card reveal" style="transition-delay:0.05s">
+        <div>
+          <p class="process-phase-label">Phase 01 · Quantify</p>
+          <h3>Validating what we heard at scale</h3>
+        </div>
+        <p>
+          Interviews give depth, but they can mislead. A strong opinion from one
+          person becomes a pattern only when confirmed by more. We sent a structured
+          survey to a broader sample of market professionals who use metrics tools
+          day-to-day. The goal was to validate whether the pain points we found in
+          interviews were structural problems or edge cases. They were structural.
+        </p>
+        <div class="process-tags">
+          <span class="tag">Survey Research</span>
+          <span class="tag">Quantitative Validation</span>
+        </div>
+      </div>
+      <div class="process-card reveal" style="transition-delay:0.1s">
+        <div>
+          <p class="process-phase-label">Phase 02 · Define</p>
+          <h3>Prioritizing with RICE, not gut feeling</h3>
+        </div>
+        <p>
+          With a small team and a fixed development window, we could not build
+          everything. We benchmarked competing tools to map the market, then scored
+          all identified opportunities using RICE: Reach (how many users benefit?),
+          Impact (how meaningful is the improvement?), Confidence (how sure are we?),
+          and Effort (how much does it cost to build?). RICE turns prioritization
+          from a debate into a decision.
+        </p>
+        <div class="process-tags">
+          <span class="tag">Benchmarking</span>
+          <span class="tag">RICE Prioritization</span>
+          <span class="tag">UX Canvas</span>
+        </div>
+      </div>
+      <div class="process-card reveal" style="transition-delay:0.15s">
+        <div>
+          <p class="process-phase-label">Phase 03-04 · Build</p>
+          <h3>From architecture to shipped code</h3>
+        </div>
+        <p>
+          Once priorities were set, I designed the information architecture and all
+          screens and components. Then I crossed roles: I contributed directly to
+          the front-end implementation in Angular and Tailwind CSS, working alongside
+          the developers throughout the build phase. After launch, we ran validation
+          interviews with internal and external users to measure the result.
+        </p>
+        <div class="process-tags">
+          <span class="tag">IA + UI Design</span>
+          <span class="tag">Design System</span>
+          <span class="tag">Angular + Tailwind</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WIREFRAME IMAGE ═══ -->
+<div class="container" style="padding-block: clamp(3rem, 6vw, 5rem);">
+  <div class="project-full-image reveal" style="margin:0;">
+    <img src="../assets/projects/keepeye/keepeye-wireframe.png" alt="Keepeye wireframes and early exploration" loading="lazy" />
+  </div>
+</div>
+
+<!-- ═══ RESEARCH FINDINGS ═══ -->
+<section class="section bg-tinted" style="padding-top:0; padding-bottom:2.5rem;">
+  <div class="container">
+    <p class="section-label">What Research Revealed</p>
+    <h2 class="section-heading" style="margin-bottom:2.5rem;">Three patterns, <em>one clear opportunity.</em></h2>
+    <div class="editorial-grid">
+      <div class="editorial-item reveal">
+        <span class="editorial-num">01</span>
+        <p class="editorial-label">Data Fragmentation</p>
+        <p class="editorial-title">One metric, many versions</p>
+        <p class="editorial-body">
+          Across interviews and the survey, the most consistent finding was that the
+          same KPI had different values depending on who calculated it. Marketing used
+          one formula for gross margin. Finance used another. Leadership trusted neither.
+          The absence of a shared calculation engine meant the data was always contested.
+        </p>
+      </div>
+      <div class="editorial-item reveal" style="transition-delay:0.05s">
+        <span class="editorial-num">02</span>
+        <p class="editorial-label">Tool Gap</p>
+        <p class="editorial-title">Built for analysts, not managers</p>
+        <p class="editorial-body">
+          Benchmarking revealed that most KPI tools required technical configuration or
+          data analyst involvement to produce a usable dashboard. Managers who needed
+          the numbers ended up depending on a third party to create the view.
+          The opportunity was a tool that a manager could own end-to-end, without
+          needing SQL or a BI specialist.
+        </p>
+      </div>
+      <div class="editorial-item reveal" style="transition-delay:0.1s">
+        <span class="editorial-num">03</span>
+        <p class="editorial-label">Trust Deficit</p>
+        <p class="editorial-title">Bad data leads to paralysis, not bad decisions</p>
+        <p class="editorial-body">
+          A recurring theme in interviews: when professionals do not trust a number,
+          they do not act on it: they investigate it. Meetings turn into data
+          reconciliation sessions. Decisions get delayed. The cost is not a wrong
+          call; it is paralysis. Keepeye's goal became making a number trustworthy
+          the first time someone looks at it.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ THE PRODUCT ═══ -->
+<section class="section" style="padding-bottom:0;">
+  <div class="container">
+    <p class="section-label">The Product</p>
+    <h2 class="section-heading" style="margin-bottom:0.75rem;">One platform. <em>Every KPI.</em></h2>
+    <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8; max-width:720px; margin-bottom:0;">
+      The RICE exercise shaped the feature set directly. What scored highest was not always
+      what we expected, but the research consistently pointed toward the same needs:
+      centralization, formula consistency, and managerial autonomy.
+    </p>
+
+    <div class="feature-list">
+      <div class="feature-row reveal">
+        <div>
+          <p class="feature-row-label">Core Feature</p>
+          <p class="feature-row-title">KPI Dashboards</p>
+        </div>
+        <p class="feature-row-desc">A centralized view where managers can see all active KPIs at a glance, with real-time status, historical trends, and goal tracking. The design prioritized readability over density: the first view should answer "how are we doing?" without requiring any interaction. Drill-down is available, but the summary is always sufficient on its own.</p>
+      </div>
+      <div class="feature-row reveal">
+        <div>
+          <p class="feature-row-label">Core Feature</p>
+          <p class="feature-row-title">Metric Formula Calculator</p>
+        </div>
+        <p class="feature-row-desc">One of the highest-scoring features in the RICE exercise, and the one that most directly addressed the trust deficit. The built-in calculator lets users define the exact formula behind each metric, with variables, operations, and dependencies, so the same calculation is used every time, by everyone. When two people look at the same gross margin number, they are looking at the same formula. This turned Keepeye from a dashboard tool into a data trust layer.</p>
+      </div>
+      <div class="feature-row reveal">
+        <div>
+          <p class="feature-row-label">Core Feature</p>
+          <p class="feature-row-title">KPI and Metrics Management</p>
+        </div>
+        <p class="feature-row-desc">A full management layer for the indicators themselves: create, edit, categorize, and link KPIs to the underlying metrics that feed them. Research showed that most teams track between 15 and 40 active KPIs, each with different owners, cadences, and data sources. The management view had to handle that complexity without becoming a spreadsheet itself.</p>
+      </div>
+      <div class="feature-row reveal">
+        <div>
+          <p class="feature-row-label">Core Feature</p>
+          <p class="feature-row-title">User Area and Access Control</p>
+        </div>
+        <p class="feature-row-desc">Enterprise KPI tools are always multi-user, but different users have different relationships with the data: some configure, some monitor, some only read. The user area defines roles, permissions, and data scope so that an operational supervisor sees floor metrics while leadership sees consolidated results. Role definition was one of the earliest IA decisions and shaped the information hierarchy of the entire product.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COMPONENTS IMAGE ═══ -->
+<div class="container" style="padding-block: clamp(3rem, 6vw, 5rem);">
+  <div class="project-full-image reveal" style="margin:0;">
+    <img src="../assets/projects/keepeye/keepeye-components.png" alt="Keepeye component library" loading="lazy" />
+  </div>
+</div>
+
+<!-- ═══ VISUALS ═══ -->
+<div class="container" style="padding-block: 0 clamp(3rem, 6vw, 5rem);">
+  <div class="solution-visuals reveal">
+    <div class="solution-visual">
+      <img src="../assets/projects/keepeye/keepeye-mockup.png" alt="Keepeye dashboard interface" loading="lazy" />
+    </div>
+    <div class="solution-visual">
+      <img src="../assets/projects/keepeye/keepeye-screens.png" alt="Keepeye product screens" loading="lazy" />
+    </div>
+  </div>
+</div>
+
+<!-- ═══ HOW I WORKED ═══ -->
+<section class="section bg-tinted" style="padding-top:clamp(2rem,4vw,3rem); padding-bottom:2.5rem;">
+  <div class="container">
+    <p class="section-label">How I Worked</p>
+    <h2 class="section-heading" style="margin-bottom:2.5rem;">Designer, developer, <em>and mentor.</em></h2>
+    <div class="overview-grid">
+      <div class="overview-block reveal">
+        <p class="section-label">Full-Stack Contribution</p>
+        <p>
+          My role did not stop at handoff. After designing all screens and the design system,
+          I joined the implementation as a Front-End Developer, contributing directly to the
+          Angular and Tailwind CSS codebase alongside the engineering team. Designing and
+          building in the same project closes the gap between intent and execution: I could
+          see where the design needed to be adjusted for implementation reality and adjust it
+          without a translation layer.
+        </p>
+        <p>
+          This also meant I understood constraints before they became blockers. When the
+          team hit a component complexity problem, I was in the room to solve it at the source.
+        </p>
+      </div>
+      <div class="overview-block reveal" style="transition-delay:0.05s">
+        <p class="section-label">Mentoring in Transition</p>
+        <p>
+          One member of the development team was actively migrating from front-end
+          development into UI/UX design. I mentored her through the process during the
+          project: sharing design decision reasoning, reviewing her work, explaining the
+          connection between visual choices and user behaviour, and giving structured
+          feedback on interface decisions.
+        </p>
+        <p>
+          Mentoring sharpened my own thinking. Explaining why a pattern works forces
+          you to articulate principles you often apply instinctively. It was one of the
+          most useful parts of the project.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OUTCOMES ═══ -->
+<section class="section" style="padding-top:clamp(3rem,5vw,4rem);">
+  <div class="container">
+    <p class="section-label">Outcomes</p>
+    <h2 class="section-heading" style="margin-bottom:2.5rem;">The number that matters: <em>8.8 out of 10.</em></h2>
+    <div class="outcomes-grid">
+      <div class="outcome-card reveal">
+        <span class="metric-value">8.8<span style="font-size:1.4rem;">/10</span></span>
+        <span class="metric-label">User satisfaction in post-launch interviews, internal and external</span>
+      </div>
+      <div class="outcome-card reveal" style="transition-delay:0.05s">
+        <span class="metric-value">4</span>
+        <span class="metric-label">Team members, including one designer mentored through her career transition</span>
+      </div>
+      <div class="outcome-card reveal" style="transition-delay:0.1s">
+        <span class="metric-value">0→1</span>
+        <span class="metric-label">SaaS product launched, giving Dojo its first source of recurring revenue</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REFLECTION ═══ -->
+<div class="reflection-block">
+  <div class="container">
+    <div class="reflection-inner reveal-blur">
+      <p>Full ownership compresses every lesson. At Keepeye, research, prioritization, design, code, and mentoring happened in the same project. Design decisions compound: what you skip in discovery becomes a problem in delivery.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ NEXT PROJECT ═══ -->
+<div class="next-project">
+  <div class="container">
+    <p class="section-label">What's next?</p>
+    <h2 class="next-project-title">More <em>case studies</em> in Selected Work.</h2>
+    <div class="work-cta-actions" style="display:flex; align-items:center; justify-content:center; gap:1rem; flex-wrap:wrap;">
+      <a href="index.html" class="btn-primary">
+        Back to Work
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container footer-inner" style="justify-content:center;">
+    <p class="footer-copy">Product Design — Selected Case Studies</p>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
+  // Scroll reveal
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }),
+    { threshold: 0.08, rootMargin: '0px 0px -20px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Theme toggle
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isLight = html.getAttribute('data-theme') === 'light';
+    if (isLight) {
+      html.removeAttribute('data-theme');
+      try { localStorage.setItem('theme', 'dark'); } catch (e) {}
+    } else {
+      html.setAttribute('data-theme', 'light');
+      try { localStorage.setItem('theme', 'light'); } catch (e) {}
+    }
+  }
+
+  // Mobile menu
+
+  // Header hide on scroll down, reveal on scroll up or hover near top
+  // + Back to top button
+  (function () {
+    const navEl = document.querySelector('body > nav');
+    const backToTop = document.getElementById('backToTop');
+    const showThreshold = 120;
+    let lastY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > showThreshold) {
+        navEl.classList.toggle('nav-hidden', y > lastY);
+        backToTop.classList.add('visible');
+      } else {
+        navEl.classList.remove('nav-hidden');
+        backToTop.classList.remove('visible');
+      }
+      lastY = y;
+    }, { passive: true });
+
+    document.addEventListener('mousemove', e => {
+      if (e.clientY <= 60) navEl.classList.remove('nav-hidden');
+    }

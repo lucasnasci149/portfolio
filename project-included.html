@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('theme') === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IncludED: Inclusive Education Platform | Lucas Nascimento</title>
+  <meta name="description" content="Case study: IncludED, a BNCC-compliant SaaS for creating and managing PEIs for inclusion students, built in collaboration with a neuropsychologist and pedagogical consultant." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://lucasnascimento.design/project-included" />
+  <meta property="og:title" content="IncludED: Inclusive Education Platform" />
+  <meta property="og:description" content="How I co-founded a software company and designed an inclusive education platform from scratch, guided by a neuropsychologist and pedagogical experts." />
+  <meta property="og:url" content="https://lucasnascimento.design/project-included" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="transitions.js" defer></script>
+  <noscript><style>body { opacity: 1 !important; }</style></noscript>
+
+  <style>
+    /* ── CASE HEADER ── */
+    .case-header {
+      padding-top: calc(4rem + 60px);
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      color: var(--text-2);
+      margin-bottom: 1.5rem;
+      transition: color var(--transition);
+    }
+    .back-link:hover { color: var(--text-1); }
+    .back-link svg { transform: rotate(180deg); }
+
+    .case-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+
+    .case-header-title {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+    }
+    .case-header-title em { font-style: italic; color: var(--accent-text); }
+    .case-header-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-2);
+      margin-top: 0.75rem;
+      max-width: 620px;
+      line-height: 1.7;
+    }
+
+    /* META GRID */
+    .case-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .case-meta-item .section-label { margin-bottom: 0.4rem; }
+    .case-meta-value {
+      font-size: 0.9rem;
+      color: var(--text-1);
+      line-height: 1.5;
+    }
+    .case-meta-value span { display: block; color: var(--text-3); font-size: 0.8rem; margin-top: 0.15rem; }
+
+    /* HERO VISUAL */
+    .case-hero-visual {
+      margin-top: 3rem;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 480px;
+      background: linear-gradient(135deg, var(--bg-3) 0%, var(--bg-4) 100%);
+      position: relative;
+    }
+    .case-hero-visual img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* OVERVIEW */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    .overview-block .section-label { margin-bottom: 0.75rem; }
+    .overview-block p {
+      font-size: 0.95rem;
+      color: var(--text-2);
+      line-height: 1.8;
+    }
+    .overview-block p + p { margin-top: 1rem; }
+
+    /* ORIGIN STORY */
+    .origin-block {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      position: relative;
+    }
+    .origin-block blockquote {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      line-height: 1.55;
+      color: var(--text-1);
+      border: none;
+      padding: 0;
+      margin: 0 0 1.5rem;
+    }
+    .origin-block p {
+      font-size: 0.9rem;
+      color: var(--text-2);
+      line-height: 1.8;
+    }
+    .origin-block p + p { margin-top: 0.75rem; }
+
+    /* COLLABORATION GRID */
+    .collab-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .collab-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+    }
+    .collab-card h3 {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+    }
+    .collab-card p {
+      font-size: 0.85rem;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+
+    /* PROCESS CARDS */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .process-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .process-card h3 {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 1.3rem;
+    }
+    .process-card p {
+      font-size: 0.85rem;
+      color: var(--text-2);
+      line-height: 1.7;
+      flex: 1;
+    }
+    .process-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+    .process-phase-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+    }
+
+    /* FEATURES HIGHLIGHT */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .feature-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-1);
+    }
+
+    /* OUTCOMES */
+    .outcomes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .outcome-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+    }
+    .outcome-card .metric-value { font-size: 2.4rem; }
+    .outcome-card .metric-label { font-size: 0.8rem; margin-top: 0.4rem; }
+
+    /* PROJECT IMAGE */
+    .project-full-image {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .project-full-image img {
+      width: 100%;
+      display: block;
+    }
+
+    /* NEXT PROJECT */
+    .next-project {
+      padding-block: 5rem;
+      text-align: center;
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+    }
+    .next-project .section-label { margin-bottom: 1rem; }
+    .next-project-title {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.15;
+      margin-bottom: 2rem;
+    }
+    .next-project-title em { font-style: italic; color: var(--accent-text); }
+
+    /* PULL QUOTE */
+    .pull-quote-wrap {
+      padding-block: clamp(3rem, 6vw, 5rem);
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .pull-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+      line-height: 1.55;
+      color: var(--text-1);
+      max-width: 960px;
+      border-left: 3px solid var(--accent-text);
+      padding-left: 2.5rem;
+    }
+
+    /* EDITORIAL */
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+    .editorial-num {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 4rem;
+      font-weight: 300;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .editorial-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+      margin-bottom: 0.4rem;
+    }
+    .editorial-title {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: var(--text-1);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+    .editorial-body {
+      font-size: 0.83rem;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+
+    /* TINTED SECTION */
+    .section.bg-tinted { background: var(--bg-2); }
+
+    /* FEATURE LIST */
+    .feature-list {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 2.5rem;
+    }
+    .feature-row {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      align-items: start;
+      gap: 2.5rem;
+      padding: 1.75rem 2rem;
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+    .feature-row:last-child { border-bottom: none; }
+    .feature-row:hover { background: var(--bg-3); }
+    .feature-row-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+      margin-bottom: 0.35rem;
+    }
+    .feature-row-title {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: var(--text-1);
+    }
+    .feature-row-desc {
+      font-size: 0.85rem;
+      color: var(--text-2);
+      line-height: 1.7;
+      padding-top: 0.1rem;
+    }
+
+    /* AI STRIP */
+    .ai-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 2.5rem;
+    }
+    .ai-strip-panel {
+      background: var(--bg-1);
+      padding: 2rem;
+      border-top: 3px solid var(--border);
+    }
+    .ai-strip-panel:first-child { border-top-color: var(--accent-text); }
+    .ai-strip-panel:nth-child(2) { border-top-color: var(--accent-2); }
+    .ai-strip-panel:nth-child(3) { border-top-color: var(--text-3); }
+    .ai-strip-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+      margin-bottom: 0.5rem;
+    }
+    .ai-strip-title {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 1.15rem;
+      color: var(--text-1);
+      margin-bottom: 0.6rem;
+    }
+    .ai-strip-panel p { font-size: 0.83rem; color: var(--text-2); line-height: 1.7; }
+
+    /* REFLECTION */
+    .reflection-block {
+      padding-block: clamp(3rem, 6vw, 5rem);
+      border-top: 1px solid var(--border);
+    }
+    .reflection-inner p {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+      line-height: 1.65;
+      color: var(--text-1);
+      max-width: 960px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .case-meta-grid { grid-template-columns: repeat(2, 1fr); }
+      .overview-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .collab-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .outcomes-grid { grid-template-columns: 1fr; }
+      .editorial-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .feature-row { grid-template-columns: 1fr; gap: 0.5rem; }
+      .ai-strip { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .case-meta-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-transition-bar" aria-hidden="true"></div>
+
+<!-- ═══ NAV ═══ -->
+<nav aria-label="Main navigation">
+  <div class="container nav-inner">
+    <div class="nav-left">
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Work</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="archives.html">Archives</a></li>
+        <li><a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+
+        <div class="nav-right">
+          <button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick="toggleTheme()">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+          <a href="contact.html" class="nav-cta">Contact</a>
+
+          <button class="nav-mobile-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMenu(this)">☰</button>
+
+        </div>
+  </div>
+  <div class="nav-mobile-menu" id="mobileMenu">
+    <a href="index.html">Work</a>
+    <a href="about.html">About Me</a>
+    <a href="archives.html">Archives</a>
+    <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="contact.html">Contact →</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick="toggleTheme()">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="label-light">Light mode</span>
+      <span class="label-dark">Dark mode</span>
+    </button>
+  </div>
+</nav>
+
+<div class="reading-progress" aria-hidden="true"></div>
+
+<!-- ═══ CASE HEADER ═══ -->
+<header class="case-header">
+  <div class="container">
+    <a href="index.html#work-preview" class="back-link case-header-entrance">
+      <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Work
+    </a>
+    <div class="case-tags case-header-entrance" style="--delay:0.06s">
+      <span class="tag accent">EdTech</span>
+      <span class="tag">Product Design</span>
+      <span class="tag">Design System</span>
+      <span class="tag">Accessibility</span>
+      <span class="tag">Co-founder</span>
+    </div>
+    <h1 class="case-header-title case-header-entrance" style="--delay:0.13s">IncludED<br /><em>Inclusive Education Platform</em></h1>
+    <p class="case-header-subtitle case-header-entrance" style="--delay:0.21s">
+      Neuroscience, education law, and design collide in a product that changes how
+      Brazilian schools support inclusion students. Built with a neuropsychologist, a
+      pedagogical consultant, and two developers, and deployed in schools across
+      multiple states in under six months.
+    </p>
+
+    <div class="case-meta-grid case-header-entrance" style="--delay:0.28s">
+      <div class="case-meta-item">
+        <p class="section-label">Company</p>
+        <p class="case-meta-value">PixelPunk<span>Co-founded Oct 2024</span></p>
+      </div>
+      <div class="case-meta-item">
+        <p class="section-label">Role</p>
+        <p class="case-meta-value">Co-founder<span>Lead Product Designer</span></p>
+      </div>
+      <div class="case-meta-item">
+        <p class="section-label">Timeline</p>
+        <p class="case-meta-value">Oct 2024 – Present<span>From zero to live</span></p>
+      </div>
+      <div class="case-meta-item">
+        <p class="section-label">Stack</p>
+        <p class="case-meta-value">Figma, BNCC<span>Accessibility-first</span></p>
+      </div>
+      <div class="case-meta-item">
+        <p class="section-label">Platform</p>
+        <p class="case-meta-value">
+          <a href="https://included.com.br/" target="_blank" rel="noopener" style="color:var(--accent-text); text-decoration:none;">
+            included.com.br
+            <svg width="11" height="11" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="vertical-align:middle; margin-left:2px;"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+          <span>Live product</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="case-hero-visual case-header-entrance" style="--delay:0.36s">
+      <img src="assets/projects/included-pixelpunk/included-gif.gif" alt="IncludED platform screens" loading="lazy" />
+    </div>
+  </div>
+</header>
+
+<!-- ═══ OVERVIEW ═══ -->
+<section class="section">
+  <div class="container">
+    <div class="overview-grid">
+      <div class="overview-block reveal">
+        <p class="section-label">The Legal Mandate</p>
+        <p>
+          In Brazil, any student with a disability, global developmental disorder, or high
+          intellectual ability has a legal right to a PEI: an Individualized Educational Plan.
+          This document must define the student's pedagogical goals, the curricular adaptations
+          required, and a track record of progress over time. The law is unambiguous.
+          The implementation is chaos.
+        </p>
+        <p>
+          Most schools produce PEIs in Word files, spreadsheets, or physical notebooks.
+          Each teacher keeps their own version. There is no central record, no audit trail,
+          no way for a coordinator to see which students are documented and which are not.
+          When a student changes classes or teachers rotate, the history disappears.
+        </p>
+      </div>
+      <div class="overview-block reveal" style="transition-delay:0.05s">
+        <p class="section-label">The Human Cost</p>
+        <p>
+          The person absorbing the most friction is the teacher. Writing a compliant PEI
+          from scratch for each inclusion student, aligned to BNCC, reviewed with
+          specialists, and signed off by the school, takes hours per student. Multiply that
+          by ten or twenty students per class. The documentation burden is real enough that
+          teachers often produce something that satisfies the form but not the function: a
+          paper trail with no pedagogical depth.
+        </p>
+        <p>
+          IncludED was built to fix that. Not by simplifying the PEI, but by giving teachers
+          the structure and tools to produce a meaningful one in a fraction of the time.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PULL QUOTE ═══ -->
+<div class="pull-quote-wrap">
+  <div class="container">
+    <blockquote class="pull-quote reveal-blur">
+      The problem isn't the law. The problem is that nobody gave teachers the infrastructure to follow it.
+    </blockquote>
+  </div>
+</div>
+
+<!-- ═══ ORIGIN ═══ -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <p class="section-label">Why this project</p>
+    <h2 class="section-heading" style="margin-bottom:2rem;">Neuroscience, design, <em>and what matters.</em></h2>
+    <div class="origin-block reveal">
+      <blockquote>
+        "I have always been drawn to the intersection of how the brain works and how design communicates.
+        IncludED is the project where those two stopped being separate interests."
+      </blockquote>
+      <p>
+        Neuroscience has shaped how I think about UX for years: cognitive load, attention systems,
+        the way working memory constraints map directly to interface decisions. When the opportunity
+        to co-found PixelPunk arrived in October 2024, the product we chose to build was not an
+        accident. A platform for inclusion students sits at the intersection of educational
+        neuroscience, pedagogy, and design in a way that few products do.
+      </p>
+      <p>
+        The decision to build IncludED as our first product was also deliberate. This is a
+        problem with real stakes: the students on the other end of every PEI created in our
+        platform are children who depend on proper documentation to receive the support they
+        are legally entitled to. That weight shaped every decision from day one.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS ═══ -->
+<section class="section" style="padding-top:0; padding-bottom:2.5rem;">
+  <div class="container">
+    <p class="section-label">How we built it</p>
+    <h2 class="section-heading" style="margin-bottom:2.5rem;">Foundation first, <em>screens second.</em></h2>
+    <div class="process-grid">
+      <div class="process-card reveal">
+        <div>
+          <p class="process-phase-label">Step 01 · Foundation</p>
+          <h3>Accio: the Design System that made everything else possible</h3>
+        </div>
+        <p>
+          Before any product screen existed, we built Accio: PixelPunk's design system.
+          The decision was not about organization for its own sake. With two developers,
+          a new codebase, and a tool targeting educators with no technical background,
+          we needed every component to be accessible by default, consistent across
+          contexts, and fast to implement via Storybook. Building the DS first meant every
+          screen that followed was built faster, with fewer inconsistencies and no
+          accessibility debt from the start.
+        </p>
+        <div class="process-tags">
+          <span class="tag">Accio Design System</span>
+          <span class="tag">Storybook</span>
+          <span class="tag">Accessibility-First</span>
+        </div>
+      </div>
+      <div class="process-card reveal" style="transition-delay:0.05s">
+        <div>
+          <p class="process-phase-label">Step 02 · Research</p>
+          <h3>Weeks of structured learning before a single wireframe</h3>
+        </div>
+        <p>
+          We ran a comprehensive research program guided by two education professionals
+          with 20+ years of in-school experience. The scope covered every dimension of the
+          problem: Brazilian inclusion legislation, BNCC architecture across all educational
+          stages, how teachers build PEIs today, how neuropsychological assessments reach
+          classrooms and what teachers can actually do with them, and what the AEE
+          regulations require from specialized support professionals. This was not a
+          discovery sprint. It was weeks of structured study.
+        </p>
+        <div class="process-tags">
+          <span class="tag">Domain Research</span>
+          <span class="tag">BNCC Mapping</span>
+          <span class="tag">Workflow Analysis</span>
+          <span class="tag">Regulatory Review</span>
+        </div>
+      </div>
+      <div class="process-card reveal" style="transition-delay:0.1s">
+        <div>
+          <p class="process-phase-label">Step 03 · Market</p>
+          <h3>Mapping what existed and exactly where it fell short</h3>
+        </div>
+        <p>
+          With domain knowledge established, we audited the existing tools landscape:
+          generic school ERPs, Word templates, spreadsheet-based PEI builders, and
+          broader edtech platforms. None had BNCC-aligned objective writing. None
+          bridged the clinical-to-pedagogical gap. None addressed AEE-specific workflows.
+          None were designed around inclusion at all. The market research didn't just
+          confirm the gap: it defined precisely the requirements IncludED had to meet to
+          be genuinely useful rather than another tool teachers would abandon.
+        </p>
+        <div class="process-tags">
+          <span class="tag">Market Research</span>
+          <span class="tag">Competitive Analysis</span>
+          <span class="tag">Opportunity Mapping</span>
+        </div>
+      </div>
+      <div class="process-card reveal" style="transition-delay:0.15s">
+        <div>
+          <p class="process-phase-label">Step 04 · Build</p>
+          <h3>Screens + AI, faster because the foundation was ready</h3>
+        </div>
+        <p>
+          With the Design System in place and the domain knowledge established, screen
+          production moved fast. Lead Product Designer, both developers, the pedagogical
+          consultant, and the neuropsychologist all participated throughout the build phase:
+          reviewing prototypes, flagging terminology, validating flows against real classroom
+          workflows. AI was integrated across multiple product touchpoints. Less than six
+          months after launch, IncludED was live in schools across multiple Brazilian states.
+        </p>
+        <div class="process-tags">
+          <span class="tag">Collaborative Design</span>
+          <span class="tag">AI Integration</span>
+          <span class="tag">Rapid Iteration</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RESEARCH IN PRACTICE ═══ -->
+<section class="section" style="padding-top:0; padding-bottom:0;">
+  <div class="container">
+    <div class="overview-grid" style="align-items:center; gap:clamp(2rem,4vw,4rem);">
+      <div class="reveal" style="border-radius:var(--radius-lg); overflow:hidden; line-height:0;">
+        <img src="assets/projects/included-pixelpunk/included-header.png" alt="IncludED platform" style="width:100%; display:block; border-radius:var(--radius-lg);" loading="lazy" />
+      </div>
+      <div class="overview-block reveal" style="transition-delay:0.05s;">
+        <p class="section-label">Research in practice</p>
+        <p>
+          The research phase looked nothing like a typical discovery sprint. Sessions with
+          the neuropsychologist and pedagogical consultant were structured around specific
+          questions: how does a teacher actually receive a clinical report? What does
+          "BNCC-aligned" mean for a student who cannot achieve a standard habilidade? How
+          does a school coordinator track compliance across thirty PEIs at once?
+        </p>
+        <p>
+          Every session produced an artifact: a documented decision, a product rule, a
+          terminology choice. The sessions shaped how the platform uses language, how it
+          structures information, and which user roles can see what. The research was not
+          input to the design. It was the design.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RESEARCH DEPTH ═══ -->
+<section class="section" style="padding-bottom:2rem;">
+  <div class="container">
+    <p class="section-label">What the research covered</p>
+    <h2 class="section-heading" style="margin-bottom:0.75rem;">You cannot design for a domain <em>you haven't studied.</em></h2>
+    <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8; max-width:720px; margin-bottom:0;">
+      Each dimension of the research directly shaped a product decision. Nothing in IncludED
+      was assumed. Every flow, every piece of terminology, every access rule was grounded in
+      something specific the team learned before building.
+    </p>
+    <div class="feature-list">
+      <div class="feature-row reveal">
+        <div>
+          <p class="feature-row-label">Legislation</p>
+          <p class="feature-row-title">Brazilian Inclusion Law and PEI requirements</p>
+        </div>
+        <p class="feature-row-desc">The Lei Brasileira de Inclusão (Lei 13.146/2015) establishes the legal right to a PEI for every student with a disability, global developmental disorder, or high intellectual ability. The research mapped exactly what a compliant PEI must contain, who is responsible for producing and signing it, how it must be reviewed across the school year, and what documentation a school must maintain. These requirements became IncludED's structural foundation, not optional features.</p>
+      </div>
+      <div class="feature-row reveal">
+        <div>
+          <p class="feature-row-label">Curriculum</p>
+          <p class="feature-row-title">BNCC architecture and how it applies to inclusion</p>
+        </div>
+        <p class="feature-row-desc">The BNCC organizes learning goals differently across each educational stage: campos de experiência for Educação Infantil, habilidades within competências for Ensino Fundamental and Médio. For an inclusion student, every pedagogical objective in the PEI must be anchored to BNCC descriptors, adapted to the student's profile. The team studied this architecture in detail with the pedagogical consultant to understand how to make BNCC navigation practical for teachers who need to select the right descriptors quickly, without reading the full document every time.</p>
+      </div>
+      <div class="feature-row reveal">
+        <div>
+          <p class="feature-row-label">Classroom Reality</p>
+          <p class="feature-row-title">How teachers actually work with inclusion students</p>
+        </div>
+        <p class="feature-row-desc">Sessions with the pedagogical consultant revealed the real daily workflow: a teacher managing twenty students may have four or five with PEIs, each requiring individual documentation, separate behavioral records, and progress tracking that coordinators can review. The consultant described how schools handle rotating teachers, mid-year student transfers, and the constant challenge of keeping records when each professional uses a different format. Every pain point she described became a product requirement.</p>
+      </div>
+      <div class="feature-row reveal">
+        <div>
+          <p class="feature-row-label">Clinical Gap</p>
+          <p class="feature-row-title">What neuropsychological reports mean in the classroom</p>
+        </div>
+        <p class="feature-row-desc">The neuropsychologist walked the team through how clinical assessments are structured: the diagnostic language neurologists, psychologists, and speech therapists use, why that language is inaccessible to most teachers, and what the pedagogical implications of each diagnosis type actually are. This session was the foundation of IncludED's report translation pipeline. Without understanding how clinical and pedagogical language diverge, the AI integration would have been superficial. The Adaptation Council feature was born directly from this research.</p>
+      </div>
+      <div class="feature-row reveal">
+        <div>
+          <p class="feature-row-label">Regulatory Framework</p>
+          <p class="feature-row-title">AEE requirements and institutional oversight</p>
+        </div>
+        <p class="feature-row-desc">The Atendimento Educacional Especializado (AEE) is a federally mandated specialized support service that operates alongside regular schooling. It has its own documentation requirements (the PAEE), its own professional category (Profissional AEE), and its own relationship to the student's classroom PEI. Understanding how MEC guidelines, state secretaries of education, and school coordinators interact around AEE compliance was essential to designing an access model where AEE professionals see the right students, and teachers see only their own contributions.</p>
+      </div>
+      <div class="feature-row reveal">
+        <div>
+          <p class="feature-row-label">Market</p>
+          <p class="feature-row-title">Existing tools and the gaps none of them closed</p>
+        </div>
+        <p class="feature-row-desc">The competitive landscape included generic school management ERPs, paper-based PEI templates promoted by secretaries of education, Word and Google Docs workflows, and a handful of edtech platforms targeting broader school administration. None had BNCC-aligned goal writing. None had a clinical report processing layer. None distinguished between classroom PEIs and AEE plans. None were designed around the teacher's documentation workflow. The audit confirmed that the opportunity was not incremental improvement over existing tools: it was a category that didn't exist yet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXPERT KNOWLEDGE ═══ -->
+<section class="section bg-tinted" style="padding-bottom:0;">
+  <div class="container">
+    <p class="section-label">What domain expertise changed</p>
+    <h2 class="section-heading" style="margin-bottom:2.5rem;">You cannot design this <em>from the outside.</em></h2>
+    <div class="editorial-grid">
+      <div class="editorial-item reveal">
+        <span class="editorial-num">01</span>
+        <p class="editorial-label">Pedagogical Expertise</p>
+        <p class="editorial-title">20+ years in schools, in the room</p>
+        <p class="editorial-body">
+          The pedagogical consultant shaped how the platform handles teacher workflow: the
+          distinction between PEI and PAEE, how goals are structured by BNCC stage, how
+          behavioral observations should be recorded separately from pedagogical objectives.
+          Without this knowledge, the platform would have merged what must stay separated,
+          making it non-compliant and confusing for educators.
+        </p>
+      </div>
+      <div class="editorial-item reveal" style="transition-delay:0.05s">
+        <span class="editorial-num">02</span>
+        <p class="editorial-label">Neuropsychology</p>
+        <p class="editorial-title">The clinical lens, translated for teachers</p>
+        <p class="editorial-body">
+          Clinical reports from neurologists, psychologists, and speech therapists arrive
+          in language most teachers cannot act on. The neuropsychologist defined how
+          IncludED should translate these documents: preserving diagnostic accuracy while
+          reformulating the language into pedagogical guidance. The Adaptation Council
+          feature was her direct contribution to the product.
+        </p>
+      </div>
+      <div class="editorial-item reveal" style="transition-delay:0.1s">
+        <span class="editorial-num">03</span>
+        <p class="editorial-label">Market Research</p>
+        <p class="editorial-title">The gap the market confirmed</p>
+        <p class="editorial-body">
+          Research into existing tools revealed that school management platforms in Brazil
+          were built for administration, not for inclusion. None had BNCC-aligned PEI
+          workflows, AI-assisted goal writing, or multi-role collaboration between teachers,
+          AEE professionals, and coordinators. The gap was not just present: it was wide.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT IMAGE -->
+<div class="container" style="padding-block: clamp(3rem, 6vw, 5rem);">
+  <div class="project-full-image reveal" style="margin:0;">
+    <img src="assets/projects/included-pixelpunk/included-project.png" alt="IncludED platform screens" loading="lazy" />
+  </div>
+</div>
+
+<!-- ═══ PRODUCT MODULES ═══ -->
+<section class="section" style="padding-top:0; padding-bottom:2rem;">
+  <div class="container">
+    <p class="section-label">What we built</p>
+    <h2 class="section-heading" style="margin-bottom:0.75rem;">A complete layer for <em>inclusive education.</em></h2>
+    <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8; max-width:720px; margin-bottom:0;">
+      Every module came from a specific gap identified in the expert sessions and market research.
+      Nothing was built speculatively.
+    </p>
+    <div class="feature-list">
+      <div class="feature-row reveal">
+        <div>
+          <p class="feature-row-label">Core Module</p>
+          <p class="feature-row-title">PEI Creation and Management</p>
+        </div>
+        <p class="feature-row-desc">The core of the platform. Administrators open a school period and the system automatically generates one PEI per active student. Teachers fill contributions by discipline; coordinators have full visibility. The PEI is always tied to a student, a class, and a school period. Never a floating document. It exports as PDF, consolidating all contributions, objectives, behaviors, and the PAEE into a single compliant document.</p>
+      </div>
+      <div class="feature-row reveal">
+        <div>
+          <p class="feature-row-label">Core Module</p>
+          <p class="feature-row-title">BNCC Goal Mapping with AI</p>
+        </div>
+        <p class="feature-row-desc">Teachers set pedagogical objectives linked to BNCC descriptors: habilidades for Ensino Fundamental and Ensino Médio, campos de experiência for Educação Infantil. The platform includes the full BNCC glossary indexed for navigation. For each BNCC descriptor selected, AI suggests a goal text tailored to the student's profile. The teacher edits; the AI starts. This reduced goal-writing time significantly while improving BNCC alignment across the board.</p>
+      </div>
+      <div class="feature-row reveal">
+        <div>
+          <p class="feature-row-label">Core Module</p>
+          <p class="feature-row-title">Student Evolution and Progress Tracking</p>
+        </div>
+        <p class="feature-row-desc">Objectives break into activities, each tracked quantitatively (numeric target and running progress) or qualitatively (achieved/not achieved). Teachers update progress, and the platform aggregates it by objective, discipline, and period, giving coordinators a longitudinal view of each student's development across the year. This turns subjective impressions into structured, auditable evidence.</p>
+      </div>
+      <div class="feature-row reveal">
+        <div>
+          <p class="feature-row-label">Core Module</p>
+          <p class="feature-row-title">Clinical Report Processing</p>
+        </div>
+        <p class="feature-row-desc">Administrators upload clinical reports from neurologists, psychologists, and speech therapists. The platform uses OCR for scanned documents and AI to translate medical language into pedagogical guidance. A teacher who receives a neurological evaluation can now read, in plain language, what it means for their classroom practice. Only accepted reports feed into the Adaptation Council, a deliberate quality gate designed with the neuropsychologist.</p>
+      </div>
+      <div class="feature-row reveal">
+        <div>
+          <p class="feature-row-label">Core Module</p>
+          <p class="feature-row-title">PAEE: Specialized Support Plan</p>
+        </div>
+        <p class="feature-row-desc">A module exclusive to AEE professionals: therapists and specialists who support students outside the regular classroom. The PAEE captures work axes (communication, cognition, autonomy, motor skills) with objectives, strategies, frequency, and session duration. AI suggests objectives and indicators for each axis based on the student profile. The PAEE appears in the exported PDF alongside the classroom PEI, but is never visible to regular teachers.</p>
+      </div>
+      <div class="feature-row reveal">
+        <div>
+          <p class="feature-row-label">Core Module</p>
+          <p class="feature-row-title">Multi-Role Collaboration</p>
+        </div>
+        <p class="feature-row-desc">Different users have fundamentally different relationships with the same student: the coordinator sees everything, the math teacher sees only their contribution, the AEE professional sees only the students assigned to them. This is not just a permissions model: it reflects how school teams actually function. Getting this information architecture right required multiple sessions with the pedagogical consultant to map real access patterns before any screen was built.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AI INTEGRATION ═══ -->
+<section class="section bg-tinted" style="padding-top:clamp(2rem,4vw,3rem); padding-bottom:2.5rem;">
+  <div class="container">
+    <p class="section-label">AI in IncludED</p>
+    <h2 class="section-heading" style="margin-bottom:0.75rem;">Not a chatbot. <em>Eight touchpoints.</em></h2>
+    <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8; max-width:720px; margin-bottom:0;">
+      AI in IncludED was designed as a teaching assistant, not a replacement for teacher
+      judgment. Every integration has a specific job, a defined output, and a human review gate.
+    </p>
+    <div class="ai-strip">
+      <div class="ai-strip-panel">
+        <p class="ai-strip-label">Clinical</p>
+        <p class="ai-strip-title">Report Translation and OCR</p>
+        <p>
+          Medical language from clinical reports is rewritten in pedagogical terms teachers
+          can act on. OCR handles scanned documents. The teacher reads, edits, and accepts
+          before the content affects any student guidance.
+        </p>
+      </div>
+      <div class="ai-strip-panel">
+        <p class="ai-strip-label">Planning</p>
+        <p class="ai-strip-title">Goal and Activity Suggestions</p>
+        <p>
+          When a teacher selects a BNCC descriptor, AI drafts a goal text. When defining
+          an activity, AI suggests a description based on the objective and student profile.
+          The teacher always edits and confirms before anything is saved.
+        </p>
+      </div>
+      <div class="ai-strip-panel">
+        <p class="ai-strip-label">Synthesis</p>
+        <p class="ai-strip-title">Adaptation Council and PEI Summary</p>
+        <p>
+          Accepted reports are consolidated by AI into an Adaptation Council: practical
+          classroom guidance for all of a student's teachers. AI also generates a full PEI
+          text summary on demand for coordinator review and PDF export.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OUTCOMES ═══ -->
+<section class="section" style="padding-top:clamp(3rem,5vw,4rem);">
+  <div class="container">
+    <p class="section-label">Outcomes</p>
+    <h2 class="section-heading" style="margin-bottom:2.5rem;">Live in schools, <em>growing fast.</em></h2>
+    <div class="outcomes-grid">
+      <div class="outcome-card reveal">
+        <span class="metric-value">&lt;6<span style="font-size:1.4rem;">mo</span></span>
+        <span class="metric-label">From launch to active in schools across multiple Brazilian states</span>
+      </div>
+      <div class="outcome-card reveal" style="transition-delay:0.05s">
+        <span class="metric-value">20<span style="font-size:1.4rem;">+</span></span>
+        <span class="metric-label">Combined years of pedagogical and neuropsychological expertise guiding every product decision</span>
+      </div>
+      <div class="outcome-card reveal" style="transition-delay:0.1s">
+        <span class="metric-value">8</span>
+        <span class="metric-label">Distinct AI touchpoints embedded in the product, each with a specific job and human review gate</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REFLECTION ═══ -->
+<div class="reflection-block">
+  <div class="container">
+    <div class="reflection-inner reveal-blur">
+      <p>Domain depth is not optional. IncludED reinforced this at scale: a product this complex cannot be built from empathy alone. The expert sessions were not a formality. They were the foundation.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ NEXT PROJECT ═══ -->
+<div class="next-project">
+  <div class="container">
+    <p class="section-label">What's next?</p>
+    <h2 class="next-project-title">Explore more <em>case studies.</em></h2>
+    <div style="display:flex; align-items:center; justify-content:center; gap:1rem; flex-wrap:wrap;">
+      <a href="project-multipedidos.html" class="btn-primary">
+        Multipedidos: Design System
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="project-keepeye.html" class="btn-secondary">Keepeye: KPI Platform</a>
+      <a href="index.html#work-preview" class="btn-secondary">Back to Work</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container footer-inner">
+    <a href="index.html" class="footer-logo">Lucas<span>.</span></a>
+    <p class="footer-copy">© 2026 Lucas Nascimento. All rights reserved.</p>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }),
+    { threshold: 0.08, rootMargin: '0px 0px -20px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isLight = html.getAttribute('data-theme') === 'light';
+    if (isLight) {
+      html.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      html.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+    }
+  }
+
+  // Mobile menu
+  function toggleMenu(btn) {
+    const menu = document.getElementById('mobileMenu');
+    const isOpen = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(isOpen));
+    btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  }
+
+  // Header hide on scroll down, reveal on scroll up or hover near top
+  // + Back to top button
+  (function () {
+    const navEl = document.querySelector('body > nav');
+    const backToTop = document.getElementById('backToTop');
+    const showThreshold = 120;
+    let lastY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > showThreshold) {
+        navEl.classList.toggle('nav-hidden', y > lastY);
+        backToTop.classList.add('visible');
+      } else {
+        navEl.classList.remove('nav-hidden');
+        backToTop.classList.remove('visible');
+      }
+      lastY = y;
+    }, { passive: true });
+
+    document.addEventListener('mousemove', e => {
+      if (e.clientY <= 60) navEl.classList.remove('nav-hidden');
+    });
+  })();
+</script>
+</body>
+</html>
