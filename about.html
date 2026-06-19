@@ -16,10 +16,10 @@
   <title>About Lucas Nascimento, Lead Product Designer</title>
   <meta name="description" content="Get to know Lucas Nascimento: Lead Product Designer with 11+ years of experience, also a musician and storyteller. Career, experience, and services." />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://lucasnascimento.design/about" />
+  <link rel="canonical" href="https://lucasdonascimento.com/about" />
   <meta property="og:title" content="About Lucas Nascimento" />
   <meta property="og:description" content="Designer, musician, and storyteller. 11+ years building digital products and design cultures from scratch." />
-  <meta property="og:url" content="https://lucasnascimento.design/about" />
+  <meta property="og:url" content="https://lucasdonascimento.com/about" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -62,21 +62,19 @@
     .about-hero-photo {
       position: relative;
       width: 100%;
-      aspect-ratio: 21/9;
+      aspect-ratio: 16/9;
       border-radius: var(--radius-lg);
       overflow: hidden;
       border: 1px solid var(--border);
-      background: linear-gradient(135deg, var(--bg-3) 0%, var(--bg-4) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 4rem;
-      filter: grayscale(15%);
     }
-    .about-hero-photo .about-badge {
+    .about-hero-photo img {
       position: absolute;
-      bottom: 1.5rem; left: 1.5rem; right: auto;
-      text-align: left;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
     }
 
     /* ── BIO SPLIT (title left / text right) ── */
@@ -294,10 +292,7 @@
       shape how I think about rhythm, structure, and communication in design.
     </p>
     <div class="about-hero-photo reveal" style="transition-delay:0.2s">
-      <!-- <img src="assets/lucas-photo.jpg" alt="Lucas Nascimento, Lead Product Designer" /> -->
-      <!-- ↓ SUBSTITUIR pela foto real -->
-      <span aria-hidden="true">👤</span>
-      <div class="about-badge">Lead Product Designer<br/>Joinville, BR</div>
+      <img src="assets/about-story/header-compressed.gif" alt="Lucas Nascimento, Lead Product Designer" />
     </div>
   </div>
 </section>
@@ -799,3 +794,4 @@
 </script>
 </body>
 </html>
+ 
