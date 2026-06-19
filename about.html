@@ -46,7 +46,7 @@
     .about-hero-tagline {
       font-size: 1.05rem;
       color: var(--text-2);
-      max-width: 640px;
+      max-width: 860px;
       margin: 0 auto 1.25rem;
       line-height: 1.7;
     }
@@ -54,7 +54,7 @@
     .about-hero-text {
       font-size: 0.975rem;
       color: var(--text-2);
-      max-width: 600px;
+      max-width: 820px;
       margin: 0 auto 3rem;
       line-height: 1.8;
     }
@@ -62,19 +62,14 @@
     .about-hero-photo {
       position: relative;
       width: 100%;
-      aspect-ratio: 16/9;
       border-radius: var(--radius-lg);
       overflow: hidden;
       border: 1px solid var(--border);
     }
     .about-hero-photo img,
     .about-hero-photo video {
-      position: absolute;
-      inset: 0;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
+      height: auto;
       display: block;
     }
 
@@ -122,7 +117,7 @@
       display: grid;
       grid-template-columns: 1.3fr 1fr;
       gap: 4rem;
-      padding: 5rem 0;
+      padding-block: 5rem;
     }
     .story-photos {
       display: flex;
@@ -149,6 +144,15 @@
       transition: transform 0.6s var(--ease);
     }
     .story-photo:hover { transform: scale(1.03); }
+    .story-photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
     .story-photo-caption {
       position: absolute;
       inset: 0;
@@ -226,7 +230,7 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .bio-split-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .story-grid { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 0; }
+      .story-grid { grid-template-columns: 1fr; gap: 2rem; padding-block: 3rem; }
       .story-texts { order: -1; }
       .story-text-block { min-height: auto; padding-bottom: 2rem; }
       .story-text { position: static; transform: none; }
@@ -285,7 +289,7 @@
     <p class="section-label reveal">About</p>
     <h1 class="about-hero-name reveal" style="transition-delay:0.05s">Lucas Nascimento</h1>
     <p class="about-hero-tagline reveal" style="transition-delay:0.1s">
-      <strong>Lead Product Designer</strong> based in Joinville, Brazil 🇧🇷, also a musician and a storyteller.
+      <strong>Lead Product Designer</strong> based in Joinville, Brazil, also a musician and a storyteller.
     </p>
     <p class="about-hero-text reveal" style="transition-delay:0.15s">
       I design digital products end to end, from research and strategy to interface and
@@ -343,63 +347,60 @@
       <!-- I'M A DESIGNER -->
       <div class="story-photo-group">
         <div class="story-photo reveal">
-          <span aria-hidden="true">🎨</span>
-          <!-- ↓ SUBSTITUIR pela imagem real -->
-          <div class="story-photo-caption"><p>I'm a "systems-obsessed" thinker who can't leave an inconsistent spacing token alone.</p></div>
+          <img src="assets/about-story/01.jpg" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>Professional travel planner. Execution rate: roughly 1 in 10.</p></div>
         </div>
         <div class="story-photo reveal" style="transition-delay:0.05s">
-          <span aria-hidden="true">📐</span>
-          <div class="story-photo-caption"><p>I'm a "craft-first" designer who will quietly nudge a button 2px until it feels right.</p></div>
+          <img src="assets/about-story/02.jpg" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>Maker of what is very likely the best Carbonara on my street. Uncontested.</p></div>
         </div>
         <div class="story-photo reveal" style="transition-delay:0.1s">
-          <span aria-hidden="true">🖥️</span>
-          <div class="story-photo-caption"><p>I'm a "build it myself" type, happiest when a prototype turns into working code.</p></div>
+          <img src="assets/about-story/03.jpg" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>Games and stories have always been the same thing to me: worlds worth getting lost in.</p></div>
         </div>
         <div class="story-photo reveal" style="transition-delay:0.15s">
-          <span aria-hidden="true">⚙️</span>
-          <div class="story-photo-caption"><p>I'm a "process" person who loves turning chaos into a documented design system.</p></div>
+          <img src="assets/about-story/04.jpg" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>Commonly spotted behind a camera, quietly documenting things nobody asked me to.</p></div>
         </div>
       </div>
 
       <!-- I'M A MUSICIAN -->
       <div class="story-photo-group">
         <div class="story-photo reveal">
-          <span aria-hidden="true">🎸</span>
-          <!-- ↓ SUBSTITUIR pela imagem real -->
-          <div class="story-photo-caption"><p>I'm a "self-taught" guitarist who picked up the habit as a teenager and never stopped.</p></div>
+          <img src="assets/about-story/05.jpg" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>If I'm not home, there's a good chance I'm at a festival somewhere.</p></div>
         </div>
         <div class="story-photo reveal" style="transition-delay:0.05s">
-          <span aria-hidden="true">🎧</span>
-          <div class="story-photo-caption"><p>I'm a "headphones on" producer, tinkering with ideas late at night.</p></div>
+          <img src="assets/about-story/06.jpg" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>I've been a musician for more than half my life. It started as a habit and never stopped.</p></div>
         </div>
         <div class="story-photo reveal" style="transition-delay:0.1s">
-          <span aria-hidden="true">🎤</span>
-          <div class="story-photo-caption"><p>I'm a "weekend" performer, occasionally playing with friends just for fun.</p></div>
+          <img src="assets/about-story/07.jpeg" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>Active part of the local music and audiovisual community, for better or worse.</p></div>
         </div>
         <div class="story-photo reveal" style="transition-delay:0.15s">
-          <span aria-hidden="true">🎹</span>
-          <div class="story-photo-caption"><p>I'm a "one more take" perfectionist who will redo a recording five times for a single note.</p></div>
+          <img src="assets/about-story/08.jpg" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>Always chasing ways to collapse the line between audio and image into something new.</p></div>
         </div>
       </div>
 
       <!-- I'M A STORYTELLER -->
       <div class="story-photo-group">
         <div class="story-photo reveal">
-          <span aria-hidden="true">📖</span>
-          <!-- ↓ SUBSTITUIR pela imagem real -->
-          <div class="story-photo-caption"><p>I'm a "note-taking" nerd, always documenting ideas before they slip away.</p></div>
+          <img src="assets/about-story/09.jpg" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>Passionate about finding another angle for the ordinary, one frame at a time.</p></div>
         </div>
         <div class="story-photo reveal" style="transition-delay:0.05s">
-          <span aria-hidden="true">✍️</span>
-          <div class="story-photo-caption"><p>I'm a "visual" storyteller, obsessed with how a narrative is presented, not just told.</p></div>
+          <img src="assets/about-story/10.JPG" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>Composing, writing, and spending an unreasonable amount of time thinking about time.</p></div>
         </div>
         <div class="story-photo reveal" style="transition-delay:0.1s">
-          <span aria-hidden="true">🌍</span>
-          <div class="story-photo-caption"><p>I'm a "travel" enthusiast, collecting stories and references along the way.</p></div>
+          <img src="assets/about-story/11.jpeg" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>Architecture fan. The kind who walks slowly past buildings other people rush by.</p></div>
         </div>
         <div class="story-photo reveal" style="transition-delay:0.15s">
-          <span aria-hidden="true">🎬</span>
-          <div class="story-photo-caption"><p>I'm a "behind-the-scenes" narrator who loves turning a messy process into a clear story.</p></div>
+          <img src="assets/about-story/12.jpg" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>Genuinely obsessed with medieval culture, history, and the aesthetics of that whole era.</p></div>
         </div>
       </div>
     </div>
@@ -443,6 +444,51 @@
   </div>
 </section>
 
+<!-- MOBILE STORY: interleaved layout (hidden on desktop via CSS) -->
+<section class="story-mobile-static" aria-label="More about Lucas as a person">
+  <div class="container">
+
+    <div class="story-mobile-block">
+      <div class="story-text">
+        <h2 class="im-a-heading">I'm a <em>designer.</em></h2>
+        <p class="im-a-intro">Design is where I spend most of my hours, and most of my curiosity. I care about <strong>systems over screens</strong>: the logic, tokens, and patterns that make a product feel coherent at scale. I'm equally comfortable leading discovery, drawing the details, and writing the front-end code that brings a component to life.</p>
+      </div>
+      <div class="story-photo-group">
+        <div class="story-photo"><img src="assets/about-story/01.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>Professional travel planner. Execution rate: roughly 1 in 10.</p></div></div>
+        <div class="story-photo"><img src="assets/about-story/02.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>Maker of what is very likely the best Carbonara on my street. Uncontested.</p></div></div>
+        <div class="story-photo"><img src="assets/about-story/03.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>Games and stories have always been the same thing to me: worlds worth getting lost in.</p></div></div>
+        <div class="story-photo"><img src="assets/about-story/04.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>Commonly spotted behind a camera, quietly documenting things nobody asked me to.</p></div></div>
+      </div>
+    </div>
+
+    <div class="story-mobile-block">
+      <div class="story-text">
+        <h2 class="im-a-heading">I'm a <em>musician.</em></h2>
+        <p class="im-a-intro">Music has been part of my life for as long as design has. There's something about practicing an instrument, the patience, the repetition, the small adjustments, that maps directly onto how I approach design problems: iterate quietly until it feels right.</p>
+      </div>
+      <div class="story-photo-group">
+        <div class="story-photo"><img src="assets/about-story/05.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>If I'm not home, there's a good chance I'm at a festival somewhere.</p></div></div>
+        <div class="story-photo"><img src="assets/about-story/06.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>I've been a musician for more than half my life. It started as a habit and never stopped.</p></div></div>
+        <div class="story-photo"><img src="assets/about-story/07.jpeg" alt="" loading="lazy"><div class="story-photo-caption"><p>Active part of the local music and audiovisual community, for better or worse.</p></div></div>
+        <div class="story-photo"><img src="assets/about-story/08.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>Always chasing ways to collapse the line between audio and image into something new.</p></div></div>
+      </div>
+    </div>
+
+    <div class="story-mobile-block">
+      <div class="story-text">
+        <h2 class="im-a-heading">I'm a <em>storyteller.</em></h2>
+        <p class="im-a-intro">Whether it's a product narrative for stakeholders, a case study, or just a good story from a trip, I like turning information into something people actually want to follow. It's a skill that shows up constantly in handoffs, presentations, and documentation.</p>
+      </div>
+      <div class="story-photo-group">
+        <div class="story-photo"><img src="assets/about-story/09.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>Passionate about finding another angle for the ordinary, one frame at a time.</p></div></div>
+        <div class="story-photo"><img src="assets/about-story/10.JPG" alt="" loading="lazy"><div class="story-photo-caption"><p>Composing, writing, and spending an unreasonable amount of time thinking about time.</p></div></div>
+        <div class="story-photo"><img src="assets/about-story/11.jpeg" alt="" loading="lazy"><div class="story-photo-caption"><p>Architecture fan. The kind who walks slowly past buildings other people rush by.</p></div></div>
+        <div class="story-photo"><img src="assets/about-story/12.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>Genuinely obsessed with medieval culture, history, and the aesthetics of that whole era.</p></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
 <!-- ═══ EXPERIENCE ═══ -->
 <section id="experience" class="section" aria-label="Work Experience">
   <div class="container">
@@ -794,7 +840,35 @@
       if (e.clientY <= 60) navEl.classList.remove('nav-hidden');
     });
   })();
+
+  // ── MOBILE STORY: interleave heading + photos per section ──────────────
+  (function () {
+    function buildMobileStory() {
+      if (window.innerWidth > 900) return;
+      var grid = document.querySelector('.story-grid');
+      if (!grid || grid.dataset.mobileDone) return;
+      var photoGroups = grid.querySelectorAll('.story-photo-group');
+      var textBlocks  = grid.querySelectorAll('.story-text-block');
+      if (!photoGroups.length || !textBlocks.length) return;
+      var mobile = document.createElement('div');
+      mobile.className = 'story-mobile container';
+      var n = Math.min(photoGroups.length, textBlocks.length);
+      for (var i = 0; i < n; i++) {
+        var block = document.createElement('div');
+        block.className = 'story-mobile-block';
+        block.appendChild(textBlocks[i].querySelector('.story-text').cloneNode(true));
+        block.appendChild(photoGroups[i].cloneNode(true));
+        mobile.appendChild(block);
+      }
+      grid.parentNode.insertBefore(mobile, grid);
+      grid.style.display = 'none';
+      grid.dataset.mobileDone = '1';
+      // Wire up reveal observer on cloned elements
+      mobile.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    }
+    buildMobileStory();
+  })();
 </script>
 </body>
 </html>
- 
+                                                                           

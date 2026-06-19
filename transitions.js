@@ -71,40 +71,44 @@
 })();
 
 /* ═══════════════════════════════════════════════════════════
-   PAGE TRANSITIONS
-   Fade-in on load + fade-out on internal navigation, with a
-   slim accent progress bar for a more polished feel.
+   PAGE TRANSITIONS — CURTAIN SWEEP (top → bottom)
+   ENTER: html::before (CSS) already covers the new page from
+   first paint. JS adds .curtain-reveal → it slides downward
+   off-screen, revealing content. No flash possible.
+   EXIT: JS injects #page-curtain which sweeps down from the
+   top, covering the old page before the browser navigates.
    ═══════════════════════════════════════════════════════════ */
 (function () {
+  var CURTAIN_IN_MS = 400; // how long the exit cover takes
+
   function reveal() {
-    document.body.classList.add('is-visible');
-    var bar = document.querySelector('.page-transition-bar');
-    if (!bar) return;
-    bar.classList.add('active');
-    window.setTimeout(function () {
-      bar.classList.add('done');
-    }, 350);
+    document.body.classList.add('is-visible'); // kept for scroll-reveal animations
+    var html = document.documentElement;
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        html.classList.add('curtain-reveal');
+        // After animation completes, remove from paint tree entirely
+        window.setTimeout(function () {
+          html.classList.add('curtain-done');
+        }, 500);
+      });
+    });
   }
 
-  // Reveal after the first paint so the fade actually animates.
-  requestAnimationFrame(function () {
-    requestAnimationFrame(reveal);
+  // On page load: animate the html::before cover away (downward)
+  document.addEventListener('DOMContentLoaded', reveal);
+
+  // bfcache (back/forward button): reset and replay the reveal
+  window.addEventListener('pageshow', function (e) {
+    if (!e.persisted) return;
+    var html = document.documentElement;
+    html.classList.remove('curtain-reveal', 'curtain-done');
+    void html.offsetHeight; // force reflow so removal paints before re-add
+    reveal();
   });
 
-  // Re-run the reveal when navigating via back/forward (bfcache).
-  window.addEventListener('pageshow', function () {
-    document.body.classList.remove('page-exit');
-    var bar = document.querySelector('.page-transition-bar');
-    if (bar) {
-      bar.classList.remove('active', 'done');
-    }
-    requestAnimationFrame(function () {
-      requestAnimationFrame(reveal);
-    });
-  });
-
-  // Intercept same-origin link clicks to play an exit animation
-  // before navigating away.
+  // Intercept same-origin link clicks: sweep #page-curtain in
+  // from the top, then navigate once it fully covers the page.
   document.addEventListener('click', function (e) {
     if (e.defaultPrevented || e.button !== 0) return;
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
@@ -119,17 +123,27 @@
     if (link.pathname === window.location.pathname && link.hash) return;
 
     e.preventDefault();
-    document.body.classList.add('page-exit');
 
-    var bar = document.querySelector('.page-transition-bar');
-    if (bar) {
-      bar.classList.remove('done');
-      bar.classList.add('active');
-    }
+    var existing = document.getElementById('page-curtain');
+    if (existing) existing.remove();
+
+    var curtain = document.createElement('div');
+    curtain.id = 'page-curtain';
+    curtain.classList.add('pc-leaving');
+
+    // Favicon spinner centered on the curtain
+    var spinner = document.createElement('img');
+    spinner.src = 'assets/icons/favicon.svg';
+    spinner.className = 'curtain-spinner';
+    spinner.setAttribute('alt', '');
+    spinner.setAttribute('aria-hidden', 'true');
+    curtain.appendChild(spinner);
+
+    document.body.appendChild(curtain);
 
     window.setTimeout(function () {
       window.location.href = href;
-    }, 220);
+    }, CURTAIN_IN_MS);
   });
 })();
 
