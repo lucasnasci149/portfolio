@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('theme') === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multipedidos: Design System &amp; Product Design</title>
+  <meta name="description" content="Case study: Multipedidos, building a token-driven design system at 10M+ monthly accesses and reducing prototype delivery time by 60% with AI-assisted workflow." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Multipedidos: Design System &amp; Product Design" />
+  <meta property="og:description" content="How I built a design system, reduced prototype delivery by 60%, and designed for 10M+ monthly accesses as the sole designer at a food-tech company." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <script src="../transitions.js" defer></script>
+  <noscript><style>body { opacity: 1 !important; }</style></noscript>
+
+  <style>
+    /* ── CASE HEADER ── */
+    .case-header {
+      padding-top: clamp(3rem, 5vw, 4rem);
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      color: var(--text-2);
+      margin-bottom: 1.5rem;
+      transition: color var(--transition);
+    }
+    .back-link:hover { color: var(--text-1); }
+    .back-link svg { transform: rotate(180deg); }
+
+    .case-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+
+    .case-header-title {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+    }
+    .case-header-title em { font-style: italic; color: var(--accent-text); }
+    .case-header-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-2);
+      margin-top: 0.75rem;
+      max-width: 620px;
+      line-height: 1.7;
+    }
+
+    /* META GRID */
+    .case-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .case-meta-item .section-label { margin-bottom: 0.4rem; }
+    .section { padding-block: clamp(4rem, 8vw, 6rem); }
+    .case-meta-value {
+      font-size: 0.9rem;
+      color: var(--text-1);
+      line-height: 1.5;
+    }
+    .case-meta-value span { display: block; color: var(--text-3); font-size: 0.8rem; margin-top: 0.15rem; }
+
+    /* HERO VISUAL */
+    .case-hero-visual {
+      margin-top: 3rem;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      min-height: 420px;
+      background: linear-gradient(135deg, var(--bg-3) 0%, var(--bg-4) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      position: relative;
+    }
+    .case-hero-visual img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* OVERVIEW */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    .overview-block .section-label { margin-bottom: 0.75rem; }
+    .overview-block p {
+      font-size: 0.95rem;
+      color: var(--text-2);
+      line-height: 1.8;
+    }
+    .overview-block p + p { margin-top: 1rem; }
+
+    /* CONTEXT NUMBERS */
+    .context-numbers {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .context-number-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      text-align: center;
+    }
+
+    /* PROCESS */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .process-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .process-card h3 {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 1.4rem;
+    }
+    .process-card p {
+      font-size: 0.85rem;
+      color: var(--text-2);
+      line-height: 1.7;
+      flex: 1;
+    }
+    .process-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+    .process-phase-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+    }
+
+    /* GESTOR SECTION */
+    .gestor-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+    }
+    .gestor-intro p {
+      font-size: 0.95rem;
+      color: var(--text-2);
+      line-height: 1.8;
+    }
+    .gestor-intro p + p { margin-top: 1rem; }
+    .gestor-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .gestor-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+    }
+    .gestor-card-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+      margin-bottom: 0.5rem;
+    }
+    .gestor-card h3 {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 1.15rem;
+      margin-bottom: 0.6rem;
+    }
+    .gestor-card p {
+      font-size: 0.83rem;
+      color: var(--text-2);
+      line-height: 1.65;
+    }
+
+    /* DS HIGHLIGHTS */
+    .ds-highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .ds-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+    }
+    .ds-card h3 {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+    }
+    .ds-card p {
+      font-size: 0.85rem;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+
+    /* AI SECTION */
+    .ai-highlight {
+      background: linear-gradient(135deg, var(--bg-2) 0%, var(--bg-3) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .ai-highlight-label {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+    }
+    .ai-highlight-label em { font-style: italic; color: var(--accent-text); }
+    .ai-highlight-body p {
+      font-size: 0.95rem;
+      color: var(--text-2);
+      line-height: 1.8;
+    }
+    .ai-highlight-body p + p { margin-top: 1rem; }
+    .ai-stack { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 1.25rem; }
+
+    /* CONSUMER PLATFORM */
+    .consumer-intro {
+      font-size: 1.05rem;
+      color: var(--text-2);
+      line-height: 1.8;
+      max-width: 760px;
+      margin-bottom: 2.5rem;
+    }
+    .order-funnel {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      margin-bottom: 2.5rem;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .funnel-step {
+      padding: 1.5rem 1.25rem;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+    .funnel-step:last-child { border-right: none; }
+    .funnel-step-num {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+      margin-bottom: 0.4rem;
+    }
+    .funnel-step-title {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 1rem;
+      color: var(--text-1);
+      margin-bottom: 0.35rem;
+    }
+    .funnel-step-desc {
+      font-size: 0.77rem;
+      color: var(--text-3);
+      line-height: 1.5;
+    }
+    .consumer-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .consumer-feature {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+    }
+    .consumer-feature-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+      margin-bottom: 0.5rem;
+    }
+    .consumer-feature h3 {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 1.15rem;
+      margin-bottom: 0.6rem;
+    }
+    .consumer-feature p {
+      font-size: 0.83rem;
+      color: var(--text-2);
+      line-height: 1.65;
+    }
+    .project-full-image {
+      margin: 0 0 2rem;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .project-full-image img {
+      width: 100%;
+      display: block;
+    }
+
+    .checkout-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+
+    /* CHECKOUT FLOW */
+    .checkout-section-intro {
+      font-size: 0.95rem;
+      color: var(--text-2);
+      line-height: 1.8;
+      max-width: 720px;
+      margin-bottom: 2.5rem;
+    }
+    .checkout-flow {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0;
+      margin-bottom: 2.5rem;
+    }
+    .checkout-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .checkout-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--border) 100%);
+    }
+    .checkout-step-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-2);
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--accent-text);
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+    }
+    .checkout-step-label {
+      font-size: 0.72rem;
+      color: var(--text-2);
+      text-align: center;
+      margin-top: 0.5rem;
+      line-height: 1.4;
+    }
+    .payment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .payment-context {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+    .payment-context-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 1rem;
+    }
+    .payment-method {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-2);
+    }
+    .payment-method:last-child { margin-bottom: 0; }
+    .payment-method-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: var(--bg-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+    .payment-method span { font-size: 0.75rem; color: var(--text-3); display: block; }
+    .checkout-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .checkout-feature-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+    .checkout-feature-card h4 {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .checkout-feature-card p {
+      font-size: 0.82rem;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+    .ab-badge {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: var(--accent-text);
+      color: white;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+
+    /* OUTCOMES */
+    .outcomes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .outcome-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+    }
+    .outcome-card .metric-value { font-size: 2.4rem; }
+    .outcome-card .metric-label { font-size: 0.8rem; margin-top: 0.4rem; }
+
+    /* NEXT PROJECT */
+    .next-project {
+      padding-block: 5rem;
+      text-align: center;
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+    }
+    .next-project .section-label { margin-bottom: 1rem; }
+    .next-project-title {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.15;
+      margin-bottom: 2rem;
+    }
+    .next-project-title em { font-style: italic; color: var(--accent-text); }
+
+    /* RESPONSIVE */
+
+    /* GESTOR LIST LAYOUT */
+    .gestor-list {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .gestor-row {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      align-items: start;
+      gap: 2.5rem;
+      padding: 1.75rem 2rem;
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+    .gestor-row:last-child { border-bottom: none; }
+    .gestor-row:hover { background: var(--bg-3); }
+    .gestor-row-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+      margin-bottom: 0.35rem;
+    }
+    .gestor-row-title {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: var(--text-1);
+    }
+    .gestor-row-desc {
+      font-size: 0.85rem;
+      color: var(--text-2);
+      line-height: 1.7;
+      padding-top: 0.1rem;
+    }
+
+    /* EDITORIAL (numbered open layout) */
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      margin-bottom: 2rem;
+    }
+    .editorial-num {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 4rem;
+      font-weight: 300;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .editorial-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+      margin-bottom: 0.4rem;
+    }
+    .editorial-title {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: var(--text-1);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+    .editorial-body {
+      font-size: 0.83rem;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+
+    /* CHECKOUT STRIP */
+    .checkout-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .strip-item {
+      background: var(--bg-2);
+      padding: 1.75rem;
+      border-top: 3px solid var(--border);
+    }
+    .strip-item:nth-child(1) { border-top-color: var(--accent); }
+    .strip-item:nth-child(2) { border-top-color: var(--accent-2, #f0a060); }
+    .strip-item:nth-child(3) { border-top-color: var(--text-3); }
+    .strip-item h4 {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+    }
+    .strip-item p {
+      font-size: 0.83rem;
+      color: var(--text-2);
+      line-height: 1.65;
+    }
+
+    /* PROCESS: 2-col with decorative number */
+    .process-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .process-card::before {
+      content: attr(data-num);
+      position: absolute;
+      top: -1rem;
+      right: 1.25rem;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 7rem;
+      font-weight: 300;
+      color: var(--border);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    @media (max-width: 900px) {
+      .case-meta-grid { grid-template-columns: repeat(2, 1fr); }
+      .overview-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .context-numbers { grid-template-columns: repeat(2, 1fr); }
+      .process-grid { grid-template-columns: 1fr; }
+      .ds-highlights { grid-template-columns: 1fr; }
+      .ai-highlight { grid-template-columns: 1fr; gap: 1.5rem; }
+      .outcomes-grid { grid-template-columns: 1fr; }
+      .checkout-flow { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+      .checkout-step:not(:last-child)::after { display: none; }
+      .payment-grid { grid-template-columns: 1fr; }
+      .checkout-features { grid-template-columns: 1fr; }
+      .gestor-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+      .gestor-row { grid-template-columns: 1fr; gap: 0.5rem; }
+      .order-funnel { grid-template-columns: 1fr; }
+      .funnel-step { border-right: none; border-bottom: 1px solid var(--border); }
+      .funnel-step:last-child { border-bottom: none; }
+      .editorial-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .checkout-strip { grid-template-columns: 1fr; gap: 0; background: transparent; border-radius: var(--radius-lg); }
+      .strip-item { border-top-width: 3px; border-left: none; }
+    }
+    @media (max-width: 640px) {
+      .case-meta-grid { grid-template-columns: 1fr; }
+      .context-numbers { grid-template-columns: 1fr; }
+      .checkout-flow { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote-wrap {
+      padding-block: clamp(3rem, 6vw, 5rem);
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .pull-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+      line-height: 1.55;
+      color: var(--text-1);
+      max-width: 960px;
+      border-left: 3px solid var(--accent-text);
+      padding-left: 2.5rem;
+    }
+
+    /* ── FOCUS CALLOUT ── */
+    .focus-callout {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 1rem 1.5rem;
+      background: var(--accent-wash);
+      border: 1px solid var(--accent-border-soft);
+      border-radius: var(--radius-lg);
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .focus-callout-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .focus-callout-sep {
+      width: 1px;
+      height: 16px;
+      background: var(--accent-border-soft);
+      flex-shrink: 0;
+    }
+    .focus-callout-items {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .focus-callout-items span {
+      font-size: 0.79rem;
+      color: var(--text-2);
+      padding: 0.2rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+    }
+
+    /* ── TINTED SECTION ── */
+    .section.bg-tinted { background: var(--bg-2); }
+
+    /* ── AI STATEMENT (replaces ai-highlight card) ── */
+    .ai-statement-inner {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .ai-statement-num {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(5rem, 11vw, 8.5rem);
+      color: var(--accent-text);
+      line-height: 0.9;
+      white-space: nowrap;
+    }
+    .ai-statement-num small {
+      font-size: 0.4em;
+      font-style: normal;
+      vertical-align: super;
+      color: var(--text-3);
+    }
+    .ai-statement-heading {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+    .ai-statement-heading em { font-style: italic; color: var(--accent-text); }
+    .ai-statement-body p {
+      font-size: 0.95rem;
+      color: var(--text-2);
+      line-height: 1.8;
+      max-width: 620px;
+    }
+    .ai-statement-body p + p { margin-top: 1rem; }
+
+    /* ── REFLECTION BLOCK ── */
+    .reflection-block {
+      padding-block: clamp(3rem, 6vw, 5rem);
+      border-top: 1px solid var(--border);
+    }
+    .reflection-inner p {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+      line-height: 1.65;
+      color: var(--text-1);
+      max-width: 960px;
+    }
+
+    @media (max-width: 768px) {
+      .ai-statement-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+      .focus-callout-sep { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-transition-bar" aria-hidden="true"></div>
+
+
+
+<div class="reading-progress" aria-hidden="true"></div>
+
+<!-- ═══ CASE HEADER ═══ -->
+<header class="case-header">
+  <div class="container">
+    <a href="index.html" class="back-link case-header-entrance">
+      <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Work
+    </a>
+    <div class="case-tags case-header-entrance" style="--delay:0.06s">
+      <span class="tag accent">Featured</span>
+      <span class="tag">Product Design</span>
+      <span class="tag">Design System</span>
+      <span class="tag">B2B SaaS</span>
+      <span class="tag">Food Tech</span>
+    </div>
+    <h1 class="case-header-title case-header-entrance" style="--delay:0.13s">Multipedidos<br /><em>Design System &amp; Product</em></h1>
+    <p class="case-header-subtitle case-header-entrance" style="--delay:0.21s">
+      Sole designer across two products, six teams, and 4,000+ restaurant clients.
+      I built the design system, the process, and the culture from scratch while shipping
+      40+ features without stopping to breathe.
+    </p>
+
+    <div class="case-meta-grid case-header-entrance" style="--delay:0.28s">
+      <div class="case-meta-item">
+        <p class="section-label">Company</p>
+        <p class="case-meta-value">Multipedidos<span>Food Tech · SaaS</span></p>
+      </div>
+      <div class="case-meta-item">
+        <p class="section-label">Role</p>
+        <p class="case-meta-value">Senior Product Designer<span>Sole designer</span></p>
+      </div>
+      <div class="case-meta-item">
+        <p class="section-label">Timeline</p>
+        <p class="case-meta-value">Jan 2024 – Jun 2026<span>2.5 years</span></p>
+      </div>
+      <div class="case-meta-item">
+        <p class="section-label">Stack</p>
+        <p class="case-meta-value">Figma, DEV Mode<span>Claude + MCP</span></p>
+      </div>
+    </div>
+
+    <div class="case-hero-visual case-header-entrance" style="--delay:0.36s">
+      <img src="../assets/projects/pedir-delivery/header-image.png" alt="Multipedidos / Pedir.Delivery product interface" />
+    </div>
+  </div>
+</header>
+
+<!-- ═══ CONTEXT ═══ -->
+<section class="section">
+  <div class="container">
+    <p class="section-label">Scale</p>
+    <h2 class="section-heading" style="margin-bottom:2.5rem;">Designing for <em>real users.</em></h2>
+    <div class="context-numbers">
+      <div class="context-number-card reveal">
+        <span class="metric-value">10M<span style="font-size:1.6rem;">+</span></span>
+        <span class="metric-label" style="font-size:0.8rem; color:var(--text-2); margin-top:0.5rem; display:block;">Monthly accesses on Pedir.Delivery</span>
+      </div>
+      <div class="context-number-card reveal" style="transition-delay:0.05s">
+        <span class="metric-value">4M<span style="font-size:1.6rem;">+</span></span>
+        <span class="metric-label" style="font-size:0.8rem; color:var(--text-2); margin-top:0.5rem; display:block;">Monthly orders processed</span>
+      </div>
+      <div class="context-number-card reveal" style="transition-delay:0.1s">
+        <span class="metric-value">1K<span style="font-size:1.6rem;">+</span></span>
+        <span class="metric-label" style="font-size:0.8rem; color:var(--text-2); margin-top:0.5rem; display:block;">Responsive screens in the design system</span>
+      </div>
+      <div class="context-number-card reveal" style="transition-delay:0.15s">
+        <span class="metric-value">40<span style="font-size:1.6rem;">+</span></span>
+        <span class="metric-label" style="font-size:0.8rem; color:var(--text-2); margin-top:0.5rem; display:block;">Product demands managed in design system</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OVERVIEW ═══ -->
+<section class="section" style="padding-top:0; padding-bottom:clamp(2rem, 4vw, 3rem);">
+  <div class="container">
+    <div class="overview-grid">
+      <div class="overview-block reveal">
+        <p class="section-label">The Situation</p>
+        <p>
+          I joined Multipedidos in January 2024 as a freelancer via Estúdio 149, and became
+          a fixed contractor in June 2024. I was the only designer in the company. There was
+          no design system, no design process, no design culture.
+        </p>
+        <p>
+          The product had two core surfaces: Gestor de Pedidos (a B2B restaurant management
+          SaaS covering order reception, menu management, KDS, PDV, and inventory) and
+          Pedir.Delivery (a consumer-facing online ordering platform). Both needed to
+          scale fast. Both were accumulating design debt with every release.
+        </p>
+      </div>
+      <div class="overview-block reveal" style="transition-delay:0.05s">
+        <p class="section-label">The Mandate</p>
+        <p>
+          Build a design system that the engineering team could consume directly. Establish
+          a product design practice that the business could depend on. Ship features without
+          accumulating debt. And eventually, prove that design decisions could be tied to
+          business outcomes.
+        </p>
+        <p>
+          As the only designer fielding demands from 6 different teams simultaneously,
+          I was responsible for the full design operation: stakeholder alignment, research,
+          components, critiques, A/B tests, and developer handoff. The challenge wasn't
+          scale alone; it was building the infrastructure for good design decisions while
+          keeping pace with an aggressive delivery rhythm.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GESTOR SCREEN ═══ -->
+<div class="container" style="padding-block: clamp(3rem, 6vw, 5rem);">
+  <div class="project-full-image reveal" style="margin:0;">
+    <img src="../assets/projects/pedir-delivery/project-screen.png" alt="Gestor de Pedidos mockup screens" loading="lazy" />
+  </div>
+</div>
+
+<!-- ═══ PULL QUOTE ═══ -->
+<div class="pull-quote-wrap">
+  <div class="container">
+    <blockquote class="pull-quote reveal-blur">
+      The challenge wasn't managing design at scale. It was building the infrastructure for good decisions while the product kept shipping.
+    </blockquote>
+  </div>
+</div>
+
+<!-- ═══ DESIGN SYSTEM ═══ -->
+<section class="section" style="padding-top:clamp(2rem, 4vw, 3rem); padding-bottom:0;">
+  <div class="container">
+    <p class="section-label">Design System</p>
+    <h2 class="section-heading" style="margin-bottom:1.5rem;">Built to <em>move fast</em> without breaking things.</h2>
+    <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8; max-width:720px; margin-bottom:0;">
+      The delivery pace was aggressive from day one, so I had to be strategic. I started by
+      building the Foundation: a complete token system covering color, spacing, typography,
+      radius, and elevation. With the tokens in place, we adopted Ant Design as an accelerator,
+      mapping every component to our own token layer. That let the team ship immediately with
+      a consistent base, while I worked in parallel to customize and replace components over
+      time. Because everything was token-driven from the start, every component update
+      propagated across all 1,000+ screens automatically.
+    </p>
+    <div class="ds-highlights">
+      <div class="ds-card reveal">
+        <h3>Tokens Before Components</h3>
+        <p>
+          The foundation came first: a full token system for color, spacing, radius,
+          typography, and elevation, with dark and light mode from day one. Ant Design
+          provided the component structure; our tokens provided the identity. Any change
+          at the token level propagated everywhere.
+        </p>
+      </div>
+      <div class="ds-card reveal" style="transition-delay:0.05s">
+        <h3>DEV Mode Integration</h3>
+        <p>
+          Implemented Figma DEV Mode for all developers. Every component in the design system
+          maps to a code reference. Developers inspect, not guess. Implementation fidelity
+          improved significantly from the first sprint we ran it.
+        </p>
+      </div>
+      <div class="ds-card reveal" style="transition-delay:0.1s">
+        <h3>Responsive by Default</h3>
+        <p>
+          Pedir.Delivery is a mobile-first consumer product. Gestor is used across desktop and
+          tablet. Every component in the system was built with both contexts in mind,
+          resulting in 1,000+ screens across mobile and web.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRODUCT IMAGE ═══ -->
+<div class="container" style="padding-block: clamp(3rem, 6vw, 5rem);">
+  <div class="project-full-image reveal" style="margin:0;">
+    <img src="../assets/projects/pedir-delivery/project-image.png" alt="Pedir.Delivery product screens" loading="lazy" />
+  </div>
+</div>
+
+<!-- ═══ CONSUMER PLATFORM ═══ -->
+<section class="section" style="padding-top:0; padding-bottom:0;">
+  <div class="container">
+    <p class="section-label">Consumer Platform</p>
+    <h2 class="section-heading" style="margin-bottom:1.5rem;">Designing the order, <em>from first tap to delivery.</em></h2>
+    <p class="consumer-intro">
+      Every design decision on Pedir.Delivery pointed at the same business goal: get more customers
+      through to a completed order. That meant owning the full funnel, from the moment a customer
+      opens a restaurant's menu through item selection, customization, cart, checkout, and
+      payment confirmation. No abandoned carts from friction. No lost orders from confusing flows.
+    </p>
+
+    <div class="focus-callout reveal">
+      <p class="focus-callout-label">Scope</p>
+      <div class="focus-callout-sep"></div>
+      <div class="focus-callout-items">
+        <span>Full order funnel</span>
+        <span>3 item flow types</span>
+        <span>Loyalty system</span>
+        <span>6 payment methods</span>
+        <span>A/B testing</span>
+        <span>Account management</span>
+      </div>
+    </div>
+
+    <div class="order-funnel reveal">
+      <div class="funnel-step">
+        <p class="funnel-step-num">01</p>
+        <p class="funnel-step-title">Menu</p>
+        <p class="funnel-step-desc">Category browsing, item cards, search, restaurant info</p>
+      </div>
+      <div class="funnel-step">
+        <p class="funnel-step-num">02</p>
+        <p class="funnel-step-title">Item Selection</p>
+        <p class="funnel-step-desc">Generic items, pizza builder, combo selection, modifiers</p>
+      </div>
+      <div class="funnel-step">
+        <p class="funnel-step-num">03</p>
+        <p class="funnel-step-title">Cart</p>
+        <p class="funnel-step-desc">Review, quantity edit, loyalty points preview, CTA</p>
+      </div>
+      <div class="funnel-step">
+        <p class="funnel-step-num">04</p>
+        <p class="funnel-step-title">Checkout</p>
+        <p class="funnel-step-desc">Delivery details, payment method, cashback, coupons</p>
+      </div>
+      <div class="funnel-step">
+        <p class="funnel-step-num">05</p>
+        <p class="funnel-step-title">Confirmation</p>
+        <p class="funnel-step-desc">Order confirmed, delivery ETA, async payment tracking</p>
+      </div>
+    </div>
+
+    <div class="editorial-grid">
+      <div class="editorial-item reveal">
+        <span class="editorial-num">01</span>
+        <p class="editorial-label">Item Flows</p>
+        <p class="editorial-title">Three Ordering Flows in One</p>
+        <p class="editorial-body">
+          The menu had three structurally different item types, each needing its own ordering
+          flow. Generic items: simple selection with optional modifiers. Pizza: size, crust,
+          toppings, and half-and-half configurations with complex validation logic. Combo:
+          step-by-step group selection where each slot has its own set of options. All three
+          had to feel coherent in the same visual system while handling completely different
+          data models.
+        </p>
+      </div>
+      <div class="editorial-item reveal" style="transition-delay:0.05s">
+        <span class="editorial-num">02</span>
+        <p class="editorial-label">Conversion</p>
+        <p class="editorial-title">Reducing Abandonment at Every Step</p>
+        <p class="editorial-body">
+          The ordering flow was redesigned with drop-off reduction as the explicit brief.
+          Loyalty points earned were shown at cart level before checkout, reinforcing value
+          before commitment. Item customization used progressive disclosure so customers only
+          saw mandatory choices first. The cart-to-checkout transition was a single CTA with
+          price confirmation inline, removing the friction of a separate summary step.
+        </p>
+      </div>
+      <div class="editorial-item reveal" style="transition-delay:0.1s">
+        <span class="editorial-num">03</span>
+        <p class="editorial-label">Account &amp; Loyalty</p>
+        <p class="editorial-title">Login, Account, and Fidelidade</p>
+        <p class="editorial-body">
+          Owned the full account management flows: login, account creation, and password
+          recovery. Also designed the Fidelidade (loyalty) system interface, including point
+          balance, redemption rules, and earnings shown throughout the ordering flow. Making
+          points visible at every step gave customers a reason to complete rather than abandon.
+        </p>
+      </div>
+    </div>
+
+    <hr class="checkout-divider" />
+
+    <p class="section-label">Transactional Flows</p>
+    <h2 class="section-heading" style="margin-bottom:1.5rem; margin-top:0.5rem;">End-to-end ownership of <em>checkout and payment.</em></h2>
+    <p class="checkout-section-intro">
+      The checkout and payment experience is where the order either completes or dies.
+      I owned the complete transactional layer: delivery details, payment selection,
+      discount application, order confirmation, and async payment tracking. The scope
+      covered six payment methods across two contexts, a cashback system, coupon codes,
+      three delivery modes, and A/B tests running directly on the live flow.
+    </p>
+
+    <!-- Flow steps -->
+    <div class="checkout-flow reveal">
+      <div class="checkout-step">
+        <div class="checkout-step-dot">01</div>
+        <p class="checkout-step-label">Cart<br />Review</p>
+      </div>
+      <div class="checkout-step">
+        <div class="checkout-step-dot">02</div>
+        <p class="checkout-step-label">Delivery<br />Details</p>
+      </div>
+      <div class="checkout-step">
+        <div class="checkout-step-dot">03</div>
+        <p class="checkout-step-label">Payment<br />Selection</p>
+      </div>
+      <div class="checkout-step">
+        <div class="checkout-step-dot">04</div>
+        <p class="checkout-step-label">Discounts<br />&amp; Cashback</p>
+      </div>
+      <div class="checkout-step">
+        <div class="checkout-step-dot">05</div>
+        <p class="checkout-step-label">Order<br />Confirmed</p>
+      </div>
+      <div class="checkout-step">
+        <div class="checkout-step-dot">06</div>
+        <p class="checkout-step-label">Payment<br />Tracking</p>
+      </div>
+    </div>
+
+    <!-- Payment architecture -->
+    <div class="payment-grid reveal">
+      <div class="payment-context">
+        <p class="payment-context-label">Pay Online</p>
+        <div class="payment-method">
+          <div class="payment-method-icon">⚡</div>
+          <div>Pix<span>Instant transfer · Async flow for QR and automated Pix</span></div>
+        </div>
+        <div class="payment-method">
+          <div class="payment-method-icon">👛</div>
+          <div>Wallet<span>Platform loyalty credits</span></div>
+        </div>
+        <div class="payment-method">
+          <div class="payment-method-icon">🌐</div>
+          <div>Platform Payment<span>PicPay, Mercado Pago, Stripe, Zelle, Pagseguro</span></div>
+        </div>
+      </div>
+      <div class="payment-context">
+        <p class="payment-context-label">Pay on Delivery</p>
+        <div class="payment-method">
+          <div class="payment-method-icon">💵</div>
+          <div>Cash<span>With change calculation (A/B tested two layouts)</span></div>
+        </div>
+        <div class="payment-method">
+          <div class="payment-method-icon">💳</div>
+          <div>Credit Card<span>Saved card with quick-edit flow</span></div>
+        </div>
+        <div class="payment-method">
+          <div class="payment-method-icon">🏦</div>
+          <div>Debit Card<span>In-person POS payment</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Design decisions -->
+    <div class="checkout-strip">
+      <div class="strip-item reveal">
+        <h4>Cashback &amp; Coupons</h4>
+        <p>
+          The cashback balance was always surfaced at the top of checkout, showing total
+          balance, available amount, and expiry date. One tap to apply. Coupon codes sat
+          alongside it in the same group, keeping discount decisions together before payment.
+        </p>
+      </div>
+      <div class="strip-item reveal" style="transition-delay:0.05s">
+        <h4>Three Delivery Contexts</h4>
+        <p>
+          Delivery address for standard orders, table selection for dine-in, curbside pickup
+          with car identification. Each context required different fields and confirmation
+          states without creating three separate flows or breaking the checkout structure.
+        </p>
+      </div>
+      <div class="strip-item reveal" style="transition-delay:0.1s">
+        <h4>Async Payment States <span class="ab-badge">A/B</span></h4>
+        <p>
+          Pix and Mercado Pago produce an intermediate state: order confirmed, payment pending.
+          Three distinct screens handle Pix QR, Automated Pix, and Mercado Pago flows.
+          A/B tests on confirmation layout ran directly on the live checkout.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PEDIR.DELIVERY VIDEO ═══ -->
+<div class="container" style="padding-block: clamp(3rem, 6vw, 5rem);">
+  <div class="project-full-image reveal" style="margin:0;">
+    <video class="project-vid" autoplay loop muted playsinline preload="none"
+           aria-label="Pedir.Delivery app screens walkthrough">
+      <source src="../assets/projects/pedir-delivery/pedir-delivery.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+
+<!-- ═══ GESTOR: B2B PLATFORM ═══ -->
+<section class="section" style="padding-top:0; padding-bottom:0;">
+  <div class="container">
+    <p class="section-label">B2B Platform</p>
+    <h2 class="section-heading" style="margin-bottom:1.5rem;">Running the restaurant, <em>end to end.</em></h2>
+    <div class="gestor-intro reveal">
+      <div>
+        <p>
+          Pedir.Delivery is the consumer-facing side. Gestor de Pedidos is the other half:
+          the B2B SaaS that restaurant owners and staff use to receive orders, manage menus,
+          process payments at the counter, and close the day. Both products share the same
+          design system and ran in parallel throughout my time at Multipedidos.
+        </p>
+        <p>
+          The Gestor work touched every operational layer of a restaurant: the kitchen display,
+          the counter, the cashier, the menu, the sidebar, the reports, and the financial close.
+          The vast majority of flows I worked on had never been formally designed before. I was
+          the first designer to look at most of them.
+        </p>
+      </div>
+      <div>
+        <p>
+          The scope ranged from core infrastructure (full menu builder rebuild, KDS, sidebar and
+          navigation architecture) to new payment systems (PDV redesign, multiple payers, PIX,
+          digital wallet, cashback) to operational tooling (print queue management, reports,
+          integrations) to growth features (CRM platform, onboarding agent for new clients).
+        </p>
+        <p>
+          Every structural change had to be planned with a migration strategy. Any modification
+          to the base system was staged across phases to protect a client base of over 4,000
+          active restaurants. I coordinated those rollouts directly with engineering and product.
+        </p>
+      </div>
+    </div>
+
+    <div class="focus-callout reveal">
+      <p class="focus-callout-label">Deliveries</p>
+      <div class="focus-callout-sep"></div>
+      <div class="focus-callout-items">
+        <span>KDS</span>
+        <span>Menu Builder</span>
+        <span>PDV redesign</span>
+        <span>Multiple Payers</span>
+        <span>PIX + Carteira</span>
+        <span>Cashback</span>
+        <span>Sidebar + IA</span>
+        <span>Reports</span>
+        <span>Print Queue</span>
+        <span>CRM</span>
+        <span>Onboarding Agent</span>
+      </div>
+    </div>
+
+    <div class="gestor-list">
+      <div class="gestor-row reveal">
+        <div>
+          <p class="gestor-row-label">Kitchen Operations</p>
+          <p class="gestor-row-title">KDS Implementation</p>
+        </div>
+        <p class="gestor-row-desc">Designed the Kitchen Display System from scratch: a real-time order routing interface for kitchen stations, replacing printed tickets. Covered order states, item grouping, timing indicators, and multi-station routing logic. Built for high-noise, hands-dirty environments where glanceability and error prevention are critical.</p>
+      </div>
+      <div class="gestor-row reveal">
+        <div>
+          <p class="gestor-row-label">Menu Management</p>
+          <p class="gestor-row-title">Menu Builder Rebuild</p>
+        </div>
+        <p class="gestor-row-desc">The original builder had a critical structural problem: creating a menu item required all dependencies to already exist. Building a chicken pizza meant leaving the pizza creation flow to first create the "chicken" flavor, then returning and starting over. If the crust type was also missing, another exit was required. Every missing dependency restarted the whole flow. The redesign eliminated forced exits entirely: any dependency (flavor, crust, topping, modifier) can now be created in-context, mid-flow, without losing progress. What used to take multiple broken sessions now completes in one.</p>
+      </div>
+      <div class="gestor-row reveal">
+        <div>
+          <p class="gestor-row-label">Point of Sale</p>
+          <p class="gestor-row-title">PDV Redesign</p>
+        </div>
+        <p class="gestor-row-desc">Redesigned the full point of sale interface: customer selection, product lookup, order building, and payment routing. The redesign introduced faster client search, cleaner item selection, and a payment flow that could handle split payments across multiple payers with different methods. A new Pix Automático approval flow handled the async payment state natively: no workarounds, no confusion about whether a payment went through.</p>
+      </div>
+      <div class="gestor-row reveal">
+        <div>
+          <p class="gestor-row-label">New Feature</p>
+          <p class="gestor-row-title">Multiple Payers</p>
+        </div>
+        <p class="gestor-row-desc">Designed the multiple payers feature, allowing a single order to be split across two or more payers, each with a different payment method. This covered the split calculation UI, individual payment confirmation states, and the partial-payment pending state when not all payers have completed their portion.</p>
+      </div>
+      <div class="gestor-row reveal">
+        <div>
+          <p class="gestor-row-label">Payment Integration</p>
+          <p class="gestor-row-title">PIX + Digital Wallet</p>
+        </div>
+        <p class="gestor-row-desc">Designed the in-store PIX flow from end to end: QR code generation, payment status polling, confirmation screen, and failure recovery. Also designed the digital wallet (carteira digital) integration for loyalty balances and stored value payments, coordinating with payment institution partners throughout the design and validation process.</p>
+      </div>
+      <div class="gestor-row reveal">
+        <div>
+          <p class="gestor-row-label">Navigation</p>
+          <p class="gestor-row-title">Sidebar + Information Architecture</p>
+        </div>
+        <p class="gestor-row-desc">With six teams shipping features independently over time, the Gestor sidebar had accumulated without a coherent structure. Items were grouped by team ownership, not by user task or mental model. I audited the full feature set, mapped how different user roles navigated the system, and restructured the sidebar around task frequency and context. The result aligned where features lived with where users expected them, reducing navigation friction for both new and experienced operators.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ GESTOR IMAGE ═══ -->
+<div class="container" style="padding-block: clamp(3rem, 6vw, 5rem);">
+  <div class="project-full-image reveal" style="margin:0;">
+    <img src="../assets/projects/pedir-delivery/gestor-mockup.png" alt="Gestor de Pedidos interface" loading="lazy" />
+  </div>
+</div>
+
+<!-- ═══ PROCESS ═══ -->
+<section class="section bg-tinted" style="padding-top:clamp(3rem,5vw,4rem); padding-bottom:2.5rem;">
+  <div class="container">
+    <p class="section-label">Process</p>
+    <h2 class="section-heading" style="margin-bottom:2.5rem;">Design that talks <em>to the whole team.</em></h2>
+    <div class="process-grid">
+      <div class="process-card reveal" data-num="01">
+        <div>
+          <p class="process-phase-label">Alignment</p>
+          <h3>Design Critiques</h3>
+        </div>
+        <p>
+          I implemented weekly Design Critiques involving developers, QA, CX,
+          commercial, and directors. Everyone with a stake in the product had a
+          structured channel to raise questions before shipping.
+        </p>
+        <div class="process-tags">
+          <span class="tag">Design Critiques</span>
+          <span class="tag">Cross-functional</span>
+        </div>
+      </div>
+      <div class="process-card reveal" data-num="02" style="transition-delay:0.05s">
+        <div>
+          <p class="process-phase-label">Validation</p>
+          <h3>Usability Testing</h3>
+        </div>
+        <p>
+          Added external client critiques and usability testing to the process.
+          Real restaurant operators gave feedback on flows before they shipped.
+          Findings shaped iterations, not post-mortems.
+        </p>
+        <div class="process-tags">
+          <span class="tag">Usability Testing</span>
+          <span class="tag">SEQ Scoring</span>
+        </div>
+      </div>
+      <div class="process-card reveal" data-num="03" style="transition-delay:0.1s">
+        <div>
+          <p class="process-phase-label">Optimization</p>
+          <h3>A/B Testing</h3>
+        </div>
+        <p>
+          Introduced A/B testing to validate conversion hypotheses on Pedir.Delivery.
+          Design decisions started connecting to business metrics, making it easier
+          to argue for quality over speed.
+        </p>
+        <div class="process-tags">
+          <span class="tag">A/B Testing</span>
+          <span class="tag">OKRs</span>
+        </div>
+      </div>
+      <div class="process-card reveal" data-num="04" style="transition-delay:0.15s">
+        <div>
+          <p class="process-phase-label">Delivery</p>
+          <h3>AI-Assisted Handoff</h3>
+        </div>
+        <p>
+          Used Claude with Figma MCP to automate spec generation from design tokens,
+          cutting prototype-to-dev handoff from 5 days to 2. The same workflow now
+          ships more with less overhead.
+        </p>
+        <div class="process-tags">
+          <span class="tag">Claude + MCP</span>
+          <span class="tag">Figma DEV Mode</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AI IN PROCESS ═══ -->
+<section class="section bg-tinted" style="padding-top:clamp(4rem,8vw,6rem); padding-bottom:2.5rem;">
+  <div class="container">
+    <p class="section-label">The 60% Improvement</p>
+    <div class="ai-statement-inner reveal">
+      <div>
+        <p class="ai-statement-num">60<small>%</small></p>
+      </div>
+      <div class="ai-statement-body">
+        <h2 class="ai-statement-heading">From 5 days<br />to <em>2 days.</em></h2>
+        <p>
+          Prototype and handoff delivery used to take 5 working days: design the
+          screens, document interactions, write spec notes for each component, align
+          with the dev team, and revise. It was slow and repetitive.
+        </p>
+        <p>
+          I connected Claude directly to the Figma file via MCP. Now I can generate
+          component specs, interaction descriptions, and dev-ready documentation
+          directly from the design tokens in the file. What took 5 days takes 2.
+          The time I recovered goes into better research and more iterations.
+        </p>
+        <div class="ai-stack" style="margin-top:1.5rem;">
+          <span class="tag">Claude</span>
+          <span class="tag">Figma MCP</span>
+          <span class="tag">Design Tokens</span>
+          <span class="tag">DEV Mode</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OUTCOMES ═══ -->
+<section class="section" style="padding-top:clamp(3rem,5vw,4rem);">
+  <div class="container">
+    <p class="section-label">Outcomes</p>
+    <h2 class="section-heading" style="margin-bottom:2.5rem;">Impact, <em>in numbers.</em></h2>
+    <div class="outcomes-grid">
+      <div class="outcome-card reveal">
+        <span class="metric-value">60<span style="font-size:1.6rem;">%</span></span>
+        <span class="metric-label">Faster prototype delivery via AI-assisted handoff workflow</span>
+      </div>
+      <div class="outcome-card reveal" style="transition-delay:0.05s">
+        <span class="metric-value">10M<span style="font-size:1.6rem;">+</span></span>
+        <span class="metric-label">Monthly accesses on Pedir.Delivery, serving 4M+ orders</span>
+      </div>
+      <div class="outcome-card reveal" style="transition-delay:0.1s">
+        <span class="metric-value">1K<span style="font-size:1.6rem;">+</span></span>
+        <span class="metric-label">Responsive screens built on a single design system in 2.5 years</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REFLECTION ═══ -->
+<div class="reflection-block">
+  <div class="container">
+    <div class="reflection-inner reveal-blur">
+      <p>Design can be infrastructure. At Multipedidos, building the foundation that kept 4,000 restaurants running while the product moved fast was the work. Solo, across two platforms and six teams. Systems first, screens second.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ NEXT PROJECT ═══ -->
+<div class="next-project">
+  <div class="container">
+    <p class="section-label">What's next?</p>
+    <h2 class="next-project-title">Explore more <em>case studies.</em></h2>
+    <div style="display:flex; align-items:center; justify-content:center; gap:1rem; flex-wrap:wrap;">
+      <a href="project-keepeye.html" class="btn-primary">
+        Keepeye: KPI Platform
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="project-included.html" class="btn-secondary">IncludED: EdTech SaaS</a>
+      <a href="index.html" class="btn-secondary">Back to Work</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container footer-inner" style="justify-content:center;">
+    <p class="footer-copy">Product Design — Selected Case Studies</p>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }),
+    { threshold: 0.08, rootMargin: '0px 0px -20px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* Video play/pause based on viewport visibility */
+  (function () {
+    var vid = document.querySelector('.project-vid');
+    if (!vid) return;
+    var vio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { vid.play(); } else { vid.pause(); }
+      });
+    }, { threshold: 0.15 });
+    vio.observe(vid);
+  })();
+
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isLight = html.getAttribute('data-theme') === 'light';
+    if (isLight) {
+      html.removeAttribute('data-theme');
+      try { localStorage.setItem('theme', 'dark'); } catch (e) {}
+    } else {
+      html.setAttribute('data-theme', 'light');
+      try { localStorage.setItem('theme', 'light'); } catch (e) {}
+    }
+  }
+
+  function toggleMenu(btn) {
+    const menu = document.getElementById('mobileMenu');
+    const isOpen = menu.classList.to

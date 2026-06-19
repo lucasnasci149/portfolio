@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('theme') === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Electrolux: Global Dashboard Design System | Lucas Nascimento</title>
+  <meta name="description" content="Case study: How I designed a dashboard visual standard for Electrolux that started in LATAM and was adopted globally by the company's board." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://lucasnascimento.design/project-electrolux" />
+  <meta property="og:title" content="Electrolux: Global Dashboard Design System" />
+  <meta property="og:description" content="A dashboard visual identity that began in Brazil and was adopted by Electrolux globally. A case study in data visualization, enterprise design, and stakeholder alignment." />
+  <meta property="og:url" content="https://lucasnascimento.design/project-electrolux" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="transitions.js" defer></script>
+  <noscript><style>body { opacity: 1 !important; }</style></noscript>
+
+  <style>
+    /* ── CASE HEADER ── */
+    .case-header {
+      padding-top: calc(4rem + 60px);
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      color: var(--text-2);
+      margin-bottom: 1.5rem;
+      transition: color var(--transition);
+    }
+    .back-link:hover { color: var(--text-1); }
+    .back-link svg { transform: rotate(180deg); }
+
+    .case-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+
+    .case-header-title {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+    }
+    .case-header-title em { font-style: italic; color: var(--accent-text); }
+    .case-header-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-2);
+      margin-top: 0.75rem;
+      max-width: 620px;
+      line-height: 1.7;
+    }
+
+    /* META GRID */
+    .case-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .case-meta-item .section-label { margin-bottom: 0.4rem; }
+    .case-meta-value {
+      font-size: 0.9rem;
+      color: var(--text-1);
+      line-height: 1.5;
+    }
+    .case-meta-value span { display: block; color: var(--text-3); font-size: 0.8rem; margin-top: 0.15rem; }
+
+    /* NDA BANNER */
+    .nda-banner {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+    .nda-banner strong { color: var(--text-1); }
+
+    /* HERO VISUAL - abstract only, no real data */
+    .case-hero-abstract {
+      margin-top: 1.5rem;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      min-height: 380px;
+      background: linear-gradient(135deg, var(--bg-3) 0%, var(--bg-4) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .abstract-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      width: 80%;
+      max-width: 640px;
+      opacity: 0.5;
+    }
+    .abstract-bar-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1rem;
+    }
+    .abstract-bar {
+      height: 8px;
+      border-radius: 4px;
+      background: var(--accent);
+      opacity: 0.6;
+    }
+    .abstract-bar.w60 { width: 60%; }
+    .abstract-bar.w80 { width: 80%; }
+    .abstract-bar.w45 { width: 45%; }
+    .abstract-bar.w90 { width: 90%; }
+    .abstract-bar.w70 { width: 70%; }
+
+    /* OVERVIEW */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    .overview-block .section-label { margin-bottom: 0.75rem; }
+    .overview-block p {
+      font-size: 0.95rem;
+      color: var(--text-2);
+      line-height: 1.8;
+    }
+    .overview-block p + p { margin-top: 1rem; }
+
+    /* JOURNEY */
+    .journey-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+    .journey-steps::before {
+      content: '';
+      position: absolute;
+      left: 1.1rem;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      width: 1px;
+      background: var(--border);
+    }
+    .journey-step {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+    }
+    .journey-step:first-child { padding-top: 0; }
+    .journey-step:last-child { padding-bottom: 0; }
+    .journey-dot {
+      width: 2.2rem;
+      height: 2.2rem;
+      min-width: 2.2rem;
+      border-radius: 50%;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--accent-text);
+      position: relative;
+      z-index: 1;
+    }
+    .journey-content h3 {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+    }
+    .journey-content p {
+      font-size: 0.85rem;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+
+    /* PRINCIPLES */
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .principle-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+    }
+    .principle-card h3 {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+    }
+    .principle-card p {
+      font-size: 0.85rem;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+
+    /* OUTCOMES */
+    .outcomes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .outcome-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+    }
+    .outcome-card .metric-value { font-size: 2.4rem; }
+    .outcome-card .metric-label { font-size: 0.8rem; margin-top: 0.4rem; }
+
+    /* NEXT PROJECT */
+    .next-project {
+      padding-block: 5rem;
+      text-align: center;
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+    }
+    .next-project .section-label { margin-bottom: 1rem; }
+    .next-project-title {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.15;
+      margin-bottom: 2rem;
+    }
+    .next-project-title em { font-style: italic; color: var(--accent-text); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .case-meta-grid { grid-template-columns: repeat(2, 1fr); }
+      .overview-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .principles-grid { grid-template-columns: 1fr; }
+      .outcomes-grid { grid-template-columns: 1fr; }
+      .abstract-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .case-meta-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-transition-bar" aria-hidden="true"></div>
+
+<!-- ═══ NAV ═══ -->
+<nav aria-label="Main navigation">
+  <div class="container nav-inner">
+    <div class="nav-left">
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Work</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="archives.html">Archives</a></li>
+        <li><a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+
+        <div class="nav-right">
+          <button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick="toggleTheme()">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+          <a href="contact.html" class="nav-cta">Contact</a>
+
+          <button class="nav-mobile-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMenu(this)">☰</button>
+
+        </div>
+  </div>
+  <div class="nav-mobile-menu" id="mobileMenu">
+    <a href="index.html">Work</a>
+    <a href="about.html">About Me</a>
+    <a href="archives.html">Archives</a>
+    <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="contact.html">Contact →</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick="toggleTheme()">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="label-light">Light mode</span>
+      <span class="label-dark">Dark mode</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ CASE HEADER ═══ -->
+<header class="case-header">
+  <div class="container">
+    <a href="index.html#work-preview" class="back-link">
+      <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Work
+    </a>
+    <div class="case-tags">
+      <span class="tag">Enterprise</span>
+      <span class="tag">Data Visualization</span>
+      <span class="tag">Design System</span>
+      <span class="tag">Global Standard</span>
+    </div>
+    <h1 class="case-header-title">Electrolux<br /><em>Global Dashboard Standard</em></h1>
+    <p class="case-header-subtitle">
+      A dashboard visual identity and construction standard created for Electrolux's operational
+      reporting in LATAM. Validated by local teams, then presented to and approved by the global
+      board, now the standard across the company's worldwide operations.
+    </p>
+
+    <div class="case-meta-grid">
+      <div class="case-meta-item">
+        <p class="section-label">Client</p>
+        <p class="case-meta-value">Electrolux<span>via Dojo Smart Ways</span></p>
+      </div>
+      <div class="case-meta-item">
+        <p class="section-label">Role</p>
+        <p class="case-meta-value">UX Engineer<span>Design + Front-End</span></p>
+      </div>
+      <div class="case-meta-item">
+        <p class="section-label">Timeline</p>
+        <p class="case-meta-value">2022 – 2023<span>Dojo Smart Ways</span></p>
+      </div>
+      <div class="case-meta-item">
+        <p class="section-label">Stack</p>
+        <p class="case-meta-value">Power BI, Figma<span>Angular, Tailwind CSS</span></p>
+      </div>
+    </div>
+
+    <div class="nda-banner">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink:0; margin-top:2px;"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span><strong>NDA applies to this project.</strong> Dashboard visuals, KPI structures, and business data are confidential and not shown here. This case study focuses on process, principles, and outcomes, the parts I can speak to freely.</span>
+    </div>
+
+    <div class="case-hero-abstract reveal">
+      <div class="abstract-grid" aria-hidden="true">
+        <div class="abstract-bar-group">
+          <div class="abstract-bar w80"></div>
+          <div class="abstract-bar w60"></div>
+          <div class="abstract-bar w90"></div>
+        </div>
+        <div class="abstract-bar-group">
+          <div class="abstract-bar w45"></div>
+          <div class="abstract-bar w70"></div>
+          <div class="abstract-bar w60"></div>
+        </div>
+        <div class="abstract-bar-group">
+          <div class="abstract-bar w90"></div>
+          <div class="abstract-bar w80"></div>
+          <div class="abstract-bar w45"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ OVERVIEW ═══ -->
+<section class="section">
+  <div class="container">
+    <div class="overview-grid">
+      <div class="overview-block reveal">
+        <p class="section-label">The Problem</p>
+        <p>
+          Electrolux's operational reporting in LATAM was fragmented. Teams across
+          manufacturing, logistics, and commercial used inconsistent dashboard structures,
+          different visual languages, and varying levels of data clarity. There was no
+          unified standard that could serve both on-the-floor teams and executive leadership
+          from the same visual framework.
+        </p>
+        <p>
+          Dojo Smart Ways was contracted to build the operational dashboard layer. I was
+          responsible for designing the visual identity and construction standard for
+          everything that would be built on top of it.
+        </p>
+      </div>
+      <div class="overview-block reveal" style="transition-delay:0.05s">
+        <p class="section-label">The Constraint</p>
+        <p>
+          Power BI is not a design tool. It has strict limitations on layout, component
+          customization, and interaction patterns. Every design decision had to be evaluated
+          not only for clarity and hierarchy, but for whether it was actually achievable in
+          the Power BI environment we were delivering into.
+        </p>
+        <p>
+          I also came into Power BI with zero prior experience. I learned the tool in one
+          week. By week two, I was contributing to live client projects. By the end of the
+          engagement, I had designed and documented a system that could be handed off to
+          any team and replicated consistently.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ JOURNEY ═══ -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <p class="section-label">How it happened</p>
+    <h2 class="section-heading" style="margin-bottom:2.5rem;">From LATAM to <em>global standard.</em></h2>
+    <div class="journey-steps">
+      <div class="journey-step reveal">
+        <div class="journey-dot">01</div>
+        <div class="journey-content">
+          <h3>Business Understanding Sessions</h3>
+          <p>
+            Before touching a design file, I ran Business Understanding sessions with
+            Data Analysts and Data Engineers. I needed to understand the data structure,
+            the KPIs that mattered, and the decisions each dashboard was meant to support.
+            Design without this context produces pretty screens that miss the point.
+          </p>
+        </div>
+      </div>
+      <div class="journey-step reveal">
+        <div class="journey-dot">02</div>
+        <div class="journey-content">
+          <h3>Visual Identity &amp; Construction Standard</h3>
+          <p>
+            I defined the visual language for Electrolux's dashboard ecosystem: color
+            system for data encoding, typography hierarchy, chart selection principles,
+            KPI card structure, and layout grid. Everything was designed to work within
+            Power BI's constraints while still feeling intentional and executive-ready.
+          </p>
+        </div>
+      </div>
+      <div class="journey-step reveal">
+        <div class="journey-dot">03</div>
+        <div class="journey-content">
+          <h3>LATAM Validation</h3>
+          <p>
+            The standard was first deployed across LATAM operations. Multiple functional
+            teams used the system. Feedback was incorporated. The framework proved that
+            it could scale across different data types and operational contexts without
+            breaking down visually or informationally.
+          </p>
+        </div>
+      </div>
+      <div class="journey-step reveal">
+        <div class="journey-dot">04</div>
+        <div class="journey-content">
+          <h3>Global Approval</h3>
+          <p>
+            The LATAM results were presented to Electrolux's global board. The standard
+            was approved and adopted company-wide. What started as a regional engagement
+            became the design language for Electrolux's operational reporting globally.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRINCIPLES ═══ -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <p class="section-label">Design Principles</p>
+    <h2 class="section-heading" style="margin-bottom:2.5rem;">Clarity over <em>decoration.</em></h2>
+    <div class="principles-grid">
+      <div class="principle-card reveal">
+        <h3>Data First</h3>
+        <p>
+          Every visual element exists to serve comprehension. Color encodes meaning,
+          not aesthetics. Chart types were chosen based on the cognitive task required,
+          not based on what looks interesting. If a simpler chart tells the story better,
+          the simpler chart wins.
+        </p>
+      </div>
+      <div class="principle-card reveal" style="transition-delay:0.05s">
+        <h3>Constraint as Design Material</h3>
+        <p>
+          Power BI's limitations shaped every decision. Rather than working around
+          constraints, I worked within them deliberately: the system was designed to be
+          reproducible by any team member without needing custom code or workarounds
+          that could break across versions.
+        </p>
+      </div>
+      <div class="principle-card reveal" style="transition-delay:0.1s">
+        <h3>Executive and Operational</h3>
+        <p>
+          The same framework needed to work at two levels: an executive summary for
+          leadership and an operational view for floor teams. The visual hierarchy was
+          designed so both audiences could orient themselves immediately, without
+          needing a guide or training.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OUTCOMES ═══ -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <p class="section-label">Outcomes</p>
+    <h2 class="section-heading" style="margin-bottom:2.5rem;">LATAM to <em>worldwide.</em></h2>
+    <div class="outcomes-grid">
+      <div class="outcome-card reveal">
+        <span class="metric-value" style="font-size:1.8rem; line-height:1.3;">Global<br />Standard</span>
+        <span class="metric-label">Dashboard visual identity adopted worldwide by Electrolux after global board approval</span>
+      </div>
+      <div class="outcome-card reveal" style="transition-delay:0.05s">
+        <span class="metric-value">1<span style="font-size:1.4rem;">wk</span></span>
+        <span class="metric-label">To learn Power BI from zero and be contributing to live client deliverables</span>
+      </div>
+      <div class="outcome-card reveal" style="transition-delay:0.1s">
+        <span class="metric-value">2</span>
+        <span class="metric-label">Enterprise clients (Electrolux + Nidec) served on the same design system and stack</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ NEXT PROJECT ═══ -->
+<div class="next-project">
+  <div class="container">
+    <p class="section-label">What's next?</p>
+    <h2 class="next-project-title">Explore more <em>case studies.</em></h2>
+    <div style="display:flex; align-items:center; justify-content:center; gap:1rem; flex-wrap:wrap;">
+      <a href="project-multipedidos.html" class="btn-primary">
+        Multipedidos: Design System
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="project-keepeye.html" class="btn-secondary">Keepeye: KPI Platform</a>
+      <a href="index.html#work-preview" class="btn-secondary">Back to Work</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container footer-inner">
+    <a href="index.html" class="footer-logo">Lucas<span>.</span></a>
+    <p class="footer-copy">© 2026 Lucas Nascimento. All rights reserved.</p>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }),
+    { threshold: 0.08, rootMargin: '0px 0px -20px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isLight = html.getAttribute('data-theme') === 'light';
+    if (isLight) {
+      html.removeAttribute('data-theme');
+      try { localStorage.setItem('theme', 'dark'); } catch (e) {}
+    } else {
+      html.setAttribute('data-theme', 'light');
+      try { localStorage.setItem('theme', 'light'); } catch (e) {}
+    }
+  }
+
+  function toggleMenu(btn) {
+    const menu = document.getElementById('mobileMenu');
+    const isOpen = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(isOpen));
+    btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  }
+
+  (function () {
+    const navEl = document.querySelector('body > nav');
+    const backToTop = document.getElementById('backToTop');
+    const showThreshold = 120;
+    let lastY = window.scrollY;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > showThreshold) {
+        navEl.classList.toggle('nav-hidden', y > lastY);
+        backToTop.classList.add('visible');
+      } else {
+        navEl.classList.remove('nav-hidden');
+        backToTop.classList.remove('visible');
+      }
+      lastY = y;
+    }, { passive: true });
+    document.addEventListener('mousemove', e => {
+      if (e.clientY <= 60) navEl.classList.remove('nav-hidden');
+    });
+  })();
+</script>
+</body>
+</html>
