@@ -552,60 +552,43 @@
 </section>
 
 <!-- DASHBOARD TYPES -->
-<section class="section bg-tinted" style="padding-top:clamp(2rem,4vw,3rem); padding-bottom:clamp(2.5rem,5vw,4rem);">
+<section class="section bg-tinted" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">The System</p>
     <h2 class="section-heading">Three contexts, <em>one language.</em></h2>
-    <p style="font-size:0.92rem; color:var(--text-2); max-width:680px; line-height:1.75; margin-bottom:0;">
-      Different roles have fundamentally different relationships with data. An executive
-      needs immediate orientation. An operations manager needs granular tracking. An analyst
-      needs to interrogate. I designed a distinct visual template for each context, all
-      sharing the same tokens, typography, and color conventions.
+    <p style="font-size:0.92rem; color:var(--text-2); line-height:1.8; max-width:700px; margin-top:0.75rem;">
+      Not every audience needs the same view. The system was designed around three distinct
+      dashboard contexts, each with a defined purpose, visual hierarchy, and interaction depth.
     </p>
     <div class="dashboard-types-grid">
       <div class="dashboard-type-card reveal">
-        <p class="dt-number">01 /</p>
-        <h3 class="dt-title"><em>Executive</em> Dashboard</h3>
-        <p class="dt-desc">
-          Designed for leadership and board-level visibility. Maximizes signal, minimizes noise.
-          One screen should answer "how are we doing?" without any interaction. KPIs are
-          displayed as large, unambiguous values with trend indicators and goal comparisons.
-          Drill-down is available but never required to understand the summary.
-        </p>
+        <div class="dt-number">01</div>
+        <div class="dt-title"><em>Executive</em> Dashboard</div>
+        <p class="dt-desc">High-level indicators for leadership: goal attainment, regional performance, and strategic KPIs at a glance. Designed for low interaction: the first screen answers the key question without drill-down.</p>
         <div class="dt-tags">
-          <span class="dt-tag">Summary-first</span>
+          <span class="dt-tag">Summary view</span>
+          <span class="dt-tag">Low density</span>
           <span class="dt-tag">Goal tracking</span>
-          <span class="dt-tag">Trend indicators</span>
         </div>
       </div>
       <div class="dashboard-type-card reveal" style="transition-delay:0.05s">
-        <p class="dt-number">02 /</p>
-        <h3 class="dt-title"><em>Operational</em> Dashboard</h3>
-        <p class="dt-desc">
-          Designed for day-to-day management and team leads who monitor output and identify
-          anomalies quickly. Higher data density than the executive view, with time-series
-          comparisons and performance breakdowns by category, team, or period. Built for
-          repeated daily use, not occasional review.
-        </p>
+        <div class="dt-number">02</div>
+        <div class="dt-title"><em>Operational</em> Dashboard</div>
+        <p class="dt-desc">Day-to-day monitoring for team leads and managers. Tracks output by period, process efficiency, and flags deviations before they become problems. Designed for daily use.</p>
         <div class="dt-tags">
-          <span class="dt-tag">Time-series</span>
-          <span class="dt-tag">Breakdowns</span>
-          <span class="dt-tag">Anomaly detection</span>
+          <span class="dt-tag">Time series</span>
+          <span class="dt-tag">Deviation alerts</span>
+          <span class="dt-tag">Daily cadence</span>
         </div>
       </div>
       <div class="dashboard-type-card reveal" style="transition-delay:0.1s">
-        <p class="dt-number">03 /</p>
-        <h3 class="dt-title"><em>Analytical</em> Dashboard</h3>
-        <p class="dt-desc">
-          Designed for data analysts and controllers who need to interrogate the data,
-          not just read it. Supports filtering, cross-referencing, and variance analysis.
-          The most complex context visually, but structured so that complexity serves
-          exploration rather than creating confusion for non-analyst users.
-        </p>
+        <div class="dt-number">03</div>
+        <div class="dt-title"><em>Analytical</em> Dashboard</div>
+        <p class="dt-desc">Deep-dive views for analysts: variance distribution, cross-dimensional breakdowns, and trend analysis. Designed for exploration rather than quick reads, with high interaction depth.</p>
         <div class="dt-tags">
-          <span class="dt-tag">Cross-filtering</span>
           <span class="dt-tag">Variance analysis</span>
-          <span class="dt-tag">Drill-through</span>
+          <span class="dt-tag">Cross-dimensional</span>
+          <span class="dt-tag">High interaction</span>
         </div>
       </div>
     </div>
@@ -613,320 +596,200 @@
 </section>
 
 <!-- PROCESS -->
-<section class="section" style="padding-top:0; padding-bottom:0;">
+<section class="section">
   <div class="container">
     <p class="section-label">Process</p>
-    <h2 class="section-heading" style="margin-bottom:2.5rem;">Understanding before <em>designing.</em></h2>
+    <h2 class="section-heading" style="margin-bottom:2rem;">Understanding before <em>building.</em></h2>
     <div class="process-grid">
       <div class="process-card reveal" data-num="01">
         <div>
-          <p class="process-phase-label">Phase 01 · Understand</p>
-          <h3>Business Understanding sessions with stakeholders</h3>
+          <p class="process-phase-label">Phase 01</p>
+          <h3>Business Understanding</h3>
         </div>
-        <p>
-          Every dashboard started with a Business Understanding meeting with the relevant
-          stakeholder. The goal was to capture the business rules behind the data before
-          touching the design: what does this metric actually measure, who is the primary
-          reader, what decision does this dashboard enable, and what does "wrong" look like
-          when data is misread?
-        </p>
-        <p>
-          These sessions prevented the most common failure mode in data visualization:
-          building something technically correct that nobody uses because it answers
-          the wrong question.
-        </p>
+        <p>Every wave started with structured meetings with business stakeholders. The goal was to capture the rules behind the numbers before touching any data: what metric means what, who owns it, what decision it enables, and what threshold triggers action. Skipping this step would have produced visually consistent dashboards that answered the wrong questions.</p>
         <div class="process-tags">
-          <span class="tag">Stakeholder Interviews</span>
-          <span class="tag">Business Rules Mapping</span>
+          <span class="tag">Stakeholder interviews</span>
+          <span class="tag">KPI mapping</span>
+          <span class="tag">Business rules</span>
         </div>
       </div>
       <div class="process-card reveal" style="transition-delay:0.05s" data-num="02">
         <div>
-          <p class="process-phase-label">Phase 01 · Align</p>
-          <h3>Alignment with data analysts before design</h3>
+          <p class="process-phase-label">Phase 02</p>
+          <h3>Data Alignment</h3>
         </div>
-        <p>
-          Before creating any visual, I worked with Dojo and Electrolux data analysts to
-          understand the shape of the data: what was available in the Data Lake, what
-          transformations were needed, what dependencies existed between metrics, and where
-          the data had known gaps or inconsistencies.
-        </p>
-        <p>
-          Design decisions made without this alignment fail in implementation. I preferred
-          to understand constraints upfront and design within them rather than discover
-          them during the binding phase.
-        </p>
+        <p>With business rules captured, I worked with data analysts from both Dojo and Electrolux to understand the underlying data structure: what was available in the Data Lake, what transformations were needed, and where there were gaps between what the business expected and what the data could deliver. This alignment prevented scope creep and surfaced data quality issues early.</p>
         <div class="process-tags">
-          <span class="tag">Data Analysis</span>
-          <span class="tag">Constraint Mapping</span>
-          <span class="tag">Cross-team Alignment</span>
+          <span class="tag">Data Lake review</span>
+          <span class="tag">Analyst collaboration</span>
+          <span class="tag">Gap analysis</span>
         </div>
       </div>
       <div class="process-card reveal" style="transition-delay:0.1s" data-num="03">
         <div>
-          <p class="process-phase-label">Phase 02 · Build</p>
-          <h3>Dashboard design and data binding</h3>
+          <p class="process-phase-label">Phase 03</p>
+          <h3>Template Design</h3>
         </div>
-        <p>
-          With business rules and data structure mapped, I designed the dashboards in
-          Power BI following the template system. Each dashboard went through a binding
-          process with the data team to connect visual components to live Data Lake queries.
-        </p>
-        <p>
-          Template-based design compressed build time: the visual decisions for color,
-          typography, spacing, and chart type were already made. Each dashboard required
-          only the structural decisions specific to its content.
-        </p>
+        <p>Rather than building each dashboard from scratch, I designed a reusable template system first: a visual standard with defined grid, color semantics, typography scale, and component patterns. Each dashboard was then built by applying the template to the specific context, not by starting over. This was the decision that made the system scalable.</p>
         <div class="process-tags">
-          <span class="tag">Power BI</span>
-          <span class="tag">Data Binding</span>
-          <span class="tag">Template System</span>
+          <span class="tag">Visual system</span>
+          <span class="tag">Component patterns</span>
+          <span class="tag">Reusable templates</span>
         </div>
       </div>
       <div class="process-card reveal" style="transition-delay:0.15s" data-num="04">
         <div>
-          <p class="process-phase-label">Phase 03 · Validate</p>
-          <h3>Validation with teams before handoff</h3>
+          <p class="process-phase-label">Phase 04</p>
+          <h3>Build and Validate</h3>
         </div>
-        <p>
-          Each completed dashboard was reviewed with the team that would use it: checking
-          whether the visual representation matched their mental model, whether labels and
-          terminology reflected how they actually talked about the metrics, and whether
-          the default view answered what they needed without requiring configuration.
-        </p>
-        <p>
-          Small naming and framing adjustments at this stage prevented large confusion
-          after delivery. Validation was not optional: it was part of the process for
-          every wave.
-        </p>
+        <p>Dashboards were built in Power BI, connected to the Data Lake, and validated with the business and data teams before delivery. Validation was not just visual: it included checking that numbers matched the business rules defined in phase one, that filters worked as intended, and that the view answered the original question the stakeholder had brought to the first meeting.</p>
         <div class="process-tags">
-          <span class="tag">User Validation</span>
-          <span class="tag">Iterative Review</span>
+          <span class="tag">Power BI</span>
+          <span class="tag">Data binding</span>
+          <span class="tag">Stakeholder validation</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SYSTEMATIZATION -->
-<section class="section">
+<!-- SYSTEM FEATURES -->
+<section class="section" style="padding-top:0;">
   <div class="container">
-    <p class="section-label">The System</p>
-    <h2 class="section-heading" style="margin-bottom:0.5rem;">Designed to <em>outlast</em> the project.</h2>
-    <p style="font-size:0.92rem; color:var(--text-2); max-width:640px; line-height:1.75; margin-bottom:0;">
-      The biggest risk in a consulting engagement is that standards disappear when the
-      consultants leave. I built the system to survive without me.
-    </p>
+    <p class="section-label">What Made It a System</p>
+    <h2 class="section-heading" style="margin-bottom:0.5rem;">Beyond dashboards, <em>a repeatable standard.</em></h2>
     <div class="feature-rows">
       <div class="feature-row reveal">
         <div>
           <p class="feature-row-label">Deliverable</p>
           <p class="feature-row-title">Reusable Dashboard Templates</p>
         </div>
-        <p class="feature-row-desc">
-          Instead of building each dashboard from scratch, I developed a template library
-          covering the three contexts: Executive, Operational, and Analytical. Each template
-          defined the visual structure, chart selection criteria, color usage rules, and
-          typography. Any new dashboard started from the appropriate template, which enforced
-          consistency without requiring designer involvement in every new request.
-        </p>
+        <p class="feature-row-desc">Three base templates, one per context, each with defined layout grids, placeholder components, and annotation layers for handoff. Any team within Electrolux could take a template and adapt it to a new business area without redesigning the visual logic from scratch. This eliminated the need for a designer on every new dashboard request.</p>
       </div>
       <div class="feature-row reveal">
         <div>
           <p class="feature-row-label">Deliverable</p>
-          <p class="feature-row-title">Usage Documentation Guide</p>
+          <p class="feature-row-title">Visualization Manual</p>
         </div>
-        <p class="feature-row-desc">
-          I created a written manual for the visualization system: how to apply the templates,
-          when to use each chart type, color conventions for status and comparison, naming
-          standards for metrics and labels, and decision rules for choosing between dashboard
-          contexts. The goal was a document detailed enough that a Power BI user with no
-          design background could build a new dashboard and have it look like it belonged
-          to the same system.
-        </p>
+        <p class="feature-row-desc">A documentation guide covering color semantics (what blue means vs. orange vs. neutral), chart type selection by data type, layout rules for each dashboard context, and step-by-step instructions for replicating any pattern in the system. Written so that a business analyst with basic Power BI skills could follow it without design support.</p>
       </div>
       <div class="feature-row reveal">
         <div>
-          <p class="feature-row-label">Parallel Project</p>
-          <p class="feature-row-title">Nidec Dashboard System</p>
+          <p class="feature-row-label">Deliverable</p>
+          <p class="feature-row-title">5-Wave Deployment</p>
         </div>
-        <p class="feature-row-desc">
-          Simultaneously with the Electrolux engagement, I developed a parallel data
-          visualization system for Nidec, applying the same methodology: Business
-          Understanding sessions, analyst alignment, template-based design, and a
-          dedicated documentation guide. The two projects shared a process and a design
-          philosophy but were implemented independently to match each company's data
-          structure, terminology, and organizational context.
-        </p>
+        <p class="feature-row-desc">Each of the five project waves covered a different business area across Electrolux LATAM. Rather than adapting the process per wave, the template system meant each wave was faster than the last: business understanding was the main variable, while design and build followed the established pattern.</p>
+      </div>
+      <div class="feature-row reveal">
+        <div>
+          <p class="feature-row-label">Parallel</p>
+          <p class="feature-row-title">Nidec: Same Methodology</p>
+        </div>
+        <p class="feature-row-desc">During the same period, I applied the same process for Nidec: Business Understanding meetings, data alignment with analysts, template design, and a documentation guide for the Nidec team. Running both in parallel validated that the methodology was not project-specific but repeatable across different clients and data contexts.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- SCALE -->
-<section class="section bg-tinted" style="padding-top:clamp(2.5rem,5vw,4rem); padding-bottom:clamp(2.5rem,5vw,4rem);">
+<section class="section bg-tinted" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="container">
-    <p class="section-label">Scale</p>
-    <h2 class="section-heading">From LATAM to <em>everywhere.</em></h2>
-    <div class="scale-strip reveal">
-      <div class="scale-panel blue">
-        <p class="scale-panel-label">Waves</p>
-        <h4>Five deployment cycles across LATAM</h4>
-        <p>
-          The project ran in 5 waves, each covering a different business area or regional
-          scope within Electrolux LATAM. Each wave followed the same process: Business
-          Understanding, analyst alignment, design and binding, team validation. The template
-          system made each wave faster than the one before.
-        </p>
+    <p class="section-label">Scale and Impact</p>
+    <h2 class="section-heading" style="margin-bottom:0.5rem;">From LATAM to <em>global standard.</em></h2>
+    <div class="scale-strip">
+      <div class="scale-panel blue reveal">
+        <p class="scale-panel-label">LATAM Rollout</p>
+        <h4>5 waves, multiple business areas</h4>
+        <p>The system was deployed across five project waves covering different operational and strategic areas of Electrolux in Latin America. Each wave applied the same template and documentation framework, compressing delivery time as the project progressed.</p>
       </div>
-      <div class="scale-panel orange">
-        <p class="scale-panel-label">Adoption</p>
-        <h4>Standard presented to the global board</h4>
-        <p>
-          After completing the LATAM deployment, the visualization standard was reviewed at
-          board level and selected as the reference model for Electrolux globally. The
-          templates and documentation guide moved from a regional project to a worldwide
-          standard, applied across all Electrolux companies.
-        </p>
+      <div class="scale-panel orange reveal" style="transition-delay:0.05s">
+        <p class="scale-panel-label">Global Adoption</p>
+        <h4>Presented to the board, adopted worldwide</h4>
+        <p>The visual standard was presented to Electrolux's global board. The board approved it as the company-wide standard for data visualization, extending the system beyond LATAM to Electrolux's operations globally across all affiliated companies.</p>
       </div>
-      <div class="scale-panel neutral">
-        <p class="scale-panel-label">Design Decision</p>
-        <h4>System design over one-off execution</h4>
-        <p>
-          The reason the standard could scale globally was that it was built as a system
-          from the start, not as a collection of individual dashboards. Visual consistency
-          came from rules and templates, not from having a designer present in every room.
-          That was the intended outcome.
-        </p>
+      <div class="scale-panel neutral reveal" style="transition-delay:0.1s">
+        <p class="scale-panel-label">Self-Sustaining</p>
+        <h4>Teams replicate without a designer</h4>
+        <p>The manual and template system were designed so that Electrolux teams could continue applying the standard after Dojo's engagement ended. The documentation provided enough guidance for internal analysts to create new dashboards without returning to a design team.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- OUTCOMES -->
-<section class="section" style="padding-top:clamp(3rem,5vw,4rem);">
+<section class="section" style="padding-top: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">Outcomes</p>
-    <h2 class="section-heading" style="margin-bottom:2.5rem;">Regional project, <em>global impact.</em></h2>
+    <h2 class="section-heading" style="margin-bottom:2rem;">Measurable results, <em>lasting standard.</em></h2>
     <div class="outcomes-grid">
       <div class="outcome-card reveal">
-        <span class="metric-value">5</span>
-        <span class="metric-label">Project waves delivered across LATAM with no rework on the visual standard</span>
+        <div class="metric-value">Global</div>
+        <div class="metric-label">Standard adopted by Electrolux worldwide after board presentation</div>
       </div>
       <div class="outcome-card reveal" style="transition-delay:0.05s">
-        <span class="metric-value">Global</span>
-        <span class="metric-label">Visualization standard adopted worldwide across all Electrolux companies after board review</span>
+        <div class="metric-value">5</div>
+        <div class="metric-label">Deployment waves completed across LATAM, each faster than the last</div>
       </div>
       <div class="outcome-card reveal" style="transition-delay:0.1s">
-        <span class="metric-value">0</span>
-        <span class="metric-label">Designers required to replicate the system after the documentation guide was delivered</span>
+        <div class="metric-value">2×</div>
+        <div class="metric-label">Clients served in parallel with the same methodology, Electrolux and Nidec</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- REFLECTION -->
-<section class="section" style="padding-top:0;">
+<div class="reflection-block">
   <div class="container">
-    <div class="reflection-block reveal">
-      <div class="reflection-inner">
-        <p>
-          A dashboard that requires a designer to explain it has not finished being designed.
-          The goal was a system where the documentation was the designer,
-          and the templates were the consistency. By the time the LATAM project ended,
-          a designer was not needed for the next one to look the same.
-          That is the best possible outcome for a visual system built inside a consulting engagement.
-        </p>
-      </div>
+    <div class="reflection-inner reveal">
+      <p>
+        The biggest design decision on this project was recognizing that the brief described
+        a deliverable but the actual problem was a system. Building screens without a standard
+        would have solved the immediate request and left the underlying fragmentation intact.
+        Solving for the system meant the work would outlast the engagement.
+      </p>
     </div>
   </div>
-</section>
+</div>
 
 <!-- NEXT PROJECT -->
 <div class="next-project">
   <div class="container">
-    <p class="section-label">What's next?</p>
-    <h2 class="next-project-title">More <em>case studies</em> in Selected Work.</h2>
-    <div class="work-cta-actions" style="display:flex; align-items:center; justify-content:center; gap:1rem; flex-wrap:wrap;">
-      <a href="index.html#work-preview" class="btn-primary">
-        Back to Work
-        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a href="contact.html" class="btn-secondary">Get in Touch</a>
-    </div>
+    <p class="section-label">Next Case Study</p>
+    <p class="next-project-title">Keepeye: KPI Management Platform.<br /><em>From spreadsheets to a product.</em></p>
+    <a href="project-keepeye.html" class="btn-primary">View Case Study</a>
   </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
   <div class="container footer-inner">
-    <a href="index.html" class="footer-logo">Lucas<span>.</span></a>
-    <p class="footer-copy">&copy; 2026 Lucas Nascimento. All rights reserved.</p>
-    <nav class="footer-nav" aria-label="Footer navigation">
-      <a href="index.html">Work</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+    <p class="footer-copy">&copy; 2025 Lucas Nascimento</p>
+    <div class="footer-links">
       <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
-    </nav>
+      <a href="https://www.behance.net/lucasluizdn" target="_blank" rel="noopener">Behance</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </div>
 </footer>
 
-<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-</button>
+<a href="#" class="back-to-top" aria-label="Back to top">
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 12V2M2 7l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</a>
 
 <script>
-  const io = new IntersectionObserver(
-    entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }),
-    { threshold: 0.08, rootMargin: '0px 0px -20px 0px' }
-  );
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  function toggleTheme() {
-    const html = document.documentElement;
-    const isLight = html.getAttribute('data-theme') === 'light';
-    if (isLight) {
-      html.removeAttribute('data-theme');
-      try { localStorage.setItem('theme', 'dark'); } catch (e) {}
-    } else {
-      html.setAttribute('data-theme', 'light');
-      try { localStorage.setItem('theme', 'light'); } catch (e) {}
-    }
-  }
-
-  function toggleMenu(btn) {
-    const menu = document.getElementById('mobileMenu');
-    const isOpen = menu.classList.toggle('open');
-    btn.setAttribute('aria-expanded', String(isOpen));
-    btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
-  }
-
-  (function () {
-    const navEl = document.querySelector('body > nav');
-    const backToTop = document.getElementById('backToTop');
-    const showThreshold = 120;
-    let lastY = window.scrollY;
-
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      if (y > showThreshold) {
-        navEl.classList.toggle('nav-hidden', y > lastY);
-        backToTop.classList.add('visible');
-      } else {
-        navEl.classList.remove('nav-hidden');
-        backToTop.classList.remove('visible');
-      }
-      lastY = y;
+  // Back to top
+  var btt = document.querySelector('.back-to-top');
+  if (btt) {
+    window.addEventListener('scroll', function () {
+      btt.classList.toggle('visible', window.scrollY > 400);
     }, { passive: true });
-
-    const bar = document.querySelector('.reading-progress');
-    if (bar) {
-      window.addEventListener('scroll', () => {
-        const total = document.documentElement.scrollHeight - window.innerHeight;
-        bar.style.width = (total > 0 ? (window.scrollY / total) * 100 : 0) + '%';
-      }, { passive: true });
-    }
-  })();
+    btt.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 </script>
+
 </body>
 </html>

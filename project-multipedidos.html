@@ -678,8 +678,7 @@
 
     /* ── PULL QUOTE ── */
     .pull-quote-wrap {
-      padding-top: clamp(3rem, 6vw, 4.5rem);
-      padding-bottom: clamp(2rem, 4vw, 2.5rem);
+      padding-block: clamp(2.5rem, 5vw, 4rem);
       background: var(--bg-2);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
@@ -952,7 +951,7 @@
 </section>
 
 <!-- ═══ GESTOR SCREEN ═══ -->
-<div class="container" style="padding-block: clamp(3rem, 6vw, 5rem);">
+<div class="container" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="project-full-image reveal" style="margin:0;">
     <img src="assets/projects/pedir-delivery/project-screen.png" alt="Gestor de Pedidos mockup screens" loading="lazy" />
   </div>
@@ -968,7 +967,7 @@
 </div>
 
 <!-- ═══ DESIGN SYSTEM ═══ -->
-<section class="section" style="padding-top:clamp(2rem, 4vw, 3rem); padding-bottom:0;">
+<section class="section" style="padding-bottom:0;">
   <div class="container">
     <p class="section-label">Design System</p>
     <h2 class="section-heading" style="margin-bottom:1.5rem;">Built to <em>move fast</em> without breaking things.</h2>
@@ -1012,7 +1011,7 @@
 </section>
 
 <!-- ═══ PRODUCT IMAGE ═══ -->
-<div class="container" style="padding-block: clamp(3rem, 6vw, 5rem);">
+<div class="container" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="project-full-image reveal" style="margin:0;">
     <img src="assets/projects/pedir-delivery/project-image.png" alt="Pedir.Delivery product screens" loading="lazy" />
   </div>
@@ -1215,7 +1214,7 @@
 </section>
 
 <!-- ═══ PEDIR.DELIVERY VIDEO ═══ -->
-<div class="container" style="padding-block: clamp(3rem, 6vw, 5rem);">
+<div class="container" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="project-full-image reveal" style="margin:0;">
     <video class="project-vid" autoplay loop muted playsinline preload="none"
            aria-label="Pedir.Delivery app screens walkthrough">
@@ -1326,14 +1325,14 @@
 </section>
 
 <!-- ═══ GESTOR IMAGE ═══ -->
-<div class="container" style="padding-block: clamp(3rem, 6vw, 5rem);">
+<div class="container" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="project-full-image reveal" style="margin:0;">
     <img src="assets/projects/pedir-delivery/gestor-mockup.png" alt="Gestor de Pedidos interface" loading="lazy" />
   </div>
 </div>
 
 <!-- ═══ PROCESS ═══ -->
-<section class="section bg-tinted" style="padding-top:clamp(3rem,5vw,4rem); padding-bottom:2.5rem;">
+<section class="section bg-tinted" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">Process</p>
     <h2 class="section-heading" style="margin-bottom:2.5rem;">Design that talks <em>to the whole team.</em></h2>
@@ -1403,7 +1402,7 @@
 </section>
 
 <!-- ═══ AI IN PROCESS ═══ -->
-<section class="section bg-tinted" style="padding-top:clamp(4rem,8vw,6rem); padding-bottom:2.5rem;">
+<section class="section bg-tinted" style="padding-top: 0; padding-bottom: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">The 60% Improvement</p>
     <div class="ai-statement-inner reveal">
@@ -1435,7 +1434,7 @@
 </section>
 
 <!-- ═══ OUTCOMES ═══ -->
-<section class="section" style="padding-top:clamp(3rem,5vw,4rem);">
+<section class="section" style="padding-top: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">Outcomes</p>
     <h2 class="section-heading" style="margin-bottom:2.5rem;">Impact, <em>in numbers.</em></h2>
@@ -1527,9 +1526,4 @@
       try { localStorage.setItem('theme', 'dark'); } catch (e) {}
     } else {
       html.setAttribute('data-theme', 'light');
-      try { localStorage.setItem('theme', 'light'); } catch (e) {}
-    }
-  }
-
-  function toggleMenu(btn) {
-    c
+      try { localStorage.setItem('theme', 'light'); } catch (e) 
