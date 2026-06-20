@@ -81,6 +81,7 @@
       line-height: 1.5;
     }
     .case-meta-value span { display: block; color: var(--text-3); font-size: 0.8rem; margin-top: 0.15rem; }
+    .section { padding-block: clamp(4rem, 8vw, 6rem); }
 
     /* HERO VISUAL */
     .case-hero-visual {
@@ -260,8 +261,7 @@
 
     /* PULL QUOTE */
     .pull-quote-wrap {
-      padding-top: clamp(3rem, 6vw, 4.5rem);
-      padding-bottom: clamp(2rem, 4vw, 2.5rem);
+      padding-block: clamp(2.5rem, 5vw, 4rem);
       background: var(--bg-2);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
@@ -576,7 +576,7 @@
 </div>
 
 <!-- ═══ ORIGIN ═══ -->
-<section class="section" style="padding-top:0;">
+<section class="section">
   <div class="container">
     <p class="section-label">Why this project</p>
     <h2 class="section-heading" style="margin-bottom:2rem;">Neuroscience, design, <em>and what matters.</em></h2>
@@ -603,7 +603,7 @@
 </section>
 
 <!-- ═══ PROCESS ═══ -->
-<section class="section" style="padding-top:0; padding-bottom:2.5rem;">
+<section class="section" style="padding-top:0; padding-bottom: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">How we built it</p>
     <h2 class="section-heading" style="margin-bottom:2.5rem;">Foundation first, <em>screens second.</em></h2>
@@ -720,7 +720,7 @@
 </section>
 
 <!-- ═══ RESEARCH DEPTH ═══ -->
-<section class="section" style="padding-bottom:2rem;">
+<section class="section" style="padding-bottom: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">What the research covered</p>
     <h2 class="section-heading" style="margin-bottom:0.75rem;">You cannot design for a domain <em>you haven't studied.</em></h2>
@@ -777,7 +777,7 @@
 </section>
 
 <!-- ═══ EXPERT KNOWLEDGE ═══ -->
-<section class="section bg-tinted" style="padding-bottom:0;">
+<section class="section bg-tinted" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">What domain expertise changed</p>
     <h2 class="section-heading" style="margin-bottom:2.5rem;">You cannot design this <em>from the outside.</em></h2>
@@ -822,14 +822,14 @@
 </section>
 
 <!-- PROJECT IMAGE -->
-<div class="container" style="padding-block: clamp(3rem, 6vw, 5rem);">
+<div class="container" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="project-full-image reveal" style="margin:0;">
     <img src="assets/projects/included-pixelpunk/included-project.png" alt="IncludED platform screens" loading="lazy" />
   </div>
 </div>
 
 <!-- ═══ PRODUCT MODULES ═══ -->
-<section class="section" style="padding-top:0; padding-bottom:2rem;">
+<section class="section" style="padding-bottom: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">What we built</p>
     <h2 class="section-heading" style="margin-bottom:0.75rem;">A complete layer for <em>inclusive education.</em></h2>
@@ -885,7 +885,7 @@
 </section>
 
 <!-- ═══ AI INTEGRATION ═══ -->
-<section class="section bg-tinted" style="padding-top:clamp(2rem,4vw,3rem); padding-bottom:2.5rem;">
+<section class="section bg-tinted" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">AI in IncludED</p>
     <h2 class="section-heading" style="margin-bottom:0.75rem;">Not a chatbot. <em>Eight touchpoints.</em></h2>
@@ -926,7 +926,7 @@
 </section>
 
 <!-- ═══ OUTCOMES ═══ -->
-<section class="section" style="padding-top:clamp(3rem,5vw,4rem);">
+<section class="section" style="padding-top: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">Outcomes</p>
     <h2 class="section-heading" style="margin-bottom:2.5rem;">Live in schools, <em>growing fast.</em></h2>
@@ -1033,9 +1033,4 @@
         backToTop.classList.add('visible');
       } else {
         navEl.classList.remove('nav-hidden');
-        backToTop.classList.remove('visible');
-      }
-      lastY = y;
-    }, { passive: true });
-
-    document.addE
+        backT

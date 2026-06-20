@@ -81,6 +81,7 @@
       line-height: 1.5;
     }
     .case-meta-value span { display: block; color: var(--text-3); font-size: 0.8rem; margin-top: 0.15rem; }
+    .section { padding-block: clamp(4rem, 8vw, 6rem); }
 
     /* HERO VISUAL */
     .case-hero-visual {
@@ -295,8 +296,7 @@
 
     /* PULL QUOTE */
     .pull-quote-wrap {
-      padding-top: clamp(3rem, 6vw, 4.5rem);
-      padding-bottom: clamp(2rem, 4vw, 2.5rem);
+      padding-block: clamp(2.5rem, 5vw, 4rem);
       background: var(--bg-2);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
@@ -349,6 +349,17 @@
       font-size: 0.83rem;
       color: var(--text-2);
       line-height: 1.7;
+    }
+
+    /* PROJECT IMAGE */
+    .project-full-image {
+      margin: 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .project-full-image img {
+      width: 100%;
+      display: block;
     }
 
     /* TINTED SECTION */
@@ -552,7 +563,7 @@
 </div>
 
 <!-- ═══ PROCESS ═══ -->
-<section class="section" style="padding-top:0; padding-bottom:0;">
+<section class="section" style="padding-bottom:0;">
   <div class="container">
     <p class="section-label">Process</p>
     <h2 class="section-heading" style="margin-bottom:2.5rem;">Discovery before <em>decisions.</em></h2>
@@ -634,14 +645,14 @@
 </section>
 
 <!-- ═══ WIREFRAME IMAGE ═══ -->
-<div class="container" style="padding-block: clamp(3rem, 6vw, 5rem);">
+<div class="container" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="project-full-image reveal" style="margin:0;">
     <img src="assets/projects/keepeye/keepeye-wireframe.png" alt="Keepeye wireframes and early exploration" loading="lazy" />
   </div>
 </div>
 
 <!-- ═══ RESEARCH FINDINGS ═══ -->
-<section class="section bg-tinted" style="padding-top:0; padding-bottom:2.5rem;">
+<section class="section bg-tinted" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">What Research Revealed</p>
     <h2 class="section-heading" style="margin-bottom:2.5rem;">Three patterns, <em>one clear opportunity.</em></h2>
@@ -730,14 +741,14 @@
 </section>
 
 <!-- ═══ COMPONENTS IMAGE ═══ -->
-<div class="container" style="padding-block: clamp(3rem, 6vw, 5rem);">
+<div class="container" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="project-full-image reveal" style="margin:0;">
     <img src="assets/projects/keepeye/keepeye-components.png" alt="Keepeye component library" loading="lazy" />
   </div>
 </div>
 
 <!-- ═══ VISUALS ═══ -->
-<div class="container" style="padding-block: 0 clamp(3rem, 6vw, 5rem);">
+<div class="container" style="padding-block: 0 clamp(2rem, 4vw, 3rem);">
   <div class="solution-visuals reveal">
     <div class="solution-visual">
       <img src="assets/projects/keepeye/keepeye-mockup.png" alt="Keepeye dashboard interface" loading="lazy" />
@@ -749,7 +760,7 @@
 </div>
 
 <!-- ═══ HOW I WORKED ═══ -->
-<section class="section bg-tinted" style="padding-top:clamp(2rem,4vw,3rem); padding-bottom:2.5rem;">
+<section class="section bg-tinted" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">How I Worked</p>
     <h2 class="section-heading" style="margin-bottom:2.5rem;">Designer, developer, <em>and mentor.</em></h2>
@@ -789,7 +800,7 @@
 </section>
 
 <!-- ═══ OUTCOMES ═══ -->
-<section class="section" style="padding-top:clamp(3rem,5vw,4rem);">
+<section class="section" style="padding-top: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">Outcomes</p>
     <h2 class="section-heading" style="margin-bottom:2.5rem;">The number that matters: <em>8.8 out of 10.</em></h2>
@@ -897,9 +908,4 @@
         backToTop.classList.add('visible');
       } else {
         navEl.classList.remove('nav-hidden');
-        backToTop.classList.remove('visible');
-      }
-      lastY = y;
-    }, { passive: true });
-
-    d
+ 
