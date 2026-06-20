@@ -173,6 +173,28 @@
 })();
 
 /* ═══════════════════════════════════════════════════════════
+   SCROLL REVEAL OBSERVER
+   Adds .visible to .reveal and .reveal-card elements as they
+   enter the viewport. Without this, those elements stay at
+   opacity 0 indefinitely.
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  var els = document.querySelectorAll('.reveal, .reveal-card');
+  if (!els.length) return;
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+  els.forEach(function (el) { io.observe(el); });
+})();
+
+/* ═══════════════════════════════════════════════════════════
    REVEAL-BLUR OBSERVER
    Blur + fade + translateY reveal for pull quotes, large
    headings, and high-impact sections.
