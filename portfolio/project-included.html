@@ -12,25 +12,27 @@
       } catch (e) {}
     })();
   </script>
-  <meta name="robots" content="noindex, nofollow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IncludED: Inclusive Education Platform</title>
+  <title>IncludED: Inclusive Education Platform | Lucas Nascimento</title>
   <meta name="description" content="Case study: IncludED, a BNCC-compliant SaaS for creating and managing PEIs for inclusion students, built in collaboration with a neuropsychologist and pedagogical consultant." />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://lucasdonascimento.com/project-included" />
   <meta property="og:title" content="IncludED: Inclusive Education Platform" />
   <meta property="og:description" content="How I co-founded a software company and designed an inclusive education platform from scratch, guided by a neuropsychologist and pedagogical experts." />
+  <meta property="og:url" content="https://lucasdonascimento.com/project-included" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../style.css" />
+  <script>window._ASSET_ROOT="../";</script>
   <script src="../transitions.js" defer></script>
   <noscript><style>body { opacity: 1 !important; }</style></noscript>
 
   <style>
     /* ── CASE HEADER ── */
     .case-header {
-      padding-top: clamp(3rem, 5vw, 4rem);
+      padding-top: calc(4rem + 60px);
       padding-bottom: 3rem;
       border-bottom: 1px solid var(--border);
     }
@@ -80,6 +82,7 @@
       line-height: 1.5;
     }
     .case-meta-value span { display: block; color: var(--text-3); font-size: 0.8rem; margin-top: 0.15rem; }
+    .section { padding-block: clamp(4rem, 8vw, 6rem); }
 
     /* HERO VISUAL */
     .case-hero-visual {
@@ -259,7 +262,7 @@
 
     /* PULL QUOTE */
     .pull-quote-wrap {
-      padding-block: clamp(3rem, 6vw, 5rem);
+      padding-block: clamp(2.5rem, 5vw, 4rem);
       background: var(--bg-2);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
@@ -428,14 +431,50 @@
 <body>
 <div class="page-transition-bar" aria-hidden="true"></div>
 
+<!-- ═══ NAV ═══ -->
+<nav aria-label="Main navigation">
+  <div class="container nav-inner">
+    <div class="nav-left">
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Work</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="archives.html">Archives</a></li>
+        <li><a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
 
+        <div class="nav-right">
+          <button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick="toggleTheme()">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+          <a href="contact.html" class="nav-cta">Contact</a>
+
+          <button class="nav-mobile-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMenu(this)">☰</button>
+
+        </div>
+  </div>
+  <div class="nav-mobile-menu" id="mobileMenu">
+    <a href="index.html">Work</a>
+    <a href="about.html">About Me</a>
+    <a href="archives.html">Archives</a>
+    <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="contact.html">Contact →</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick="toggleTheme()">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="label-light">Light mode</span>
+      <span class="label-dark">Dark mode</span>
+    </button>
+  </div>
+</nav>
 
 <div class="reading-progress" aria-hidden="true"></div>
 
 <!-- ═══ CASE HEADER ═══ -->
 <header class="case-header">
   <div class="container">
-    <a href="index.html" class="back-link case-header-entrance">
+    <a href="index.html#work-preview" class="back-link case-header-entrance">
       <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Back to Work
     </a>
@@ -538,7 +577,7 @@
 </div>
 
 <!-- ═══ ORIGIN ═══ -->
-<section class="section" style="padding-top:0;">
+<section class="section">
   <div class="container">
     <p class="section-label">Why this project</p>
     <h2 class="section-heading" style="margin-bottom:2rem;">Neuroscience, design, <em>and what matters.</em></h2>
@@ -565,7 +604,7 @@
 </section>
 
 <!-- ═══ PROCESS ═══ -->
-<section class="section" style="padding-top:0; padding-bottom:2.5rem;">
+<section class="section" style="padding-top:0; padding-bottom: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">How we built it</p>
     <h2 class="section-heading" style="margin-bottom:2.5rem;">Foundation first, <em>screens second.</em></h2>
@@ -682,7 +721,7 @@
 </section>
 
 <!-- ═══ RESEARCH DEPTH ═══ -->
-<section class="section" style="padding-bottom:2rem;">
+<section class="section" style="padding-bottom: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">What the research covered</p>
     <h2 class="section-heading" style="margin-bottom:0.75rem;">You cannot design for a domain <em>you haven't studied.</em></h2>
@@ -739,7 +778,7 @@
 </section>
 
 <!-- ═══ EXPERT KNOWLEDGE ═══ -->
-<section class="section bg-tinted" style="padding-bottom:0;">
+<section class="section bg-tinted" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">What domain expertise changed</p>
     <h2 class="section-heading" style="margin-bottom:2.5rem;">You cannot design this <em>from the outside.</em></h2>
@@ -784,14 +823,14 @@
 </section>
 
 <!-- PROJECT IMAGE -->
-<div class="container" style="padding-block: clamp(3rem, 6vw, 5rem);">
+<div class="container" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="project-full-image reveal" style="margin:0;">
     <img src="../assets/projects/included-pixelpunk/included-project.png" alt="IncludED platform screens" loading="lazy" />
   </div>
 </div>
 
 <!-- ═══ PRODUCT MODULES ═══ -->
-<section class="section" style="padding-top:0; padding-bottom:2rem;">
+<section class="section" style="padding-bottom: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">What we built</p>
     <h2 class="section-heading" style="margin-bottom:0.75rem;">A complete layer for <em>inclusive education.</em></h2>
@@ -847,7 +886,7 @@
 </section>
 
 <!-- ═══ AI INTEGRATION ═══ -->
-<section class="section bg-tinted" style="padding-top:clamp(2rem,4vw,3rem); padding-bottom:2.5rem;">
+<section class="section bg-tinted" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">AI in IncludED</p>
     <h2 class="section-heading" style="margin-bottom:0.75rem;">Not a chatbot. <em>Eight touchpoints.</em></h2>
@@ -888,7 +927,7 @@
 </section>
 
 <!-- ═══ OUTCOMES ═══ -->
-<section class="section" style="padding-top:clamp(3rem,5vw,4rem);">
+<section class="section" style="padding-top: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">Outcomes</p>
     <h2 class="section-heading" style="margin-bottom:2.5rem;">Live in schools, <em>growing fast.</em></h2>
@@ -928,16 +967,24 @@
         Multipedidos: Design System
         <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
+      <a href="project-electrolux.html" class="btn-secondary">Electrolux: Data Viz</a>
       <a href="project-keepeye.html" class="btn-secondary">Keepeye: KPI Platform</a>
-      <a href="index.html" class="btn-secondary">Back to Work</a>
+      <a href="index.html#work-preview" class="btn-secondary">Back to Work</a>
     </div>
   </div>
 </div>
 
 <!-- ═══ FOOTER ═══ -->
 <footer>
-  <div class="container footer-inner" style="justify-content:center;">
-    <p class="footer-copy">Product Design — Selected Case Studies</p>
+  <div class="container footer-inner">
+    <a href="index.html" class="footer-logo">Lucas<span>.</span></a>
+    <p class="footer-copy">© 2026 Lucas Nascimento. All rights reserved.</p>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
   </div>
 </footer>
 
@@ -965,6 +1012,12 @@
   }
 
   // Mobile menu
+  function toggleMenu(btn) {
+    const menu = document.getElementById('mobileMenu');
+    const isOpen = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(isOpen));
+    btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  }
 
   // Header hide on scroll down, reveal on scroll up or hover near top
   // + Back to top button
@@ -981,10 +1034,4 @@
         backToTop.classList.add('visible');
       } else {
         navEl.classList.remove('nav-hidden');
-        backToTop.classList.remove('visible');
-      }
-      lastY = y;
-    }, { passive: true });
-
-    document.addEventListener('mousemove', e => {
-      if (e.clientY <= 60) navEl.classList.remove('nav
+        backT

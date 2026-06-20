@@ -133,10 +133,11 @@
 
     // Favicon spinner centered on the curtain
     var spinner = document.createElement('img');
-    spinner.src = 'assets/icons/favicon.svg';
     spinner.className = 'curtain-spinner';
     spinner.setAttribute('alt', '');
     spinner.setAttribute('aria-hidden', 'true');
+    var _root = (typeof window._ASSET_ROOT !== 'undefined') ? window._ASSET_ROOT : '';
+    spinner.src = _root + 'assets/icons/favicon.svg';
     curtain.appendChild(spinner);
 
     document.body.appendChild(curtain);
