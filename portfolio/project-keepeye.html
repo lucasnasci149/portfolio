@@ -12,25 +12,27 @@
       } catch (e) {}
     })();
   </script>
-  <meta name="robots" content="noindex, nofollow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Keepeye: KPI Management Platform</title>
-  <meta name="description" content="Case study: Keepeye, a KPI management platform designed for Nidec GA. Product design, design system, and collaborative front-end development by Product Designer at Dojo Smart Ways." />
+  <title>Keepeye: KPI Management Platform | Lucas Nascimento</title>
+  <meta name="description" content="Case study: Keepeye, a KPI management platform designed for Nidec GA. Product design, design system, and collaborative front-end development by Lucas Nascimento at Dojo Smart Ways." />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://lucasdonascimento.com/project-keepeye" />
   <meta property="og:title" content="Keepeye: KPI Management Platform" />
   <meta property="og:description" content="From manual spreadsheets to an automated KPI management platform: a case study in product design, design systems, and collaborative front-end development." />
+  <meta property="og:url" content="https://lucasdonascimento.com/project-keepeye" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../style.css" />
+  <script>window._ASSET_ROOT="../";</script>
   <script src="../transitions.js" defer></script>
   <noscript><style>body { opacity: 1 !important; }</style></noscript>
 
   <style>
     /* ── CASE HEADER ── */
     .case-header {
-      padding-top: clamp(3rem, 5vw, 4rem);
+      padding-top: calc(4rem + 60px);
       padding-bottom: 3rem;
       border-bottom: 1px solid var(--border);
     }
@@ -80,6 +82,7 @@
       line-height: 1.5;
     }
     .case-meta-value span { display: block; color: var(--text-3); font-size: 0.8rem; margin-top: 0.15rem; }
+    .section { padding-block: clamp(4rem, 8vw, 6rem); }
 
     /* HERO VISUAL */
     .case-hero-visual {
@@ -294,7 +297,7 @@
 
     /* PULL QUOTE */
     .pull-quote-wrap {
-      padding-block: clamp(3rem, 6vw, 5rem);
+      padding-block: clamp(2.5rem, 5vw, 4rem);
       background: var(--bg-2);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
@@ -347,6 +350,17 @@
       font-size: 0.83rem;
       color: var(--text-2);
       line-height: 1.7;
+    }
+
+    /* PROJECT IMAGE */
+    .project-full-image {
+      margin: 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .project-full-image img {
+      width: 100%;
+      display: block;
     }
 
     /* TINTED SECTION */
@@ -414,14 +428,50 @@
 <body>
 <div class="page-transition-bar" aria-hidden="true"></div>
 
+<!-- ═══ NAV ═══ -->
+<nav aria-label="Main navigation">
+  <div class="container nav-inner">
+    <div class="nav-left">
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Work</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="archives.html">Archives</a></li>
+        <li><a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
 
+        <div class="nav-right">
+          <button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick="toggleTheme()">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+          <a href="contact.html" class="nav-cta">Contact</a>
+
+          <button class="nav-mobile-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMenu(this)">☰</button>
+
+        </div>
+  </div>
+  <div class="nav-mobile-menu" id="mobileMenu">
+    <a href="index.html">Work</a>
+    <a href="about.html">About Me</a>
+    <a href="archives.html">Archives</a>
+    <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="contact.html">Contact →</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick="toggleTheme()">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="label-light">Light mode</span>
+      <span class="label-dark">Dark mode</span>
+    </button>
+  </div>
+</nav>
 
 <div class="reading-progress" aria-hidden="true"></div>
 
 <!-- ═══ CASE HEADER ═══ -->
 <header class="case-header">
   <div class="container">
-    <a href="index.html" class="back-link case-header-entrance">
+    <a href="index.html#work-preview" class="back-link case-header-entrance">
       <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Back to Work
     </a>
@@ -514,7 +564,7 @@
 </div>
 
 <!-- ═══ PROCESS ═══ -->
-<section class="section" style="padding-top:0; padding-bottom:0;">
+<section class="section" style="padding-bottom:0;">
   <div class="container">
     <p class="section-label">Process</p>
     <h2 class="section-heading" style="margin-bottom:2.5rem;">Discovery before <em>decisions.</em></h2>
@@ -596,14 +646,14 @@
 </section>
 
 <!-- ═══ WIREFRAME IMAGE ═══ -->
-<div class="container" style="padding-block: clamp(3rem, 6vw, 5rem);">
+<div class="container" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="project-full-image reveal" style="margin:0;">
     <img src="../assets/projects/keepeye/keepeye-wireframe.png" alt="Keepeye wireframes and early exploration" loading="lazy" />
   </div>
 </div>
 
 <!-- ═══ RESEARCH FINDINGS ═══ -->
-<section class="section bg-tinted" style="padding-top:0; padding-bottom:2.5rem;">
+<section class="section bg-tinted" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">What Research Revealed</p>
     <h2 class="section-heading" style="margin-bottom:2.5rem;">Three patterns, <em>one clear opportunity.</em></h2>
@@ -692,14 +742,14 @@
 </section>
 
 <!-- ═══ COMPONENTS IMAGE ═══ -->
-<div class="container" style="padding-block: clamp(3rem, 6vw, 5rem);">
+<div class="container" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="project-full-image reveal" style="margin:0;">
     <img src="../assets/projects/keepeye/keepeye-components.png" alt="Keepeye component library" loading="lazy" />
   </div>
 </div>
 
 <!-- ═══ VISUALS ═══ -->
-<div class="container" style="padding-block: 0 clamp(3rem, 6vw, 5rem);">
+<div class="container" style="padding-block: 0 clamp(2rem, 4vw, 3rem);">
   <div class="solution-visuals reveal">
     <div class="solution-visual">
       <img src="../assets/projects/keepeye/keepeye-mockup.png" alt="Keepeye dashboard interface" loading="lazy" />
@@ -711,7 +761,7 @@
 </div>
 
 <!-- ═══ HOW I WORKED ═══ -->
-<section class="section bg-tinted" style="padding-top:clamp(2rem,4vw,3rem); padding-bottom:2.5rem;">
+<section class="section bg-tinted" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">How I Worked</p>
     <h2 class="section-heading" style="margin-bottom:2.5rem;">Designer, developer, <em>and mentor.</em></h2>
@@ -751,7 +801,7 @@
 </section>
 
 <!-- ═══ OUTCOMES ═══ -->
-<section class="section" style="padding-top:clamp(3rem,5vw,4rem);">
+<section class="section" style="padding-top: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">Outcomes</p>
     <h2 class="section-heading" style="margin-bottom:2.5rem;">The number that matters: <em>8.8 out of 10.</em></h2>
@@ -787,18 +837,27 @@
     <p class="section-label">What's next?</p>
     <h2 class="next-project-title">More <em>case studies</em> in Selected Work.</h2>
     <div class="work-cta-actions" style="display:flex; align-items:center; justify-content:center; gap:1rem; flex-wrap:wrap;">
-      <a href="index.html" class="btn-primary">
-        Back to Work
+      <a href="project-multipedidos.html" class="btn-primary">
+        Multipedidos: Design System
         <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
+      <a href="project-electrolux.html" class="btn-secondary">Electrolux: Data Viz</a>
+      <a href="index.html#work-preview" class="btn-secondary">Back to Work</a>
     </div>
   </div>
 </div>
 
 <!-- ═══ FOOTER ═══ -->
 <footer>
-  <div class="container footer-inner" style="justify-content:center;">
-    <p class="footer-copy">Product Design — Selected Case Studies</p>
+  <div class="container footer-inner">
+    <a href="index.html" class="footer-logo">Lucas<span>.</span></a>
+    <p class="footer-copy">© 2026 Lucas Nascimento. All rights reserved.</p>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
   </div>
 </footer>
 
@@ -828,6 +887,12 @@
   }
 
   // Mobile menu
+  function toggleMenu(btn) {
+    const menu = document.getElementById('mobileMenu');
+    const isOpen = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(isOpen));
+    btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  }
 
   // Header hide on scroll down, reveal on scroll up or hover near top
   // + Back to top button
@@ -844,11 +909,4 @@
         backToTop.classList.add('visible');
       } else {
         navEl.classList.remove('nav-hidden');
-        backToTop.classList.remove('visible');
-      }
-      lastY = y;
-    }, { passive: true });
-
-    document.addEventListener('mousemove', e => {
-      if (e.clientY <= 60) navEl.classList.remove('nav-hidden');
-    }
+ 

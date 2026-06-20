@@ -12,25 +12,27 @@
       } catch (e) {}
     })();
   </script>
-  <meta name="robots" content="noindex, nofollow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Multipedidos: Design System &amp; Product Design</title>
+  <title>Multipedidos: Design System &amp; Product Design | Lucas Nascimento</title>
   <meta name="description" content="Case study: Multipedidos, building a token-driven design system at 10M+ monthly accesses and reducing prototype delivery time by 60% with AI-assisted workflow." />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://lucasdonascimento.com/project-multipedidos" />
   <meta property="og:title" content="Multipedidos: Design System &amp; Product Design" />
   <meta property="og:description" content="How I built a design system, reduced prototype delivery by 60%, and designed for 10M+ monthly accesses as the sole designer at a food-tech company." />
+  <meta property="og:url" content="https://lucasdonascimento.com/project-multipedidos" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../style.css" />
+  <script>window._ASSET_ROOT="../";</script>
   <script src="../transitions.js" defer></script>
   <noscript><style>body { opacity: 1 !important; }</style></noscript>
 
   <style>
     /* ── CASE HEADER ── */
     .case-header {
-      padding-top: clamp(3rem, 5vw, 4rem);
+      padding-top: calc(4rem + 60px);
       padding-bottom: 3rem;
       border-bottom: 1px solid var(--border);
     }
@@ -677,7 +679,7 @@
 
     /* ── PULL QUOTE ── */
     .pull-quote-wrap {
-      padding-block: clamp(3rem, 6vw, 5rem);
+      padding-block: clamp(2.5rem, 5vw, 4rem);
       background: var(--bg-2);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
@@ -799,14 +801,50 @@
 <body>
 <div class="page-transition-bar" aria-hidden="true"></div>
 
+<!-- ═══ NAV ═══ -->
+<nav aria-label="Main navigation">
+  <div class="container nav-inner">
+    <div class="nav-left">
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Work</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="archives.html">Archives</a></li>
+        <li><a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
 
+        <div class="nav-right">
+          <button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick="toggleTheme()">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+          <a href="contact.html" class="nav-cta">Contact</a>
+
+          <button class="nav-mobile-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMenu(this)">☰</button>
+
+        </div>
+  </div>
+  <div class="nav-mobile-menu" id="mobileMenu">
+    <a href="index.html">Work</a>
+    <a href="about.html">About Me</a>
+    <a href="archives.html">Archives</a>
+    <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="contact.html">Contact →</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick="toggleTheme()">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="label-light">Light mode</span>
+      <span class="label-dark">Dark mode</span>
+    </button>
+  </div>
+</nav>
 
 <div class="reading-progress" aria-hidden="true"></div>
 
 <!-- ═══ CASE HEADER ═══ -->
 <header class="case-header">
   <div class="container">
-    <a href="index.html" class="back-link case-header-entrance">
+    <a href="index.html#work-preview" class="back-link case-header-entrance">
       <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Back to Work
     </a>
@@ -914,7 +952,7 @@
 </section>
 
 <!-- ═══ GESTOR SCREEN ═══ -->
-<div class="container" style="padding-block: clamp(3rem, 6vw, 5rem);">
+<div class="container" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="project-full-image reveal" style="margin:0;">
     <img src="../assets/projects/pedir-delivery/project-screen.png" alt="Gestor de Pedidos mockup screens" loading="lazy" />
   </div>
@@ -930,7 +968,7 @@
 </div>
 
 <!-- ═══ DESIGN SYSTEM ═══ -->
-<section class="section" style="padding-top:clamp(2rem, 4vw, 3rem); padding-bottom:0;">
+<section class="section" style="padding-bottom:0;">
   <div class="container">
     <p class="section-label">Design System</p>
     <h2 class="section-heading" style="margin-bottom:1.5rem;">Built to <em>move fast</em> without breaking things.</h2>
@@ -974,7 +1012,7 @@
 </section>
 
 <!-- ═══ PRODUCT IMAGE ═══ -->
-<div class="container" style="padding-block: clamp(3rem, 6vw, 5rem);">
+<div class="container" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="project-full-image reveal" style="margin:0;">
     <img src="../assets/projects/pedir-delivery/project-image.png" alt="Pedir.Delivery product screens" loading="lazy" />
   </div>
@@ -1177,7 +1215,7 @@
 </section>
 
 <!-- ═══ PEDIR.DELIVERY VIDEO ═══ -->
-<div class="container" style="padding-block: clamp(3rem, 6vw, 5rem);">
+<div class="container" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="project-full-image reveal" style="margin:0;">
     <video class="project-vid" autoplay loop muted playsinline preload="none"
            aria-label="Pedir.Delivery app screens walkthrough">
@@ -1288,14 +1326,14 @@
 </section>
 
 <!-- ═══ GESTOR IMAGE ═══ -->
-<div class="container" style="padding-block: clamp(3rem, 6vw, 5rem);">
+<div class="container" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="project-full-image reveal" style="margin:0;">
     <img src="../assets/projects/pedir-delivery/gestor-mockup.png" alt="Gestor de Pedidos interface" loading="lazy" />
   </div>
 </div>
 
 <!-- ═══ PROCESS ═══ -->
-<section class="section bg-tinted" style="padding-top:clamp(3rem,5vw,4rem); padding-bottom:2.5rem;">
+<section class="section bg-tinted" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">Process</p>
     <h2 class="section-heading" style="margin-bottom:2.5rem;">Design that talks <em>to the whole team.</em></h2>
@@ -1365,7 +1403,7 @@
 </section>
 
 <!-- ═══ AI IN PROCESS ═══ -->
-<section class="section bg-tinted" style="padding-top:clamp(4rem,8vw,6rem); padding-bottom:2.5rem;">
+<section class="section bg-tinted" style="padding-top: 0; padding-bottom: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">The 60% Improvement</p>
     <div class="ai-statement-inner reveal">
@@ -1397,7 +1435,7 @@
 </section>
 
 <!-- ═══ OUTCOMES ═══ -->
-<section class="section" style="padding-top:clamp(3rem,5vw,4rem);">
+<section class="section" style="padding-top: clamp(2rem, 4vw, 3rem);">
   <div class="container">
     <p class="section-label">Outcomes</p>
     <h2 class="section-heading" style="margin-bottom:2.5rem;">Impact, <em>in numbers.</em></h2>
@@ -1437,16 +1475,24 @@
         Keepeye: KPI Platform
         <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
+      <a href="project-electrolux.html" class="btn-secondary">Electrolux: Data Viz</a>
       <a href="project-included.html" class="btn-secondary">IncludED: EdTech SaaS</a>
-      <a href="index.html" class="btn-secondary">Back to Work</a>
+      <a href="index.html#work-preview" class="btn-secondary">Back to Work</a>
     </div>
   </div>
 </div>
 
 <!-- ═══ FOOTER ═══ -->
 <footer>
-  <div class="container footer-inner" style="justify-content:center;">
-    <p class="footer-copy">Product Design — Selected Case Studies</p>
+  <div class="container footer-inner">
+    <a href="index.html" class="footer-logo">Lucas<span>.</span></a>
+    <p class="footer-copy">© 2026 Lucas Nascimento. All rights reserved.</p>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
   </div>
 </footer>
 
@@ -1481,10 +1527,4 @@
       try { localStorage.setItem('theme', 'dark'); } catch (e) {}
     } else {
       html.setAttribute('data-theme', 'light');
-      try { localStorage.setItem('theme', 'light'); } catch (e) {}
-    }
-  }
-
-  function toggleMenu(btn) {
-    const menu = document.getElementById('mobileMenu');
-    const isOpen = menu.classList.to
+      try { localStorage.setItem('theme', 'light'); } catch (e) 

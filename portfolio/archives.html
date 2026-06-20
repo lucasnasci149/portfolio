@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('theme') === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Archives: Lucas Nascimento, Lead Product Designer</title>
+  <meta name="description" content="Archives: branding, game design, photography, and other creative projects by Lucas Nascimento, outside of product design work." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://lucasdonascimento.com/archives" />
+  <meta property="og:title" content="Archives: Lucas Nascimento" />
+  <meta property="og:description" content="Branding, game design, photography, and other creative projects outside of product design." />
+  <meta property="og:url" content="https://lucasdonascimento.com/archives" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <script>window._ASSET_ROOT="../";</script>
+  <script src="../transitions.js" defer></script>
+  <noscript><style>body { opacity: 1 !important; }</style></noscript>
+
+  <style>
+    /* PAGE HEADER */
+    .page-header {
+      padding-top: calc(4rem + 60px);
+      padding-bottom: 3.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header-inner {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .page-title {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+    }
+    .page-title em { font-style: italic; color: var(--accent-text); }
+    .page-subtitle {
+      font-size: 1rem;
+      color: var(--text-2);
+      max-width: 460px;
+      line-height: 1.7;
+      margin-top: 1rem;
+    }
+    .project-count {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--text-3);
+      flex-shrink: 0;
+      align-self: flex-end;
+      padding-bottom: 0.25rem;
+    }
+    .project-count span { color: var(--text-2); }
+
+    /* BEHANCE NOTE */
+    .behance-note {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+      font-size: 0.82rem;
+      color: var(--text-3);
+    }
+    .behance-note a {
+      color: var(--text-2);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color var(--transition);
+    }
+    .behance-note a:hover { color: var(--accent-text); }
+
+    /* FILTERS */
+    .filters-bar {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .filters-inner {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      background: transparent;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .filter-btn:hover { color: var(--text-1); border-color: var(--border-hover); }
+    .filter-btn:active { transform: scale(0.95); }
+    .filter-btn.active {
+      background: var(--accent);
+      color: #0c0c0c;
+      border-color: transparent;
+    }
+
+    /* PROJECTS GRID */
+    .projects-section { padding-top: 3.5rem; padding-bottom: 6rem; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .span-4  { grid-column: span 4; }
+    .span-6  { grid-column: span 6; }
+
+    .project-item { display: flex; flex-direction: column; }
+    .project-item .case-card { flex: 1; display: flex; flex-direction: column; }
+    .project-item .case-card-body { flex: 1; }
+
+    .case-card .case-card-visual { min-height: 260px; }
+
+    /* Hidden cards (filtered) */
+    .project-item { transition: opacity 0.3s ease, transform 0.3s ease; }
+    .project-item.hidden { display: none; }
+
+    /* EMPTY STATE */
+    .empty-state {
+      grid-column: span 12;
+      text-align: center;
+      padding: 5rem 2rem;
+      color: var(--text-3);
+      font-size: 0.9rem;
+    }
+
+    /* CTA at the bottom */
+    .work-cta {
+      padding-block: 5rem;
+      text-align: center;
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+    }
+    .work-cta-heading {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .work-cta-sub {
+      font-size: 1rem;
+      color: var(--text-2);
+      margin-bottom: 2rem;
+    }
+    .work-cta-actions { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .span-4, .span-6 { grid-column: span 12; }
+    }
+    @media (max-width: 640px) {
+      .page-header-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-transition-bar" aria-hidden="true"></div>
+
+<!-- ═══ NAV ═══ -->
+<nav aria-label="Main navigation">
+  <div class="container nav-inner">
+    <div class="nav-left">
+      <ul class="nav-links">
+        <li><a href="index.html">Work</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="archives.html" class="active">Archives</a></li>
+        <li><a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+
+        <div class="nav-right">
+          <button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick="toggleTheme()">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+          <a href="contact.html" class="nav-cta">Contact</a>
+
+          <button class="nav-mobile-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMenu(this)">☰</button>
+
+        </div>
+  </div>
+  <div class="nav-mobile-menu" id="mobileMenu">
+    <a href="index.html">Work</a>
+    <a href="about.html">About Me</a>
+    <a href="archives.html">Archives</a>
+    <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="contact.html">Contact →</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick="toggleTheme()">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="label-light">Light mode</span>
+      <span class="label-dark">Dark mode</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="container page-header-inner">
+    <div>
+      <p class="section-label">Beyond Product Design</p>
+      <h1 class="page-title">Branding, games<br /><em>and other stories.</em></h1>
+      <p class="page-subtitle">A collection of personal and freelance creative work: branding and visual identity, game design, photography, and other projects outside the product design world.</p>
+      <p class="behance-note">
+        <span aria-hidden="true">🔗</span>
+        All projects below are hosted on <a href="https://www.behance.net/lucasluiznascimento" target="_blank" rel="noopener noreferrer">Behance</a>.
+      </p>
+    </div>
+    <p class="project-count">
+      <span id="visibleCount">3</span> projects
+    </p>
+  </div>
+</header>
+
+<!-- ═══ FILTERS ═══ -->
+<div class="filters-bar" role="navigation" aria-label="Filter projects">
+  <div class="container filters-inner">
+    <button class="filter-btn active" data-filter="all" onclick="filterProjects('all', this)">All</button>
+    <button class="filter-btn" data-filter="branding" onclick="filterProjects('branding', this)">Branding</button>
+    <button class="filter-btn" data-filter="game-design" onclick="filterProjects('game-design', this)">Game Design</button>
+    <button class="filter-btn" data-filter="photography" onclick="filterProjects('photography', this)">Photography</button>
+  </div>
+</div>
+
+<!-- ═══ PROJECTS ═══ -->
+<main class="projects-section">
+  <div class="container">
+    <div class="projects-grid" id="projectsGrid">
+
+      <!-- ── YBY Branding ── -->
+      <div class="project-item span-4 reveal" data-categories="branding">
+        <article class="case-card" tabindex="0">
+          <div class="case-card-visual"><img src="../assets/projects/yby/yby-cover.jpg" alt="YBY Real Estate Developer Branding" loading="lazy" /></div>
+          <div class="case-card-body">
+            <div class="case-tags"><span class="tag">Branding</span><span class="tag">Real Estate</span></div>
+            <p class="case-meta">YBY · 2024</p>
+            <h2 class="case-title">YBY: Real Estate Developer Branding</h2>
+            <p class="case-description">Complete brand identity for a real estate developer: visual strategy, logo system, and brand guidelines.</p>
+            <a href="https://www.behance.net/gallery/221211375/YBY-Branding-Identity-Real-Estate-Developer" target="_blank" rel="noopener" class="case-link">View on Behance <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+          </div>
+        </article>
+      </div>
+
+      <!-- ── Game Design: Taken ── -->
+      <div class="project-item span-4 reveal" style="transition-delay:0.05s" data-categories="branding game-design">
+        <article class="case-card" tabindex="0">
+          <div class="case-card-visual"><img src="../assets/projects/taken/taken-cover.jpg" alt="Game Design: Taken" loading="lazy" /></div>
+          <div class="case-card-body">
+            <div class="case-tags"><span class="tag">Game Design</span><span class="tag">Branding</span></div>
+            <p class="case-meta">Taken · 2023</p>
+            <h2 class="case-title">Game Design: Taken</h2>
+            <p class="case-description">Visual identity and game design project: character design, UI concepts, and brand identity.</p>
+            <a href="https://www.behance.net/gallery/184055135/Game-Design-Taken" target="_blank" rel="noopener" class="case-link">View on Behance <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+          </div>
+        </article>
+      </div>
+
+      <!-- ── Estúdio 149 Personal Brand ── -->
+      <div class="project-item span-4 reveal" style="transition-delay:0.1s" data-categories="branding">
+        <article class="case-card" tabindex="0">
+          <div class="case-card-visual"><img src="../assets/projects/estudio149/estudio-cover.png" alt="Estúdio 149 Personal Branding" loading="lazy" /></div>
+          <div class="case-card-body">
+            <div class="case-tags"><span class="tag">Personal Brand</span><span class="tag">Branding</span></div>
+            <p class="case-meta">Estúdio 149 · 2018</p>
+            <h2 class="case-title">Estúdio 149: Personal Branding</h2>
+            <p class="case-description">Personal studio brand identity: naming, logo design, visual system, and brand collateral for Estúdio 149.</p>
+            <a href="https://www.behance.net/gallery/60353163/Estudio-149-Personal-Branding" target="_blank" rel="noopener" class="case-link">View on Behance <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+          </div>
+        </article>
+      </div>
+
+      <!-- EMPTY STATE (shown when filter returns nothing) -->
+      <div class="empty-state" id="emptyState" style="display:none;">
+        <p style="font-size:2rem; margin-bottom:0.75rem;" aria-hidden="true">🔍</p>
+        No projects in this category yet. <a href="#" onclick="filterProjects('all', document.querySelector('[data-filter=all]')); return false;" style="color:var(--accent-text);">View all</a>
+      </div>
+
+    </div><!-- /projects-grid -->
+  </div>
+</main>
+
+<!-- ═══ CTA ═══ -->
+<div class="work-cta">
+  <div class="container">
+    <p class="section-label" style="text-align:center;">What's next?</p>
+    <h2 class="work-cta-heading">Looking for product design work?</h2>
+    <p class="work-cta-sub">Check out my product design case studies, or get in touch about a project.</p>
+    <div class="work-cta-actions">
+      <a href="index.html#work-preview" class="btn-primary">
+        View Selected Work
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="contact.html" class="btn-secondary">Get in Touch</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container footer-inner">
+    <a href="index.html" class="footer-logo">Lucas<span>.</span></a>
+    <p class="footer-copy">© 2026 Lucas Nascimento. All rights reserved.</p>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
+  // Scroll reveal
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }),
+    { threshold: 0.08, rootMargin: '0px 0px -20px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Theme toggle
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isLight = html.getAttribute('data-theme') === 'light';
+    if (isLight) {
+      html.removeAttribute('data-theme');
+      try { localStorage.setItem('theme', 'dark'); } catch (e) {}
+    } else {
+      html.setAttribute('data-theme', 'light');
+      try { localStorage.setItem('theme', 'light'); } catch (e) {}
+    }
+  }
+
+  // Mobile menu
+  function toggleMenu(btn) {
+    const menu = document.getElementById('mobileMenu');
+    const isOpen = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(isOpen));
+    btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  }
+
+  // Filter
+  function filterProjects(category, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const items = document.querySelectorAll('.project-item');
+    let visible = 0;
+
+    items.forEach(item => {
+      const cats = item.dataset.categories || '';
+      const show = category === 'all' || cats.includes(category);
+      item.classList.toggle('hidden', !show);
+      if (show) visible++;
+    });
+
+    document.getElementById('visibleCount').textContent = visible;
+    document.getElementById('emptyState').style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  // Header hide on scroll down, reveal on scroll up or hover near top
+  // + Back to top button
+  (function () {
+    const navEl = document.querySelector('body > nav');
+    const backToTop = document.getElementById('backToTop');
+    const showThreshold = 120;
+    let lastY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > showThreshold) {
+        navEl.classList.toggle('nav-hidden', y > lastY);
+        backToTop.classList.add('visible');
+      } else {
+        navEl.classList.remove('nav-hidden');
+        backToTop.classList.remove('visible');
+      }
+      lastY = y;
+    }, { passive: true });
+
+    document.addEventListener('mousemove', e => {
+      if (e.clientY <= 60) navEl.classList.remove('nav-hidden');
+    });
+  })();
+</script>
+</body>
+</html>

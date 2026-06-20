@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('theme') === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Lucas Nascimento, Lead Product Designer</title>
+  <meta name="description" content="Get to know Lucas Nascimento: Lead Product Designer with 11+ years of experience, also a musician and storyteller. Career, experience, and services." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://lucasdonascimento.com/about" />
+  <meta property="og:title" content="About Lucas Nascimento" />
+  <meta property="og:description" content="Designer, musician, and storyteller. 11+ years building digital products and design cultures from scratch." />
+  <meta property="og:url" content="https://lucasdonascimento.com/about" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <script>window._ASSET_ROOT="../";</script>
+  <script src="../transitions.js" defer></script>
+  <noscript><style>body { opacity: 1 !important; }</style></noscript>
+
+  <style>
+    /* ── ABOUT HERO ── */
+    #about-hero {
+      padding-top: calc(5rem + 60px);
+      padding-bottom: 5rem;
+      text-align: center;
+    }
+    .about-hero-name {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(3rem, 9vw, 6.5rem);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin: 0.75rem 0 1.25rem;
+    }
+    .about-hero-tagline {
+      font-size: 1.05rem;
+      color: var(--text-2);
+      max-width: 860px;
+      margin: 0 auto 1.25rem;
+      line-height: 1.7;
+    }
+    .about-hero-tagline strong { color: var(--text-1); font-weight: 500; }
+    .about-hero-text {
+      font-size: 0.975rem;
+      color: var(--text-2);
+      max-width: 820px;
+      margin: 0 auto 3rem;
+      line-height: 1.8;
+    }
+    .about-hero-text strong { color: var(--text-1); font-weight: 500; }
+    .about-hero-photo {
+      position: relative;
+      width: 100%;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .about-hero-photo img,
+    .about-hero-photo video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ── BIO SPLIT (title left / text right) ── */
+    .bio-split { border-top: 1px solid var(--border); }
+    .bio-split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .bio-split-heading {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .bio-split-heading .dim { color: var(--text-3); }
+    .bio-split-text h3 {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+      margin-bottom: 1.5rem;
+      color: var(--text-1);
+    }
+    .bio-split-text .about-text:last-child { margin-bottom: 0; }
+
+    /* ── I'M A ___ HEADINGS (used inside scroll story) ── */
+    .im-a-heading {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .im-a-heading em { font-style: italic; color: var(--accent-text); }
+    .im-a-intro { font-size: 0.95rem; color: var(--text-2); line-height: 1.8; }
+    .im-a-intro strong { color: var(--text-1); font-weight: 500; }
+
+    /* ── SCROLL STORY (left photos scroll as one column, right text sticks centered) ── */
+    .scroll-story { }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 4rem;
+      padding-block: 5rem;
+    }
+    .story-photos {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .story-photo-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .story-photo-group .story-photo:nth-child(2n) { margin-top: 3rem; }
+    .story-photo {
+      position: relative;
+      aspect-ratio: 4/5;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--bg-3) 0%, var(--bg-4) 100%);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      transition: transform 0.6s var(--ease);
+    }
+    .story-photo:hover { transform: scale(1.03); }
+    .story-photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .story-photo-caption {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.1rem;
+      background: linear-gradient(180deg, rgba(12,12,12,0) 35%, rgba(12,12,12,0.92) 100%);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
+    }
+    .story-photo:hover .story-photo-caption { opacity: 1; transform: translateY(0); }
+    .story-photo-caption p {
+      font-size: 0.78rem;
+      color: var(--text-1);
+      line-height: 1.5;
+      font-style: italic;
+    }
+    .story-texts {
+      display: flex;
+      flex-direction: column;
+    }
+    .story-text-block {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+    }
+    .story-text {
+      position: sticky;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .story-text .im-a-heading { margin-bottom: 1.25rem; }
+
+    /* ── SCROLL STORY: fluid crossfade between "I'm a ___" blocks ── */
+    @media (min-width: 901px) {
+      .story-text-block .im-a-heading.reveal,
+      .story-text-block .im-a-intro.reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        filter: blur(6px);
+        transition: opacity 0.7s var(--ease), transform 0.7s var(--ease), filter 0.7s var(--ease);
+      }
+      .story-text-block.active .im-a-heading.reveal,
+      .story-text-block.active .im-a-intro.reveal {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+      .story-text-block.active .im-a-intro.reveal { transition-delay: 0.12s; }
+    }
+
+    /* ── CLOSING ── */
+    .about-closing {
+      text-align: center;
+      padding: 6rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .about-closing-heading {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    .about-closing-heading em { font-style: italic; color: var(--accent-text); }
+    .about-closing-text {
+      font-size: 0.975rem;
+      color: var(--text-2);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.8;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .bio-split-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .story-grid { grid-template-columns: 1fr; gap: 2rem; padding-block: 3rem; }
+      .story-texts { order: -1; }
+      .story-text-block { min-height: auto; padding-bottom: 2rem; }
+      .story-text { position: static; transform: none; }
+    }
+    @media (max-width: 640px) {
+      .about-hero-photo { aspect-ratio: 4/5; }
+      .story-photo-group { grid-template-columns: 1fr; }
+      .story-photo-group .story-photo:nth-child(2n) { margin-top: 0; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-transition-bar" aria-hidden="true"></div>
+
+<!-- ═══ NAV ═══ -->
+<nav aria-label="Main navigation">
+  <div class="container nav-inner">
+    <div class="nav-left">
+      <ul class="nav-links">
+        <li><a href="index.html">Work</a></li>
+        <li><a href="about.html" class="active">About Me</a></li>
+        <li><a href="archives.html">Archives</a></li>
+        <li><a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+
+        <div class="nav-right">
+          <button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick="toggleTheme()">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+          <a href="contact.html" class="nav-cta">Contact</a>
+
+          <button class="nav-mobile-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMenu(this)">☰</button>
+
+        </div>
+  </div>
+  <div class="nav-mobile-menu" id="mobileMenu">
+    <a href="index.html">Work</a>
+    <a href="about.html">About Me</a>
+    <a href="archives.html">Archives</a>
+    <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="contact.html">Contact →</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick="toggleTheme()">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="label-light">Light mode</span>
+      <span class="label-dark">Dark mode</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ ABOUT HERO ═══ -->
+<section id="about-hero" class="section" aria-label="About Lucas">
+  <div class="container">
+    <p class="section-label reveal">About</p>
+    <h1 class="about-hero-name reveal" style="transition-delay:0.05s">Lucas Nascimento</h1>
+    <p class="about-hero-tagline reveal" style="transition-delay:0.1s">
+      <strong>Lead Product Designer</strong> based in Joinville, Brazil, also a musician and a storyteller.
+    </p>
+    <p class="about-hero-text reveal" style="transition-delay:0.15s">
+      I design digital products end to end, from research and strategy to interface and
+      front-end code. Outside of product work, music and storytelling are quiet habits that
+      shape how I think about rhythm, structure, and communication in design.
+    </p>
+    <div class="about-hero-photo reveal" style="transition-delay:0.2s">
+      <video autoplay muted loop playsinline>
+        <source src="../assets/about-story/header.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BIO ═══ -->
+<section class="section bio-split" aria-label="More about Lucas">
+  <div class="container">
+    <div class="bio-split-grid">
+      <h2 class="bio-split-heading reveal">
+        Brazilian.<br/>
+        Product designer.<br/>
+        <span class="dim">Builder, musician<br/>&amp; storyteller.</span>
+      </h2>
+      <div class="bio-split-text reveal" style="transition-delay:0.1s">
+        <h3>...a bit more about me</h3>
+        <p class="about-text">
+          I'm a Product Designer with <strong>11+ years</strong> across multiple disciplines:
+          product design, design systems, data visualization, branding, front-end development,
+          and audiovisual. That breadth isn't scattered: it's what lets me move between
+          strategy and execution without losing the thread of either.
+        </p>
+        <p class="about-text">
+          Most of my career has been spent entering companies with little to no design structure
+          and leaving them with <strong>processes, systems, and culture</strong> that continue
+          long after. I've built three product design sectors from scratch, created design systems
+          adopted globally, and co-founded a software company whose first product is already
+          running in schools across Brazil.
+        </p>
+        <p class="about-text">
+          I believe design is fundamentally about <strong>storytelling</strong>: whether it's
+          a product narrative, a dashboard that makes millions of data points readable, or a
+          visual system that gives distributed teams a shared language. That's the same thread
+          running through my music, my case studies, and how I run a design critique.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ I'M A... (SCROLL STORY) ═══ -->
+<section class="scroll-story" aria-label="More about Lucas as a person">
+  <div class="container story-grid">
+
+    <div class="story-photos">
+      <!-- I'M A DESIGNER -->
+      <div class="story-photo-group">
+        <div class="story-photo reveal">
+          <img src="../assets/about-story/01.jpg" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>Professional travel planner. Execution rate: roughly 1 in 10.</p></div>
+        </div>
+        <div class="story-photo reveal" style="transition-delay:0.05s">
+          <img src="../assets/about-story/02.jpg" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>Maker of what is very likely the best Carbonara on my street. Uncontested.</p></div>
+        </div>
+        <div class="story-photo reveal" style="transition-delay:0.1s">
+          <img src="../assets/about-story/03.jpg" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>Games and stories have always been the same thing to me: worlds worth getting lost in.</p></div>
+        </div>
+        <div class="story-photo reveal" style="transition-delay:0.15s">
+          <img src="../assets/about-story/04.jpg" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>Commonly spotted behind a camera, quietly documenting things nobody asked me to.</p></div>
+        </div>
+      </div>
+
+      <!-- I'M A MUSICIAN -->
+      <div class="story-photo-group">
+        <div class="story-photo reveal">
+          <img src="../assets/about-story/05.jpg" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>If I'm not home, there's a good chance I'm at a festival somewhere.</p></div>
+        </div>
+        <div class="story-photo reveal" style="transition-delay:0.05s">
+          <img src="../assets/about-story/06.jpg" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>I've been a musician for more than half my life. It started as a habit and never stopped.</p></div>
+        </div>
+        <div class="story-photo reveal" style="transition-delay:0.1s">
+          <img src="../assets/about-story/07.jpeg" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>Active part of the local music and audiovisual community, for better or worse.</p></div>
+        </div>
+        <div class="story-photo reveal" style="transition-delay:0.15s">
+          <img src="../assets/about-story/08.jpg" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>Always chasing ways to collapse the line between audio and image into something new.</p></div>
+        </div>
+      </div>
+
+      <!-- I'M A STORYTELLER -->
+      <div class="story-photo-group">
+        <div class="story-photo reveal">
+          <img src="../assets/about-story/09.jpg" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>Passionate about finding another angle for the ordinary, one frame at a time.</p></div>
+        </div>
+        <div class="story-photo reveal" style="transition-delay:0.05s">
+          <img src="../assets/about-story/10.JPG" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>Composing, writing, and spending an unreasonable amount of time thinking about time.</p></div>
+        </div>
+        <div class="story-photo reveal" style="transition-delay:0.1s">
+          <img src="../assets/about-story/11.jpeg" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>Architecture fan. The kind who walks slowly past buildings other people rush by.</p></div>
+        </div>
+        <div class="story-photo reveal" style="transition-delay:0.15s">
+          <img src="../assets/about-story/12.jpg" alt="" loading="lazy" />
+          <div class="story-photo-caption"><p>Genuinely obsessed with medieval culture, history, and the aesthetics of that whole era.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="story-texts">
+      <div class="story-text-block">
+        <div class="story-text">
+          <h2 class="im-a-heading reveal">I'm a <em>designer.</em></h2>
+          <p class="im-a-intro reveal" style="transition-delay:0.1s">
+            Design is where I spend most of my hours, and most of my curiosity. I care about
+            <strong>systems over screens</strong>: the logic, tokens, and patterns that make a
+            product feel coherent at scale. I'm equally comfortable leading discovery, drawing the
+            details, and writing the front-end code that brings a component to life.
+          </p>
+        </div>
+      </div>
+
+      <div class="story-text-block">
+        <div class="story-text">
+          <h2 class="im-a-heading reveal">I'm a <em>musician.</em></h2>
+          <p class="im-a-intro reveal" style="transition-delay:0.1s">
+            Music has been part of my life for as long as design has. There's something about
+            practicing an instrument, the patience, the repetition, the small adjustments, that
+            maps directly onto how I approach design problems: iterate quietly until it feels right.
+          </p>
+        </div>
+      </div>
+
+      <div class="story-text-block">
+        <div class="story-text">
+          <h2 class="im-a-heading reveal">I'm a <em>storyteller.</em></h2>
+          <p class="im-a-intro reveal" style="transition-delay:0.1s">
+            Whether it's a product narrative for stakeholders, a case study, or just a good story
+            from a trip, I like turning information into something people actually want to follow.
+            It's a skill that shows up constantly in handoffs, presentations, and documentation.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MOBILE STORY: interleaved layout (hidden on desktop via CSS) -->
+<section class="story-mobile-static" aria-label="More about Lucas as a person">
+  <div class="container">
+
+    <div class="story-mobile-block">
+      <div class="story-text">
+        <h2 class="im-a-heading">I'm a <em>designer.</em></h2>
+        <p class="im-a-intro">Design is where I spend most of my hours, and most of my curiosity. I care about <strong>systems over screens</strong>: the logic, tokens, and patterns that make a product feel coherent at scale. I'm equally comfortable leading discovery, drawing the details, and writing the front-end code that brings a component to life.</p>
+      </div>
+      <div class="story-photo-group">
+        <div class="story-photo"><img src="../assets/about-story/01.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>Professional travel planner. Execution rate: roughly 1 in 10.</p></div></div>
+        <div class="story-photo"><img src="../assets/about-story/02.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>Maker of what is very likely the best Carbonara on my street. Uncontested.</p></div></div>
+        <div class="story-photo"><img src="../assets/about-story/03.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>Games and stories have always been the same thing to me: worlds worth getting lost in.</p></div></div>
+        <div class="story-photo"><img src="../assets/about-story/04.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>Commonly spotted behind a camera, quietly documenting things nobody asked me to.</p></div></div>
+      </div>
+    </div>
+
+    <div class="story-mobile-block">
+      <div class="story-text">
+        <h2 class="im-a-heading">I'm a <em>musician.</em></h2>
+        <p class="im-a-intro">Music has been part of my life for as long as design has. There's something about practicing an instrument, the patience, the repetition, the small adjustments, that maps directly onto how I approach design problems: iterate quietly until it feels right.</p>
+      </div>
+      <div class="story-photo-group">
+        <div class="story-photo"><img src="../assets/about-story/05.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>If I'm not home, there's a good chance I'm at a festival somewhere.</p></div></div>
+        <div class="story-photo"><img src="../assets/about-story/06.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>I've been a musician for more than half my life. It started as a habit and never stopped.</p></div></div>
+        <div class="story-photo"><img src="../assets/about-story/07.jpeg" alt="" loading="lazy"><div class="story-photo-caption"><p>Active part of the local music and audiovisual community, for better or worse.</p></div></div>
+        <div class="story-photo"><img src="../assets/about-story/08.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>Always chasing ways to collapse the line between audio and image into something new.</p></div></div>
+      </div>
+    </div>
+
+    <div class="story-mobile-block">
+      <div class="story-text">
+        <h2 class="im-a-heading">I'm a <em>storyteller.</em></h2>
+        <p class="im-a-intro">Whether it's a product narrative for stakeholders, a case study, or just a good story from a trip, I like turning information into something people actually want to follow. It's a skill that shows up constantly in handoffs, presentations, and documentation.</p>
+      </div>
+      <div class="story-photo-group">
+        <div class="story-photo"><img src="../assets/about-story/09.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>Passionate about finding another angle for the ordinary, one frame at a time.</p></div></div>
+        <div class="story-photo"><img src="../assets/about-story/10.JPG" alt="" loading="lazy"><div class="story-photo-caption"><p>Composing, writing, and spending an unreasonable amount of time thinking about time.</p></div></div>
+        <div class="story-photo"><img src="../assets/about-story/11.jpeg" alt="" loading="lazy"><div class="story-photo-caption"><p>Architecture fan. The kind who walks slowly past buildings other people rush by.</p></div></div>
+        <div class="story-photo"><img src="../assets/about-story/12.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>Genuinely obsessed with medieval culture, history, and the aesthetics of that whole era.</p></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ═══ EXPERIENCE ═══ -->
+<section id="experience" class="section" aria-label="Work Experience">
+  <div class="container">
+    <p class="section-label">Experience</p>
+    <h2 class="section-heading">Where I've built,<br />led, and shipped.</h2>
+    <div class="experience-list">
+
+      <div class="exp-accordion reveal">
+        <button class="exp-trigger" aria-expanded="false">
+          <div class="exp-trigger-left">
+            <span class="exp-role-text">Co-founder &amp; Lead Product Designer <span class="exp-current"><span aria-hidden="true">●</span> Current</span></span>
+            <span class="exp-company-text">PixelPunk</span>
+          </div>
+          <span class="exp-period-text">Oct 2024 – Present</span>
+          <span class="exp-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="exp-body" role="region">
+          <div class="exp-body-inner">
+            <p class="exp-description">Co-founded a software company with two partners and built the entire design ecosystem from scratch. Led the end-to-end design of IncludED, a BNCC-compliant SaaS for creating and managing Individualized Education Plans (PEIs) for inclusion students. Built in close collaboration with a neuropsychologist and a pedagogical consultant with 20+ combined years inside schools. Already deployed in schools across Brazil.</p>
+            <ul class="exp-bullets">
+              <li>Built the Design System first, then all product screens, ensuring consistency from day one</li>
+              <li>Designed all UX flows with accessibility as a core requirement, not a feature</li>
+              <li>Created full branding for IncludED and Keepeye: logo, visual identity, and support materials</li>
+              <li>Used AI tools throughout the process for faster prototyping and spec generation</li>
+              <li>Connected directly to a cause I've carried since my graduation thesis on mental health awareness</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-accordion reveal">
+        <button class="exp-trigger" aria-expanded="false">
+          <div class="exp-trigger-left">
+            <span class="exp-role-text">Senior Product Designer</span>
+            <span class="exp-company-text">Multipedidos</span>
+          </div>
+          <span class="exp-period-text">Jan 2024 – Jun 2026</span>
+          <span class="exp-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="exp-body" role="region">
+          <div class="exp-body-inner">
+            <p class="exp-description">Sole designer at a food-tech company with two core products: Gestor de Pedidos (restaurant management) and Pedir.Delivery (online menu with 10M+ monthly accesses and 4M+ monthly orders). Entered as freelancer via Estúdio 149 in January 2024, became fixed contractor in June 2024. Built the product design sector from scratch and deeply integrated design into the engineering workflow.</p>
+            <ul class="exp-bullets">
+              <li>Created the company Design System: 40+ demands, 1,000+ responsive screens for mobile and web</li>
+              <li>Reduced prototype delivery time from 5 to 2 days (60% improvement) using AI-assisted prototyping with Claude + MCP + design system tokens</li>
+              <li>Implemented Design Critiques involving devs, QA, CX, commercial, and directors for cross-functional alignment</li>
+              <li>Added usability testing and external client critiques to the design process</li>
+              <li>Introduced A/B testing, SEQ scoring, and OKR-based product decisions</li>
+              <li>Implemented Figma DEV Mode for all developers, enabling high-fidelity implementation directly from design tokens</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-accordion reveal">
+        <button class="exp-trigger" aria-expanded="false">
+          <div class="exp-trigger-left">
+            <span class="exp-role-text">UX Engineer</span>
+            <span class="exp-company-text">Dojo Smart Ways</span>
+          </div>
+          <span class="exp-period-text">Jun 2022 – Dec 2023</span>
+          <span class="exp-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="exp-body" role="region">
+          <div class="exp-body-inner">
+            <p class="exp-description">Joined as the first and lead product designer, building the product design sector from scratch. Led the design of Keepeye (KPI management SaaS) in a small team: two developers and a front-end developer transitioning into UX/UI. Led all design layers; collaborated on front-end implementation (Angular + Tailwind CSS) alongside the team. Also covered data visualization for global enterprise clients including Electrolux and Nidec.</p>
+            <ul class="exp-bullets">
+              <li>Led design of Keepeye end-to-end: UX research, IA, UI, component library, and handoff, achieving 8.8/10 satisfaction in professional testing. Collaborated on Angular + Tailwind CSS front-end implementation alongside the team</li>
+              <li>Created the visual identity and dashboard construction standards for Electrolux, adopted first in LATAM then approved by the global board and rolled out company-wide</li>
+              <li>Developed dashboard standards for Nidec across LATAM; later contracted directly by Nidec Motor (USA) as an independent consultant</li>
+              <li>Learned Power BI in one week; contributing to live client projects by week two</li>
+              <li>Ran Business Understanding sessions with Data Analysts and Data Engineers to define data rules, KPIs, and visualization strategies</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-accordion reveal">
+        <button class="exp-trigger" aria-expanded="false">
+          <div class="exp-trigger-left">
+            <span class="exp-role-text">Freelance Designer</span>
+            <span class="exp-company-text">Estúdio 149</span>
+          </div>
+          <span class="exp-period-text">Feb 2018 – Jun 2024 · parallel</span>
+          <span class="exp-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="exp-body" role="region">
+          <div class="exp-body-inner">
+            <p class="exp-description">Independent studio running in parallel with full-time roles. Covered digital products, visual identities, branding, photography, and audiovisual for local and global clients, including the early freelance work that became the Multipedidos contract.</p>
+            <ul class="exp-bullets">
+              <li>Designed and developed digital products and web applications end-to-end</li>
+              <li>Created brand identities and visual systems for diverse clients</li>
+              <li>Produced lifestyle, product, and event photography, and audiovisual work</li>
+              <li>Worked as a contractor for Nidec Motor (USA) on data visualization projects</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-accordion reveal">
+        <button class="exp-trigger" aria-expanded="false">
+          <div class="exp-trigger-left">
+            <span class="exp-role-text">Product Designer</span>
+            <span class="exp-company-text">Cia. Fabril Lepper</span>
+          </div>
+          <span class="exp-period-text">Feb 2016 – Jun 2022</span>
+          <span class="exp-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="exp-body" role="region">
+          <div class="exp-body-inner">
+            <p class="exp-description">Six years at one of Brazil's largest textile companies (founded 1907, 100+ year history), designing licensed and original collections for bed, bath, and table products. Licensed brands included Marvel, Disney, Dragon Ball (Toei), Warner, and PlayStation. Gained deep cross-functional experience by working daily alongside production, pigment, fabric, and machinery teams, a perspective that still shapes how I collaborate with engineering today.</p>
+            <ul class="exp-bullets">
+              <li>Co-created and led 10+ product collections, each with 10+ SKUs; had contact with hundreds of SKUs across creation and color separation</li>
+              <li>Fastest learner of the color separation process in company history: mastered a complex, high-stakes technical workflow where errors cost hundreds in re-engraving</li>
+              <li>Created the "Manual da Criação", a complete guide for the color separation and creation process, adopted company-wide for onboarding new designers and briefing external partners</li>
+              <li>Mentored 5 designers across 6 years; was the go-to reference for process and standards</li>
+              <li>Proposed a sustainable packaging initiative, presented to the full board of directors</li>
+              <li>Participated in brand events and sales conventions representing licensed product lines</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-accordion reveal">
+        <button class="exp-trigger" aria-expanded="false">
+          <div class="exp-trigger-left">
+            <span class="exp-role-text">Graphic Designer</span>
+            <span class="exp-company-text">Pronto! Gráfica Expressa</span>
+          </div>
+          <span class="exp-period-text">Jun 2015 – Jan 2016</span>
+          <span class="exp-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="exp-body" role="region">
+          <div class="exp-body-inner">
+            <p class="exp-description">First professional role, at a fast-paced express print studio. Handled hundreds of jobs per week across file closure, print preparation, and graphic creation, often delivering logos in under one hour and complete event kits (business card, flyer, folder) in two.</p>
+            <ul class="exp-bullets">
+              <li>Learned CorelDraw in 5 days on the job, fully operational within the first week</li>
+              <li>Prepared files for offset, silk-screen, laser, and custom die-cut printing processes</li>
+              <li>Developed logotypes, visual identities, flyers, banners, and event materials under extreme time constraints</li>
+              <li>Gained practical knowledge of printing equipment, materials, and the end-to-end print production process</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section id="services" class="section" aria-label="Services" style="background: var(--bg-2);">
+  <div class="container">
+    <p class="section-label">Services</p>
+    <h2 class="section-heading">How I can<br />help your team.</h2>
+    <div class="expertise-grid" style="margin-top:3rem;">
+
+      <div class="expertise-card highlight-card reveal">
+        <div class="expertise-icon" aria-hidden="true">✦</div>
+        <h3 class="expertise-name">Figma Systems & Prototyping</h3>
+        <p class="expertise-desc">Advanced use of Figma as a design system platform, not just a drawing tool. Variables, tokens, dev mode, complex components, and interactive prototypes that developers can actually use.</p>
+        <div class="expertise-tools">
+          <span class="tool-chip">Auto Layout</span>
+          <span class="tool-chip">Variables & Tokens</span>
+          <span class="tool-chip">Components & Variants</span>
+          <span class="tool-chip">Dev Mode</span>
+          <span class="tool-chip">Prototyping</span>
+          <span class="tool-chip">Figma AI</span>
+        </div>
+      </div>
+
+      <div class="expertise-card highlight-card reveal" style="transition-delay:0.1s">
+        <div class="expertise-icon" aria-hidden="true">🤖</div>
+        <h3 class="expertise-name">AI-Augmented Design</h3>
+        <p class="expertise-desc">AI and Vibe Coding as a strategic process layer: from research synthesis and handoff documentation to building functional prototypes with Claude and Lovable. Speed without sacrificing design quality.</p>
+        <div class="expertise-tools">
+          <span class="tool-chip">Vibe Coding</span>
+          <span class="tool-chip">Handoff Docs</span>
+          <span class="tool-chip">Spec Generation</span>
+          <span class="tool-chip">Rapid Prototyping</span>
+          <span class="tool-chip">Claude</span>
+          <span class="tool-chip">Lovable</span>
+        </div>
+      </div>
+
+      <div class="expertise-card reveal" style="transition-delay:0.2s">
+        <div class="expertise-icon" aria-hidden="true">🔍</div>
+        <h3 class="expertise-name">UX Research & Strategy</h3>
+        <p class="expertise-desc">Discovery, user interviews, jobs-to-be-done, competitive analysis, and translating insights into product strategy that stakeholders align on.</p>
+        <div class="expertise-tools">
+          <span class="tool-chip">User Interviews</span>
+          <span class="tool-chip">Usability Testing</span>
+          <span class="tool-chip">Miro</span>
+          <span class="tool-chip">Jobs-to-be-done</span>
+        </div>
+      </div>
+
+      <div class="expertise-card reveal">
+        <div class="expertise-icon" aria-hidden="true">🏗️</div>
+        <h3 class="expertise-name">Product Design (E2E)</h3>
+        <p class="expertise-desc">Information architecture, interaction design, and prototyping from low to high fidelity, balancing user needs with business goals and technical constraints.</p>
+        <div class="expertise-tools">
+          <span class="tool-chip">IA & User Flows</span>
+          <span class="tool-chip">Wireframing</span>
+          <span class="tool-chip">Hi-Fi Prototypes</span>
+          <span class="tool-chip">Framer</span>
+        </div>
+      </div>
+
+      <div class="expertise-card reveal" style="transition-delay:0.1s">
+        <div class="expertise-icon" aria-hidden="true">⚙️</div>
+        <h3 class="expertise-name">Design Systems</h3>
+        <p class="expertise-desc">Scalable component libraries and design tokens that bridge design and engineering, reducing inconsistency, rework, and dev friction across teams.</p>
+        <div class="expertise-tools">
+          <span class="tool-chip">Component Library</span>
+          <span class="tool-chip">Design Tokens</span>
+          <span class="tool-chip">Documentation</span>
+          <span class="tool-chip">Multi-brand</span>
+        </div>
+      </div>
+
+      <div class="expertise-card reveal" style="transition-delay:0.2s">
+        <div class="expertise-icon" aria-hidden="true">📊</div>
+        <h3 class="expertise-name">Data Visualization</h3>
+        <p class="expertise-desc">Dashboards and data products that make complex information scannable and actionable, combining UX thinking with Power BI and data storytelling.</p>
+        <div class="expertise-tools">
+          <span class="tool-chip">Power BI</span>
+          <span class="tool-chip">DAX</span>
+          <span class="tool-chip">KPI Design</span>
+          <span class="tool-chip">Storytelling</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CLOSING / CTA ═══ -->
+<section class="about-closing" aria-label="Get in touch">
+  <div class="container">
+    <h2 class="about-closing-heading reveal">Let's build <em>something</em> together.</h2>
+    <p class="about-closing-text reveal" style="transition-delay:0.1s">
+      If you're looking for a Product Designer who can own a problem end to end, from research
+      to a working interface, I'd love to hear about it.
+    </p>
+    <div class="hero-actions reveal" style="justify-content:center; transition-delay:0.15s">
+      <a href="contact.html" class="btn-primary">
+        Get in Touch
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="index.html#work-preview" class="btn-secondary">View My Work</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container footer-inner">
+    <a href="index.html" class="footer-logo">Lucas<span>.</span></a>
+    <p class="footer-copy">© 2026 Lucas Nascimento. All rights reserved.</p>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
+  // Scroll reveal
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }),
+    { threshold: 0.08, rootMargin: '0px 0px -20px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // "I'm a..." scroll story: crossfade headings in/out as each block centers
+  const storyBlocks = document.querySelectorAll('.story-text-block');
+  if (storyBlocks.length) {
+    const storyIO = new IntersectionObserver(
+      entries => entries.forEach(e => e.target.classList.toggle('active', e.isIntersecting)),
+      { threshold: 0, rootMargin: '-45% 0px -45% 0px' }
+    );
+    storyBlocks.forEach(el => storyIO.observe(el));
+  }
+
+  // Theme toggle
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isLight = html.getAttribute('data-theme') === 'light';
+    if (isLight) {
+      html.removeAttribute('data-theme');
+      try { localStorage.setItem('theme', 'dark'); } catch (e) {}
+    } else {
+      html.setAttribute('data-theme', 'light');
+      try { localStorage.setItem('theme', 'light'); } catch (e) {}
+    }
+  }
+
+  // Mobile menu
+  function toggleMenu(btn) {
+    const menu = document.getElementById('mobileMenu');
+    const isOpen = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(isOpen));
+    btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  }
+
+  // Experience accordion
+  document.querySelectorAll('.exp-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const accordion = trigger.closest('.exp-accordion');
+      const isOpen = accordion.classList.contains('open');
+      document.querySelectorAll('.exp-accordion').forEach(a => {
+        a.classList.remove('open');
+        a.querySelector('.exp-trigger').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        accordion.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // Header hide on scroll down, reveal on scroll up or hover near top
+  // + Back to top button
+  (function () {
+    const navEl = document.querySelector('body > nav');
+    const backToTop = document.getElementById('backToTop');
+    const showThreshold = 120;
+    let lastY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > showThreshold) {
+        navEl.classList.toggle('nav-hidden', y > lastY);
+        backToTop.classList.add('visible');
+      } else {
+        navEl.classList.remove('nav-hidden');
+        backToTop.classList.remove('visible');
+      }
+      lastY = y;
+    }, { passive: true });
+
+    document.addEventListener('mousemove', e => {
+      if (e.clientY <= 60) navEl.classList.remove('nav-hidden');
+    });
+  })();
+
+  // ── MOBILE STORY: interleave heading + photos per section ──────────────
+  (function () {
+    function buildMobileStory() {
+      if (window.innerWidth > 900) return;
+      var grid = document.querySelector('.story-grid');
+      if (!grid || grid.dataset.mobileDone) return;
+      var photoGroups = grid.querySelectorAll('.story-photo-group');
+      var textBlocks  = grid.querySelectorAll('.story-text-block');
+      if (!photoGroups.length || !textBlocks.length) return;
+      var mobile = document.createElement('div');
+      mobile.className = 'story-mobile container';
+      var n = Math.min(photoGroups.length, textBlocks.length);
+      for (var i = 0; i < n; i++) {
+        var block = document.createElement('div');
+        block.className = 'story-mobile-block';
+        block.appendChild(textBlocks[i].querySelector('.story-text').cloneNode(true));
+        block.appendChild(photoGroups[i].cloneNode(true));
+        mobile.appendChild(block);
+      }
+      grid.parentNode.insertBefore(mobile, grid);
+      grid.style.display = 'none';
+      grid.dataset.mobileDone = '1';
+      // Wire up reveal observer on cloned elements
+      mobile.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    }
+    buildMobileStory();
+  })();
+</script>
+</body>
+</html>
+                                                                           
