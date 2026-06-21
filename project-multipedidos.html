@@ -801,40 +801,17 @@
 <div class="page-transition-bar" aria-hidden="true"></div>
 
 <!-- ═══ NAV ═══ -->
-<nav aria-label="Main navigation">
-  <div class="container nav-inner">
-    <div class="nav-left">
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Work</a></li>
-        <li><a href="about.html">About Me</a></li>
-        <li><a href="archives.html">Archives</a></li>
-        <li><a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a></li>
-      </ul>
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Work</a>
     </div>
-
-        <div class="nav-right">
-          <button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick="toggleTheme()">
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-    </button>
-          <a href="contact.html" class="nav-cta">Contact</a>
-
-          <button class="nav-mobile-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMenu(this)">☰</button>
-
-        </div>
-  </div>
-  <div class="nav-mobile-menu" id="mobileMenu">
-    <a href="index.html">Work</a>
-    <a href="about.html">About Me</a>
-    <a href="archives.html">Archives</a>
-    <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="contact.html">Contact →</a>
-    <button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick="toggleTheme()">
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      <span class="label-light">Light mode</span>
-      <span class="label-dark">Dark mode</span>
-    </button>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark mode" onclick="toggleTheme()">
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -872,7 +849,7 @@
       </div>
       <div class="case-meta-item">
         <p class="section-label">Timeline</p>
-        <p class="case-meta-value">Jan 2024 – Jun 2026<span>2.5 years</span></p>
+        <p class="case-meta-value">Jan 2024 – Jun 2026<span>2 years</span></p>
       </div>
       <div class="case-meta-item">
         <p class="section-label">Stack</p>
@@ -1449,7 +1426,7 @@
       </div>
       <div class="outcome-card reveal" style="transition-delay:0.1s">
         <span class="metric-value">1K<span style="font-size:1.6rem;">+</span></span>
-        <span class="metric-label">Responsive screens built on a single design system in 2.5 years</span>
+        <span class="metric-label">Responsive screens built on a single design system in 2 years</span>
       </div>
     </div>
   </div>
@@ -1482,17 +1459,8 @@
 </div>
 
 <!-- ═══ FOOTER ═══ -->
-<footer>
-  <div class="container footer-inner">
-    <a href="index.html" class="footer-logo">Lucas<span>.</span></a>
-    <p class="footer-copy">© 2026 Lucas Nascimento. All rights reserved.</p>
-    <nav class="footer-nav" aria-label="Footer navigation">
-      <a href="index.html">Work</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
-    </nav>
-  </div>
+<footer style="padding: 2rem; text-align: center; border-top: 1px solid var(--border); margin-top: 4rem;">
+  <p style="font-size: 0.8rem; color: var(--text-3);">Lucas Nascimento · Lead Product Designer</p>
 </footer>
 
 <button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0, behavior:'smooth'})">

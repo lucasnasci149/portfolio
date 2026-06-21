@@ -79,7 +79,7 @@
               <span class="metric-label">Faster prototype delivery</span>
             </div>
           </div>
-          <a href="portfolio/project-multipedidos.html" class="case-link" style="margin-top:1rem;">
+          <a href="project-multipedidos.html" class="case-link" style="margin-top:1rem;">
             View Case Study
             <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </a>
@@ -99,7 +99,7 @@
           <div class="case-metrics">
             <div><span class="metric-value">20<span style="font-size:0.85rem">+</span></span><span class="metric-label">Years of pedagogical expertise in the team</span></div>
           </div>
-          <a href="portfolio/project-included.html" class="case-link">View Case Study <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+          <a href="project-included.html" class="case-link">View Case Study <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
         </div>
       </article>
 
@@ -113,7 +113,7 @@
           <div class="case-metrics">
             <div><span class="metric-value">8.8</span><span class="metric-label">Satisfaction score out of 10</span></div>
           </div>
-          <a href="portfolio/project-keepeye.html" class="case-link">View Case Study <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+          <a href="project-keepeye.html" class="case-link">View Case Study <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
         </div>
       </article>
 
@@ -127,7 +127,7 @@
           <div class="case-metrics">
             <div><span class="metric-value">Global</span><span class="metric-label">Standard adopted across all regions</span></div>
           </div>
-          <a href="portfolio/project-electrolux.html" class="case-link">View Case Study <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+          <a href="project-electrolux.html" class="case-link">View Case Study <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
         </div>
       </article>
     </div>
@@ -139,5 +139,23 @@
   <p style="font-size: 0.8rem; color: var(--text-3);">Lucas Nascimento · Lead Product Designer</p>
 </footer>
 
+
+<script>
+(function() {
+  var btn = document.getElementById('themeToggle');
+  if (!btn) return;
+  btn.addEventListener('click', function() {
+    var html = document.documentElement;
+    var isLight = html.getAttribute('data-theme') === 'light';
+    if (isLight) {
+      html.removeAttribute('data-theme');
+      try { localStorage.removeItem('theme'); } catch(e) {}
+    } else {
+      html.setAttribute('data-theme', 'light');
+      try { localStorage.setItem('theme', 'light'); } catch(e) {}
+    }
+  });
+})();
+</script>
 </body>
 </html>
