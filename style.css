@@ -398,7 +398,8 @@ body > nav.nav-hidden {
   align-items: center;
   gap: 0.25rem;
 }
-.nav-links a {
+.nav-links a,
+.footer-nav a {
   font-size: 0.85rem;
   color: var(--text-2);
   padding: 0.4rem 0.75rem;
@@ -406,7 +407,8 @@ body > nav.nav-hidden {
   transition: color var(--transition), background var(--transition);
 }
 .nav-links a:hover,
-.nav-links a.active {
+.nav-links a.active,
+.footer-nav a:hover {
   color: var(--text-1);
   background: var(--hover-overlay);
 }
@@ -465,7 +467,8 @@ body > nav.nav-hidden {
 /* Nav link text-fill sweep, left to right, uses accent-text
    (theme-aware: #5AA9FF dark / #1A56DB light, both WCAG AA+)  */
 @media (pointer: fine) {
-  .nav-links a:not(.nav-cta) {
+  .nav-links a:not(.nav-cta),
+  .footer-nav a {
     background-image: linear-gradient(
       to right,
       var(--accent-text) 50%,
@@ -481,7 +484,8 @@ body > nav.nav-hidden {
   /* Override the existing `background: var(--hover-overlay)` rule
      so the gradient isn't reset on hover / active              */
   .nav-links a:not(.nav-cta):hover,
-  .nav-links a:not(.nav-cta).active {
+  .nav-links a:not(.nav-cta).active,
+  .footer-nav a:hover {
     background-image: linear-gradient(
       to right,
       var(--accent-text) 50%,
@@ -757,44 +761,6 @@ footer {
 .footer-nav {
   display: flex;
   gap: 0.25rem;
-}
-.footer-nav a {
-  font-size: 0.85rem;
-  color: var(--text-2);
-  padding: 0.4rem 0.75rem;
-  border-radius: var(--radius-sm);
-  transition: color var(--transition), background var(--transition);
-}
-.footer-nav a:hover {
-  color: var(--text-1);
-  background: var(--hover-overlay);
-}
-
-@media (pointer: fine) {
-  .footer-nav a {
-    background-image: linear-gradient(
-      to right,
-      var(--accent-text) 50%,
-      var(--text-2)      50%
-    );
-    background-size: 200% 100%;
-    background-position: 100% 0;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: background-position 0.42s var(--ease);
-  }
-  .footer-nav a:hover {
-    background-image: linear-gradient(
-      to right,
-      var(--accent-text) 50%,
-      var(--text-2)      50%
-    );
-    background-size: 200% 100%;
-    background-position: 0% 0;
-    background-color: transparent;
-    color: inherit;
-  }
 }
 
 /* ═══════════════════════════════════════════════════════════
