@@ -269,7 +269,7 @@
       font-size: 1.05rem;
       color: var(--text-2);
       line-height: 1.8;
-      max-width: 760px;
+      max-width: 900px;
       margin-bottom: 2.5rem;
     }
     .order-funnel {
@@ -360,7 +360,7 @@
       font-size: 0.95rem;
       color: var(--text-2);
       line-height: 1.8;
-      max-width: 720px;
+      max-width: 900px;
       margin-bottom: 2.5rem;
     }
     .checkout-flow {
@@ -835,7 +835,7 @@
     <p class="case-header-subtitle case-header-entrance" style="--delay:0.21s">
       Sole designer across two products, six teams, and 4,000+ restaurant clients.
       I built the design system, the process, and the culture from scratch while shipping
-      40+ features without stopping to breathe.
+      40+ features.
     </p>
 
     <div class="case-meta-grid case-header-entrance" style="--delay:0.28s">
@@ -879,7 +879,7 @@
       </div>
       <div class="context-number-card reveal" style="transition-delay:0.1s">
         <span class="metric-value">1K<span style="font-size:1.6rem;">+</span></span>
-        <span class="metric-label" style="font-size:0.8rem; color:var(--text-2); margin-top:0.5rem; display:block;">Responsive screens in the design system</span>
+        <span class="metric-label" style="font-size:0.8rem; color:var(--text-2); margin-top:0.5rem; display:block;">Screens developed</span>
       </div>
       <div class="context-number-card reveal" style="transition-delay:0.15s">
         <span class="metric-value">40<span style="font-size:1.6rem;">+</span></span>
@@ -948,23 +948,16 @@
   <div class="container">
     <p class="section-label">Design System</p>
     <h2 class="section-heading" style="margin-bottom:1.5rem;">Built to <em>move fast</em> without breaking things.</h2>
-    <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8; max-width:720px; margin-bottom:0;">
+    <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8; max-width:900px; margin-bottom:0;">
       The delivery pace was aggressive from day one, so I had to be strategic. I started by
       building the Foundation: a complete token system covering color, spacing, typography,
-      radius, and elevation. With the tokens in place, we adopted Ant Design as an accelerator,
-      mapping every component to our own token layer. That let the team ship immediately with
-      a consistent base, while I worked in parallel to customize and replace components over
-      time. Because everything was token-driven from the start, every component update
-      propagated across all 1,000+ screens automatically.
+      radius and elevation.
     </p>
     <div class="ds-highlights">
       <div class="ds-card reveal">
         <h3>Tokens Before Components</h3>
         <p>
-          The foundation came first: a full token system for color, spacing, radius,
-          typography, and elevation, with dark and light mode from day one. Ant Design
-          provided the component structure; our tokens provided the identity. Any change
-          at the token level propagated everywhere.
+          The foundation came first: a full token system for color, spacing, radius, typography, and elevation, with dark and light mode from day one. Ant Design provided the component structure and our tokens provided the identity. Any change at the token level propagated everywhere.
         </p>
       </div>
       <div class="ds-card reveal" style="transition-delay:0.05s">
@@ -1076,10 +1069,10 @@
       <div class="editorial-item reveal" style="transition-delay:0.1s">
         <span class="editorial-num">03</span>
         <p class="editorial-label">Account &amp; Loyalty</p>
-        <p class="editorial-title">Login, Account, and Fidelidade</p>
+        <p class="editorial-title">Login, Account and Loyalty System</p>
         <p class="editorial-body">
           Owned the full account management flows: login, account creation, and password
-          recovery. Also designed the Fidelidade (loyalty) system interface, including point
+          recovery. Also designed the Loyalty System interface, including point
           balance, redemption rules, and earnings shown throughout the ordering flow. Making
           points visible at every step gave customers a reason to complete rather than abandon.
         </p>
@@ -1295,14 +1288,14 @@
           <p class="gestor-row-label">Payment Integration</p>
           <p class="gestor-row-title">PIX + Digital Wallet</p>
         </div>
-        <p class="gestor-row-desc">Designed the in-store PIX flow from end to end: QR code generation, payment status polling, confirmation screen, and failure recovery. Also designed the digital wallet (carteira digital) integration for loyalty balances and stored value payments, coordinating with payment institution partners throughout the design and validation process.</p>
+        <p class="gestor-row-desc">Designed the in-store PIX flow from end to end: QR code generation, payment status polling, confirmation screen, and failure recovery. Also designed the Digital Wallet interface, which restaurants use to manage incoming PIX transfers and payments processed by financial institution partners like Asaas, responsible for Pix Automático transactions integrated into the Multipedidos platform.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
           <p class="gestor-row-label">Navigation</p>
           <p class="gestor-row-title">Sidebar + Information Architecture</p>
         </div>
-        <p class="gestor-row-desc">With six teams shipping features independently over time, the Gestor sidebar had accumulated without a coherent structure. Items were grouped by team ownership, not by user task or mental model. I audited the full feature set, mapped how different user roles navigated the system, and restructured the sidebar around task frequency and context. The result aligned where features lived with where users expected them, reducing navigation friction for both new and experienced operators.</p>
+        <p class="gestor-row-desc">Before the redesign, the Gestor sidebar had no structure at all. Pages were added as features shipped, in no particular order, with no grouping by importance, frequency, or user context. I audited the full feature set, mapped how different operator roles moved through the system, and restructured the sidebar around a coherent information architecture. Beyond reorganizing existing pages, I also introduced a Favorites feature, letting each operator pin the pages most relevant to their operation, giving them a personalized navigation experience built around how they actually work.</p>
       </div>
     </div>
 
@@ -1399,7 +1392,7 @@
         <p>
           Prototype and handoff delivery used to take 5 working days: design the
           screens, document interactions, write spec notes for each component, align
-          with the dev team, and revise. It was slow and repetitive.
+          with the dev team, and revise.
         </p>
         <p>
           I connected Claude directly to the Figma file via MCP. Now I can generate
@@ -1434,7 +1427,7 @@
       </div>
       <div class="outcome-card reveal" style="transition-delay:0.1s">
         <span class="metric-value">1K<span style="font-size:1.6rem;">+</span></span>
-        <span class="metric-label">Responsive screens built on a single design system in 2 years</span>
+        <span class="metric-label">Screens developed on a single design system</span>
       </div>
     </div>
   </div>
