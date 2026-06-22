@@ -1205,3 +1205,11 @@ footer {
   .work-preview-row { grid-template-columns: 1fr !important; }
 }
 
+
+/* ── IncludED cover: base zoom + hover zoom ── */
+.included-cover-img {
+  transform: scale(1.35);
+}
+.case-card:hover .included-cover-img {
+  transform: scale(1.42);
+}
