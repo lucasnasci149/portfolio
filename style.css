@@ -717,8 +717,6 @@ body > nav.nav-hidden {
   color: var(--accent-text);
   margin-top: 0.25rem;
   transition: color var(--transition), opacity var(--transition);
-  position: relative;
-  z-index: 2;
 }
 .case-link svg { transition: transform var(--transition); }
 .case-link:hover { opacity: 0.75; }
