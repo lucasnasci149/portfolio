@@ -522,8 +522,6 @@
         <p>
           The result: low confidence in data, time spent reconciling reports instead
           of acting on them, and decisions made on numbers nobody fully trusts.
-          The problem was not the absence of data. It was the absence of a single
-          reliable version of it.
         </p>
       </div>
     </div>
@@ -588,10 +586,9 @@
         <p>
           With a small team and a fixed development window, we could not build
           everything. We benchmarked competing tools to map the market, then scored
-          all identified opportunities using RICE: Reach (how many users benefit?),
-          Impact (how meaningful is the improvement?), Confidence (how sure are we?),
-          and Effort (how much does it cost to build?). RICE turns prioritization
-          from a debate into a decision.
+          all identified opportunities using RICE: a framework that weighs Reach,
+          Impact, Confidence, and Effort to turn prioritization from a debate into
+          a decision.
         </p>
         <div class="process-tags">
           <span class="tag">Benchmarking</span>
@@ -639,10 +636,11 @@
         <p class="editorial-label">Data Fragmentation</p>
         <p class="editorial-title">One metric, many versions</p>
         <p class="editorial-body">
-          Across interviews and the survey, the most consistent finding was that the
-          same KPI had different values depending on who calculated it. Marketing used
-          one formula for gross margin. Finance used another. Leadership trusted neither.
-          The absence of a shared calculation engine meant the data was always contested.
+          Across interviews and the survey, the most consistent finding was fragmented
+          data at the source. The same KPI pulled from different systems, exports, and
+          spreadsheets across departments produced different numbers, not because teams
+          used different formulas, but because the underlying data was never the same
+          to begin with. Inconsistency was structural, not methodological.
         </p>
       </div>
       <div class="editorial-item reveal" style="transition-delay:0.05s">
@@ -687,28 +685,28 @@
     <div class="feature-list">
       <div class="feature-row reveal">
         <div>
-          <p class="feature-row-label">Core Feature</p>
+          <p class="feature-row-label">Monitoring</p>
           <p class="feature-row-title">KPI Dashboards</p>
         </div>
         <p class="feature-row-desc">A centralized view where managers can see all active KPIs at a glance, with real-time status, historical trends, and goal tracking. The design prioritized readability over density: the first view should answer "how are we doing?" without requiring any interaction. Drill-down is available, but the summary is always sufficient on its own.</p>
       </div>
       <div class="feature-row reveal">
         <div>
-          <p class="feature-row-label">Core Feature</p>
+          <p class="feature-row-label">Data Trust</p>
           <p class="feature-row-title">Metric Formula Calculator</p>
         </div>
-        <p class="feature-row-desc">One of the highest-scoring features in the RICE exercise, and the one that most directly addressed the trust deficit. The built-in calculator lets users define the exact formula behind each metric, with variables, operations, and dependencies, so the same calculation is used every time, by everyone. When two people look at the same gross margin number, they are looking at the same formula. This turned Keepeye from a dashboard tool into a data trust layer.</p>
+        <p class="feature-row-desc">One of the highest-scoring features in the RICE exercise, and the one that most directly addressed the trust deficit. The built-in calculator connects each metric to a centralized data source, ensuring every user, in every department, is always working from the same numbers. No more diverging exports or parallel spreadsheets — one definition, one source, one result. This turned Keepeye from a dashboard tool into a single source of truth.</p>
       </div>
       <div class="feature-row reveal">
         <div>
-          <p class="feature-row-label">Core Feature</p>
+          <p class="feature-row-label">Configuration</p>
           <p class="feature-row-title">KPI and Metrics Management</p>
         </div>
         <p class="feature-row-desc">A full management layer for the indicators themselves: create, edit, categorize, and link KPIs to the underlying metrics that feed them. Research showed that most teams track between 15 and 40 active KPIs, each with different owners, cadences, and data sources. The management view had to handle that complexity without becoming a spreadsheet itself.</p>
       </div>
       <div class="feature-row reveal">
         <div>
-          <p class="feature-row-label">Core Feature</p>
+          <p class="feature-row-label">Governance</p>
           <p class="feature-row-title">User Area and Access Control</p>
         </div>
         <p class="feature-row-desc">Enterprise KPI tools are always multi-user, but different users have different relationships with the data: some configure, some monitor, some only read. The user area defines roles, permissions, and data scope so that an operational supervisor sees floor metrics while leadership sees consolidated results. Role definition was one of the earliest IA decisions and shaped the information hierarchy of the entire product.</p>
@@ -790,10 +788,7 @@
         <span class="metric-value">4</span>
         <span class="metric-label">Team members, including one designer mentored through her career transition</span>
       </div>
-      <div class="outcome-card reveal" style="transition-delay:0.1s">
-        <span class="metric-value">0→1</span>
-        <span class="metric-label">SaaS product launched, giving Dojo its first source of recurring revenue</span>
-      </div>
+
     </div>
   </div>
 </section>
