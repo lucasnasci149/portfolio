@@ -542,10 +542,13 @@
           The implementation is chaos.
         </p>
         <p>
-          Most schools produce PEIs in Word files, spreadsheets, or physical notebooks.
-          Each teacher keeps their own version. There is no central record, no audit trail,
-          no way for a coordinator to see which students are documented and which are not.
-          When a student changes classes or teachers rotate, the history disappears.
+          Most schools produce PEIs in Word files, spreadsheets, or physical notebooks,
+          each teacher using their own format and keeping their own records. The process
+          is entirely manual: no standardized digital tool, no shared structure, no common
+          workflow between teachers and coordinators. Creating a single compliant PEI,
+          properly aligned to the student's profile and BNCC descriptors, takes hours of
+          work. When teachers rotate or a student moves to a different class, the continuity
+          of that documentation depends on whoever thought to pass the file along.
         </p>
       </div>
       <div class="overview-block reveal" style="transition-delay:0.05s">
@@ -658,11 +661,12 @@
         <p>
           With domain knowledge established, we audited the existing tools landscape:
           generic school ERPs, Word templates, spreadsheet-based PEI builders, and
-          broader edtech platforms. None had BNCC-aligned objective writing. None
-          bridged the clinical-to-pedagogical gap. None addressed AEE-specific workflows.
-          None were designed around inclusion at all. The market research didn't just
-          confirm the gap: it defined precisely the requirements IncludED had to meet to
-          be genuinely useful rather than another tool teachers would abandon.
+          broader edtech platforms. What we found was a category built around school
+          administration, not inclusion. BNCC-aligned objective writing, AEE-specific
+          workflows, and the clinical-to-pedagogical translation that specialists depend on
+          were missing across the board. The market research didn't just confirm the gap:
+          it defined precisely the requirements IncludED had to meet to be genuinely useful
+          rather than another tool teachers would abandon.
         </p>
         <div class="process-tags">
           <span class="tag">Market Research</span>
@@ -743,7 +747,7 @@
           <p class="feature-row-label">Curriculum</p>
           <p class="feature-row-title">BNCC architecture and how it applies to inclusion</p>
         </div>
-        <p class="feature-row-desc">The BNCC organizes learning goals differently across each educational stage: campos de experiência for Educação Infantil, habilidades within competências for Ensino Fundamental and Médio. For an inclusion student, every pedagogical objective in the PEI must be anchored to BNCC descriptors, adapted to the student's profile. The team studied this architecture in detail with the pedagogical consultant to understand how to make BNCC navigation practical for teachers who need to select the right descriptors quickly, without reading the full document every time.</p>
+        <p class="feature-row-desc">The BNCC organizes learning goals differently across each educational stage: experience fields for Early Childhood Education, skills within competencies for Elementary and High School. For an inclusion student, every pedagogical objective in the PEI must be anchored to BNCC descriptors, adapted to the student's profile. The team studied this architecture in detail with the pedagogical consultant to understand how to make BNCC navigation practical for teachers who need to select the right descriptors quickly, without reading the full document every time.</p>
       </div>
       <div class="feature-row reveal">
         <div>
@@ -766,13 +770,7 @@
         </div>
         <p class="feature-row-desc">The Atendimento Educacional Especializado (AEE) is a federally mandated specialized support service that operates alongside regular schooling. It has its own documentation requirements (the PAEE), its own professional category (Profissional AEE), and its own relationship to the student's classroom PEI. Understanding how MEC guidelines, state secretaries of education, and school coordinators interact around AEE compliance was essential to designing an access model where AEE professionals see the right students, and teachers see only their own contributions.</p>
       </div>
-      <div class="feature-row reveal">
-        <div>
-          <p class="feature-row-label">Market</p>
-          <p class="feature-row-title">Existing tools and the gaps none of them closed</p>
-        </div>
-        <p class="feature-row-desc">The competitive landscape included generic school management ERPs, paper-based PEI templates promoted by secretaries of education, Word and Google Docs workflows, and a handful of edtech platforms targeting broader school administration. None had BNCC-aligned goal writing. None had a clinical report processing layer. None distinguished between classroom PEIs and AEE plans. None were designed around the teacher's documentation workflow. The audit confirmed that the opportunity was not incremental improvement over existing tools: it was a category that didn't exist yet.</p>
-      </div>
+
     </div>
   </div>
 </section>
@@ -851,7 +849,7 @@
           <p class="feature-row-label">Core Module</p>
           <p class="feature-row-title">BNCC Goal Mapping with AI</p>
         </div>
-        <p class="feature-row-desc">Teachers set pedagogical objectives linked to BNCC descriptors: habilidades for Ensino Fundamental and Ensino Médio, campos de experiência for Educação Infantil. The platform includes the full BNCC glossary indexed for navigation. For each BNCC descriptor selected, AI suggests a goal text tailored to the student's profile. The teacher edits; the AI starts. This reduced goal-writing time significantly while improving BNCC alignment across the board.</p>
+        <p class="feature-row-desc">Teachers set pedagogical objectives linked to BNCC descriptors: skills within competencies for Elementary and High School, experience fields for Early Childhood Education. The platform includes the full BNCC glossary indexed for navigation. For each BNCC descriptor selected, AI suggests a goal text tailored to the student's profile. The teacher edits; the AI starts. This reduced goal-writing time significantly while improving BNCC alignment across the board.</p>
       </div>
       <div class="feature-row reveal">
         <div>
@@ -872,7 +870,7 @@
           <p class="feature-row-label">Core Module</p>
           <p class="feature-row-title">PAEE: Specialized Support Plan</p>
         </div>
-        <p class="feature-row-desc">A module exclusive to AEE professionals: therapists and specialists who support students outside the regular classroom. The PAEE captures work axes (communication, cognition, autonomy, motor skills) with objectives, strategies, frequency, and session duration. AI suggests objectives and indicators for each axis based on the student profile. The PAEE appears in the exported PDF alongside the classroom PEI, but is never visible to regular teachers.</p>
+        <p class="feature-row-desc">A module exclusive to AEE professionals: therapists and specialists who support students outside the regular classroom. The PAEE captures work axes (communication, cognition, autonomy, motor skills) with objectives, strategies, frequency, and session duration. AI suggests objectives and indicators for each axis based on the student profile.</p>
       </div>
       <div class="feature-row reveal">
         <div>
@@ -1032,4 +1030,11 @@
         backToTop.classList.add('visible');
       } else {
         navEl.classList.remove('nav-hidden');
-        backT
+        backToTop.classList.remove('visible');
+      }
+      lastY = y;
+    });
+  })();
+</script>
+</body>
+</html>

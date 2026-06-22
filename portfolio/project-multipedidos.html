@@ -1526,4 +1526,35 @@
       try { localStorage.setItem('theme', 'dark'); } catch (e) {}
     } else {
       html.setAttribute('data-theme', 'light');
-      try { localStorage.setItem('theme', 'light'); } catch (e) 
+      try { localStorage.setItem('theme', 'light'); } catch (e) {}
+    }
+  }
+
+  function toggleMenu(btn) {
+    const menu = document.getElementById('mobileMenu');
+    const isOpen = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(isOpen));
+    btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  }
+
+  (function () {
+    const navEl = document.querySelector('body > nav');
+    const backToTop = document.getElementById('backToTop');
+    const showThreshold = 120;
+    let lastY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > showThreshold) {
+        navEl.classList.toggle('nav-hidden', y > lastY);
+        backToTop.classList.add('visible');
+      } else {
+        navEl.classList.remove('nav-hidden');
+        backToTop.classList.remove('visible');
+      }
+      lastY = y;
+    });
+  })();
+</script>
+</body>
+</html>

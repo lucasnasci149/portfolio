@@ -196,6 +196,27 @@
 })();
 
 /* ═══════════════════════════════════════════════════════════
+   BACK TO TOP
+   Shows after 400px scroll, smooth scrolls to top on click.
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  var btn = document.querySelector('.back-to-top');
+  if (!btn) return;
+
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 400) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  btn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+
+/* ═══════════════════════════════════════════════════════════
    REVEAL-BLUR OBSERVER
    Blur + fade + translateY reveal for pull quotes, large
    headings, and high-impact sections.
