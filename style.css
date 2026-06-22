@@ -714,12 +714,14 @@ body > nav.nav-hidden {
   gap: 0.4rem;
   font-size: 0.82rem;
   font-weight: 500;
-  color: var(--text-2);
+  color: var(--accent-text);
   margin-top: 0.25rem;
-  transition: color var(--transition);
+  transition: color var(--transition), opacity var(--transition);
+  position: relative;
+  z-index: 2;
 }
 .case-link svg { transition: transform var(--transition); }
-.case-link:hover { color: var(--accent-text); }
+.case-link:hover { opacity: 0.75; }
 .case-link:hover svg { transform: translate(2px, -2px); }
 
 /* Featured card (horizontal) */
@@ -1203,4 +1205,13 @@ footer {
   .expertise-grid { grid-template-columns: 1fr; }
   .about-highlights { grid-template-columns: 1fr; }
   .work-preview-row { grid-template-columns: 1fr !important; }
+}
+
+/* ── STRETCHED LINK: entire card clickable ── */
+.case-card { isolation: isolate; }
+.case-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
