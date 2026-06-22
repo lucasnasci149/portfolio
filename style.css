@@ -1205,11 +1205,3 @@ footer {
   .work-preview-row { grid-template-columns: 1fr !important; }
 }
 
-/* ── STRETCHED LINK: entire card clickable ── */
-.case-card { isolation: isolate; }
-.case-link::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-}
