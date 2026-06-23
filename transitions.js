@@ -1,3 +1,4 @@
+/* ═══════════════════════════════════════════════════════════
    CUSTOM CURSOR
    Ball cursor that follows the pointer and changes color on
    hover/click. Skipped entirely on touch devices.
@@ -69,6 +70,7 @@
   });
 })();
 
+/* ═══════════════════════════════════════════════════════════
    PAGE TRANSITIONS — CURTAIN SWEEP (top → bottom)
    ENTER: html::before (CSS) already covers the new page from
    first paint. JS adds .curtain-reveal → it slides downward
@@ -146,6 +148,7 @@
   });
 })();
 
+/* ═══════════════════════════════════════════════════════════
    READING PROGRESS BAR
    Fills as the user scrolls through long pages (project case
    studies). Appears after 80px scroll, hides at the top.
@@ -170,6 +173,7 @@
   update();
 })();
 
+/* ═══════════════════════════════════════════════════════════
    SCROLL REVEAL OBSERVER
    Adds .visible to .reveal and .reveal-card elements as they
    enter the viewport. Without this, those elements stay at
@@ -191,6 +195,7 @@
   els.forEach(function (el) { io.observe(el); });
 })();
 
+/* ═══════════════════════════════════════════════════════════
    BACK TO TOP
    Shows after 400px scroll, smooth scrolls to top on click.
    ═══════════════════════════════════════════════════════════ */
@@ -211,6 +216,28 @@
   });
 })();
 
+/* ═══════════════════════════════════════════════════════════
+   REVEAL-BLUR OBSERVER
+   Blur + fade + translateY reveal for pull quotes, large
+   headings, and high-impact sections.
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  var els = document.querySelectorAll('.reveal-blur');
+  if (!els.length) return;
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+
+  els.forEach(function (el) { io.observe(el); });
+})();
+
+/* ═══════════════════════════════════════════════════════════
    CLICKABLE CARDS
    Makes the entire .case-card navigate to its .case-link href.
    ═══════════════════════════════════════════════════════════ */
