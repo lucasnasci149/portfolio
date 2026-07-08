@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="../../assets/icons/favicon.svg" />
-  <script>
-    document.documentElement.setAttribute('data-theme', 'light');
-  </script>
+  <script>document.documentElement.setAttribute('data-theme', 'light');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Multipedidos: Design System &amp; Product Design | Lucas Nascimento</title>
   <meta name="description" content="Case study: Multipedidos, building a token-driven design system at 10M+ monthly accesses and reducing prototype delivery time by 60% with AI-assisted workflow." />
@@ -26,8 +24,8 @@
   <style>
     /* ── CASE HEADER ── */
     .case-header {
-      padding-top: calc(4rem + 60px);
-      padding-bottom: 3rem;
+      padding-top: calc(5rem + 60px);
+      padding-bottom: 3.5rem;
     }
     .back-link {
       display: inline-flex;
@@ -40,607 +38,133 @@
     }
     .back-link:hover { color: var(--text-1); }
     .back-link svg { transform: rotate(180deg); }
-
     .case-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
-
     .case-header-title {
       font-family: var(--font-serif);
       font-weight: 300;
-      font-size: clamp(2.5rem, 7vw, 5rem);
-      line-height: 1.05;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      line-height: 1.04;
       letter-spacing: -0.025em;
     }
     .case-header-title em { font-style: italic; color: var(--accent-text); }
     .case-header-subtitle {
       font-size: 1.1rem;
       color: var(--text-2);
-      margin-top: 0.75rem;
-      max-width: 620px;
+      margin-top: 1rem;
+      max-width: 640px;
       line-height: 1.7;
     }
 
-    /* META GRID */
-    .case-meta-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-      margin-top: 3rem;
-      padding-top: 2rem;
-    }
-    .case-meta-item .section-label { margin-bottom: 0.4rem; }
-    .section { padding-block: clamp(4rem, 8vw, 6rem); }
-    .case-meta-value {
-      font-size: 0.9rem;
-      color: var(--text-1);
-      line-height: 1.5;
-    }
-    .case-meta-value span { display: block; color: var(--text-3); font-size: 0.8rem; margin-top: 0.15rem; }
-
-    /* HERO VISUAL */
-    .case-hero-visual {
-      margin-top: 3rem;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      min-height: 420px;
-      background: linear-gradient(135deg, var(--bg-3) 0%, var(--bg-4) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 4rem;
-      position: relative;
-    }
-    .case-hero-visual img {
-      position: absolute;
-      inset: 0;
+    /* ── HERO — full bleed ── */
+    .case-hero {
       width: 100%;
-      height: 100%;
+      background: var(--bg-3);
+      overflow: hidden;
+    }
+    .case-hero img {
+      width: 100%;
+      display: block;
+      max-height: 85vh;
       object-fit: cover;
       object-position: center top;
     }
 
-    /* OVERVIEW */
-    .overview-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-    }
-    .overview-block .section-label { margin-bottom: 0.75rem; }
-    .overview-block p {
-      font-size: 0.95rem;
-      color: var(--text-2);
-      line-height: 1.8;
-    }
-    .overview-block p + p { margin-top: 1rem; }
-
-    /* CONTEXT NUMBERS */
-    .context-numbers {
+    /* ── META STRIP (below hero) ── */
+    .case-meta-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      margin-top: 1rem;
+      gap: 2rem;
+      padding: 2.5rem 0;
     }
-    .context-number-card {
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.75rem;
-      text-align: center;
-    }
-
-    /* PROCESS */
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-    .process-card {
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.75rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .process-card h3 {
-      font-family: var(--font-serif);
-      font-weight: 300;
-      font-size: 1.4rem;
-    }
-    .process-card p {
-      font-size: 0.85rem;
-      color: var(--text-2);
-      line-height: 1.7;
-      flex: 1;
-    }
-    .process-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
-    .process-phase-label {
-      font-size: 0.72rem;
-      font-weight: 500;
+    .case-meta-label {
+      font-size: 0.68rem;
+      font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--accent-text);
+      color: var(--text-3);
+      margin-bottom: 0.35rem;
     }
+    .case-meta-val {
+      font-size: 0.95rem;
+      color: var(--text-1);
+      line-height: 1.45;
+    }
+    .case-meta-val span { display: block; color: var(--text-3); font-size: 0.82rem; margin-top: 0.12rem; }
 
-    /* GESTOR SECTION */
-    .gestor-intro {
+    /* ── SPLIT LAYOUT: heading left / content right ── */
+    .split {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: clamp(3rem, 5vw, 5rem);
+      align-items: start;
+    }
+    .split-h {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      line-height: 1.2;
+      position: sticky;
+      top: 5rem;
+    }
+    .split-h em { font-style: italic; color: var(--accent-text); }
+
+    /* ── TWO-COLUMN BODY (within split right) ── */
+    .body-2col {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 2.5rem;
+      gap: 2.5rem;
     }
-    .gestor-intro p {
-      font-size: 0.95rem;
-      color: var(--text-2);
-      line-height: 1.8;
-    }
-    .gestor-intro p + p { margin-top: 1rem; }
-    .gestor-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-    }
-    .gestor-card {
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.75rem;
-    }
-    .gestor-card-label {
-      font-size: 0.7rem;
-      font-weight: 500;
+    .body-col p { font-size: 0.95rem; color: var(--text-2); line-height: 1.8; }
+    .body-col p + p { margin-top: 1rem; }
+    .body-col .col-label {
+      font-size: 0.68rem;
+      font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--accent-text);
-      margin-bottom: 0.5rem;
-    }
-    .gestor-card h3 {
-      font-family: var(--font-serif);
-      font-weight: 300;
-      font-size: 1.15rem;
-      margin-bottom: 0.6rem;
-    }
-    .gestor-card p {
-      font-size: 0.83rem;
-      color: var(--text-2);
-      line-height: 1.65;
+      color: var(--text-3);
+      margin-bottom: 0.75rem;
     }
 
-    /* DS HIGHLIGHTS */
+    /* ── FULL-BLEED IMAGE / VIDEO ── */
+    .img-full { overflow: hidden; }
+    .img-full img,
+    .img-full video { display: block; width: 100%; }
+
+    /* ── METRICS — open, no cards ── */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      padding-block: 1.5rem;
+    }
+    .metric-open .metric-value { display: block; line-height: 1; }
+    .metric-open .metric-desc {
+      font-size: 0.82rem;
+      color: var(--text-2);
+      margin-top: 0.5rem;
+      line-height: 1.45;
+    }
+
+    /* ── DS HIGHLIGHTS ── */
     .ds-highlights {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-top: 2rem;
+      gap: 1px;
+      margin-top: 2.5rem;
+      background: var(--border);
     }
     .ds-card {
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
+      background: var(--bg);
       padding: 1.75rem;
     }
     .ds-card h3 {
       font-family: var(--font-serif);
       font-weight: 300;
-      font-size: 1.2rem;
-      margin-bottom: 0.75rem;
-    }
-    .ds-card p {
-      font-size: 0.85rem;
-      color: var(--text-2);
-      line-height: 1.7;
-    }
-
-    /* AI SECTION */
-    .ai-highlight {
-      background: linear-gradient(135deg, var(--bg-2) 0%, var(--bg-3) 100%);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 3rem;
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 3rem;
-      align-items: center;
-    }
-    .ai-highlight-label {
-      font-family: var(--font-serif);
-      font-weight: 300;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      line-height: 1.1;
-    }
-    .ai-highlight-label em { font-style: italic; color: var(--accent-text); }
-    .ai-highlight-body p {
-      font-size: 0.95rem;
-      color: var(--text-2);
-      line-height: 1.8;
-    }
-    .ai-highlight-body p + p { margin-top: 1rem; }
-    .ai-stack { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 1.25rem; }
-
-    /* CONSUMER PLATFORM */
-    .consumer-intro {
-      font-size: 1.05rem;
-      color: var(--text-2);
-      line-height: 1.8;
-      max-width: 720px;
-      margin-bottom: 2.5rem;
-    }
-    .order-funnel {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0;
-      margin-bottom: 2.5rem;
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-    .funnel-step {
-      padding: 1.5rem 1.25rem;
-      border-right: 1px solid var(--border);
-      position: relative;
-    }
-    .funnel-step:last-child { border-right: none; }
-    .funnel-step-num {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent-text);
-      margin-bottom: 0.4rem;
-    }
-    .funnel-step-title {
-      font-family: var(--font-serif);
-      font-weight: 300;
-      font-size: 1rem;
-      color: var(--text-1);
-      margin-bottom: 0.35rem;
-    }
-    .funnel-step-desc {
-      font-size: 0.77rem;
-      color: var(--text-3);
-      line-height: 1.5;
-    }
-    .consumer-features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-    .consumer-feature {
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.75rem;
-    }
-    .consumer-feature-label {
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent-text);
-      margin-bottom: 0.5rem;
-    }
-    .consumer-feature h3 {
-      font-family: var(--font-serif);
-      font-weight: 300;
       font-size: 1.15rem;
-      margin-bottom: 0.6rem;
-    }
-    .consumer-feature p {
-      font-size: 0.83rem;
-      color: var(--text-2);
-      line-height: 1.65;
-    }
-    .project-full-image {
-      margin: 0 0 2rem;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-    .project-full-image img {
-      width: 100%;
-      display: block;
-    }
-
-    .checkout-divider {
-      border: none;
-      margin: 2.5rem 0;
-    }
-
-    /* CHECKOUT FLOW */
-    .checkout-section-intro {
-      font-size: 0.95rem;
-      color: var(--text-2);
-      line-height: 1.8;
-      max-width: 900px;
-      margin-bottom: 2.5rem;
-    }
-    .checkout-flow {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 0;
-      margin-bottom: 2.5rem;
-    }
-    .checkout-step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-    }
-    .checkout-step:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent) 0%, var(--border) 100%);
-    }
-    .checkout-step-dot {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--bg-2);
-      border: 2px solid var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--accent-text);
-      position: relative;
-      z-index: 1;
-      flex-shrink: 0;
-    }
-    .checkout-step-label {
-      font-size: 0.72rem;
-      color: var(--text-2);
-      text-align: center;
-      margin-top: 0.5rem;
-      line-height: 1.4;
-    }
-    .payment-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-    .payment-context {
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-    }
-    .payment-context-label {
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-3);
-      margin-bottom: 1rem;
-    }
-    .payment-method {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.75rem;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      margin-bottom: 0.5rem;
-      font-size: 0.85rem;
-      color: var(--text-2);
-    }
-    .payment-method:last-child { margin-bottom: 0; }
-    .payment-method-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 6px;
-      background: var(--bg-3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      flex-shrink: 0;
-    }
-    .payment-method span { font-size: 0.75rem; color: var(--text-3); display: block; }
-    .checkout-features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-    }
-    .checkout-feature-card {
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-    }
-    .checkout-feature-card h4 {
-      font-family: var(--font-serif);
-      font-weight: 300;
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-    }
-    .checkout-feature-card p {
-      font-size: 0.82rem;
-      color: var(--text-2);
-      line-height: 1.6;
-    }
-    .ab-badge {
-      display: inline-block;
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      background: var(--accent-text);
-      color: white;
-      padding: 0.15rem 0.4rem;
-      border-radius: 4px;
-      margin-left: 0.4rem;
-      vertical-align: middle;
-    }
-
-    /* OUTCOMES */
-    .outcomes-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-    .outcome-card {
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      text-align: center;
-    }
-    .outcome-card .metric-value { font-size: 2.4rem; }
-    .outcome-card .metric-label { font-size: 0.8rem; margin-top: 0.4rem; }
-
-    /* NEXT PROJECT */
-    .next-project {
-      padding-block: 5rem;
-      text-align: center;
-      background: var(--bg-2);
-    }
-    .next-project .section-label { margin-bottom: 1rem; }
-    .next-project-title {
-      font-family: var(--font-serif);
-      font-weight: 300;
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      line-height: 1.15;
-      margin-bottom: 2rem;
-    }
-    .next-project-title em { font-style: italic; color: var(--accent-text); }
-
-    /* RESPONSIVE */
-
-    /* GESTOR LIST LAYOUT */
-    .gestor-list {
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-    .gestor-row {
-      display: grid;
-      grid-template-columns: 210px 1fr;
-      align-items: start;
-      gap: 2.5rem;
-      padding: 1.75rem 2rem;
-      transition: background var(--transition);
-    }
-    .gestor-row:last-child { border-bottom: none; }
-    .gestor-row:hover { background: var(--bg-3); }
-    .gestor-row-label {
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent-text);
-      margin-bottom: 0.35rem;
-    }
-    .gestor-row-title {
-      font-family: var(--font-serif);
-      font-weight: 300;
-      font-size: 1.1rem;
+      margin-bottom: 0.65rem;
       color: var(--text-1);
     }
-    .gestor-row-desc {
-      font-size: 0.85rem;
-      color: var(--text-2);
-      line-height: 1.7;
-      padding-top: 0.1rem;
-    }
-
-    /* EDITORIAL (numbered open layout) */
-    .editorial-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3rem;
-      margin-bottom: 2rem;
-    }
-    .editorial-num {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 4rem;
-      font-weight: 300;
-      color: var(--border);
-      line-height: 1;
-      margin-bottom: 0.75rem;
-      display: block;
-    }
-    .editorial-label {
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent-text);
-      margin-bottom: 0.4rem;
-    }
-    .editorial-title {
-      font-family: var(--font-serif);
-      font-weight: 300;
-      font-size: 1.1rem;
-      color: var(--text-1);
-      margin-bottom: 0.6rem;
-      line-height: 1.3;
-    }
-    .editorial-body {
-      font-size: 0.83rem;
-      color: var(--text-2);
-      line-height: 1.7;
-    }
-
-    /* CHECKOUT STRIP */
-    .checkout-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-    .strip-item {
-      background: var(--bg-2);
-      padding: 1.75rem;
-    }
-    .strip-item h4 {
-      font-family: var(--font-serif);
-      font-weight: 300;
-      font-size: 1.1rem;
-      margin-bottom: 0.6rem;
-    }
-    .strip-item p {
-      font-size: 0.83rem;
-      color: var(--text-2);
-      line-height: 1.65;
-    }
-
-    @media (max-width: 900px) {
-      .case-meta-grid { grid-template-columns: repeat(2, 1fr); }
-      .overview-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-      .context-numbers { grid-template-columns: repeat(2, 1fr); }
-      .process-grid { grid-template-columns: 1fr; }
-      .ds-highlights { grid-template-columns: 1fr; }
-      .ai-highlight { grid-template-columns: 1fr; gap: 1.5rem; }
-      .outcomes-grid { grid-template-columns: 1fr; }
-      .checkout-flow { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-      .checkout-step:not(:last-child)::after { display: none; }
-      .payment-grid { grid-template-columns: 1fr; }
-      .checkout-features { grid-template-columns: 1fr; }
-      .gestor-intro { grid-template-columns: 1fr; gap: 1.5rem; }
-      .gestor-row { grid-template-columns: 1fr; gap: 0.5rem; }
-      .order-funnel { grid-template-columns: 1fr; }
-      .funnel-step { border-right: none; border-bottom: 1px solid var(--border); }
-      .funnel-step:last-child { border-bottom: none; }
-      .editorial-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .checkout-strip { grid-template-columns: 1fr; gap: 0; background: transparent; border-radius: var(--radius-lg); }
-
-    }
-    @media (max-width: 640px) {
-      .case-meta-grid { grid-template-columns: 1fr; }
-      .context-numbers { grid-template-columns: 1fr; }
-      .checkout-flow { grid-template-columns: repeat(2, 1fr); }
-    }
+    .ds-card p { font-size: 0.85rem; color: var(--text-2); line-height: 1.7; }
 
     /* ── PULL QUOTE ── */
     .pull-quote-wrap {
@@ -651,14 +175,13 @@
       font-family: var(--font-serif);
       font-style: italic;
       font-weight: 300;
-      font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+      font-size: clamp(1.3rem, 2.5vw, 1.85rem);
       line-height: 1.55;
       color: var(--text-1);
-      max-width: 960px;
-      padding-left: 2.5rem;
+      max-width: 860px;
     }
 
-    /* ── FOCUS CALLOUT ── */
+    /* ── CONSUMER / CHECKOUT PLATFORM ── */
     .focus-callout {
       display: flex;
       align-items: center;
@@ -666,7 +189,7 @@
       padding: 1rem 1.5rem;
       background: var(--accent-wash);
       border: 1px solid var(--accent-border-soft);
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-sm);
       margin-bottom: 2.5rem;
       flex-wrap: wrap;
     }
@@ -677,84 +200,209 @@
       text-transform: uppercase;
       color: var(--accent-text);
       flex-shrink: 0;
-      white-space: nowrap;
     }
-    .focus-callout-sep {
-      width: 1px;
-      height: 16px;
-      background: var(--accent-border-soft);
-      flex-shrink: 0;
-    }
-    .focus-callout-items {
-      display: flex;
-      gap: 0.4rem;
-      flex-wrap: wrap;
-    }
+    .focus-callout-sep { width: 1px; height: 16px; background: var(--accent-border-soft); flex-shrink: 0; }
+    .focus-callout-items { display: flex; gap: 0.4rem; flex-wrap: wrap; }
     .focus-callout-items span {
-      font-size: 0.79rem;
-      color: var(--text-2);
-      padding: 0.2rem 0.7rem;
-      border: 1px solid var(--border);
-      border-radius: 100px;
+      font-size: 0.79rem; color: var(--text-2); padding: 0.2rem 0.7rem;
+      border: 1px solid var(--border); border-radius: 100px;
     }
 
-    /* ── TINTED SECTION ── */
-    .section.bg-tinted { background: var(--bg-2); }
+    .consumer-intro { font-size: 0.95rem; color: var(--text-2); line-height: 1.8; margin-bottom: 2.5rem; max-width: 760px; }
 
-    /* ── AI STATEMENT (replaces ai-highlight card) ── */
-    .ai-statement-inner {
+    .order-funnel {
       display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 4rem;
-      align-items: start;
+      grid-template-columns: repeat(5, 1fr);
+      margin-bottom: 3rem;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .funnel-step { padding: 1.5rem 1.25rem; border-right: 1px solid var(--border); }
+    .funnel-step:last-child { border-right: none; }
+    .funnel-step-num {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent-text); margin-bottom: 0.4rem;
+    }
+    .funnel-step-title { font-family: var(--font-serif); font-weight: 300; font-size: 1rem; margin-bottom: 0.35rem; }
+    .funnel-step-desc { font-size: 0.77rem; color: var(--text-3); line-height: 1.5; }
+
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .editorial-title { font-family: var(--font-serif); font-weight: 300; font-size: 1.05rem; margin-bottom: 0.5rem; }
+    .editorial-body { font-size: 0.85rem; color: var(--text-2); line-height: 1.7; }
+
+    .checkout-divider { border: none; margin: 0; padding-block: 2.5rem; }
+
+    .checkout-section-intro { font-size: 0.95rem; color: var(--text-2); line-height: 1.8; margin-bottom: 2.5rem; }
+
+    .checkout-flow {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0;
+      margin-bottom: 2.5rem;
+    }
+    .checkout-step { display: flex; flex-direction: column; align-items: center; position: relative; }
+    .checkout-step:not(:last-child)::after {
+      content: '';
+      position: absolute; top: 20px; left: 50%; width: 100%; height: 2px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--border) 100%);
+    }
+    .checkout-step-dot {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--bg-2); border: 2px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 600; color: var(--accent-text);
+      position: relative; z-index: 1; flex-shrink: 0;
+    }
+    .checkout-step-label { font-size: 0.72rem; color: var(--text-2); text-align: center; margin-top: 0.5rem; line-height: 1.4; }
+
+    .payment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+    .payment-context {
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 1.5rem;
+    }
+    .payment-context-label {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-3); margin-bottom: 1rem;
+    }
+    .payment-method {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.75rem; border: 1px solid var(--border);
+      border-radius: var(--radius-sm); margin-bottom: 0.5rem;
+      font-size: 0.85rem; color: var(--text-2);
+    }
+    .payment-method:last-child { margin-bottom: 0; }
+    .payment-method-icon {
+      width: 32px; height: 32px; border-radius: 6px;
+      background: var(--bg-3); display: flex; align-items: center;
+      justify-content: center; font-size: 0.8rem; flex-shrink: 0;
+    }
+    .payment-method span { font-size: 0.75rem; color: var(--text-3); display: block; }
+
+    .checkout-strip {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden;
+    }
+    .strip-item { background: var(--bg-2); padding: 1.75rem; }
+    .strip-item h4 { font-family: var(--font-serif); font-weight: 300; font-size: 1.05rem; margin-bottom: 0.6rem; }
+    .strip-item p { font-size: 0.83rem; color: var(--text-2); line-height: 1.65; }
+    .ab-badge {
+      display: inline-block; font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      background: var(--accent-text); color: white;
+      padding: 0.15rem 0.4rem; border-radius: 4px;
+      margin-left: 0.4rem; vertical-align: middle;
+    }
+
+    /* ── B2B / GESTOR ── */
+    .gestor-list { border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+    .gestor-row {
+      display: grid; grid-template-columns: 210px 1fr;
+      align-items: start; gap: 2.5rem;
+      padding: 1.75rem 2rem;
+      transition: background var(--transition);
+    }
+    .gestor-row:hover { background: var(--bg-2); }
+    .gestor-row-label {
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent-text); margin-bottom: 0.35rem;
+    }
+    .gestor-row-title { font-family: var(--font-serif); font-weight: 300; font-size: 1.05rem; }
+    .gestor-row-desc { font-size: 0.85rem; color: var(--text-2); line-height: 1.7; padding-top: 0.1rem; }
+
+    /* ── PROCESS — open, no cards ── */
+    .process-open {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem 4rem;
+    }
+    .process-open-item h3 {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
+    }
+    .process-open-item p { font-size: 0.88rem; color: var(--text-2); line-height: 1.75; }
+    .process-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.75rem; }
+
+    /* ── AI STATEMENT ── */
+    .section.bg-tinted { background: var(--bg-2); }
+    .ai-statement-inner {
+      display: grid; grid-template-columns: auto 1fr;
+      gap: 4rem; align-items: start;
     }
     .ai-statement-num {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-weight: 300;
-      font-size: clamp(5rem, 11vw, 8.5rem);
-      color: var(--accent-text);
-      line-height: 0.9;
-      white-space: nowrap;
+      font-family: var(--font-serif); font-style: italic; font-weight: 300;
+      font-size: clamp(5rem, 11vw, 8.5rem); color: var(--accent-text);
+      line-height: 0.9; white-space: nowrap;
     }
-    .ai-statement-num small {
-      font-size: 0.4em;
-      font-style: normal;
-      vertical-align: super;
-      color: var(--text-3);
-    }
+    .ai-statement-num small { font-size: 0.4em; font-style: normal; vertical-align: super; color: var(--text-3); }
     .ai-statement-heading {
-      font-family: var(--font-serif);
-      font-weight: 300;
-      font-size: clamp(1.6rem, 3.5vw, 2.5rem);
-      line-height: 1.2;
-      margin-bottom: 1.25rem;
+      font-family: var(--font-serif); font-weight: 300;
+      font-size: clamp(1.6rem, 3.5vw, 2.5rem); line-height: 1.2; margin-bottom: 1.25rem;
     }
     .ai-statement-heading em { font-style: italic; color: var(--accent-text); }
-    .ai-statement-body p {
-      font-size: 0.95rem;
-      color: var(--text-2);
-      line-height: 1.8;
-      max-width: 620px;
-    }
+    .ai-statement-body p { font-size: 0.95rem; color: var(--text-2); line-height: 1.8; max-width: 580px; }
     .ai-statement-body p + p { margin-top: 1rem; }
+    .ai-stack { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 1.25rem; }
 
-    /* ── REFLECTION BLOCK ── */
-    .reflection-block {
-      padding-block: clamp(3rem, 6vw, 5rem);
+    /* ── OUTCOMES — open ── */
+    .outcomes-open {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
     }
+    .outcome-open .metric-value { display: block; font-size: clamp(3rem, 6vw, 4.5rem); line-height: 1; }
+    .outcome-open .metric-desc { font-size: 0.85rem; color: var(--text-2); margin-top: 0.6rem; line-height: 1.45; }
+
+    /* ── REFLECTION ── */
+    .reflection-block { padding-block: clamp(3rem, 6vw, 5rem); }
     .reflection-inner p {
-      font-family: var(--font-serif);
-      font-weight: 300;
-      font-style: italic;
-      font-size: clamp(1.2rem, 2.5vw, 1.65rem);
-      line-height: 1.65;
-      color: var(--text-1);
-      max-width: 960px;
+      font-family: var(--font-serif); font-weight: 300; font-style: italic;
+      font-size: clamp(1.2rem, 2.5vw, 1.65rem); line-height: 1.65;
+      color: var(--text-1); max-width: 900px;
     }
 
-    @media (max-width: 768px) {
+    /* ── NEXT PROJECT ── */
+    .next-project { padding-block: 5rem; text-align: center; background: var(--bg-2); }
+    .next-project-title {
+      font-family: var(--font-serif); font-weight: 300;
+      font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.15; margin-bottom: 2rem;
+    }
+    .next-project-title em { font-style: italic; color: var(--accent-text); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .split { grid-template-columns: 1fr; gap: 1.5rem; }
+      .split-h { position: static; }
+      .body-2col { grid-template-columns: 1fr; gap: 1.5rem; }
+      .case-meta-strip { grid-template-columns: repeat(2, 1fr); }
+      .metrics-row { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+      .ds-highlights { grid-template-columns: 1fr; }
+      .order-funnel { grid-template-columns: 1fr; }
+      .funnel-step { border-right: none; border-bottom: 1px solid var(--border); }
+      .funnel-step:last-child { border-bottom: none; }
+      .editorial-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .payment-grid { grid-template-columns: 1fr; }
+      .checkout-flow { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+      .checkout-step:not(:last-child)::after { display: none; }
+      .checkout-strip { grid-template-columns: 1fr; gap: 0; background: transparent; }
+      .process-open { grid-template-columns: 1fr; gap: 2rem; }
+      .outcomes-open { grid-template-columns: 1fr; gap: 2rem; }
+      .gestor-row { grid-template-columns: 1fr; gap: 0.5rem; }
       .ai-statement-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+    @media (max-width: 640px) {
+      .case-meta-strip { grid-template-columns: 1fr; }
+      .metrics-row { grid-template-columns: repeat(2, 1fr); }
+      .checkout-flow { grid-template-columns: repeat(2, 1fr); }
       .focus-callout-sep { display: none; }
     }
   </style>
@@ -813,101 +461,104 @@
       I built the design system, the process, and the culture from scratch while shipping
       40+ features.
     </p>
-
-    <div class="case-meta-grid case-header-entrance" style="--delay:0.28s">
-      <div class="case-meta-item">
-        <p class="section-label">Company</p>
-        <p class="case-meta-value">Multipedidos<span>Food Tech · SaaS</span></p>
-      </div>
-      <div class="case-meta-item">
-        <p class="section-label">Role</p>
-        <p class="case-meta-value">Senior Product Designer<span>Sole designer</span></p>
-      </div>
-      <div class="case-meta-item">
-        <p class="section-label">Timeline</p>
-        <p class="case-meta-value">Jan 2024 – Jun 2026<span>2 years</span></p>
-      </div>
-      <div class="case-meta-item">
-        <p class="section-label">Stack</p>
-        <p class="case-meta-value">Figma, DEV Mode<span>Claude + MCP</span></p>
-      </div>
-    </div>
-
-    <div class="case-hero-visual case-header-entrance" style="--delay:0.36s">
-      <img src="../../assets/projects/pedir-delivery/header-image.png" alt="Multipedidos / Pedir.Delivery product interface" />
-    </div>
   </div>
 </header>
 
-<!-- ═══ CONTEXT ═══ -->
-<section class="section">
-  <div class="container">
-    <p class="section-label">Scale</p>
-    <h2 class="section-heading" style="margin-bottom:2.5rem;">Designing for <em>real users.</em></h2>
-    <div class="context-numbers">
-      <div class="context-number-card reveal">
-        <span class="metric-value">10M<span style="font-size:1.6rem;">+</span></span>
-        <span class="metric-label" style="font-size:0.8rem; color:var(--text-2); margin-top:0.5rem; display:block;">Monthly accesses on Pedir.Delivery</span>
-      </div>
-      <div class="context-number-card reveal" style="transition-delay:0.05s">
-        <span class="metric-value">4M<span style="font-size:1.6rem;">+</span></span>
-        <span class="metric-label" style="font-size:0.8rem; color:var(--text-2); margin-top:0.5rem; display:block;">Monthly orders processed</span>
-      </div>
-      <div class="context-number-card reveal" style="transition-delay:0.1s">
-        <span class="metric-value">1K<span style="font-size:1.6rem;">+</span></span>
-        <span class="metric-label" style="font-size:0.8rem; color:var(--text-2); margin-top:0.5rem; display:block;">Screens developed</span>
-      </div>
-      <div class="context-number-card reveal" style="transition-delay:0.15s">
-        <span class="metric-value">40<span style="font-size:1.6rem;">+</span></span>
-        <span class="metric-label" style="font-size:0.8rem; color:var(--text-2); margin-top:0.5rem; display:block;">Product demands managed in design system</span>
-      </div>
+<!-- ═══ HERO — full bleed ═══ -->
+<div class="case-hero case-header-entrance" style="--delay:0.28s">
+  <img src="../../assets/projects/pedir-delivery/header-image.png" alt="Multipedidos / Pedir.Delivery product interface" />
+</div>
+
+<!-- ═══ META STRIP ═══ -->
+<div class="container">
+  <div class="case-meta-strip">
+    <div>
+      <p class="case-meta-label">Company</p>
+      <p class="case-meta-val">Multipedidos<span>Food Tech · SaaS</span></p>
+    </div>
+    <div>
+      <p class="case-meta-label">Role</p>
+      <p class="case-meta-val">Senior Product Designer<span>Sole designer</span></p>
+    </div>
+    <div>
+      <p class="case-meta-label">Timeline</p>
+      <p class="case-meta-val">Jan 2024 – Jun 2026<span>2 years</span></p>
+    </div>
+    <div>
+      <p class="case-meta-label">Stack</p>
+      <p class="case-meta-val">Figma, DEV Mode<span>Claude + MCP</span></p>
     </div>
   </div>
-</section>
+</div>
 
 <!-- ═══ OVERVIEW ═══ -->
-<section class="section" style="padding-top:0; padding-bottom:clamp(2rem, 4vw, 3rem);">
+<section class="section" style="padding-top: clamp(2rem, 4vw, 3rem);">
   <div class="container">
-    <div class="overview-grid">
-      <div class="overview-block reveal">
-        <p class="section-label">The Situation</p>
-        <p>
-          I joined Multipedidos in January 2024 as a freelancer via Estúdio 149, and became
-          a fixed contractor in June 2024. I was the only designer in the company. There was
-          no design system, no design process, no design culture.
-        </p>
-        <p>
-          The product had two core surfaces: Gestor de Pedidos (a B2B restaurant management
-          SaaS covering order reception, menu management, KDS, POS, and inventory) and
-          Pedir.Delivery (a consumer-facing online ordering platform). Both needed to
-          scale fast. Both were accumulating design debt with every release.
-        </p>
-      </div>
-      <div class="overview-block reveal" style="transition-delay:0.05s">
-        <p class="section-label">The Mandate</p>
-        <p>
-          Build a design system that the engineering team could consume directly. Establish
-          a product design practice that the business could depend on. Ship features without
-          accumulating debt. And eventually, prove that design decisions could be tied to
-          business outcomes.
-        </p>
-        <p>
-          As the only designer fielding demands from 6 different teams simultaneously,
-          I was responsible for the full design operation: stakeholder alignment, research,
-          components, critiques, A/B tests, and developer handoff. The challenge wasn't
-          scale alone; it was building the infrastructure for good design decisions while
-          keeping pace with an aggressive delivery rhythm.
-        </p>
+    <div class="split">
+      <h2 class="split-h reveal">The situation <em>and the mandate.</em></h2>
+      <div class="body-2col">
+        <div class="body-col reveal">
+          <p class="col-label">The Situation</p>
+          <p>
+            I joined Multipedidos in January 2024 as a freelancer via Estudio 149, and became
+            a fixed contractor in June 2024. I was the only designer in the company. There was
+            no design system, no design process, no design culture.
+          </p>
+          <p>
+            The product had two core surfaces: Gestor de Pedidos (a B2B restaurant management
+            SaaS covering order reception, menu management, KDS, POS, and inventory) and
+            Pedir.Delivery (a consumer-facing online ordering platform). Both needed to
+            scale fast. Both were accumulating design debt with every release.
+          </p>
+        </div>
+        <div class="body-col reveal" style="transition-delay:0.05s">
+          <p class="col-label">The Mandate</p>
+          <p>
+            Build a design system that the engineering team could consume directly. Establish
+            a product design practice that the business could depend on. Ship features without
+            accumulating debt. And eventually, prove that design decisions could be tied to
+            business outcomes.
+          </p>
+          <p>
+            As the only designer fielding demands from 6 different teams simultaneously,
+            I was responsible for the full design operation: stakeholder alignment, research,
+            components, critiques, A/B tests, and developer handoff. The challenge wasn't
+            scale alone; it was building the infrastructure for good design decisions while
+            keeping pace with an aggressive delivery rhythm.
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ GESTOR SCREEN ═══ -->
-<div class="container" style="padding-block: clamp(2rem, 4vw, 3rem);">
-  <div class="project-full-image reveal" style="margin:0;">
-    <img src="../../assets/projects/pedir-delivery/project-screen.png" alt="Gestor de Pedidos mockup screens" loading="lazy" />
+<!-- ═══ SCALE NUMBERS ═══ -->
+<section class="section" style="padding-top: 0; padding-bottom: clamp(3rem, 5vw, 5rem);">
+  <div class="container">
+    <div class="metrics-row">
+      <div class="metric-open reveal">
+        <span class="metric-value">10M<span style="font-size:1.6rem;">+</span></span>
+        <span class="metric-desc">Monthly accesses on Pedir.Delivery</span>
+      </div>
+      <div class="metric-open reveal" style="transition-delay:0.05s">
+        <span class="metric-value">4M<span style="font-size:1.6rem;">+</span></span>
+        <span class="metric-desc">Monthly orders processed</span>
+      </div>
+      <div class="metric-open reveal" style="transition-delay:0.1s">
+        <span class="metric-value">1K<span style="font-size:1.6rem;">+</span></span>
+        <span class="metric-desc">Screens developed</span>
+      </div>
+      <div class="metric-open reveal" style="transition-delay:0.15s">
+        <span class="metric-value">40<span style="font-size:1.6rem;">+</span></span>
+        <span class="metric-desc">Product demands managed in design system</span>
+      </div>
+    </div>
   </div>
+</section>
+
+<!-- ═══ GESTOR SCREEN — full bleed ═══ -->
+<div class="img-full reveal">
+  <img src="../../assets/projects/pedir-delivery/project-screen.png" alt="Gestor de Pedidos mockup screens" loading="lazy" />
 </div>
 
 <!-- ═══ PULL QUOTE ═══ -->
@@ -920,69 +571,74 @@
 </div>
 
 <!-- ═══ DESIGN SYSTEM ═══ -->
-<section class="section" style="padding-bottom:0;">
+<section class="section">
   <div class="container">
-    <h2 class="section-heading" style="margin-bottom:1.5rem;">Built to <em>move fast</em> without breaking things.</h2>
-    <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8; max-width:900px; margin-bottom:0;">
-      The delivery pace was aggressive from day one, so I had to be strategic. I started by
-      building the Foundation: a complete token system covering color, spacing, typography,
-      radius and elevation.
-    </p>
-    <div class="ds-highlights">
-      <div class="ds-card reveal">
-        <h3>Tokens Before Components</h3>
-        <p>
-          The foundation came first: a full token system for color, spacing, radius, typography, and elevation, with dark and light mode from day one. Ant Design provided the component structure and our tokens provided the identity. Any change at the token level propagated everywhere.
+    <div class="split">
+      <h2 class="split-h reveal">Built to <em>move fast</em> without breaking things.</h2>
+      <div class="reveal" style="transition-delay:0.05s">
+        <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8; margin-bottom:0;">
+          The delivery pace was aggressive from day one, so I had to be strategic. I started by
+          building the Foundation: a complete token system covering color, spacing, typography,
+          radius and elevation.
         </p>
-      </div>
-      <div class="ds-card reveal" style="transition-delay:0.05s">
-        <h3>DEV Mode Integration</h3>
-        <p>
-          Implemented Figma DEV Mode for all developers. Every component in the design system
-          maps to a code reference. Developers inspect, not guess. Implementation fidelity
-          improved significantly from the first sprint we ran it.
-        </p>
-      </div>
-      <div class="ds-card reveal" style="transition-delay:0.1s">
-        <h3>Responsive by Default</h3>
-        <p>
-          Pedir.Delivery is a mobile-first consumer product. Gestor is used across desktop and
-          tablet. Every component in the system was built with both contexts in mind,
-          resulting in 1,000+ screens across mobile and web.
-        </p>
+        <div class="ds-highlights">
+          <div class="ds-card">
+            <h3>Tokens Before Components</h3>
+            <p>
+              The foundation came first: a full token system for color, spacing, radius, typography, and elevation, with dark and light mode from day one. Ant Design provided the component structure and our tokens provided the identity. Any change at the token level propagated everywhere.
+            </p>
+          </div>
+          <div class="ds-card">
+            <h3>DEV Mode Integration</h3>
+            <p>
+              Implemented Figma DEV Mode for all developers. Every component in the design system
+              maps to a code reference. Developers inspect, not guess. Implementation fidelity
+              improved significantly from the first sprint we ran it.
+            </p>
+          </div>
+          <div class="ds-card">
+            <h3>Responsive by Default</h3>
+            <p>
+              Pedir.Delivery is a mobile-first consumer product. Gestor is used across desktop and
+              tablet. Every component in the system was built with both contexts in mind,
+              resulting in 1,000+ screens across mobile and web.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ PRODUCT IMAGE ═══ -->
-<div class="container" style="padding-block: clamp(2rem, 4vw, 3rem);">
-  <div class="project-full-image reveal" style="margin:0;">
-    <img src="../../assets/projects/pedir-delivery/project-image.png" alt="Pedir.Delivery product screens" loading="lazy" />
-  </div>
+<!-- ═══ PRODUCT IMAGE — full bleed ═══ -->
+<div class="img-full reveal">
+  <img src="../../assets/projects/pedir-delivery/project-image.png" alt="Pedir.Delivery product screens" loading="lazy" />
 </div>
 
 <!-- ═══ CONSUMER PLATFORM ═══ -->
-<section class="section" style="padding-top:0; padding-bottom:0;">
+<section class="section">
   <div class="container">
-    <h2 class="section-heading" style="margin-bottom:1.5rem;">Designing the order, <em>from first tap to delivery.</em></h2>
-    <p class="consumer-intro">
-      Every design decision on Pedir.Delivery pointed at the same business goal: get more customers
-      through to a completed order. That meant owning the full funnel, from the moment a customer
-      opens a restaurant's menu through item selection, customization, cart, checkout, and
-      payment confirmation. No abandoned carts from friction. No lost orders from confusing flows.
-    </p>
-
-    <div class="focus-callout reveal">
-      <p class="focus-callout-label">Scope</p>
-      <div class="focus-callout-sep"></div>
-      <div class="focus-callout-items">
-        <span>Full order funnel</span>
-        <span>3 item flow types</span>
-        <span>Loyalty system</span>
-        <span>6 payment methods</span>
-        <span>A/B testing</span>
-        <span>Account management</span>
+    <div class="split" style="margin-bottom: clamp(2rem, 4vw, 3rem);">
+      <h2 class="split-h reveal">Designing the order, <em>from first tap to delivery.</em></h2>
+      <div class="reveal" style="transition-delay:0.05s">
+        <p class="consumer-intro">
+          Every design decision on Pedir.Delivery pointed at the same business goal: get more customers
+          through to a completed order. That meant owning the full funnel, from the moment a customer
+          opens a restaurant's menu through item selection, customization, cart, checkout, and
+          payment confirmation. No abandoned carts from friction. No lost orders from confusing flows.
+        </p>
+        <div class="focus-callout">
+          <p class="focus-callout-label">Scope</p>
+          <div class="focus-callout-sep"></div>
+          <div class="focus-callout-items">
+            <span>Full order funnel</span>
+            <span>3 item flow types</span>
+            <span>Loyalty system</span>
+            <span>6 payment methods</span>
+            <span>A/B testing</span>
+            <span>Account management</span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1047,18 +703,19 @@
       </div>
     </div>
 
-    <hr class="checkout-divider" />
+    <div class="checkout-divider"></div>
 
-    <h2 class="section-heading" style="margin-bottom:1.5rem; margin-top:0.5rem;">End-to-end ownership of <em>checkout and payment.</em></h2>
-    <p class="checkout-section-intro">
-      The checkout and payment experience is where the order either completes or dies.
-      I owned the complete transactional layer: delivery details, payment selection,
-      discount application, order confirmation, and async payment tracking. The scope
-      covered six payment methods across two contexts, a cashback system, coupon codes,
-      three delivery modes, and A/B tests running directly on the live flow.
-    </p>
+    <div class="split" style="margin-bottom: clamp(2rem, 4vw, 3rem);">
+      <h2 class="split-h reveal">End-to-end ownership of <em>checkout and payment.</em></h2>
+      <p class="checkout-section-intro reveal" style="transition-delay:0.05s">
+        The checkout and payment experience is where the order either completes or dies.
+        I owned the complete transactional layer: delivery details, payment selection,
+        discount application, order confirmation, and async payment tracking. The scope
+        covered six payment methods across two contexts, a cashback system, coupon codes,
+        three delivery modes, and A/B tests running directly on the live flow.
+      </p>
+    </div>
 
-    <!-- Flow steps -->
     <div class="checkout-flow reveal">
       <div class="checkout-step">
         <div class="checkout-step-dot">01</div>
@@ -1086,41 +743,39 @@
       </div>
     </div>
 
-    <!-- Payment architecture -->
     <div class="payment-grid reveal">
       <div class="payment-context">
         <p class="payment-context-label">Pay Online</p>
         <div class="payment-method">
-          <div class="payment-method-icon">⚡</div>
-          <div>Pix<span>Instant transfer · Async flow for QR and automated Pix</span></div>
+          <div class="payment-method-icon">&#9889;</div>
+          <div>Pix<span>Instant transfer &middot; Async flow for QR and automated Pix</span></div>
         </div>
         <div class="payment-method">
-          <div class="payment-method-icon">👛</div>
+          <div class="payment-method-icon">&#128123;</div>
           <div>Wallet<span>Platform loyalty credits</span></div>
         </div>
         <div class="payment-method">
-          <div class="payment-method-icon">🌐</div>
+          <div class="payment-method-icon">&#127760;</div>
           <div>Platform Payment<span>PicPay, Mercado Pago, Stripe, Zelle, Pagseguro</span></div>
         </div>
       </div>
       <div class="payment-context">
         <p class="payment-context-label">Pay on Delivery</p>
         <div class="payment-method">
-          <div class="payment-method-icon">💵</div>
+          <div class="payment-method-icon">&#128181;</div>
           <div>Cash<span>With change calculation (A/B tested two layouts)</span></div>
         </div>
         <div class="payment-method">
-          <div class="payment-method-icon">💳</div>
+          <div class="payment-method-icon">&#128179;</div>
           <div>Credit Card<span>Saved card with quick-edit flow</span></div>
         </div>
         <div class="payment-method">
-          <div class="payment-method-icon">🏦</div>
+          <div class="payment-method-icon">&#127974;</div>
           <div>Debit Card<span>In-person POS payment</span></div>
         </div>
       </div>
     </div>
 
-    <!-- Design decisions -->
     <div class="checkout-strip">
       <div class="strip-item reveal">
         <h4>Cashback &amp; Coupons</h4>
@@ -1150,47 +805,47 @@
   </div>
 </section>
 
-<!-- ═══ PEDIR.DELIVERY VIDEO ═══ -->
-<div class="container" style="padding-block: clamp(2rem, 4vw, 3rem);">
-  <div class="project-full-image reveal" style="margin:0;">
-    <video class="project-vid" autoplay loop muted playsinline preload="none"
-           aria-label="Pedir.Delivery app screens walkthrough">
-      <source src="../../assets/projects/pedir-delivery/pedir-delivery.mp4" type="video/mp4">
-    </video>
-  </div>
+<!-- ═══ PEDIR.DELIVERY VIDEO — full bleed ═══ -->
+<div class="img-full reveal" style="padding-block: clamp(2rem, 4vw, 4rem);">
+  <video class="project-vid" autoplay loop muted playsinline preload="none"
+         aria-label="Pedir.Delivery app screens walkthrough">
+    <source src="../../assets/projects/pedir-delivery/pedir-delivery.mp4" type="video/mp4">
+  </video>
 </div>
 
-<!-- ═══ GESTOR: B2B PLATFORM ═══ -->
-<section class="section" style="padding-top:0; padding-bottom:0;">
+<!-- ═══ B2B PLATFORM ═══ -->
+<section class="section">
   <div class="container">
-    <h2 class="section-heading" style="margin-bottom:1.5rem;">Running the restaurant, <em>end to end.</em></h2>
-    <div class="gestor-intro reveal">
-      <div>
-        <p>
-          Pedir.Delivery is the consumer-facing side. Gestor de Pedidos is the other half:
-          the B2B SaaS that restaurant owners and staff use to receive orders, manage menus,
-          process payments at the counter, and close the day. Both products share the same
-          design system and ran in parallel throughout my time at Multipedidos.
-        </p>
-        <p>
-          The Gestor work touched every operational layer of a restaurant: the kitchen display,
-          the counter, the cashier, the menu, the sidebar, the reports, and the financial close.
-          The vast majority of flows I worked on had never been formally designed before. I was
-          the first designer to look at most of them.
-        </p>
-      </div>
-      <div>
-        <p>
-          The scope ranged from core infrastructure (full menu builder rebuild, KDS, sidebar and
-          navigation architecture) to new payment systems (POS redesign, multiple payers, PIX,
-          digital wallet, cashback) to operational tooling (print queue management, reports,
-          integrations) to growth features (CRM platform, onboarding agent for new clients).
-        </p>
-        <p>
-          Every structural change had to be planned with a migration strategy. Any modification
-          to the base system was staged across phases to protect a client base of over 4,000
-          active restaurants. I coordinated those rollouts directly with engineering and product.
-        </p>
+    <div class="split" style="margin-bottom: clamp(2rem, 4vw, 3rem);">
+      <h2 class="split-h reveal">Running the restaurant, <em>end to end.</em></h2>
+      <div class="body-2col">
+        <div class="body-col reveal" style="transition-delay:0.05s">
+          <p>
+            Pedir.Delivery is the consumer-facing side. Gestor de Pedidos is the other half:
+            the B2B SaaS that restaurant owners and staff use to receive orders, manage menus,
+            process payments at the counter, and close the day. Both products share the same
+            design system and ran in parallel throughout my time at Multipedidos.
+          </p>
+          <p>
+            The Gestor work touched every operational layer of a restaurant: the kitchen display,
+            the counter, the cashier, the menu, the sidebar, the reports, and the financial close.
+            The vast majority of flows I worked on had never been formally designed before. I was
+            the first designer to look at most of them.
+          </p>
+        </div>
+        <div class="body-col reveal" style="transition-delay:0.1s">
+          <p>
+            The scope ranged from core infrastructure (full menu builder rebuild, KDS, sidebar and
+            navigation architecture) to new payment systems (POS redesign, multiple payers, PIX,
+            digital wallet, cashback) to operational tooling (print queue management, reports,
+            integrations) to growth features (CRM platform, onboarding agent for new clients).
+          </p>
+          <p>
+            Every structural change had to be planned with a migration strategy. Any modification
+            to the base system was staged across phases to protect a client base of over 4,000
+            active restaurants. I coordinated those rollouts directly with engineering and product.
+          </p>
+        </div>
       </div>
     </div>
 
@@ -1240,7 +895,7 @@
           <p class="gestor-row-label">Point of Sale</p>
           <p class="gestor-row-title">POS Redesign</p>
         </div>
-        <p class="gestor-row-desc">Redesigned the full point of sale interface: customer selection, product lookup, order building, and payment routing. The redesign introduced faster client search, cleaner item selection, and a payment flow that could handle split payments across multiple payers with different methods. A new Pix Automático approval flow handled the async payment state natively: no workarounds, no confusion about whether a payment went through.</p>
+        <p class="gestor-row-desc">Redesigned the full point of sale interface: customer selection, product lookup, order building, and payment routing. The redesign introduced faster client search, cleaner item selection, and a payment flow that could handle split payments across multiple payers with different methods. A new Pix Automatico approval flow handled the async payment state natively: no workarounds, no confusion about whether a payment went through.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
@@ -1254,7 +909,7 @@
           <p class="gestor-row-label">Payment Integration</p>
           <p class="gestor-row-title">PIX + Digital Wallet</p>
         </div>
-        <p class="gestor-row-desc">Designed the in-store PIX flow from end to end: QR code generation, payment status polling, confirmation screen, and failure recovery. Also designed the Digital Wallet interface, which restaurants use to manage incoming PIX transfers and payments processed by financial institution partners like Asaas, responsible for Pix Automático transactions integrated into the Multipedidos platform.</p>
+        <p class="gestor-row-desc">Designed the in-store PIX flow from end to end: QR code generation, payment status polling, confirmation screen, and failure recovery. Also designed the Digital Wallet interface, which restaurants use to manage incoming PIX transfers and payments processed by financial institution partners like Asaas, responsible for Pix Automatico transactions integrated into the Multipedidos platform.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
@@ -1264,76 +919,67 @@
         <p class="gestor-row-desc">Before the redesign, the Gestor sidebar had no structure at all. Pages were added as features shipped, in no particular order, with no grouping by importance, frequency, or user context. I audited the full feature set, mapped how different operator roles moved through the system, and restructured the sidebar around a coherent information architecture. Beyond reorganizing existing pages, I also introduced a Favorites feature, letting each operator pin the pages most relevant to their operation, giving them a personalized navigation experience built around how they actually work.</p>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ═══ GESTOR IMAGE ═══ -->
-<div class="container" style="padding-block: clamp(2rem, 4vw, 3rem);">
-  <div class="project-full-image reveal" style="margin:0;">
-    <img src="../../assets/projects/pedir-delivery/gestor-mockup.png" alt="Gestor de Pedidos interface" loading="lazy" />
-  </div>
+<!-- ═══ GESTOR IMAGE — full bleed ═══ -->
+<div class="img-full reveal">
+  <img src="../../assets/projects/pedir-delivery/gestor-mockup.png" alt="Gestor de Pedidos interface" loading="lazy" />
 </div>
 
 <!-- ═══ PROCESS ═══ -->
-<section class="section bg-tinted" style="padding-block: clamp(2rem, 4vw, 3rem);">
+<section class="section bg-tinted">
   <div class="container">
-    <h2 class="section-heading" style="margin-bottom:2.5rem;">Design that talks <em>to the whole team.</em></h2>
-    <div class="process-grid">
-      <div class="process-card reveal" data-num="01">
-        <div>
+    <div class="split">
+      <h2 class="split-h reveal">Design that talks <em>to the whole team.</em></h2>
+      <div class="process-open">
+        <div class="process-open-item reveal">
           <h3>Design Critiques</h3>
+          <p>
+            I implemented weekly Design Critiques involving developers, QA, CX,
+            commercial, and directors. Everyone with a stake in the product had a
+            structured channel to raise questions before shipping.
+          </p>
+          <div class="process-tags">
+            <span class="tag">Design Critiques</span>
+            <span class="tag">Cross-functional</span>
+          </div>
         </div>
-        <p>
-          I implemented weekly Design Critiques involving developers, QA, CX,
-          commercial, and directors. Everyone with a stake in the product had a
-          structured channel to raise questions before shipping.
-        </p>
-        <div class="process-tags">
-          <span class="tag">Design Critiques</span>
-          <span class="tag">Cross-functional</span>
-        </div>
-      </div>
-      <div class="process-card reveal" data-num="02" style="transition-delay:0.05s">
-        <div>
+        <div class="process-open-item reveal" style="transition-delay:0.05s">
           <h3>Usability Testing</h3>
+          <p>
+            Added external client critiques and usability testing to the process.
+            Real restaurant operators gave feedback on flows before they shipped.
+            Findings shaped iterations, not post-mortems.
+          </p>
+          <div class="process-tags">
+            <span class="tag">Usability Testing</span>
+            <span class="tag">SEQ Scoring</span>
+          </div>
         </div>
-        <p>
-          Added external client critiques and usability testing to the process.
-          Real restaurant operators gave feedback on flows before they shipped.
-          Findings shaped iterations, not post-mortems.
-        </p>
-        <div class="process-tags">
-          <span class="tag">Usability Testing</span>
-          <span class="tag">SEQ Scoring</span>
-        </div>
-      </div>
-      <div class="process-card reveal" data-num="03" style="transition-delay:0.1s">
-        <div>
+        <div class="process-open-item reveal" style="transition-delay:0.1s">
           <h3>A/B Testing</h3>
+          <p>
+            Introduced A/B testing to validate conversion hypotheses on Pedir.Delivery.
+            Design decisions started connecting to business metrics, making it easier
+            to argue for quality over speed.
+          </p>
+          <div class="process-tags">
+            <span class="tag">A/B Testing</span>
+            <span class="tag">OKRs</span>
+          </div>
         </div>
-        <p>
-          Introduced A/B testing to validate conversion hypotheses on Pedir.Delivery.
-          Design decisions started connecting to business metrics, making it easier
-          to argue for quality over speed.
-        </p>
-        <div class="process-tags">
-          <span class="tag">A/B Testing</span>
-          <span class="tag">OKRs</span>
-        </div>
-      </div>
-      <div class="process-card reveal" data-num="04" style="transition-delay:0.15s">
-        <div>
+        <div class="process-open-item reveal" style="transition-delay:0.15s">
           <h3>AI-Assisted Handoff</h3>
-        </div>
-        <p>
-          Used Claude with Figma MCP to automate spec generation from design tokens,
-          cutting prototype-to-dev handoff from 5 days to 2. The same workflow now
-          ships more with less overhead.
-        </p>
-        <div class="process-tags">
-          <span class="tag">Claude + MCP</span>
-          <span class="tag">Figma DEV Mode</span>
+          <p>
+            Used Claude with Figma MCP to automate spec generation from design tokens,
+            cutting prototype-to-dev handoff from 5 days to 2. The same workflow now
+            ships more with less overhead.
+          </p>
+          <div class="process-tags">
+            <span class="tag">Claude + MCP</span>
+            <span class="tag">Figma DEV Mode</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1341,7 +987,7 @@
 </section>
 
 <!-- ═══ AI IN PROCESS ═══ -->
-<section class="section bg-tinted" style="padding-top: 0; padding-bottom: clamp(2rem, 4vw, 3rem);">
+<section class="section bg-tinted" style="padding-top: 0; padding-bottom: clamp(2rem, 4vw, 4rem);">
   <div class="container">
     <div class="ai-statement-inner reveal">
       <div>
@@ -1372,21 +1018,23 @@
 </section>
 
 <!-- ═══ OUTCOMES ═══ -->
-<section class="section" style="padding-top: clamp(2rem, 4vw, 3rem); padding-bottom: clamp(2rem, 4vw, 3rem);">
+<section class="section">
   <div class="container">
-    <h2 class="section-heading" style="margin-bottom:2.5rem;">Impact, <em>in numbers.</em></h2>
-    <div class="outcomes-grid">
-      <div class="outcome-card reveal">
-        <span class="metric-value">60<span style="font-size:1.6rem;">%</span></span>
-        <span class="metric-label">Faster prototype delivery via AI-assisted handoff workflow</span>
-      </div>
-      <div class="outcome-card reveal" style="transition-delay:0.05s">
-        <span class="metric-value">10M<span style="font-size:1.6rem;">+</span></span>
-        <span class="metric-label">Monthly accesses on Pedir.Delivery, serving 4M+ orders</span>
-      </div>
-      <div class="outcome-card reveal" style="transition-delay:0.1s">
-        <span class="metric-value">1K<span style="font-size:1.6rem;">+</span></span>
-        <span class="metric-label">Screens developed on a single design system</span>
+    <div class="split">
+      <h2 class="split-h reveal">Impact, <em>in numbers.</em></h2>
+      <div class="outcomes-open">
+        <div class="outcome-open reveal">
+          <span class="metric-value">60<span style="font-size:1.6rem;">%</span></span>
+          <span class="metric-desc">Faster prototype delivery via AI-assisted handoff workflow</span>
+        </div>
+        <div class="outcome-open reveal" style="transition-delay:0.05s">
+          <span class="metric-value">10M<span style="font-size:1.6rem;">+</span></span>
+          <span class="metric-desc">Monthly accesses on Pedir.Delivery, serving 4M+ orders</span>
+        </div>
+        <div class="outcome-open reveal" style="transition-delay:0.1s">
+          <span class="metric-value">1K<span style="font-size:1.6rem;">+</span></span>
+          <span class="metric-desc">Screens developed on a single design system</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1416,6 +1064,7 @@
     </div>
   </div>
 </div>
+
 <footer class="site-footer">
   <span class="footer-name">Lucas Nascimento</span>
   <div class="footer-links">
