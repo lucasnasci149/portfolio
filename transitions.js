@@ -95,6 +95,13 @@
     curtain.id = 'page-curtain';
     curtain.classList.add('pc-leaving');
 
+    // Match exit-curtain colour to the destination page background
+    // so there is no flash at the handoff between exit and enter curtains.
+    // about.html is dark (#0c0c0c); every other page is light (#fbfaf7).
+    var destPath = link.pathname;
+    var destIsAbout = /\/about(\.html)?$/.test(destPath) || /\/about\/$/.test(destPath);
+    curtain.style.background = destIsAbout ? '#0c0c0c' : '#fbfaf7';
+
     // Favicon spinner centered on the curtain
     var spinner = document.createElement('img');
     spinner.className = 'curtain-spinner';
