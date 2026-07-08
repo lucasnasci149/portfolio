@@ -74,54 +74,6 @@
     }
     .nda-notice svg { flex-shrink: 0; margin-top: 0.1rem; color: var(--accent-text); }
 
-    /* ── ABSTRACT VISUAL ── */
-    .abstract-visual {
-      width: 100%;
-      background: var(--bg-2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 1.75rem 0;
-    }
-    .abstract-visual-inner {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      height: 200px;
-    }
-    .av-panel {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      overflow: hidden;
-    }
-    .av-label {
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-3);
-    }
-    .av-kpi {
-      font-family: var(--font-serif);
-      font-size: 2rem;
-      font-weight: 300;
-      color: var(--text-1);
-      line-height: 1;
-    }
-    .av-kpi-label { font-size: 0.68rem; color: var(--text-3); }
-    .av-bar-group { display: flex; flex-direction: column; gap: 0.3rem; flex: 1; justify-content: flex-end; }
-    .av-bar { height: 7px; border-radius: 3px; background: var(--accent-text); }
-    .av-bar.muted { background: var(--border); }
-    .av-line-group { display: flex; gap: 3px; align-items: flex-end; flex: 1; }
-    .av-line-bar { flex: 1; background: var(--accent-text); opacity: 0.55; border-radius: 2px 2px 0 0; }
-    .av-dot-grid { display: flex; flex-wrap: wrap; gap: 5px; flex: 1; align-content: flex-start; padding-top: 0.25rem; }
-    .av-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--border); }
-    .av-dot.on { background: var(--accent-text); opacity: 0.85; }
-
     /* ── META STRIP ── */
     .case-meta-strip {
       display: grid;
@@ -315,7 +267,6 @@
       .body-2col { grid-template-columns: 1fr; gap: 1.5rem; }
       .case-meta-strip { grid-template-columns: repeat(2, 1fr); }
       .metrics-row { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-      .abstract-visual-inner { grid-template-columns: 1fr 1fr; height: auto; min-height: 160px; }
       .ds-highlights { grid-template-columns: 1fr; background: transparent; gap: 0; }
       .ds-card { border: 1px solid var(--border); border-top: none; }
       .ds-card:first-child { border-top: 1px solid var(--border); }
@@ -327,7 +278,6 @@
     @media (max-width: 640px) {
       .case-meta-strip { grid-template-columns: 1fr; }
       .metrics-row { grid-template-columns: repeat(2, 1fr); }
-      .abstract-visual-inner { grid-template-columns: 1fr; height: auto; }
     }
   </style>
 </head>
@@ -393,49 +343,6 @@
     </div>
   </div>
 </header>
-
-<!-- ═══ ABSTRACT VISUAL ═══ -->
-<div class="abstract-visual case-header-entrance" style="--delay:0.35s">
-  <div class="container">
-    <div class="abstract-visual-inner">
-      <div class="av-panel">
-        <span class="av-label">Executive</span>
-        <div class="av-kpi">94<span style="font-size:1rem;">%</span></div>
-        <div class="av-kpi-label">Goal attainment</div>
-        <div class="av-bar-group" style="margin-top:auto;">
-          <div class="av-bar" style="width:94%"></div>
-          <div class="av-bar muted" style="width:78%"></div>
-          <div class="av-bar" style="width:61%; opacity:0.4"></div>
-        </div>
-      </div>
-      <div class="av-panel">
-        <span class="av-label">Operational</span>
-        <div class="av-line-group" style="flex:1;">
-          <div class="av-line-bar" style="height:30%"></div>
-          <div class="av-line-bar" style="height:55%"></div>
-          <div class="av-line-bar" style="height:42%"></div>
-          <div class="av-line-bar" style="height:70%"></div>
-          <div class="av-line-bar" style="height:85%"></div>
-          <div class="av-line-bar" style="height:60%"></div>
-          <div class="av-line-bar" style="height:90%"></div>
-          <div class="av-line-bar" style="height:75%"></div>
-        </div>
-        <div class="av-kpi-label">Output by period</div>
-      </div>
-      <div class="av-panel">
-        <span class="av-label">Analytical</span>
-        <div class="av-dot-grid">
-          <div class="av-dot on"></div><div class="av-dot on"></div><div class="av-dot on"></div>
-          <div class="av-dot on"></div><div class="av-dot on"></div><div class="av-dot"></div>
-          <div class="av-dot on"></div><div class="av-dot"></div><div class="av-dot"></div>
-          <div class="av-dot"></div><div class="av-dot"></div><div class="av-dot"></div>
-          <div class="av-dot"></div><div class="av-dot"></div><div class="av-dot"></div>
-        </div>
-        <div class="av-kpi-label">Variance distribution</div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- ═══ META STRIP ═══ -->
 <div class="container">
