@@ -1073,85 +1073,37 @@ footer {
    CUSTOM CURSOR
    ═══════════════════════════════════════════════════════════ */
 @media (pointer: fine) {
-  body,
-  body a,
-  body button,
-  body [role="button"],
-  body label,
-  body select,
-  body input,
-  body textarea {
-    cursor: none !important;
-  }
-
-  .cursor-dot,
-  .cursor-ring {
-    pointer-events: none;
+  /* Arrow circle — only appears on work/archive card hover */
+  .cursor-view {
     position: fixed;
-    top: 0;
-    left: 0;
-    border-radius: 50%;
-    z-index: 99999;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.25s var(--ease);
-    will-change: transform;
-  }
-
-  .cursor-dot {
-    width: 8px;
-    height: 8px;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    width: 52px;
+    height: 52px;
     background: #fff;
-    mix-blend-mode: difference;
-    transition: width 0.18s var(--ease),
-                height 0.18s var(--ease),
-                opacity 0.25s var(--ease),
-                background 0.25s var(--ease);
-  }
-
-  .cursor-ring {
-    width: 36px;
-    height: 36px;
-    border: 1.5px solid #fff;
-    mix-blend-mode: difference;
-    opacity: 0.55;
-    transition: width 0.22s var(--ease),
-                height 0.22s var(--ease),
-                opacity 0.25s var(--ease),
-                border-color 0.25s var(--ease);
-  }
-
-  /* Hover over interactive elements */
-  .cursor-dot.cursor-hover {
-    width: 6px;
-    height: 6px;
-    background: var(--accent);
-  }
-
-  .cursor-ring.cursor-hover {
-    width: 54px;
-    height: 54px;
-    opacity: 0.75;
-    border-color: var(--accent);
-  }
-
-  /* Click flash */
-  .cursor-dot.cursor-click {
-    width: 4px;
-    height: 4px;
-    background: var(--accent-2);
-  }
-
-  .cursor-ring.cursor-click {
-    width: 28px;
-    height: 28px;
-    border-color: var(--accent-2);
-    opacity: 1;
-  }
-
-  /* Hidden when pointer leaves the window */
-  .cursor-dot.cursor-hidden,
-  .cursor-ring.cursor-hidden {
+    color: #0a0a0a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    line-height: 1;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.14);
     opacity: 0;
+    transform: translate(-50%, -50%) scale(0.4);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    will-change: transform, opacity;
+  }
+  .cursor-view.visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  /* Hide normal cursor only over the cards themselves */
+  .work-item,
+  .archive-item {
+    cursor: none;
   }
 }
 

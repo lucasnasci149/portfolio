@@ -135,7 +135,7 @@
     .archive-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 0.375rem;
+      gap: 1rem;
       align-items: start;
     }
 
@@ -149,10 +149,7 @@
       transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
                   box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .archive-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 56px rgba(0,0,0,0.18);
-    }
+    .archive-item:hover { cursor: pointer; }
 
     .archive-item-visual {
       position: relative;
@@ -173,7 +170,7 @@
       transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: transform;
     }
-    .archive-item:hover .archive-item-visual img { transform: scale(1.04); }
+    
 
     .archive-item-info {
       position: absolute;
@@ -270,7 +267,7 @@
 <header class="site-header" id="siteHeader">
   <a href="/" class="site-name">Lucas Nascimento</a>
   <div class="site-nav-right">
-    <a href="portfolio/about/" class="site-nav-link" data-i18n="nav.about">About</a>
+    <a href="about.html" class="site-nav-link" data-i18n="nav.about">About</a>
     <div class="contact-menu">
       <button class="contact-menu-btn" id="contactBtn" aria-expanded="false" aria-haspopup="true">
         Contact <span class="contact-caret">&#9662;</span>
@@ -292,7 +289,7 @@
 </header>
 
 <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
-  <a href="portfolio/about/">About <span class="mobile-nav-arrow">&#8594;</span></a>
+  <a href="about.html">About <span class="mobile-nav-arrow">&#8594;</span></a>
   <a href="mailto:lucas.luizdonascimento@gmail.com">Email <span class="mobile-nav-arrow">&#8594;</span></a>
   <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn <span class="mobile-nav-arrow">&#8594;</span></a>
   <a href="assets/cv-lucas-nascimento.pdf" target="_blank" rel="noopener">Resume PDF <span class="mobile-nav-arrow">&#8594;</span></a>
@@ -386,7 +383,7 @@
 <footer class="site-footer">
   <span class="footer-name">Lucas Nascimento</span>
   <div class="footer-links">
-    <a href="portfolio/about/" data-i18n="nav.about">About</a>
+    <a href="about.html" data-i18n="nav.about">About</a>
     <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
     a>
     <a href="mailto:lucas.luizdonascimento@gmail.com">Email</a>

@@ -1,72 +1,36 @@
 /* ═══════════════════════════════════════════════════════════
    CUSTOM CURSOR
-   Ball cursor that follows the pointer and changes color on
-   hover/click. Skipped entirely on touch devices.
+   Arrow circle that appears only when hovering work/archive
+   cards. Normal OS cursor everywhere else.
+   Skipped on touch devices.
    ═══════════════════════════════════════════════════════════ */
 (function () {
   if (window.matchMedia('(pointer: coarse)').matches) return;
 
-  var dot  = document.createElement('div');
-  var ring = document.createElement('div');
-  dot.className  = 'cursor-dot cursor-hidden';
-  ring.className = 'cursor-ring cursor-hidden';
-  document.body.appendChild(dot);
-  document.body.appendChild(ring);
+  var pill = document.createElement('div');
+  pill.className = 'cursor-view';
+  pill.innerHTML = '&rarr;';
+  document.body.appendChild(pill);
 
-  var mouseX = 0, mouseY = 0;
-  var ringX  = 0, ringY  = 0;
+  var CARD_SEL = '.work-item, .archive-item';
 
   document.addEventListener('mousemove', function (e) {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    dot.style.transform = 'translate(calc(-50% + ' + mouseX + 'px), calc(-50% + ' + mouseY + 'px))';
-    dot.classList.remove('cursor-hidden');
-    ring.classList.remove('cursor-hidden');
+    pill.style.left = e.clientX + 'px';
+    pill.style.top  = e.clientY + 'px';
   });
 
-  // Smooth-follow ring via rAF lerp
-  (function loop() {
-    ringX += (mouseX - ringX) * 0.14;
-    ringY += (mouseY - ringY) * 0.14;
-    ring.style.transform = 'translate(calc(-50% + ' + ringX + 'px), calc(-50% + ' + ringY + 'px))';
-    requestAnimationFrame(loop);
-  })();
-
-  // Hover detection - interactive elements
-  var HOVER_SEL = 'a, button, [role="button"], label, .case-card, .exp-trigger, .filter-btn, .theme-toggle, .nav-logo, .back-to-top';
-
   document.addEventListener('mouseover', function (e) {
-    if (e.target.closest(HOVER_SEL)) {
-      dot.classList.add('cursor-hover');
-      ring.classList.add('cursor-hover');
-    }
+    if (e.target.closest(CARD_SEL)) pill.classList.add('visible');
   });
 
   document.addEventListener('mouseout', function (e) {
-    if (e.target.closest(HOVER_SEL)) {
-      dot.classList.remove('cursor-hover');
-      ring.classList.remove('cursor-hover');
-    }
+    if (!e.target.closest(CARD_SEL)) return;
+    var to = e.relatedTarget;
+    if (!to || !to.closest(CARD_SEL)) pill.classList.remove('visible');
   });
 
-  // Click flash
-  document.addEventListener('mousedown', function () {
-    dot.classList.add('cursor-click');
-    ring.classList.add('cursor-click');
-  });
-  document.addEventListener('mouseup', function () {
-    dot.classList.remove('cursor-click');
-    ring.classList.remove('cursor-click');
-  });
-
-  // Hide when pointer leaves the window
   document.documentElement.addEventListener('mouseleave', function () {
-    dot.classList.add('cursor-hidden');
-    ring.classList.add('cursor-hidden');
-  });
-  document.documentElement.addEventListener('mouseenter', function () {
-    dot.classList.remove('cursor-hidden');
-    ring.classList.remove('cursor-hidden');
+    pill.classList.remove('visible');
   });
 })();
 

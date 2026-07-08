@@ -135,7 +135,7 @@
     .archive-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 0.375rem;
+      gap: 1rem;
       align-items: start;
     }
 
@@ -149,10 +149,7 @@
       transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
                   box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .archive-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 56px rgba(0,0,0,0.18);
-    }
+    .archive-item:hover { cursor: pointer; }
 
     .archive-item-visual {
       position: relative;
@@ -173,7 +170,7 @@
       transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: transform;
     }
-    .archive-item:hover .archive-item-visual img { transform: scale(1.04); }
+    
 
     .archive-item-info {
       position: absolute;
