@@ -252,3 +252,70 @@
     });
   });
 })();
+
+/* ═══════════════════════════════════════════════════════════
+ SITE HEADER — contact dropdown, mobile menu, scroll-hide
+ ═══════════════════════════════════════════════════════════ */
+(function () {
+ // Contact dropdown
+ var btn = document.getElementById('contactBtn');
+ var panel = document.getElementById('contactPanel');
+ if (btn && panel) {
+  btn.addEventListener('click', function (e) {
+   e.stopPropagation();
+   var open = panel.classList.toggle('open');
+   btn.setAttribute('aria-expanded', String(open));
+  });
+  document.addEventListener('click', function (e) {
+   if (!btn.contains(e.target) && !panel.contains(e.target)) {
+    panel.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+   }
+  });
+  document.addEventListener('keydown', function (e) {
+   if (e.key === 'Escape') {
+    panel.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.focus();
+   }
+  });
+ }
+ // Mobile menu
+ var mBtn = document.getElementById('mobileMenuBtn');
+ var mNav = document.getElementById('mobileNav');
+ if (mBtn && mNav) {
+  mBtn.addEventListener('click', function () {
+   var isOpen = mNav.classList.toggle('open');
+   mBtn.setAttribute('aria-expanded', String(isOpen));
+   mBtn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+   mBtn.innerHTML = isOpen ? '&#10005;' : '&#9776;';
+  });
+ }
+ // Header scroll hide/reveal
+ var header = document.getElementById('siteHeader');
+ if (header) {
+  var lastY = window.scrollY;
+  window.addEventListener('scroll', function () {
+   var y = window.scrollY;
+   if (y > 80) { header.classList.toggle('header-hidden', y > lastY); }
+   else { header.classList.remove('header-hidden'); }
+   lastY = y;
+  }, { passive: true });
+  document.addEventListener('mousemove', function (e) {
+   if (e.clientY <= 60) header.classList.remove('header-hidden');
+  });
+ }
+ // Back-to-top: avoid overlapping footer
+ var btt = document.querySelector('.back-to-top');
+ var footer = document.querySelector('.site-footer');
+ if (btt && footer) {
+  var base = 28;
+  function adjustBtt() {
+   var fTop = footer.getBoundingClientRect().top;
+   var overlap = window.innerHeight - fTop;
+   btt.style.bottom = (overlap > 0 ? overlap + base : base) + 'px';
+  }
+  window.addEventListener('scroll', adjustBtt, { passive: true });
+  window.addEventListener('resize', adjustBtt);
+ }
+})();

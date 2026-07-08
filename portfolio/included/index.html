@@ -1,16 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="../../assets/icons/favicon.svg" />
   <script>
-    (function () {
-      try {
-        if (localStorage.getItem('theme') === 'light') {
-          document.documentElement.setAttribute('data-theme', 'light');
-        }
-      } catch (e) {}
-    })();
+    document.documentElement.setAttribute('data-theme', 'light');
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IncludED: Inclusive Education Platform | Lucas Nascimento</title>
@@ -23,7 +17,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../style.css" />
   <script>window._ASSET_ROOT="../";</script>
   <script src="../../transitions.js" defer></script>
@@ -34,7 +28,6 @@
     .case-header {
       padding-top: calc(4rem + 60px);
       padding-bottom: 3rem;
-      border-bottom: 1px solid var(--border);
     }
     .back-link {
       display: inline-flex;
@@ -73,7 +66,6 @@
       gap: 1.5rem;
       margin-top: 3rem;
       padding-top: 2rem;
-      border-top: 1px solid var(--border);
     }
     .case-meta-item .section-label { margin-bottom: 0.4rem; }
     .case-meta-value {
@@ -248,7 +240,6 @@
       padding-block: 5rem;
       text-align: center;
       background: var(--bg-2);
-      border-top: 1px solid var(--border);
     }
     .next-project .section-label { margin-bottom: 1rem; }
     .next-project-title {
@@ -264,8 +255,6 @@
     .pull-quote-wrap {
       padding-block: clamp(2.5rem, 5vw, 4rem);
       background: var(--bg-2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
     }
     .pull-quote {
       font-family: var(--font-serif);
@@ -333,7 +322,6 @@
       align-items: start;
       gap: 2.5rem;
       padding: 1.75rem 2rem;
-      border-bottom: 1px solid var(--border);
       transition: background var(--transition);
     }
     .feature-row:last-child { border-bottom: none; }
@@ -398,7 +386,6 @@
     /* REFLECTION */
     .reflection-block {
       padding-block: clamp(3rem, 6vw, 5rem);
-      border-top: 1px solid var(--border);
     }
     .reflection-inner p {
       font-family: var(--font-serif);
@@ -430,43 +417,34 @@
 </head>
 <body>
 <div class="page-transition-bar" aria-hidden="true"></div>
-
-<!-- ═══ NAV ═══ -->
-<nav aria-label="Main navigation">
-  <div class="container nav-inner">
-    <div class="nav-left">
-      <ul class="nav-links">
-        <li><a href="../" class="active">Work</a></li>
-        <li><a href="../about/">About Me</a></li>
-        <li><a href="../archives/">Archives</a></li>
-        <li><a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a></li>
-      </ul>
+<header class="site-header" id="siteHeader">
+  <a href="../../" class="site-name">Lucas Nascimento</a>
+  <div class="site-nav-right">
+    <a href="../about/" class="site-nav-link" data-i18n="nav.about">About</a>
+    <div class="contact-menu">
+      <button class="contact-menu-btn" id="contactBtn" aria-expanded="false" aria-haspopup="true">
+        Contact <span class="contact-caret">&#9662;</span>
+      </button>
+      <div class="contact-panel" id="contactPanel" role="menu">
+        <a href="mailto:lucas.luizdonascimento@gmail.com" class="contact-option" role="menuitem">
+          <span class="co-label">Email</span><span class="co-sub">Send a message</span>
+        </a>
+        <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener" class="contact-option" role="menuitem">
+          <span class="co-label">LinkedIn</span><span class="co-sub">Open profile</span>
+        </a>
+        <a href="../../assets/cv-lucas-nascimento.pdf" target="_blank" rel="noopener" class="contact-option" role="menuitem">
+          <span class="co-label">Resume</span><span class="co-sub">Download PDF</span>
+        </a>
+      </div>
     </div>
-
-        <div class="nav-right">
-          <button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick="toggleTheme()">
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-    </button>
-          <a href="../contact/" class="nav-cta">Contact</a>
-
-          <button class="nav-mobile-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMenu(this)">☰</button>
-
-        </div>
+    <button class="nav-mobile-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" style="display:none">&#9776;</button>
   </div>
-  <div class="nav-mobile-menu" id="mobileMenu">
-    <a href="../">Work</a>
-    <a href="../about/">About Me</a>
-    <a href="../archives/">Archives</a>
-    <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="../contact/">Contact →</a>
-    <button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick="toggleTheme()">
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      <span class="label-light">Light mode</span>
-      <span class="label-dark">Dark mode</span>
-    </button>
-  </div>
+</header>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <a href="../about/">About <span class="mobile-nav-arrow">&#8594;</span></a>
+  <a href="mailto:lucas.luizdonascimento@gmail.com">Email <span class="mobile-nav-arrow">&#8594;</span></a>
+  <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn <span class="mobile-nav-arrow">&#8594;</span></a>
+  <a href="../../assets/cv-lucas-nascimento.pdf" target="_blank" rel="noopener">Resume PDF <span class="mobile-nav-arrow">&#8594;</span></a>
 </nav>
 
 <div class="reading-progress" aria-hidden="true"></div>
@@ -971,17 +949,14 @@
     </div>
   </div>
 </div>
-
-<!-- ═══ FOOTER ═══ -->
-<footer>
-  <div class="container footer-inner">
-    <a href="../" class="footer-logo">Lucas<span>.</span></a>
-        <nav class="footer-nav nav-links" aria-label="Footer navigation">
-      <a href="../">Work</a>
-      <a href="../about/">About Me</a>
-      <a href="../archives/">Archives</a>
-    </nav>
+<footer class="site-footer">
+  <span class="footer-name">Lucas Nascimento</span>
+  <div class="footer-links">
+    <a href="../about/" data-i18n="nav.about">About</a>
+    <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:lucas.luizdonascimento@gmail.com">Email</a>
   </div>
+  <span class="footer-year">&copy; 2026</span>
 </footer>
 
 <button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
@@ -1014,27 +989,6 @@
     btn.setAttribute('aria-expanded', String(isOpen));
     btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
   }
-
-  // Header hide on scroll down, reveal on scroll up or hover near top
-  // + Back to top button
-  (function () {
-    const navEl = document.querySelector('body > nav');
-    const backToTop = document.getElementById('backToTop');
-    const showThreshold = 120;
-    let lastY = window.scrollY;
-
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      if (y > showThreshold) {
-        navEl.classList.toggle('nav-hidden', y > lastY);
-        backToTop.classList.add('visible');
-      } else {
-        navEl.classList.remove('nav-hidden');
-        backToTop.classList.remove('visible');
-      }
-      lastY = y;
-    });
-  })();
 </script>
 </body>
 </html>

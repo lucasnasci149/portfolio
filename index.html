@@ -1,161 +1,551 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
-  <script>
-    (function () {
-      try {
-        if (localStorage.getItem('theme') === 'light') {
-          document.documentElement.setAttribute('data-theme', 'light');
-        }
-      } catch (e) {}
-    })();
-  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lucas Nascimento — Work</title>
-  <meta name="robots" content="noindex, nofollow" />
+  <title>Lucas Nascimento — Lead Product Designer</title>
+  <meta name="description" content="Lead Product Designer with 11+ years turning complex product challenges into user-centric, business-driven experiences. Strategy, UX, and design systems." />
+  <meta name="keywords" content="Product Designer, Lead Product Designer, UX Designer, Design System, Figma, AI Design, User Experience, Digital Products, Joinville, Brazil" />
+  <meta name="author" content="Lucas Nascimento" />
+  <link rel="canonical" href="https://lucasdonascimento.com/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lucasdonascimento.com/" />
+  <meta property="og:title" content="Lucas Nascimento — Lead Product Designer" />
+  <meta property="og:description" content="11+ years designing digital products that move business metrics. UX strategy, Figma, AI-augmented design process." />
+  <meta property="og:image" content="https://lucasdonascimento.com/og-image.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Lucas Nascimento — Lead Product Designer" />
+  <meta name="twitter:description" content="11+ years designing digital products that move business metrics." />
+  <meta name="twitter:image" content="https://lucasdonascimento.com/og-image.jpg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Lucas Nascimento",
+    "jobTitle": "Lead Product Designer",
+    "description": "Lead Product Designer with 11+ years of experience in digital products, UX strategy, Figma, and AI-augmented design systems.",
+    "url": "https://lucasdonascimento.com",
+    "email": "lucas.luizdonascimento@gmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Joinville", "addressCountry": "BR" },
+    "sameAs": [
+      "https://www.linkedin.com/in/lucasluiznascimento/",
+      "https://www.behance.net/lucasluiznascimento"
+    ],
+    "knowsAbout": ["Product Design","UX Design","Design Systems","Figma","AI-augmented Design","User Research","Front-End Development","Data Visualization"]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <script>window._ASSET_ROOT="";</script>
   <script src="transitions.js" defer></script>
+  <noscript><style>body { opacity: 1 !important; }</style></noscript>
+
+  <style>
+    /* ── PAGE-SPECIFIC: index ── */
+
+    /* ── HEADER ── */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 56px;
+      background: var(--bg);
+      transition: transform 0.3s;
+    }
+    .site-header.header-hidden { transform: translateY(-100%); }
+
+    .site-name {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-1);
+      letter-spacing: 0.01em;
+      line-height: 1;
+    }
+    .site-name:hover { color: var(--text-1); }
+
+    .site-nav-right { display: flex; align-items: center; gap: 2rem; }
+
+    .site-nav-link { font-size: 0.85rem; color: var(--text-2); transition: color 0.2s; }
+    .site-nav-link:hover { color: var(--text-1); }
+
+    .contact-menu { position: relative; }
+
+    .contact-menu-btn {
+      font-size: 0.85rem;
+      color: var(--text-2);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      font-family: var(--font-sans);
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .contact-menu-btn:hover { color: var(--text-1); }
+
+    .contact-caret {
+      display: inline-block;
+      font-size: 0.6rem;
+      opacity: 0.55;
+      transition: transform 0.2s;
+    }
+    .contact-menu-btn[aria-expanded="true"] .contact-caret { transform: rotate(180deg); }
+
+    .contact-panel {
+      position: absolute;
+      top: calc(100% + 1rem);
+      right: 0;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.35rem;
+      min-width: 248px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      z-index: 300;
+      opacity: 0;
+      transform: translateY(-6px);
+      pointer-events: none;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .contact-panel.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+    .contact-option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.65rem 0.9rem;
+      border-radius: 6px;
+      transition: background 0.15s;
+      color: var(--text-1);
+    }
+    .contact-option:hover { background: var(--bg-2); }
+    .co-label { font-size: 0.85rem; font-weight: 500; }
+    .co-sub { font-size: 0.75rem; color: var(--text-3); }
+
+    .nav-mobile-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-1);
+      padding: 0.25rem;
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 56px; left: 0; right: 0; bottom: 0;
+      background: var(--bg);
+      z-index: 190;
+      padding: 0 1.5rem;
+      flex-direction: column;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--text-1);
+      padding: 1.15rem 0;
+      transition: color 0.15s;
+    }
+    .mobile-nav a:hover { color: var(--text-2); }
+    .mobile-nav-arrow { color: var(--text-3); font-size: 0.85rem; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: calc(56px + 4.5rem) clamp(1.25rem, 3vw, 2.5rem) 3rem;
+      max-width: 900px;
+    }
+
+    .hero-headline {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: var(--text-1);
+      margin-bottom: 1.25rem;
+    }
+    .hero-headline em { font-style: italic; }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      color: var(--text-3);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* ── WORK SECTION ── */
+    .work-section {
+      padding: 0 0.5rem;
+      margin-top: 5rem;
+    }
+
+    .work-header {
+      display: flex;
+      align-items: center;
+      padding: 0 0.75rem 1.5rem;
+    }
+
+    .work-section-label {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--text-1);
+    }
+
+    /* ── WORK GRID (haptic.studio style) ── */
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.375rem;
+      align-items: start;
+    }
+
+    .work-item {
+      display: block;
+      aspect-ratio: 4/3;
+      border-radius: 16px;
+      overflow: hidden;
+      text-decoration: none;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .work-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 56px rgba(0,0,0,0.18);
+    }
+
+    /* Electrolux: spans 2 columns */
+    .work-item:nth-child(4) { grid-column: span 2; aspect-ratio: 8/3; }
+
+    .work-item-visual {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-3);
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+    }
+
+    /* Gradient overlay for text legibility */
+    .work-item-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.18) 45%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .work-item-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+    .work-item:hover .work-item-visual img { transform: scale(1.04); }
+
+    .work-item-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      background: var(--bg-3);
+    }
+
+    /* Info overlaid at bottom of image */
+    .work-item-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 1.25rem 1.25rem 1.25rem;
+    }
+
+    .work-item-meta { display: flex; flex-direction: column; gap: 0.2rem; }
+    .work-item-name { font-size: 0.92rem; font-weight: 500; color: #fff; }
+    .work-item-type { font-size: 0.74rem; color: rgba(255,255,255,0.62); }
+
+
+    /* ── FOOTER ── */
+    .site-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2rem clamp(1.25rem, 3vw, 2.5rem);
+      margin-top: 6rem;
+    }
+
+    .footer-name { font-size: 0.8rem; color: var(--text-3); }
+    .footer-links { display: flex; gap: 1.75rem; }
+    .footer-links a { font-size: 0.8rem; color: var(--text-3); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-1); }
+    .footer-year { font-size: 0.8rem; color: var(--text-3); }
+
+    /* ── RESPONSIVE ── */
+    /* ── Tablet: 2 colunas iguais ── */
+    @media (max-width: 900px) {
+      .work-grid { grid-template-columns: 1fr 1fr; }
+      /* Electrolux: volta a 1 coluna, mesma proporção dos outros */
+      .work-item:nth-child(4) { grid-column: span 1; aspect-ratio: 4/3; }
+      /* Archives: panorâmico na última linha */
+      .work-item:nth-child(5) { grid-column: span 2; aspect-ratio: 8/3; }
+    }
+
+    /* ── Mobile: 1 coluna, todos iguais ── */
+    @media (max-width: 600px) {
+      .site-header { padding: 0 1.25rem; }
+      .site-nav-right .site-nav-link, .contact-menu { display: none; }
+      .nav-mobile-btn { display: block; }
+      .hero { padding: calc(56px + 2.5rem) 1.25rem 2rem; }
+      .work-section { padding: 0 0.25rem; }
+      .work-header { padding: 0 0.75rem 1.25rem; }
+      .work-grid { grid-template-columns: 1fr; gap: 0.25rem; }
+      /* Todos os cards: mesma proporção em mobile */
+      .work-item:nth-child(4) { grid-column: span 1; aspect-ratio: 4/3; }
+      .work-item:nth-child(5) { grid-column: span 1; aspect-ratio: 4/3; }
+      .work-item-info { padding: 1rem; }
+      .site-footer {
+        flex-direction: column;
+        gap: 1.25rem;
+        align-items: flex-start;
+        padding: 1.5rem 1.25rem;
+        margin-top: 3rem;
+      }
+    }
+  </style>
 </head>
 <body>
+<div class="page-transition-bar" aria-hidden="true"></div>
 
-<!-- Loading bar -->
-<div id="loading-bar"></div>
+<!-- ── HEADER ── -->
+<header class="site-header" id="siteHeader">
+  <a href="/" class="site-name">Lucas Nascimento</a>
 
-<!-- Minimal nav: only name + theme toggle -->
-<nav class="nav" aria-label="Main navigation">
-  <div class="nav-inner">
-    <div class="nav-links">
-      <a href="index.html" class="nav-link active" aria-current="page">Work</a>
-    </div>
-    <div class="nav-actions">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark mode">
-        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  <div class="site-nav-right">
+    <a href="portfolio/about/" class="site-nav-link" data-i18n="nav.about">About</a>
+
+    <div class="contact-menu">
+      <button class="contact-menu-btn" id="contactBtn" aria-expanded="false" aria-haspopup="true">
+        Contact <span class="contact-caret">▾</span>
       </button>
+      <div class="contact-panel" id="contactPanel" role="menu">
+        <a href="mailto:lucas.luizdonascimento@gmail.com" class="contact-option" role="menuitem">
+          <span class="co-label">Email</span>
+          <span class="co-sub">Send a message</span>
+        </a>
+        <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener" class="contact-option" role="menuitem">
+          <span class="co-label">LinkedIn</span>
+          <span class="co-sub">Open profile</span>
+        </a>
+        <a href="assets/cv-lucas-nascimento.pdf" target="_blank" rel="noopener" class="contact-option" role="menuitem">
+          <span class="co-label">Resume</span>
+          <span class="co-sub">Download PDF</span>
+        </a>
+      </div>
     </div>
+
+    <button class="nav-mobile-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
   </div>
+</header>
+
+<!-- Mobile navigation -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <a href="portfolio/about/">About <span class="mobile-nav-arrow">→</span></a>
+  <a href="mailto:lucas.luizdonascimento@gmail.com">Email <span class="mobile-nav-arrow">→</span></a>
+  <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn <span class="mobile-nav-arrow">→</span></a>
+  <a href="assets/cv-lucas-nascimento.pdf" target="_blank" rel="noopener">Resume PDF <span class="mobile-nav-arrow">→</span></a>
 </nav>
 
-<!-- Work section -->
-<section class="section" aria-label="Selected Work" style="padding-top: clamp(5rem, 10vw, 8rem);">
-  <div class="container">
-    <div style="margin-bottom: 2.5rem;">
-      <p class="section-label reveal">Selected Work</p>
-      <h2 class="section-heading reveal-blur" style="transition-delay:0.07s">Products I've shaped,<br />problems I've solved.</h2>
-    </div>
+<!-- ── HERO ── -->
+<section class="hero" aria-label="Introduction">
+  <h1 class="hero-headline">
+    <span data-i18n-html="hero.headline">11 years turning complex<br />problems into experiences<br />that <em>work.</em></span>
+  </h1>
+  <p class="hero-sub">
+    <span data-i18n="hero.sub">I'm a Lead Product Designer bridging strategy, UX, and Product Development. From zero-to-one products to enterprise design systems, with Figma at an advanced level and AI integrated throughout the process.</span>
+  </p>
+</section>
 
-    <!-- Featured card: Multipedidos -->
-    <article class="case-card featured reveal-card" tabindex="0" aria-label="Multipedidos case study">
-      <div class="case-card-visual">
-        <img src="assets/projects/pedir-delivery/cover.png" alt="Multipedidos product design case study" loading="lazy" />
-      </div>
-      <div class="case-card-body">
-        <div>
-          <div class="case-tags">
-            <span class="tag accent">Featured</span>
-            <span class="tag">Product Design</span>
-            <span class="tag">Design System</span>
-            <span class="tag">AI Process</span>
+<!-- ── WORK ── -->
+<section class="work-section" id="work" aria-label="Selected Work">
+  <div class="work-header">
+    <span class="work-section-label" data-i18n="index.label">Selected Work</span>
+  </div>
+
+  <div class="work-grid">
+
+    <!-- Multipedidos -->
+    <a href="portfolio/multipedidos/" class="work-item">
+      <div class="work-item-visual">
+        <img
+          src="assets/projects/pedir-delivery/cover.png"
+          alt="Multipedidos project cover"
+          loading="eager"
+        />
+        <div class="work-item-info">
+          <div class="work-item-meta">
+            <span class="work-item-name">Multipedidos</span>
+            <span class="work-item-type">Product Design · Design System · 2024–2026</span>
           </div>
-          <p class="case-meta" style="margin-top:0.75rem;">Multipedidos · 2024–2026</p>
-          <h3 class="case-title" style="margin-top:0.4rem;">Multipedidos: design system and UX at 10M+ monthly accesses</h3>
-          <p class="case-description" style="margin-top:0.75rem;">
-            As the sole designer, built the product design sector from scratch at a food-tech platform serving 10M+ monthly accesses. Created the design system, restructured UX flows, and introduced AI-assisted prototyping that cut delivery time by 60%.
-          </p>
-        </div>
-        <div>
-          <div class="case-metrics">
-            <div>
-              <span class="metric-value">10M<span style="font-size:1rem">+</span></span>
-              <span class="metric-label">Monthly platform accesses</span>
-            </div>
-            <div>
-              <span class="metric-value">60<span style="font-size:1rem">%</span></span>
-              <span class="metric-label">Faster prototype delivery</span>
-            </div>
-          </div>
-          <a href="project-multipedidos.html" class="case-link" style="margin-top:1rem;">
-            View Case Study
-            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </a>
         </div>
       </div>
-    </article>
+    </a>
 
-    <!-- 3-card row -->
-    <div class="work-preview-row" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; margin-top:1rem;">
-      <article class="case-card reveal-card" style="transition-delay:0.15s" tabindex="0">
-        <div class="case-card-visual"><img src="assets/projects/included-pixelpunk/included-cover.png" alt="IncludED project cover" loading="lazy" class="included-cover-img" style="object-position: 35% 40%;" /></div>
-        <div class="case-card-body">
-          <div class="case-tags"><span class="tag">Product Design</span><span class="tag">SaaS</span><span class="tag">Accessibility</span></div>
-          <p class="case-meta">PixelPunk · 2024–2026</p>
-          <h3 class="case-title">IncludED: managing Individualized Education Plans for inclusion students</h3>
-          <p class="case-description">Led the full product design of IncludED, a BNCC-compliant SaaS built with neuropsychologists and pedagogical consultants. Already in schools across Brazil.</p>
-          <div class="case-metrics">
-            <div><span class="metric-value">20<span style="font-size:0.85rem">+</span></span><span class="metric-label">Years of pedagogical expertise in the team</span></div>
+    <!-- IncludED -->
+    <a href="portfolio/included/" class="work-item">
+      <div class="work-item-visual">
+        <img
+          src="assets/projects/included-pixelpunk/included-cover.png"
+          alt="IncludED project cover"
+          loading="lazy"
+          style="object-position: 35% 40%;"
+        />
+        <div class="work-item-info">
+          <div class="work-item-meta">
+            <span class="work-item-name">IncludED</span>
+            <span class="work-item-type">Product Design · EdTech SaaS · 2024–2026</span>
           </div>
-          <a href="project-included.html" class="case-link">View Case Study <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
         </div>
-      </article>
+      </div>
+    </a>
 
-      <article class="case-card reveal-card" style="transition-delay:0.28s" tabindex="0">
-        <div class="case-card-visual"><img src="assets/projects/keepeye/keepeye-cover.png" alt="Keepeye: KPI management platform" loading="lazy" /></div>
-        <div class="case-card-body">
-          <div class="case-tags"><span class="tag">Product Design</span><span class="tag">UX Research</span><span class="tag">Front-End</span></div>
-          <p class="case-meta">Dojo Smart Ways · 2022–2023</p>
-          <h3 class="case-title">Keepeye: KPI management platform from zero to tested product</h3>
-          <p class="case-description">End-to-end design and front-end development of a B2B SaaS centralizing KPI tracking for enterprise clients. From UX research and architecture to component handoff and coded implementation.</p>
-          <div class="case-metrics">
-            <div><span class="metric-value">8.8</span><span class="metric-label">Satisfaction score out of 10</span></div>
+    <!-- Keepeye -->
+    <a href="portfolio/keepeye/" class="work-item">
+      <div class="work-item-visual">
+        <img
+          src="assets/projects/keepeye/keepeye-cover.png"
+          alt="Keepeye project cover"
+          loading="lazy"
+        />
+        <div class="work-item-info">
+          <div class="work-item-meta">
+            <span class="work-item-name">Keepeye</span>
+            <span class="work-item-type">UX Engineering · B2B SaaS · 2022–2023</span>
           </div>
-          <a href="project-keepeye.html" class="case-link">View Case Study <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
         </div>
-      </article>
+      </div>
+    </a>
 
-      <article class="case-card reveal-card" style="transition-delay:0.42s" tabindex="0">
-        <div class="case-card-visual"><img src="assets/projects/electrolux/electrolux-cover.png" alt="Electrolux Global Dashboard System" loading="lazy" /></div>
-        <div class="case-card-body">
-          <div class="case-tags"><span class="tag">Design System</span><span class="tag">Data Viz</span><span class="tag">Global</span></div>
-          <p class="case-meta">Electrolux · 2022–2023</p>
-          <h3 class="case-title">Electrolux Global Dashboard System: one visual language, worldwide</h3>
-          <p class="case-description">Created the visual identity and component standards for Electrolux's operational dashboards. Adopted in LATAM first, then approved by the global board and rolled out across all regions.</p>
-          <div class="case-metrics">
-            <div><span class="metric-value">Global</span><span class="metric-label">Standard adopted across all regions</span></div>
+    <!-- Electrolux — wide card (spans 2 columns) -->
+    <a href="portfolio/electrolux/" class="work-item">
+      <div class="work-item-visual">
+        <img
+          src="assets/projects/electrolux/electrolux-cover.png"
+          alt="Electrolux project cover"
+          loading="lazy"
+        />
+        <div class="work-item-info">
+          <div class="work-item-meta">
+            <span class="work-item-name">Electrolux</span>
+            <span class="work-item-type">Design System · Data Viz · Global · 2022–2023</span>
           </div>
-          <a href="project-electrolux.html" class="case-link">View Case Study <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
         </div>
-      </article>
-    </div>
+      </div>
+    </a>
+
+    <!-- Archives — placeholder -->
+    <a href="archives.html" class="work-item">
+      <div class="work-item-visual">
+        <img
+          src="assets/projects/archive/Branding.jpg"
+          alt="Archives cover"
+          loading="lazy"
+        />
+        <div class="work-item-info">
+          <div class="work-item-meta">
+            <span class="work-item-name">Archives</span>
+            <span class="work-item-type">Older work · Various projects</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
   </div>
 </section>
 
-<!-- Minimal footer -->
-<footer style="padding: 2rem; text-align: center; border-top: 1px solid var(--border); margin-top: 4rem;">
-  <p style="font-size: 0.8rem; color: var(--text-3);">Lucas Nascimento · Lead Product Designer</p>
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <span class="footer-name">Lucas Nascimento</span>
+  <div class="footer-links">
+    <a href="portfolio/about/" data-i18n="nav.about">About</a>
+    <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:lucas.luizdonascimento@gmail.com">Email</a>
+  </div>
+  <span class="footer-year">© 2026</span>
 </footer>
 
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
 
 <script>
-(function() {
-  var btn = document.getElementById('themeToggle');
-  if (!btn) return;
-  btn.addEventListener('click', function() {
-    var html = document.documentElement;
-    var isLight = html.getAttribute('data-theme') === 'light';
-    if (isLight) {
-      html.removeAttribute('data-theme');
-      try { localStorage.removeItem('theme'); } catch(e) {}
-    } else {
-      html.setAttribute('data-theme', 'light');
-      try { localStorage.setItem('theme', 'light'); } catch(e) {}
-    }
-  });
-})();
-</script>
-</body>
-</html>
+  // Contact dropdown
+  (function () {
+    var btn = document.getElementById('contactBtn');
+    var panel = document.getElementById('contactPanel');
+    if (!btn || !panel) return;
+
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = panel.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!btn.contains(e.target) && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        panel.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.focus();
+      }
+    });
+  })();
+
+  // Mobile nav
+  (function () {
+    var menuBtn = document.getElementById('mobileMenuBtn');
+    var mobileNav = document.getElementById('mobileNav');
+    if (!menuBtn || !mobileNav) return;
+
+    menuBtn.addEventListener('click', function () {
+      var isOpen = mobileNav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuBtn.setAttribute('aria-la

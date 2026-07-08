@@ -1,16 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
   <script>
-    (function () {
-      try {
-        if (localStorage.getItem('theme') === 'light') {
-          document.documentElement.setAttribute('data-theme', 'light');
-        }
-      } catch (e) {}
-    })();
+    document.documentElement.setAttribute('data-theme', 'light');
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Electrolux: Data Visualization System | Lucas Nascimento</title>
@@ -23,7 +17,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <script src="transitions.js" defer></script>
   <noscript><style>body { opacity: 1 !important; }</style></noscript>
@@ -33,7 +27,6 @@
     .case-header {
       padding-top: calc(4rem + 60px);
       padding-bottom: 3rem;
-      border-bottom: 1px solid var(--border);
     }
     .back-link {
       display: inline-flex;
@@ -68,7 +61,6 @@
       gap: 1.5rem;
       margin-top: 3rem;
       padding-top: 2rem;
-      border-top: 1px solid var(--border);
     }
     .case-meta-item .section-label { margin-bottom: 0.4rem; }
     .case-meta-value {
@@ -158,7 +150,6 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
       padding-block: clamp(2.5rem, 5vw, 4rem);
-      border-bottom: 1px solid var(--border);
     }
     .context-num-item { text-align: center; }
     .context-num-value {
@@ -190,7 +181,6 @@
     /* PULL QUOTE */
     .pull-quote-block {
       padding-block: clamp(2.5rem, 5vw, 4rem);
-      border-bottom: 1px solid var(--border);
       margin-bottom: 3rem;
     }
     .pull-quote-text {
@@ -283,10 +273,8 @@
       grid-template-columns: 260px 1fr;
       gap: 3rem;
       padding: 1.75rem 0;
-      border-top: 1px solid var(--border);
       align-items: start;
     }
-    .feature-row:last-child { border-bottom: 1px solid var(--border); }
     .feature-row-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 0.35rem; }
     .feature-row-title { font-family: var(--font-serif); font-weight: 300; font-size: 1.1rem; color: var(--text-1); line-height: 1.3; }
     .feature-row-desc { font-size: 0.87rem; color: var(--text-2); line-height: 1.8; }
@@ -317,7 +305,7 @@
     .outcome-card .metric-label { font-size: 0.8rem; margin-top: 0.4rem; }
 
     /* REFLECTION */
-    .reflection-block { padding-block: clamp(3rem, 6vw, 5rem); border-top: 1px solid var(--border); }
+    .reflection-block { padding-block: clamp(3rem, 6vw, 5rem); }
     .reflection-inner p {
       font-family: var(--font-serif);
       font-weight: 300;
@@ -329,7 +317,7 @@
     }
 
     /* NEXT PROJECT */
-    .next-project { padding-block: 5rem; text-align: center; background: var(--bg-2); border-top: 1px solid var(--border); }
+    .next-project { padding-block: 5rem; text-align: center; background: var(--bg-2); }
     .next-project .section-label { margin-bottom: 1rem; }
     .next-project-title { font-family: var(--font-serif); font-weight: 300; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.15; margin-bottom: 2rem; }
     .next-project-title em { font-style: italic; color: var(--accent-text); }
@@ -353,18 +341,34 @@
 <div class="page-transition-bar" aria-hidden="true"></div>
 
 <!-- NAV -->
-<nav class="nav" aria-label="Main navigation">
-  <div class="nav-inner">
-    <div class="nav-links">
-      <a href="index.html" class="nav-link">Work</a>
-    </div>
-    <div class="nav-actions">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark mode" onclick="toggleTheme()">
-        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+<header class="site-header" id="siteHeader">
+  <a href="index.html" class="site-name">Lucas Nascimento</a>
+  <div class="site-nav-right">
+    <a href="about.html" class="site-nav-link" data-i18n="nav.about">About</a>
+    <div class="contact-menu">
+      <button class="contact-menu-btn" id="contactBtn" aria-expanded="false" aria-haspopup="true">
+        Contact <span class="contact-caret">&#9662;</span>
       </button>
+      <div class="contact-panel" id="contactPanel" role="menu">
+        <a href="mailto:lucas.luizdonascimento@gmail.com" class="contact-option" role="menuitem">
+          <span class="co-label">Email</span><span class="co-sub">Send a message</span>
+        </a>
+        <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener" class="contact-option" role="menuitem">
+          <span class="co-label">LinkedIn</span><span class="co-sub">Open profile</span>
+        </a>
+        <a href="assets/cv-lucas-nascimento.pdf" target="_blank" rel="noopener" class="contact-option" role="menuitem">
+          <span class="co-label">Resume</span><span class="co-sub">Download PDF</span>
+        </a>
+      </div>
     </div>
+    <button class="nav-mobile-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" style="display:none">&#9776;</button>
   </div>
+</header>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <a href="about.html">About <span class="mobile-nav-arrow">&#8594;</span></a>
+  <a href="mailto:lucas.luizdonascimento@gmail.com">Email <span class="mobile-nav-arrow">&#8594;</span></a>
+  <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn <span class="mobile-nav-arrow">&#8594;</span></a>
+  <a href="assets/cv-lucas-nascimento.pdf" target="_blank" rel="noopener">Resume PDF <span class="mobile-nav-arrow">&#8594;</span></a>
 </nav>
 
 <div class="reading-progress" aria-hidden="true"></div>
@@ -740,10 +744,14 @@
     <a href="project-keepeye.html" class="btn-primary">View Case Study</a>
   </div>
 </div>
-
-<!-- FOOTER -->
-<footer style="padding: 2rem; text-align: center; border-top: 1px solid var(--border); margin-top: 4rem;">
-  <p style="font-size: 0.8rem; color: var(--text-3);">Lucas Nascimento · Lead Product Designer</p>
+<footer class="site-footer">
+  <span class="footer-name">Lucas Nascimento</span>
+  <div class="footer-links">
+    <a href="about.html" data-i18n="nav.about">About</a>
+    <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:lucas.luizdonascimento@gmail.com">Email</a>
+  </div>
+  <span class="footer-year">&copy; 2026</span>
 </footer>
 
 <a href="#" class="back-to-top" aria-label="Back to top">

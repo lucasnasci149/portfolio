@@ -1,20 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
-  <script>
-    (function () {
-      try {
-        if (localStorage.getItem('theme') === 'light') {
-          document.documentElement.setAttribute('data-theme', 'light');
-        }
-      } catch (e) {}
-    })();
-  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lucas Nascimento, Lead Product Designer | UX, Digital Products & Design Systems</title>
-  <meta name="description" content="Lead Product Designer with 11+ years turning complex product challenges into user-centric, business-driven experiences. Specialized in UX strategy, design systems, Figma, and AI-augmented product design." />
+  <title>Lucas Nascimento — Lead Product Designer</title>
+  <meta name="description" content="Lead Product Designer with 11+ years turning complex product challenges into user-centric, business-driven experiences. Strategy, UX, and design systems." />
   <meta name="keywords" content="Product Designer, Lead Product Designer, UX Designer, Design System, Figma, AI Design, User Experience, Digital Products, Joinville, Brazil" />
   <meta name="author" content="Lucas Nascimento" />
   <meta name="robots" content="index, follow" />
@@ -22,12 +13,12 @@
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://lucasdonascimento.com/" />
-  <meta property="og:title" content="Lucas Nascimento, Lead Product Designer" />
+  <meta property="og:title" content="Lucas Nascimento — Lead Product Designer" />
   <meta property="og:description" content="11+ years designing digital products that move business metrics. UX strategy, Figma, AI-augmented design process." />
   <meta property="og:image" content="https://lucasdonascimento.com/og-image.jpg" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Lucas Nascimento, Lead Product Designer" />
+  <meta name="twitter:title" content="Lucas Nascimento — Lead Product Designer" />
   <meta name="twitter:description" content="11+ years designing digital products that move business metrics." />
   <meta name="twitter:image" content="https://lucasdonascimento.com/og-image.jpg" />
 
@@ -40,7 +31,6 @@
     "description": "Lead Product Designer with 11+ years of experience in digital products, UX strategy, Figma, and AI-augmented design systems.",
     "url": "https://lucasdonascimento.com",
     "email": "lucas.luizdonascimento@gmail.com",
-    "telephone": "+5547996216637",
     "address": { "@type": "PostalAddress", "addressLocality": "Joinville", "addressCountry": "BR" },
     "sameAs": [
       "https://www.linkedin.com/in/lucasluiznascimento/",
@@ -52,670 +42,516 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../style.css" />
   <script>window._ASSET_ROOT="../";</script>
   <script src="../transitions.js" defer></script>
   <noscript><style>body { opacity: 1 !important; }</style></noscript>
 
   <style>
-    /* ── PAGE-SPECIFIC ── */
+    /* ── PAGE-SPECIFIC: index ── */
 
-    /* HERO */
-    #hero {
-      padding-top: calc(5rem + 60px);
-      padding-bottom: 5rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-glow {
-      position: absolute;
-      width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(90,169,255,0.055) 0%, transparent 65%);
-      top: -120px; right: -80px;
-      pointer-events: none;
-    }
-    .hero-glow-2 {
-      position: absolute;
-      width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(240,160,96,0.04) 0%, transparent 70%);
-      bottom: 0; left: -100px;
-      pointer-events: none;
-    }
-    .hero-headline {
-      font-family: var(--font-serif);
-      font-weight: 300;
-      font-size: clamp(2.8rem, 6.5vw, 5.5rem);
-      line-height: 1.08;
-      letter-spacing: -0.025em;
-      margin: 2.5rem 0 1.75rem;
-      max-width: 860px;
-    }
-    .hero-headline em { font-style: italic; color: var(--accent-text); }
-    .current-roles {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-      margin-top: 1rem;
-    }
-    .current-roles-label {
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--text-3);
-      font-weight: 500;
-    }
-    .current-role-pill {
-      font-size: 0.78rem;
-      color: var(--text-2);
-      border: 1px solid var(--border);
-      padding: 0.32rem 0.85rem;
-      border-radius: 100px;
-      white-space: nowrap;
-    }
-    .current-role-pill strong { color: var(--text-1); font-weight: 500; }
-    .hero-sub {
-      font-size: clamp(1rem, 2vw, 1.15rem);
-      color: var(--text-2);
-      max-width: 720px;
-      line-height: 1.75;
-      margin-bottom: 2.5rem;
-    }
-    .hero-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
-    .hero-stats {
-      display: flex;
-      gap: 2rem;
-      margin-top: 4rem;
-      padding-top: 3rem;
-      border-top: 1px solid var(--border);
-      flex-wrap: nowrap;
-    }
-    .stat-item { flex: 1; min-width: 0; }
-    .stat-number {
-      font-family: var(--font-serif);
-      font-size: 2.4rem;
-      font-weight: 300;
-      line-height: 1;
-      color: var(--text-1);
-    }
-    .stat-number span { color: var(--accent-text); }
-    .stat-label { font-size: 0.72rem; color: var(--text-3); margin-top: 0.3rem; line-height: 1.45; }
-
-    /* ABOUT */
-    #about { background: var(--bg-2); }
-
-    /* AI BANNER */
-    .ai-banner {
-      margin-top: 1.5rem;
-      padding: 2rem 2.5rem;
-      background: linear-gradient(135deg, var(--accent-wash), var(--accent-2-dim));
-      border: 1px solid var(--accent-border-soft);
-      border-radius: var(--radius-lg);
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 2rem;
-      align-items: center;
-    }
-    .ai-banner-title {
-      font-family: var(--font-serif);
-      font-weight: 300;
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-    .ai-banner-title em { font-style: italic; color: var(--accent-text); }
-    .ai-banner-text { font-size: 0.875rem; color: var(--text-2); line-height: 1.7; max-width: 560px; }
-    .ai-use-chips {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      flex-shrink: 0;
-    }
-    .ai-use-chip {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.78rem;
-      color: var(--text-2);
-      background: var(--bg-3);
-      border: 1px solid var(--border);
-      padding: 0.4rem 0.8rem;
-      border-radius: 100px;
-      white-space: nowrap;
-    }
-    .ai-use-chip .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-
-    /* TESTIMONIALS */
-    .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 3rem; }
-    .testimonial-card {
-      padding: 2rem;
-      background: var(--bg-2);
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border);
-    }
-    .testimonial-quote {
-      font-family: var(--font-serif);
-      font-size: 1rem;
-      font-style: italic;
-      font-weight: 300;
-      color: var(--text-1);
-      line-height: 1.75;
-      margin-bottom: 1.5rem;
-    }
-    .testimonial-author { display: flex; align-items: center; gap: 0.7rem; }
-    .author-avatar {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      background: var(--bg-3);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.9rem;
-      border: 1px solid var(--border);
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-    .author-name { font-size: 0.83rem; font-weight: 500; }
-    .author-role { font-size: 0.73rem; color: var(--text-3); }
-
-    /* MINI CTA */
-    .mini-cta {
-      background: var(--bg-2);
-      border-top: 1px solid var(--border);
-    }
-    .mini-cta-inner {
+    /* ── HEADER ── */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 2rem;
-      flex-wrap: wrap;
-      padding-block: 3.5rem;
+      padding: 0 2rem;
+      height: 56px;
+      background: var(--bg);
+      transition: transform 0.3s;
     }
-    .mini-cta-text { }
-    .mini-cta-heading {
+    .site-header.header-hidden { transform: translateY(-100%); }
+
+    .site-name {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-1);
+      letter-spacing: 0.01em;
+      line-height: 1;
+    }
+    .site-name:hover { color: var(--text-1); }
+
+    .site-nav-right { display: flex; align-items: center; gap: 2rem; }
+
+    .site-nav-link { font-size: 0.85rem; color: var(--text-2); transition: color 0.2s; }
+    .site-nav-link:hover { color: var(--text-1); }
+
+    .contact-menu { position: relative; }
+
+    .contact-menu-btn {
+      font-size: 0.85rem;
+      color: var(--text-2);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      font-family: var(--font-sans);
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .contact-menu-btn:hover { color: var(--text-1); }
+
+    .contact-caret {
+      display: inline-block;
+      font-size: 0.6rem;
+      opacity: 0.55;
+      transition: transform 0.2s;
+    }
+    .contact-menu-btn[aria-expanded="true"] .contact-caret { transform: rotate(180deg); }
+
+    .contact-panel {
+      position: absolute;
+      top: calc(100% + 1rem);
+      right: 0;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.35rem;
+      min-width: 248px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      z-index: 300;
+      opacity: 0;
+      transform: translateY(-6px);
+      pointer-events: none;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .contact-panel.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+    .contact-option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.65rem 0.9rem;
+      border-radius: 6px;
+      transition: background 0.15s;
+      color: var(--text-1);
+    }
+    .contact-option:hover { background: var(--bg-2); }
+    .co-label { font-size: 0.85rem; font-weight: 500; }
+    .co-sub { font-size: 0.75rem; color: var(--text-3); }
+
+    .nav-mobile-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-1);
+      padding: 0.25rem;
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 56px; left: 0; right: 0; bottom: 0;
+      background: var(--bg);
+      z-index: 190;
+      padding: 0 1.5rem;
+      flex-direction: column;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--text-1);
+      padding: 1.15rem 0;
+      transition: color 0.15s;
+    }
+    .mobile-nav a:hover { color: var(--text-2); }
+    .mobile-nav-arrow { color: var(--text-3); font-size: 0.85rem; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: calc(56px + 4.5rem) clamp(1.25rem, 3vw, 2.5rem) 3rem;
+      max-width: 900px;
+    }
+
+    .hero-headline {
       font-family: var(--font-serif);
       font-weight: 300;
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      line-height: 1.2;
-      margin-bottom: 0.5rem;
+      font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: var(--text-1);
+      margin-bottom: 1.25rem;
     }
-    .mini-cta-sub { font-size: 0.9rem; color: var(--text-2); }
+    .hero-headline em { font-style: italic; }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      color: var(--text-3);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* ── WORK SECTION ── */
+    .work-section {
+      padding: 0 0.5rem;
+      margin-top: 5rem;
+    }
+
+    .work-header {
+      display: flex;
+      align-items: center;
+      padding: 0 0.75rem 1.5rem;
+    }
+
+    .work-section-label {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--text-1);
+    }
+
+    /* ── WORK GRID (haptic.studio style) ── */
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.375rem;
+      align-items: start;
+    }
+
+    .work-item {
+      display: block;
+      aspect-ratio: 4/3;
+      border-radius: 16px;
+      overflow: hidden;
+      text-decoration: none;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .work-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 56px rgba(0,0,0,0.18);
+    }
+
+    /* Electrolux: spans 2 columns */
+    .work-item:nth-child(4) { grid-column: span 2; aspect-ratio: 8/3; }
+
+    .work-item-visual {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-3);
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+    }
+
+    /* Gradient overlay for text legibility */
+    .work-item-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.18) 45%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .work-item-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+    .work-item:hover .work-item-visual img { transform: scale(1.04); }
+
+    .work-item-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      background: var(--bg-3);
+    }
+
+    /* Info overlaid at bottom of image */
+    .work-item-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 1.25rem 1.25rem 1.25rem;
+    }
+
+    .work-item-meta { display: flex; flex-direction: column; gap: 0.2rem; }
+    .work-item-name { font-size: 0.92rem; font-weight: 500; color: #fff; }
+    .work-item-type { font-size: 0.74rem; color: rgba(255,255,255,0.62); }
+
+
+    /* ── FOOTER ── */
+    .site-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2rem clamp(1.25rem, 3vw, 2.5rem);
+      margin-top: 6rem;
+    }
+
+    .footer-name { font-size: 0.8rem; color: var(--text-3); }
+    .footer-links { display: flex; gap: 1.75rem; }
+    .footer-links a { font-size: 0.8rem; color: var(--text-3); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-1); }
+    .footer-year { font-size: 0.8rem; color: var(--text-3); }
 
     /* ── RESPONSIVE ── */
+    /* ── Tablet: 2 colunas iguais ── */
     @media (max-width: 900px) {
-      .testimonials-grid { grid-template-columns: 1fr; }
-      .ai-banner { grid-template-columns: 1fr; }
-      .ai-use-chips { flex-direction: row; flex-wrap: wrap; }
+      .work-grid { grid-template-columns: 1fr 1fr; }
+      /* Electrolux: volta a 1 coluna, mesma proporção dos outros */
+      .work-item:nth-child(4) { grid-column: span 1; aspect-ratio: 4/3; }
+      /* Archives: panorâmico na última linha */
+      .work-item:nth-child(5) { grid-column: span 2; aspect-ratio: 8/3; }
     }
-    @media (max-width: 640px) {
-      .mini-cta-inner { flex-direction: column; }
+
+    /* ── Mobile: 1 coluna, todos iguais ── */
+    @media (max-width: 600px) {
+      .site-header { padding: 0 1.25rem; }
+      .site-nav-right .site-nav-link, .contact-menu { display: none; }
+      .nav-mobile-btn { display: block; }
+      .hero { padding: calc(56px + 2.5rem) 1.25rem 2rem; }
+      .work-section { padding: 0 0.25rem; }
+      .work-header { padding: 0 0.75rem 1.25rem; }
+      .work-grid { grid-template-columns: 1fr; gap: 0.25rem; }
+      /* Todos os cards: mesma proporção em mobile */
+      .work-item:nth-child(4) { grid-column: span 1; aspect-ratio: 4/3; }
+      .work-item:nth-child(5) { grid-column: span 1; aspect-ratio: 4/3; }
+      .work-item-info { padding: 1rem; }
+      .site-footer {
+        flex-direction: column;
+        gap: 1.25rem;
+        align-items: flex-start;
+        padding: 1.5rem 1.25rem;
+        margin-top: 3rem;
+      }
     }
   </style>
 </head>
 <body>
 <div class="page-transition-bar" aria-hidden="true"></div>
 
-<!-- ═══ NAV ═══ -->
-<nav aria-label="Main navigation">
-  <div class="container nav-inner">
-    <div class="nav-left">
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Work</a></li>
-        <li><a href="about/">About Me</a></li>
-        <li><a href="archives/">Archives</a></li>
-        <li><a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a></li>
-      </ul>
+<!-- ── HEADER ── -->
+<header class="site-header" id="siteHeader">
+  <a href="/" class="site-name">Lucas Nascimento</a>
+
+  <div class="site-nav-right">
+    <a href="about/" class="site-nav-link" data-i18n="nav.about">About</a>
+
+    <div class="contact-menu">
+      <button class="contact-menu-btn" id="contactBtn" aria-expanded="false" aria-haspopup="true">
+        Contact <span class="contact-caret">▾</span>
+      </button>
+      <div class="contact-panel" id="contactPanel" role="menu">
+        <a href="mailto:lucas.luizdonascimento@gmail.com" class="contact-option" role="menuitem">
+          <span class="co-label">Email</span>
+          <span class="co-sub">Send a message</span>
+        </a>
+        <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener" class="contact-option" role="menuitem">
+          <span class="co-label">LinkedIn</span>
+          <span class="co-sub">Open profile</span>
+        </a>
+        <a href="../assets/cv-lucas-nascimento.pdf" target="_blank" rel="noopener" class="contact-option" role="menuitem">
+          <span class="co-label">Resume</span>
+          <span class="co-sub">Download PDF</span>
+        </a>
+      </div>
     </div>
 
-    <div class="nav-right">
-      <button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick="toggleTheme()">
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-    </button>
-      <a href="contact/" class="nav-cta">Contact</a>
-
-      <button class="nav-mobile-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMenu(this)">☰</button>
-
-    </div>
+    <button class="nav-mobile-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
   </div>
-  <div class="nav-mobile-menu" id="mobileMenu">
-    <a href="index.html">Work</a>
-    <a href="about/">About Me</a>
-    <a href="archives/">Archives</a>
-    <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="contact/">Contact →</a>
-    <button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick="toggleTheme()">
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      <span class="label-light">Light mode</span>
-      <span class="label-dark">Dark mode</span>
-    </button>
-  </div>
+</header>
+
+<!-- Mobile navigation -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <a href="about/">About <span class="mobile-nav-arrow">→</span></a>
+  <a href="mailto:lucas.luizdonascimento@gmail.com">Email <span class="mobile-nav-arrow">→</span></a>
+  <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn <span class="mobile-nav-arrow">→</span></a>
+  <a href="../assets/cv-lucas-nascimento.pdf" target="_blank" rel="noopener">Resume PDF <span class="mobile-nav-arrow">→</span></a>
 </nav>
 
-<!-- ═══ HERO ═══ -->
-<section id="hero" aria-label="Introduction">
-  <div class="hero-glow" aria-hidden="true"></div>
-  <div class="hero-glow-2" aria-hidden="true"></div>
-  <div class="container">
+<!-- ── HERO ── -->
+<section class="hero" aria-label="Introduction">
+  <h1 class="hero-headline">
+    <span data-i18n-html="hero.headline">11 years turning complex<br />problems into experiences<br />that <em>work.</em></span>
+  </h1>
+  <p class="hero-sub">
+    <span data-i18n="hero.sub">I'm a Lead Product Designer bridging strategy, UX, and Product Development. From zero-to-one products to enterprise design systems, with Figma at an advanced level and AI integrated throughout the process.</span>
+  </p>
+</section>
 
-    <div class="current-roles hero-entrance">
-      <span class="current-roles-label">Currently</span>
-      <span class="current-role-pill"><strong>Lead Product Designer</strong> @ PixelPunk</span>
-    </div>
+<!-- ── WORK ── -->
+<section class="work-section" id="work" aria-label="Selected Work">
+  <div class="work-header">
+    <span class="work-section-label" data-i18n="index.label">Selected Work</span>
+  </div>
 
-    <h1 class="hero-headline hero-entrance" style="--delay:0.08s">
-      11 years turning complex<br />
-      problems into experiences<br />
-      that <em>work.</em>
-    </h1>
+  <div class="work-grid">
 
-    <p class="hero-sub hero-entrance" style="--delay:0.17s">
-      I'm a Lead Product Designer bridging strategy, UX, and Product Development.
-      From zero-to-one products to enterprise design systems, with Figma at an
-      advanced level and AI integrated throughout the process.
-    </p>
-
-    <div class="hero-actions hero-entrance" style="--delay:0.25s">
-      <a href="#work-preview" class="btn-primary">
-        View Selected Work
-        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a href="contact/" class="btn-secondary">Get in Touch</a>
-      <a href="#about" class="btn-ghost">
-        About me ↓
-      </a>
-    </div>
-
-    <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-number">11<span>+</span></div>
-        <div class="stat-label">Years turning problems into structured design</div>
+    <!-- Multipedidos -->
+    <a href="multipedidos/" class="work-item">
+      <div class="work-item-visual">
+        <img
+          src="../assets/projects/pedir-delivery/cover.png"
+          alt="Multipedidos project cover"
+          loading="eager"
+        />
+        <div class="work-item-info">
+          <div class="work-item-meta">
+            <span class="work-item-name">Multipedidos</span>
+            <span class="work-item-type">Product Design · Design System · 2024–2026</span>
+          </div>
+        </div>
       </div>
-      <div class="stat-item">
-        <div class="stat-number">10M<span>+</span></div>
-        <div class="stat-label">Monthly accesses on products I've designed</div>
+    </a>
+
+    <!-- IncludED -->
+    <a href="included/" class="work-item">
+      <div class="work-item-visual">
+        <img
+          src="../assets/projects/included-pixelpunk/included-cover.png"
+          alt="IncludED project cover"
+          loading="lazy"
+          style="object-position: 35% 40%;"
+        />
+        <div class="work-item-info">
+          <div class="work-item-meta">
+            <span class="work-item-name">IncludED</span>
+            <span class="work-item-type">Product Design · EdTech SaaS · 2024–2026</span>
+          </div>
+        </div>
       </div>
-      <div class="stat-item">
-        <div class="stat-number">60<span>%</span></div>
-        <div class="stat-label">Reduction in delivery cycles with AI-assisted workflow</div>
+    </a>
+
+    <!-- Keepeye -->
+    <a href="keepeye/" class="work-item">
+      <div class="work-item-visual">
+        <img
+          src="../assets/projects/keepeye/keepeye-cover.png"
+          alt="Keepeye project cover"
+          loading="lazy"
+        />
+        <div class="work-item-info">
+          <div class="work-item-meta">
+            <span class="work-item-name">Keepeye</span>
+            <span class="work-item-type">UX Engineering · B2B SaaS · 2022–2023</span>
+          </div>
+        </div>
       </div>
-      <div class="stat-item">
-        <div class="stat-number">3</div>
-        <div class="stat-label">Companies where I built design structure from zero</div>
+    </a>
+
+    <!-- Electrolux — wide card (spans 2 columns) -->
+    <a href="electrolux/" class="work-item">
+      <div class="work-item-visual">
+        <img
+          src="../assets/projects/electrolux/electrolux-cover.png"
+          alt="Electrolux project cover"
+          loading="lazy"
+        />
+        <div class="work-item-info">
+          <div class="work-item-meta">
+            <span class="work-item-name">Electrolux</span>
+            <span class="work-item-type">Design System · Data Viz · Global · 2022–2023</span>
+          </div>
+        </div>
       </div>
-    </div>
+    </a>
+
+    <!-- Archives — placeholder -->
+    <a href="archives/" class="work-item">
+      <div class="work-item-visual">
+        <img
+          src="../assets/projects/archive/Branding.jpg"
+          alt="Archives cover"
+          loading="lazy"
+        />
+        <div class="work-item-info">
+          <div class="work-item-meta">
+            <span class="work-item-name">Archives</span>
+            <span class="work-item-type">Older work · Various projects</span>
+          </div>
+        </div>
+      </div>
+    </a>
 
   </div>
 </section>
 
-<!-- ═══ MARQUEE ═══ -->
-<div class="marquee-section" aria-hidden="true">
-  <p class="marquee-label">Companies & Clients</p>
-  <div class="marquee-wrap">
-    <div class="marquee-inner">
-      <!-- JS fills this to viewport width, then clones it as the loop twin -->
-      <div class="marquee-track" id="marqueeTrack">
-        <span class="marquee-item"><img src="../assets/logos/Multipedidos.svg" alt="Multipedidos" class="marquee-logo" /></span>
-        <span class="marquee-item"><img src="../assets/logos/Electrolux.svg" alt="Electrolux" class="marquee-logo" /></span>
-        <span class="marquee-item"><img src="../assets/logos/Nidec.svg" alt="Nidec" class="marquee-logo" /></span>
-        <span class="marquee-item"><img src="../assets/logos/PixelPunk.svg" alt="PixelPunk" class="marquee-logo" /></span>
-        <span class="marquee-item"><img src="../assets/logos/Dojo.svg" alt="Dojo Smart Ways" class="marquee-logo" /></span>
-        <span class="marquee-item"><img src="../assets/logos/Lepper.svg" alt="Cia. Fabril Lepper" class="marquee-logo" /></span>
-        <span class="marquee-item"><img src="../assets/logos/Equilibrium.svg" alt="Equilibrium" class="marquee-logo" /></span>
-        <span class="marquee-item"><img src="../assets/logos/IncludED.svg" alt="IncludED" class="marquee-logo" /></span>
-        <span class="marquee-item"><img src="../assets/logos/YBY.svg" alt="YBY" class="marquee-logo" /></span>
-      </div>
-    </div>
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <span class="footer-name">Lucas Nascimento</span>
+  <div class="footer-links">
+    <a href="about/" data-i18n="nav.about">About</a>
+    <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:lucas.luizdonascimento@gmail.com">Email</a>
   </div>
-</div>
-
-<!-- ═══ FEATURED WORK ═══ -->
-<section id="work-preview" class="section" aria-label="Featured Work">
-  <div class="container">
-    <div style="margin-bottom:2.5rem;">
-      <p class="section-label reveal">Featured Work</p>
-      <h2 class="section-heading reveal-blur" style="transition-delay:0.07s">Products I've shaped,<br />problems I've solved.</h2>
-    </div>
-
-    <!-- Featured card: Multipedidos -->
-    <article class="case-card featured reveal-card" tabindex="0" aria-label="Multipedidos case study">
-      <div class="case-card-visual">
-        <img src="../assets/projects/pedir-delivery/cover.png" alt="Multipedidos product design case study" loading="lazy" />
-      </div>
-      <div class="case-card-body">
-        <div>
-          <div class="case-tags">
-            <span class="tag accent">Featured</span>
-            <span class="tag">Product Design</span>
-            <span class="tag">Design System</span>
-            <span class="tag">AI Process</span>
-          </div>
-          <p class="case-meta" style="margin-top:0.75rem;">Multipedidos · 2024–2026</p>
-          <h3 class="case-title" style="margin-top:0.4rem;">Multipedidos: design system and UX at 10M+ monthly accesses</h3>
-          <p class="case-description" style="margin-top:0.75rem;">
-            As the sole designer, built the product design sector from scratch at a food-tech platform serving 10M+ monthly accesses. Created the design system, restructured UX flows, and introduced AI-assisted prototyping that cut delivery time by 60%.
-          </p>
-        </div>
-        <div>
-          <div class="case-metrics">
-            <div>
-              <span class="metric-value">10M<span style="font-size:1rem">+</span></span>
-              <span class="metric-label">Monthly platform accesses</span>
-            </div>
-            <div>
-              <span class="metric-value">60<span style="font-size:1rem">%</span></span>
-              <span class="metric-label">Faster prototype delivery</span>
-            </div>
-          </div>
-          <a href="multipedidos/" class="case-link" style="margin-top:1rem;">
-            View Case Study
-            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <!-- 3-card row -->
-    <div class="work-preview-row" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; margin-top:1rem;">
-      <article class="case-card reveal-card" style="transition-delay:0.15s" tabindex="0">
-        <div class="case-card-visual"><img src="../assets/projects/included-pixelpunk/included-cover.png" alt="IncludED project cover" loading="lazy" class="included-cover-img" style="object-position: 35% 40%;" /></div>
-        <div class="case-card-body">
-          <div class="case-tags"><span class="tag">Product Design</span><span class="tag">SaaS</span><span class="tag">Accessibility</span></div>
-          <p class="case-meta">PixelPunk · 2024–2026</p>
-          <h3 class="case-title">IncludED: managing Individualized Education Plans for inclusion students</h3>
-          <p class="case-description">Co-founded PixelPunk and led the full product design of IncludED, a BNCC-compliant SaaS built with neuropsychologists and pedagogical consultants. Already in schools across Brazil.</p>
-          <div class="case-metrics">
-            <div><span class="metric-value">20<span style="font-size:0.85rem">+</span></span><span class="metric-label">Years of pedagogical expertise in the team</span></div>
-          </div>
-          <a href="included/" class="case-link">View Case Study <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
-        </div>
-      </article>
-
-      <article class="case-card reveal-card" style="transition-delay:0.28s" tabindex="0">
-        <div class="case-card-visual"><img src="../assets/projects/keepeye/keepeye-cover.png" alt="Keepeye: KPI management platform" loading="lazy" /></div>
-        <div class="case-card-body">
-          <div class="case-tags"><span class="tag">Product Design</span><span class="tag">UX Research</span><span class="tag">Front-End</span></div>
-          <p class="case-meta">Dojo Smart Ways · 2022–2023</p>
-          <h3 class="case-title">Keepeye: KPI management platform from zero to tested product</h3>
-          <p class="case-description">End-to-end design and front-end development of a B2B SaaS centralizing KPI tracking for enterprise clients. From UX research and architecture to component handoff and coded implementation.</p>
-          <div class="case-metrics">
-            <div><span class="metric-value">8.8</span><span class="metric-label">Satisfaction score out of 10</span></div>
-          </div>
-          <a href="keepeye/" class="case-link">View Case Study <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
-        </div>
-      </article>
-
-      <article class="case-card reveal-card" style="transition-delay:0.42s" tabindex="0">
-        <div class="case-card-visual"><img src="../assets/projects/electrolux/electrolux-cover.png" alt="Electrolux Global Dashboard System" loading="lazy" /></div>
-        <div class="case-card-body">
-          <div class="case-tags"><span class="tag">Design System</span><span class="tag">Data Viz</span><span class="tag">Global</span></div>
-          <p class="case-meta">Electrolux · 2022–2023</p>
-          <h3 class="case-title">Electrolux Global Dashboard System: one visual language, worldwide</h3>
-          <p class="case-description">Created the visual identity and component standards for Electrolux's operational dashboards. Adopted in LATAM first, then approved by the global board and rolled out across all regions.</p>
-          <div class="case-metrics">
-            <div><span class="metric-value">Global</span><span class="metric-label">Standard adopted across all regions</span></div>
-          </div>
-          <a href="electrolux/" class="case-link">View Case Study <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ ABOUT ═══ -->
-<section id="about" class="section" aria-label="About Lucas">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-photo-wrap reveal">
-        <img src="../assets/profile/profile-picture.png" alt="Lucas Nascimento, Lead Product Designer" class="about-photo" />
-        <div class="about-badge">Lead Product Designer<br/>Joinville, BR</div>
-      </div>
-      <div class="reveal" style="transition-delay:0.15s">
-        <p class="section-label">About</p>
-        <h2 class="about-heading">Designer who codes.<br />Strategist who executes.</h2>
-        <p class="about-text">
-          I'm Lucas, a Product Designer with <strong>11+ years</strong> working at the intersection
-          of strategy, UX, and front-end development. I specialize in building digital products
-          and <strong>design cultures from scratch</strong>, in environments where there wasn't much
-          structure before.
-        </p>
-        <p class="about-text">
-          Beyond the work, I'm also a musician and a storyteller, and those habits shape how I
-          approach design. Curious how it all connects?
-        </p>
-        <a href="about/" class="btn-primary">
-          More About Me
-          <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ EXPERTISE ═══ -->
-<section id="expertise" class="section" aria-label="Expertise">
-  <div class="container">
-    <p class="section-label">Expertise</p>
-    <h2 class="section-heading">What I bring<br />to your product.</h2>
-    <div class="expertise-grid" style="margin-top:3rem;">
-
-      <div class="expertise-card highlight-card reveal">
-        <div class="expertise-icon" aria-hidden="true">✦</div>
-        <h3 class="expertise-name">Figma Mastery</h3>
-        <p class="expertise-desc">Advanced use of Figma as a design system platform, not just a drawing tool. Variables, tokens, dev mode, complex components, and interactive prototypes that developers can actually use.</p>
-        <div class="expertise-tools">
-          <span class="tool-chip">Auto Layout</span>
-          <span class="tool-chip">Variables & Tokens</span>
-          <span class="tool-chip">Components & Variants</span>
-          <span class="tool-chip">Dev Mode</span>
-          <span class="tool-chip">Prototyping</span>
-          <span class="tool-chip">Figma AI</span>
-        </div>
-      </div>
-
-      <div class="expertise-card highlight-card reveal" style="transition-delay:0.1s">
-        <div class="expertise-icon" aria-hidden="true">🤖</div>
-        <h3 class="expertise-name">AI-Augmented Design</h3>
-        <p class="expertise-desc">AI and Vibe Coding as a strategic process layer: from research synthesis and handoff documentation to building functional prototypes with Claude and Lovable. Speed without sacrificing design quality.</p>
-        <div class="expertise-tools">
-          <span class="tool-chip">Vibe Coding</span>
-          <span class="tool-chip">Handoff Docs</span>
-          <span class="tool-chip">Spec Generation</span>
-          <span class="tool-chip">Rapid Prototyping</span>
-          <span class="tool-chip">Claude</span>
-          <span class="tool-chip">Lovable</span>
-        </div>
-      </div>
-
-      <div class="expertise-card reveal" style="transition-delay:0.2s">
-        <div class="expertise-icon" aria-hidden="true">🔍</div>
-        <h3 class="expertise-name">UX Research & Strategy</h3>
-        <p class="expertise-desc">Discovery, user interviews, jobs-to-be-done, competitive analysis, and translating insights into product strategy that stakeholders align on.</p>
-        <div class="expertise-tools">
-          <span class="tool-chip">User Interviews</span>
-          <span class="tool-chip">Usability Testing</span>
-          <span class="tool-chip">Miro</span>
-          <span class="tool-chip">Jobs-to-be-done</span>
-        </div>
-      </div>
-
-      <div class="expertise-card reveal">
-        <div class="expertise-icon" aria-hidden="true">🏗️</div>
-        <h3 class="expertise-name">Product Design (E2E)</h3>
-        <p class="expertise-desc">Information architecture, interaction design, and prototyping from low to high fidelity, balancing user needs with business goals and technical constraints.</p>
-        <div class="expertise-tools">
-          <span class="tool-chip">IA & User Flows</span>
-          <span class="tool-chip">Wireframing</span>
-          <span class="tool-chip">Hi-Fi Prototypes</span>
-          <span class="tool-chip">Framer</span>
-        </div>
-      </div>
-
-      <div class="expertise-card reveal" style="transition-delay:0.1s">
-        <div class="expertise-icon" aria-hidden="true">⚙️</div>
-        <h3 class="expertise-name">Design Systems</h3>
-        <p class="expertise-desc">Scalable component libraries and design tokens that bridge design and engineering, reducing inconsistency, rework, and dev friction across teams.</p>
-        <div class="expertise-tools">
-          <span class="tool-chip">Component Library</span>
-          <span class="tool-chip">Design Tokens</span>
-          <span class="tool-chip">Documentation</span>
-          <span class="tool-chip">Multi-brand</span>
-        </div>
-      </div>
-
-      <div class="expertise-card reveal" style="transition-delay:0.2s">
-        <div class="expertise-icon" aria-hidden="true">📊</div>
-        <h3 class="expertise-name">Data Visualization</h3>
-        <p class="expertise-desc">Dashboards and data products that make complex information scannable and actionable, combining UX thinking with Data Visualization tools and data storytelling.</p>
-        <div class="expertise-tools">
-          <span class="tool-chip">Power BI</span>
-          <span class="tool-chip">DAX</span>
-          <span class="tool-chip">KPI Design</span>
-          <span class="tool-chip">Storytelling</span>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- AI Banner -->
-    <div class="ai-banner reveal">
-      <div>
-        <h3 class="ai-banner-title">AI in my process: <em>accelerator, not replacement.</em></h3>
-        <p class="ai-banner-text">
-          I use AI as a <strong style="color:var(--text-1); font-weight:500;">strategic layer</strong> across the entire design cycle: research synthesis, handoff documentation, component spec writing, and functional prototype generation. The result: shorter feedback cycles, clearer handoffs, and more time for the design decisions that actually require human judgment.
-        </p>
-      </div>
-      <div class="ai-use-chips">
-        <div class="ai-use-chip"><span class="dot"></span>Research synthesis</div>
-        <div class="ai-use-chip"><span class="dot"></span>Handoff documentation</div>
-        <div class="ai-use-chip"><span class="dot"></span>Component spec writing</div>
-        <div class="ai-use-chip"><span class="dot"></span>Vibe Coding</div>
-        <div class="ai-use-chip"><span class="dot"></span>Functional prototypes</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ═══ MINI CTA ═══ -->
-<div class="mini-cta">
-  <div class="container">
-    <div class="mini-cta-inner">
-      <div class="mini-cta-text reveal">
-        <h2 class="mini-cta-heading">Let's build something<br /><em style="font-style:italic; color:var(--accent-text);">worth shipping.</em></h2>
-        <p class="mini-cta-sub">Available for new projects, local and global.</p>
-      </div>
-      <div style="display:flex; gap:1rem; flex-wrap:wrap;" class="reveal" style="transition-delay:0.1s">
-        <a href="contact/" class="btn-primary">
-          Get in touch
-          <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ FOOTER ═══ -->
-<footer>
-  <div class="container footer-inner">
-    <span class="footer-logo">Lucas<span>.</span></span>
-        <nav class="footer-nav nav-links" aria-label="Footer navigation">
-      <a href="index.html">Work</a>
-      <a href="about/">About Me</a>
-      <a href="archives/">Archives</a>
-    </nav>
-  </div>
+  <span class="footer-year">© 2026</span>
 </footer>
 
-<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
 
 <script>
-  // ── Marquee: fill track until wider than viewport, then clone as loop twin ──
+  // Contact dropdown
   (function () {
-    const inner = document.querySelector('.marquee-inner');
-    const track = document.getElementById('marqueeTrack');
-    if (!inner || !track) return;
+    var btn = document.getElementById('contactBtn');
+    var panel = document.getElementById('contactPanel');
+    if (!btn || !panel) return;
 
-    const origItems = Array.from(track.querySelectorAll('.marquee-item'));
-
-    // Keep appending one full set until the track is wider than the viewport
-    let guard = 0;
-    while (track.scrollWidth <= window.innerWidth && guard++ < 30) {
-      origItems.forEach(function (item) {
-        const c = item.cloneNode(true);
-        c.querySelectorAll('img').forEach(function (img) { img.alt = ''; });
-        track.appendChild(c);
-      });
-    }
-    // Add one extra set so the last visible item never hits the edge
-    origItems.forEach(function (item) {
-      const c = item.cloneNode(true);
-      c.querySelectorAll('img').forEach(function (img) { img.alt = ''; });
-      track.appendChild(c);
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = panel.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
     });
 
-    // Clone the filled track as the invisible twin (the -50% loop target)
-    const twin = track.cloneNode(true);
-    twin.removeAttribute('id');
-    twin.setAttribute('aria-hidden', 'true');
-    twin.querySelectorAll('img').forEach(function (img) { img.alt = ''; });
-    inner.appendChild(twin);
-  })();
-
-  // Scroll reveal (standard + card spring variant + blur variant)
-  const io = new IntersectionObserver(
-    entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }),
-    { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
-  );
-  document.querySelectorAll('.reveal, .reveal-card').forEach(el => io.observe(el));
-
-  // Mobile menu
-  function toggleMenu(btn) {
-    const menu = document.getElementById('mobileMenu');
-    const isOpen = menu.classList.toggle('open');
-    btn.setAttribute('aria-expanded', String(isOpen));
-    btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
-  }
-
-  // Theme toggle
-  function toggleTheme() {
-    const html = document.documentElement;
-    const isLight = html.getAttribute('data-theme') === 'light';
-    if (isLight) {
-      html.removeAttribute('data-theme');
-      try { localStorage.setItem('theme', 'dark'); } catch (e) {}
-    } else {
-      html.setAttribute('data-theme', 'light');
-      try { localStorage.setItem('theme', 'light'); } catch (e) {}
-    }
-  }
-
-  // Header hide on scroll down, reveal on scroll up or hover near top
-  // + Back to top button
-  (function () {
-    const navEl = document.querySelector('body > nav');
-    const backToTop = document.getElementById('backToTop');
-    const showThreshold = 120;
-    let lastY = window.scrollY;
-
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      if (y > showThreshold) {
-        navEl.classList.toggle('nav-hidden', y > lastY);
-        backToTop.classList.add('visible');
-      } else {
-        navEl.classList.remove('nav-hidden');
-        backToTop.classList.remove('visible');
+    document.addEventListener('click', function (e) {
+      if (!btn.contains(e.target) && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
       }
-      lastY = y;
-    }, { passive: true });
+    });
 
-    document.addEventListener('mousemove', e => {
-      if (e.clientY <= 60) navEl.classList.remove('nav-hidden');
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        panel.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.focus();
+      }
     });
   })();
-</script>
-</body>
-</html>
+
+  // Mobile nav
+  (function () {
+    var menuBtn = document.getElementById('mobileMenuBtn');
+    var mobileNav = document.getElementById('mobileNav');
+    if (!menuBtn || !mobileNav) return;
+
+    menuBtn.addEventListener('click', function () {
+      var isOpen = mobileNav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuBtn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      menuBtn.textContent = isOpen ? '✕' : '☰';
+    });
+  })();
+
+  // Header hide on scroll down, rev
