@@ -218,7 +218,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 1rem;
-      align-items: start;
+      align-items: stretch;
     }
 
     .work-item {
@@ -234,6 +234,8 @@
 
     /* Electrolux: spans 2 columns */
     .work-item:nth-child(4) { grid-column: span 2; aspect-ratio: 8/3; }
+    /* Archives: sem aspect-ratio próprio, estica para igualar Electrolux */
+    .work-item:nth-child(5) { aspect-ratio: unset; }
 
     .work-item-visual {
       position: relative;
