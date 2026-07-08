@@ -1100,9 +1100,11 @@ footer {
     transform: translate(-50%, -50%) scale(1);
   }
 
-  /* Hide normal cursor only over the cards themselves */
+  /* Hide normal cursor over cards and all their children */
   .work-item,
-  .archive-item {
+  .work-item *,
+  .archive-item,
+  .archive-item * {
     cursor: none;
   }
 }
