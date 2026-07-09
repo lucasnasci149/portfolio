@@ -22,6 +22,12 @@
   <noscript><style>body { opacity: 1 !important; }</style></noscript>
 
   <style>
+    /* ── WIDER CONTAINER FOR CASE STUDY PAGE ── */
+    .container {
+      max-width: min(88vw, 1440px);
+      padding-inline: clamp(1rem, 2vw, 2rem);
+    }
+
     /* ── CASE HEADER ── */
     .case-header {
       padding-top: calc(5rem + 60px);
@@ -51,7 +57,7 @@
       font-size: 1.1rem;
       color: var(--text-2);
       margin-top: 1rem;
-      max-width: 640px;
+      max-width: 800px;
       line-height: 1.7;
     }
 
@@ -74,7 +80,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 2rem;
-      padding: 2.5rem 0;
+      padding: 3.5rem 0;
     }
     .case-meta-label {
       font-size: 0.68rem;
@@ -94,25 +100,28 @@
     /* ── SPLIT LAYOUT: heading left / content right ── */
     .split {
       display: grid;
-      grid-template-columns: 240px 1fr;
-      gap: clamp(3rem, 5vw, 5rem);
+      grid-template-columns: 2fr 3fr;
+      gap: clamp(2rem, 4vw, 4rem);
       align-items: start;
     }
     .split-h {
       font-family: var(--font-serif);
       font-weight: 300;
-      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
       line-height: 1.2;
       position: sticky;
       top: 5rem;
     }
     .split-h em { font-style: italic; color: var(--accent-text); }
 
+    /* Body paragraphs in right col — constrain reading width */
+    .split > div > p { max-width: 660px; }
+
     /* ── TWO-COLUMN BODY (within split right) ── */
     .body-2col {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
+      gap: 3.5rem;
     }
     .body-col p { font-size: 0.95rem; color: var(--text-2); line-height: 1.8; }
     .body-col p + p { margin-top: 1rem; }
@@ -135,7 +144,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 2rem;
-      padding-block: 1.5rem;
+      padding-block: 2.5rem;
     }
     .metric-open .metric-value { display: block; line-height: 1; }
     .metric-open .metric-desc {
@@ -150,12 +159,12 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1px;
-      margin-top: 2.5rem;
+      margin-top: clamp(3rem, 5vw, 4.5rem);
       background: var(--border);
     }
     .ds-card {
       background: var(--bg);
-      padding: 1.75rem;
+      padding: 2rem 2.5rem;
     }
     .ds-card h3 {
       font-family: var(--font-serif);
@@ -168,7 +177,7 @@
 
     /* ── PULL QUOTE ── */
     .pull-quote-wrap {
-      padding-block: clamp(1.75rem, 3vw, 2.5rem);
+      padding-block: clamp(3rem, 4.5vw, 4.5rem);
       background: var(--bg-2);
     }
     .pull-quote {
@@ -178,7 +187,7 @@
       font-size: clamp(1.3rem, 2.5vw, 1.85rem);
       line-height: 1.55;
       color: var(--text-1);
-      max-width: 860px;
+      max-width: 1000px;
     }
 
     /* ── CONSUMER / CHECKOUT PLATFORM ── */
@@ -190,7 +199,7 @@
       background: var(--accent-wash);
       border: 1px solid var(--accent-border-soft);
       border-radius: var(--radius-sm);
-      margin-bottom: 2.5rem;
+      margin-bottom: 3.5rem;
       flex-wrap: wrap;
     }
     .focus-callout-label {
@@ -208,7 +217,7 @@
       border: 1px solid var(--border); border-radius: 100px;
     }
 
-    .consumer-intro { font-size: 0.95rem; color: var(--text-2); line-height: 1.8; margin-bottom: 0; max-width: 760px; }
+    .consumer-intro { font-size: 0.95rem; color: var(--text-2); line-height: 1.8; margin-bottom: 0; max-width: 840px; }
 
     .order-funnel {
       display: grid;
@@ -231,28 +240,40 @@
     .editorial-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 3rem;
-      margin-bottom: 3rem;
+      gap: 4rem;
+      margin-bottom: 4rem;
     }
     .editorial-title { font-family: var(--font-serif); font-weight: 300; font-size: 1.05rem; margin-bottom: 0.5rem; }
     .editorial-body { font-size: 0.85rem; color: var(--text-2); line-height: 1.7; }
 
-    .checkout-divider { border: none; margin: 0; padding-block: 2.5rem; }
+    .checkout-divider { border: none; margin: 0; padding-block: 4rem; }
 
-    .checkout-section-intro { font-size: 0.95rem; color: var(--text-2); line-height: 1.8; margin-bottom: 2.5rem; }
+    .checkout-section-intro { font-size: 0.95rem; color: var(--text-2); line-height: 1.8; margin-bottom: 3rem; max-width: 660px; }
 
     .checkout-flow {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 0;
-      margin-bottom: 2.5rem;
+      display: flex;
+      position: relative;
+      margin-bottom: 3rem;
     }
-    .checkout-step { display: flex; flex-direction: column; align-items: center; position: relative; }
-    .checkout-step:not(:last-child)::after {
+    .checkout-flow::before {
       content: '';
-      position: absolute; top: 20px; left: 50%; width: 100%; height: 2px;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      height: 2px;
       background: linear-gradient(90deg, var(--accent) 0%, var(--border) 100%);
+      z-index: 0;
     }
+    .checkout-step {
+      flex: 1;
+      display: flex; flex-direction: column; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .checkout-step:first-child { align-items: flex-start; }
+    .checkout-step:last-child { align-items: flex-end; }
+    .checkout-step:last-child .checkout-step-label { text-align: right; }
+    .checkout-step:not(:last-child)::after { display: none; }
     .checkout-step-dot {
       width: 40px; height: 40px; border-radius: 50%;
       background: var(--bg-2); border: 2px solid var(--accent);
@@ -262,10 +283,10 @@
     }
     .checkout-step-label { font-size: 0.72rem; color: var(--text-2); text-align: center; margin-top: 0.5rem; line-height: 1.4; }
 
-    .payment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+    .payment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem; }
     .payment-context {
       background: var(--bg-2); border: 1px solid var(--border);
-      border-radius: var(--radius-sm); padding: 1.5rem;
+      border-radius: var(--radius-sm); padding: 2rem;
     }
     .payment-context-label {
       font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
@@ -290,7 +311,7 @@
       gap: 1px; background: var(--border);
       border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden;
     }
-    .strip-item { background: var(--bg-2); padding: 1.75rem; }
+    .strip-item { background: var(--bg-2); padding: 2rem 2.5rem; }
     .strip-item h4 { font-family: var(--font-serif); font-weight: 300; font-size: 1.05rem; margin-bottom: 0.6rem; }
     .strip-item p { font-size: 0.83rem; color: var(--text-2); line-height: 1.65; }
     .ab-badge {
@@ -304,9 +325,9 @@
     /* ── B2B / GESTOR ── */
     .gestor-list { border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
     .gestor-row {
-      display: grid; grid-template-columns: 210px 1fr;
-      align-items: start; gap: 2.5rem;
-      padding: 1.75rem 2rem;
+      display: grid; grid-template-columns: 2fr 3fr;
+      align-items: start; gap: clamp(2rem, 4vw, 4rem);
+      padding: 2.25rem 2.5rem;
       transition: background var(--transition);
     }
     .gestor-row:hover { background: var(--bg-2); }
@@ -314,14 +335,14 @@
       font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em;
       text-transform: uppercase; color: var(--accent-text); margin-bottom: 0.35rem;
     }
-    .gestor-row-title { font-family: var(--font-serif); font-weight: 300; font-size: 1.05rem; }
+    .gestor-row-title { font-family: var(--font-serif); font-weight: 300; font-size: clamp(1.05rem, 1.5vw, 1.3rem); }
     .gestor-row-desc { font-size: 0.85rem; color: var(--text-2); line-height: 1.7; padding-top: 0.1rem; }
 
     /* ── PROCESS — open, no cards ── */
     .process-open {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 2.5rem 4rem;
+      gap: 3rem 5rem;
     }
     .process-open-item h3 {
       font-family: var(--font-serif);
@@ -333,11 +354,11 @@
     .process-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.75rem; }
 
     /* ── SECTION SPACING ── */
-    .section { padding-block: clamp(2rem, 4vw, 3.5rem); }
-    .section.bg-tinted { background: var(--bg-2); padding-block: clamp(1.5rem, 3vw, 2.5rem); }
+    .section { padding-block: clamp(4rem, 6vw, 5.5rem); }
+    .section.bg-tinted { background: var(--bg-2); padding-block: clamp(3.5rem, 5vw, 5rem); }
     .ai-statement-inner {
-      display: grid; grid-template-columns: auto 1fr;
-      gap: 4rem; align-items: start;
+      display: grid; grid-template-columns: 2fr 3fr;
+      gap: clamp(2rem, 4vw, 4rem); align-items: start;
     }
     .ai-statement-num {
       font-family: var(--font-serif); font-style: italic; font-weight: 300;
@@ -350,7 +371,7 @@
       font-size: clamp(1.6rem, 3.5vw, 2.5rem); line-height: 1.2; margin-bottom: 1.25rem;
     }
     .ai-statement-heading em { font-style: italic; color: var(--accent-text); }
-    .ai-statement-body p { font-size: 0.95rem; color: var(--text-2); line-height: 1.8; max-width: 580px; }
+    .ai-statement-body p { font-size: 0.95rem; color: var(--text-2); line-height: 1.8; max-width: 660px; }
     .ai-statement-body p + p { margin-top: 1rem; }
     .ai-stack { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 1.25rem; }
 
@@ -358,26 +379,57 @@
     .outcomes-open {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 3rem;
+      gap: 4rem;
     }
     .outcome-open .metric-value { display: block; font-size: clamp(3rem, 6vw, 4.5rem); line-height: 1; }
     .outcome-open .metric-desc { font-size: 0.85rem; color: var(--text-2); margin-top: 0.6rem; line-height: 1.45; }
 
     /* ── REFLECTION ── */
-    .reflection-block { padding-block: clamp(2rem, 4vw, 3rem); }
+    .reflection-block { padding-block: clamp(4rem, 6vw, 6rem); }
     .reflection-inner p {
       font-family: var(--font-serif); font-weight: 300; font-style: italic;
       font-size: clamp(1.2rem, 2.5vw, 1.65rem); line-height: 1.65;
-      color: var(--text-1); max-width: 900px;
+      color: var(--text-1); max-width: 1050px;
     }
 
-    /* ── NEXT PROJECT ── */
-    .next-project { padding-block: 3.5rem; text-align: center; background: var(--bg-2); }
-    .next-project-title {
-      font-family: var(--font-serif); font-weight: 300;
-      font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.15; margin-bottom: 2rem;
+    /* ── MORE PROJECTS ── */
+    .case-more {
+      padding-block: clamp(5rem, 7vw, 7rem);
+      padding-inline: clamp(2rem, 5vw, 5rem);
+      background: var(--bg-2);
     }
-    .next-project-title em { font-style: italic; color: var(--accent-text); }
+    .case-more-label {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--text-3); margin-bottom: 3rem;
+    }
+    .case-more-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+    }
+    .case-more-card {
+      text-decoration: none; color: inherit; display: block;
+    }
+    .case-more-card:hover .case-more-thumb { opacity: 0.88; }
+    .case-more-thumb {
+      width: 100%; aspect-ratio: 16/10; object-fit: cover;
+      border-radius: 10px; display: block; margin-bottom: 1.75rem;
+      transition: opacity 0.3s ease;
+    }
+    .case-more-name {
+      font-family: var(--font-serif); font-weight: 300;
+      font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+      line-height: 1.2; margin-bottom: 0.5rem; color: var(--text-1);
+    }
+    .case-more-desc {
+      font-size: 0.875rem; color: var(--text-2); line-height: 1.65;
+      display: -webkit-box; -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .case-more-meta {
+      font-size: 0.72rem; color: var(--text-3);
+      margin-top: 0.75rem; letter-spacing: 0.04em;
+    }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
@@ -392,8 +444,10 @@
       .funnel-step:last-child { border-bottom: none; }
       .editorial-grid { grid-template-columns: 1fr; gap: 2rem; }
       .payment-grid { grid-template-columns: 1fr; }
-      .checkout-flow { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-      .checkout-step:not(:last-child)::after { display: none; }
+      .checkout-flow { flex-wrap: wrap; gap: 1.5rem; }
+      .checkout-step { flex: 0 0 calc(33.33% - 1rem); align-items: center !important; }
+      .checkout-step:last-child .checkout-step-label { text-align: center; }
+      .checkout-flow::before { display: none; }
       .checkout-strip { grid-template-columns: 1fr; gap: 0; background: transparent; }
       .process-open { grid-template-columns: 1fr; gap: 2rem; }
       .outcomes-open { grid-template-columns: 1fr; gap: 2rem; }
@@ -493,7 +547,7 @@
 </div>
 
 <!-- ═══ OVERVIEW ═══ -->
-<section class="section" style="padding-top: clamp(2rem, 4vw, 3rem);">
+<section class="section" style="padding-top: clamp(3.5rem, 5vw, 5rem);">
   <div class="container">
     <div class="split">
       <h2 class="split-h reveal">The situation <em>and the mandate.</em></h2>
@@ -534,7 +588,7 @@
 </section>
 
 <!-- ═══ SCALE NUMBERS ═══ -->
-<section class="section" style="padding-top: 0; padding-bottom: clamp(3rem, 5vw, 5rem);">
+<section class="section" style="padding-top: 0; padding-bottom: clamp(4rem, 6vw, 5.5rem);">
   <div class="container">
     <div class="metrics-row">
       <div class="metric-open reveal">
@@ -574,7 +628,7 @@
 <!-- ═══ DESIGN SYSTEM ═══ -->
 <section class="section">
   <div class="container">
-    <div class="split">
+    <div class="split" style="margin-bottom: clamp(2rem, 4vw, 3rem);">
       <h2 class="split-h reveal">Built to <em>move fast</em> without breaking things.</h2>
       <div class="reveal" style="transition-delay:0.05s">
         <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8; margin-bottom:0;">
@@ -582,30 +636,30 @@
           building the Foundation: a complete token system covering color, spacing, typography,
           radius and elevation.
         </p>
-        <div class="ds-highlights">
-          <div class="ds-card">
-            <h3>Tokens Before Components</h3>
-            <p>
-              The foundation came first: a full token system for color, spacing, radius, typography, and elevation, with dark and light mode from day one. Ant Design provided the component structure and our tokens provided the identity. Any change at the token level propagated everywhere.
-            </p>
-          </div>
-          <div class="ds-card">
-            <h3>DEV Mode Integration</h3>
-            <p>
-              Implemented Figma DEV Mode for all developers. Every component in the design system
-              maps to a code reference. Developers inspect, not guess. Implementation fidelity
-              improved significantly from the first sprint we ran it.
-            </p>
-          </div>
-          <div class="ds-card">
-            <h3>Responsive by Default</h3>
-            <p>
-              Pedir.Delivery is a mobile-first consumer product. Gestor is used across desktop and
-              tablet. Every component in the system was built with both contexts in mind,
-              resulting in 1,000+ screens across mobile and web.
-            </p>
-          </div>
-        </div>
+      </div>
+    </div>
+    <div class="ds-highlights reveal">
+      <div class="ds-card">
+        <h3>Tokens Before Components</h3>
+        <p>
+          The foundation came first: a full token system for color, spacing, radius, typography, and elevation, with dark and light mode from day one. Ant Design provided the component structure and our tokens provided the identity. Any change at the token level propagated everywhere.
+        </p>
+      </div>
+      <div class="ds-card">
+        <h3>DEV Mode Integration</h3>
+        <p>
+          Implemented Figma DEV Mode for all developers. Every component in the design system
+          maps to a code reference. Developers inspect, not guess. Implementation fidelity
+          improved significantly from the first sprint we ran it.
+        </p>
+      </div>
+      <div class="ds-card">
+        <h3>Responsive by Default</h3>
+        <p>
+          Pedir.Delivery is a mobile-first consumer product. Gestor is used across desktop and
+          tablet. Every component in the system was built with both contexts in mind,
+          resulting in 1,000+ screens across mobile and web.
+        </p>
       </div>
     </div>
   </div>
@@ -619,16 +673,14 @@
 <!-- ═══ CONSUMER PLATFORM ═══ -->
 <section class="section">
   <div class="container">
-    <div class="split" style="margin-bottom: 1.25rem;">
-      <h2 class="split-h reveal">Designing the order, <em>from first tap to delivery.</em></h2>
-      <div class="reveal" style="transition-delay:0.05s">
-        <p class="consumer-intro">
-          Every design decision on Pedir.Delivery pointed at the same business goal: get more customers
-          through to a completed order. That meant owning the full funnel, from the moment a customer
-          opens a restaurant's menu through item selection, customization, cart, checkout, and
-          payment confirmation. No abandoned carts from friction. No lost orders from confusing flows.
-        </p>
-      </div>
+    <div style="margin-bottom: clamp(2.5rem, 4vw, 3.5rem);">
+      <h2 class="split-h reveal" style="position: static; max-width: 52%; margin-bottom: clamp(1.25rem, 2vw, 1.75rem);">Designing the order, <em>from first tap to delivery.</em></h2>
+      <p class="consumer-intro reveal" style="transition-delay:0.05s; max-width: 900px;">
+        Every design decision on Pedir.Delivery pointed at the same business goal: get more customers
+        through to a completed order. That meant owning the full funnel, from the moment a customer
+        opens a restaurant's menu through item selection, customization, cart, checkout, and
+        payment confirmation. No abandoned carts from friction. No lost orders from confusing flows.
+      </p>
     </div>
     <div class="order-funnel reveal">
       <div class="funnel-step">
@@ -693,9 +745,9 @@
 
     <div class="checkout-divider"></div>
 
-    <div class="split" style="margin-bottom: clamp(2rem, 4vw, 3rem);">
-      <h2 class="split-h reveal">End-to-end ownership of <em>checkout and payment.</em></h2>
-      <p class="checkout-section-intro reveal" style="transition-delay:0.05s">
+    <div style="margin-bottom: clamp(2.5rem, 4vw, 3.5rem);">
+      <h2 class="split-h reveal" style="position: static; max-width: 52%; margin-bottom: clamp(1.25rem, 2vw, 1.75rem);">End-to-end ownership of <em>checkout and payment.</em></h2>
+      <p class="checkout-section-intro reveal" style="transition-delay:0.05s; max-width: 900px;">
         The checkout and payment experience is where the order either completes or dies.
         I owned the complete transactional layer: delivery details, payment selection,
         discount application, order confirmation, and async payment tracking. The scope
@@ -918,7 +970,7 @@
 <section class="section bg-tinted">
   <div class="container">
     <div class="split">
-      <h2 class="split-h reveal">Design that talks <em>to the whole team.</em></h2>
+      <h2 class="split-h reveal">Design that speaks<br><em>to the whole team.</em></h2>
       <div class="process-open">
         <div class="process-open-item reveal">
           <h3>Design Critiques</h3>
@@ -1036,35 +1088,16 @@
   </div>
 </div>
 
-<!-- ═══ NEXT PROJECT ═══ -->
-<div class="next-project">
-  <div class="container">
-    <h2 class="next-project-title">Explore more <em>case studies.</em></h2>
-    <div style="display:flex; align-items:center; justify-content:center; gap:1rem; flex-wrap:wrap;">
-      <a href="../keepeye/" class="btn-primary">
-        Keepeye: KPI Platform
-        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<!-- ═══ MORE PROJECTS ═══ -->
+<div class="case-more">
+    <p class="case-more-label">More work</p>
+    <div class="case-more-grid">
+
+      <a href="../keepeye/" class="case-more-card reveal">
+        <img src="../../assets/projects/keepeye/keepeye-cover.png" alt="Keepeye" class="case-more-thumb" loading="lazy" />
+        <p class="case-more-name">Keepeye</p>
+        <p class="case-more-desc">KPI management platform for Dojo Smart Ways. Sole UX Engineer: designed the full product and built production components in React.</p>
+        <p class="case-more-meta">UX Engineering · B2B SaaS · 2022–2023</p>
       </a>
-      <a href="../electrolux/" class="btn-secondary">Electrolux: Data Viz</a>
-      <a href="../included/" class="btn-secondary">IncludED: EdTech SaaS</a>
-      <a href="../#work-preview" class="btn-secondary">Back to Work</a>
-    </div>
-  </div>
-</div>
 
-<footer class="site-footer">
-  <span class="footer-name">Lucas Nascimento</span>
-  <div class="footer-links">
-    <a href="../about/" data-i18n="nav.about">About</a>
-    <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="mailto:lucas.luizdonascimento@gmail.com">Email</a>
-  </div>
-  <span class="footer-year">&copy; 2026</span>
-</footer>
-
-<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-</button>
-
-</body>
-</html>
+      <a href="../included/" class="case-more-card reveal" style="transition-delay:0.07s"
