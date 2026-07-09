@@ -23,6 +23,10 @@
   <noscript><style>body { opacity: 1 !important; }</style></noscript>
 
   <style>
+    .container {
+      max-width: min(92vw, 1800px);
+      padding-inline: clamp(1rem, 2vw, 2rem);
+    }
     /* ── CASE HEADER ── */
     .case-header {
       padding-top: calc(4rem + 60px);
@@ -54,7 +58,6 @@
       font-size: 1.1rem;
       color: var(--text-2);
       margin-top: 0.75rem;
-      max-width: 620px;
       line-height: 1.7;
     }
 
@@ -261,7 +264,6 @@
       font-size: 1.05rem;
       color: var(--text-2);
       line-height: 1.8;
-      max-width: 720px;
       margin-bottom: 2.5rem;
     }
     .order-funnel {
@@ -351,7 +353,6 @@
       font-size: 0.95rem;
       color: var(--text-2);
       line-height: 1.8;
-      max-width: 900px;
       margin-bottom: 2.5rem;
     }
     .checkout-flow {
@@ -653,8 +654,7 @@
       font-size: clamp(1.3rem, 2.6vw, 1.9rem);
       line-height: 1.55;
       color: var(--text-1);
-      max-width: 960px;
-      border-left: 3px solid var(--accent-text);
+            border-left: 3px solid var(--accent-text);
       padding-left: 2.5rem;
     }
 
@@ -735,7 +735,6 @@
       font-size: 0.95rem;
       color: var(--text-2);
       line-height: 1.8;
-      max-width: 620px;
     }
     .ai-statement-body p + p { margin-top: 1rem; }
 
@@ -750,8 +749,7 @@
       font-size: clamp(1.2rem, 2.5vw, 1.65rem);
       line-height: 1.65;
       color: var(--text-1);
-      max-width: 960px;
-    }
+          }
 
     @media (max-width: 768px) {
       .ai-statement-inner { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -926,7 +924,7 @@
   <div class="container">
     <p class="section-label">Design System</p>
     <h2 class="section-heading" style="margin-bottom:1.5rem;">Built to <em>move fast</em> without breaking things.</h2>
-    <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8; max-width:900px; margin-bottom:0;">
+    <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8;margin-bottom:0;">
       The delivery pace was aggressive from day one, so I had to be strategic. I started by
       building the Foundation: a complete token system covering color, spacing, typography,
       radius and elevation.

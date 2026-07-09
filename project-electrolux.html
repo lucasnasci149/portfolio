@@ -21,6 +21,10 @@
   <link rel="stylesheet" href="style.css" />
   <script src="transitions.js" defer></script>
   <noscript><style>body { opacity: 1 !important; }</style></noscript>
+    .container {
+      max-width: min(92vw, 1800px);
+      padding-inline: clamp(1rem, 2vw, 2rem);
+    }
 
   <style>
     /* CASE HEADER */
@@ -52,7 +56,6 @@
       font-size: 1.1rem;
       color: var(--text-2);
       margin-top: 0.75rem;
-      max-width: 620px;
       line-height: 1.7;
     }
     .case-meta-grid {
@@ -190,7 +193,6 @@
       font-size: clamp(1.3rem, 2.8vw, 2rem);
       line-height: 1.55;
       color: var(--text-1);
-      max-width: 820px;
     }
     .pull-quote-text em { color: var(--accent-text); font-style: normal; }
 
@@ -313,8 +315,7 @@
       font-size: clamp(1.2rem, 2.5vw, 1.65rem);
       line-height: 1.65;
       color: var(--text-1);
-      max-width: 960px;
-    }
+          }
 
     /* NEXT PROJECT */
     .next-project { padding-block: 5rem; text-align: center; background: var(--bg-2); }
@@ -540,7 +541,7 @@
   <div class="container">
     <p class="section-label">The System</p>
     <h2 class="section-heading">Three contexts, <em>one language.</em></h2>
-    <p style="font-size:0.92rem; color:var(--text-2); line-height:1.8; max-width:700px; margin-top:0.75rem;">
+    <p style="font-size:0.92rem; color:var(--text-2); line-height:1.8;margin-top:0.75rem;">
       Not every audience needs the same view. The system was designed around three distinct
       dashboard contexts, each with a defined purpose, visual hierarchy, and interaction depth.
     </p>

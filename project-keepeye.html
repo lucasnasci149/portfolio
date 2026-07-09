@@ -23,6 +23,10 @@
   <noscript><style>body { opacity: 1 !important; }</style></noscript>
 
   <style>
+    .container {
+      max-width: min(92vw, 1800px);
+      padding-inline: clamp(1rem, 2vw, 2rem);
+    }
     /* ── CASE HEADER ── */
     .case-header {
       padding-top: calc(4rem + 60px);
@@ -54,7 +58,6 @@
       font-size: 1.1rem;
       color: var(--text-2);
       margin-top: 0.75rem;
-      max-width: 620px;
       line-height: 1.7;
     }
 
@@ -189,7 +192,6 @@
       font-size: 0.95rem;
       color: var(--text-2);
       line-height: 1.8;
-      max-width: 720px;
     }
     .solution-features {
       display: grid;
@@ -297,8 +299,7 @@
       font-size: clamp(1.3rem, 2.6vw, 1.9rem);
       line-height: 1.55;
       color: var(--text-1);
-      max-width: 960px;
-      border-left: 3px solid var(--accent-text);
+            border-left: 3px solid var(--accent-text);
       padding-left: 2.5rem;
     }
 
@@ -403,8 +404,7 @@
       font-size: clamp(1.2rem, 2.5vw, 1.65rem);
       line-height: 1.65;
       color: var(--text-1);
-      max-width: 960px;
-    }
+          }
 
     @media (max-width: 900px) {
       .feature-row { grid-template-columns: 1fr; gap: 0.5rem; }
@@ -679,7 +679,7 @@
   <div class="container">
     <p class="section-label">The Product</p>
     <h2 class="section-heading" style="margin-bottom:0.75rem;">One platform. <em>Every KPI.</em></h2>
-    <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8; max-width:720px; margin-bottom:0;">
+    <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8;margin-bottom:0;">
       The RICE exercise shaped the feature set directly. What scored highest was not always
       what we expected, but the research consistently pointed toward the same needs:
       centralization, formula consistency, and managerial autonomy.
@@ -698,7 +698,7 @@
           <p class="feature-row-label">Data Trust</p>
           <p class="feature-row-title">Metric Formula Calculator</p>
         </div>
-        <p class="feature-row-desc">One of the highest-scoring features in the RICE exercise, and the one that most directly addressed the trust deficit. The built-in calculator connects each metric to a centralized data source, ensuring every user, in every department, is always working from the same numbers. No more diverging exports or parallel spreadsheets — one definition, one source, one result. This turned Keepeye from a dashboard tool into a single source of truth.</p>
+        <p class="feature-row-desc">One of the highest-scoring features in the RICE exercise, and the one that most directly addressed the trust deficit. The built-in calculator connects each metric to a centralized data source, ensuring every user, in every department, is always working from the same numbers. No more diverging exports or parallel spreadsheets: one definition, one source, one result. This turned Keepeye from a dashboard tool into a single source of truth.</p>
       </div>
       <div class="feature-row reveal">
         <div>

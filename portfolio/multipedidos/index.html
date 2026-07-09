@@ -24,7 +24,7 @@
   <style>
     /* ── WIDER CONTAINER FOR CASE STUDY PAGE ── */
     .container {
-      max-width: min(88vw, 1440px);
+      max-width: min(92vw, 1800px);
       padding-inline: clamp(1rem, 2vw, 2rem);
     }
 
@@ -57,7 +57,6 @@
       font-size: 1.1rem;
       color: var(--text-2);
       margin-top: 1rem;
-      max-width: 800px;
       line-height: 1.7;
     }
 
@@ -115,7 +114,6 @@
     .split-h em { font-style: italic; color: var(--accent-text); }
 
     /* Body paragraphs in right col — constrain reading width */
-    .split > div > p { max-width: 660px; }
 
     /* ── TWO-COLUMN BODY (within split right) ── */
     .body-2col {
@@ -187,7 +185,6 @@
       font-size: clamp(1.3rem, 2.5vw, 1.85rem);
       line-height: 1.55;
       color: var(--text-1);
-      max-width: 1000px;
     }
 
     /* ── CONSUMER / CHECKOUT PLATFORM ── */
@@ -217,7 +214,7 @@
       border: 1px solid var(--border); border-radius: 100px;
     }
 
-    .consumer-intro { font-size: 0.95rem; color: var(--text-2); line-height: 1.8; margin-bottom: 0; max-width: 840px; }
+    .consumer-intro { font-size: 0.95rem; color: var(--text-2); line-height: 1.8; margin-bottom: 0; }
 
     .order-funnel {
       display: grid;
@@ -248,10 +245,11 @@
 
     .checkout-divider { border: none; margin: 0; padding-block: 4rem; }
 
-    .checkout-section-intro { font-size: 0.95rem; color: var(--text-2); line-height: 1.8; margin-bottom: 3rem; max-width: 660px; }
+    .checkout-section-intro { font-size: 0.95rem; color: var(--text-2); line-height: 1.8; margin-bottom: 3rem; }
 
     .checkout-flow {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
       position: relative;
       margin-bottom: 3rem;
     }
@@ -259,20 +257,16 @@
       content: '';
       position: absolute;
       top: 20px;
-      left: 20px;
-      right: 20px;
+      left: calc(100% / 12);
+      right: calc(100% / 12);
       height: 2px;
       background: linear-gradient(90deg, var(--accent) 0%, var(--border) 100%);
       z-index: 0;
     }
     .checkout-step {
-      flex: 1;
       display: flex; flex-direction: column; align-items: center;
       position: relative; z-index: 1;
     }
-    .checkout-step:first-child { align-items: flex-start; }
-    .checkout-step:last-child { align-items: flex-end; }
-    .checkout-step:last-child .checkout-step-label { text-align: right; }
     .checkout-step:not(:last-child)::after { display: none; }
     .checkout-step-dot {
       width: 40px; height: 40px; border-radius: 50%;
@@ -371,7 +365,7 @@
       font-size: clamp(1.6rem, 3.5vw, 2.5rem); line-height: 1.2; margin-bottom: 1.25rem;
     }
     .ai-statement-heading em { font-style: italic; color: var(--accent-text); }
-    .ai-statement-body p { font-size: 0.95rem; color: var(--text-2); line-height: 1.8; max-width: 660px; }
+    .ai-statement-body p { font-size: 0.95rem; color: var(--text-2); line-height: 1.8; }
     .ai-statement-body p + p { margin-top: 1rem; }
     .ai-stack { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 1.25rem; }
 
@@ -389,7 +383,7 @@
     .reflection-inner p {
       font-family: var(--font-serif); font-weight: 300; font-style: italic;
       font-size: clamp(1.2rem, 2.5vw, 1.65rem); line-height: 1.65;
-      color: var(--text-1); max-width: 1050px;
+      color: var(--text-1);
     }
 
     /* ── MORE PROJECTS ── */
@@ -674,8 +668,8 @@
 <section class="section">
   <div class="container">
     <div style="margin-bottom: clamp(2.5rem, 4vw, 3.5rem);">
-      <h2 class="split-h reveal" style="position: static; max-width: 52%; margin-bottom: clamp(1.25rem, 2vw, 1.75rem);">Designing the order, <em>from first tap to delivery.</em></h2>
-      <p class="consumer-intro reveal" style="transition-delay:0.05s; max-width: 900px;">
+      <h2 class="split-h reveal" style="position: static; margin-bottom: clamp(1.25rem, 2vw, 1.75rem);">Designing the order, <em>from first tap to delivery.</em></h2>
+      <p class="consumer-intro reveal" style="transition-delay:0.05s;">
         Every design decision on Pedir.Delivery pointed at the same business goal: get more customers
         through to a completed order. That meant owning the full funnel, from the moment a customer
         opens a restaurant's menu through item selection, customization, cart, checkout, and
@@ -746,8 +740,8 @@
     <div class="checkout-divider"></div>
 
     <div style="margin-bottom: clamp(2.5rem, 4vw, 3.5rem);">
-      <h2 class="split-h reveal" style="position: static; max-width: 52%; margin-bottom: clamp(1.25rem, 2vw, 1.75rem);">End-to-end ownership of <em>checkout and payment.</em></h2>
-      <p class="checkout-section-intro reveal" style="transition-delay:0.05s; max-width: 900px;">
+      <h2 class="split-h reveal" style="position: static; margin-bottom: clamp(1.25rem, 2vw, 1.75rem);">End-to-end ownership of <em>checkout and payment.</em></h2>
+      <p class="checkout-section-intro reveal" style="transition-delay:0.05s;">
         The checkout and payment experience is where the order either completes or dies.
         I owned the complete transactional layer: delivery details, payment selection,
         discount application, order confirmation, and async payment tracking. The scope
@@ -857,7 +851,7 @@
 <section class="section">
   <div class="container">
     <div class="split" style="margin-bottom: clamp(2rem, 4vw, 3rem);">
-      <h2 class="split-h reveal">Running the restaurant, <em>end to end.</em></h2>
+      <h2 class="split-h reveal">Running the restaurant,<br><em>end to end.</em></h2>
       <div class="body-2col">
         <div class="body-col reveal" style="transition-delay:0.05s">
           <p>
@@ -1089,10 +1083,11 @@
 </div>
 
 <!-- ═══ MORE PROJECTS ═══ -->
-<div class="case-more">
-    <p class="case-more-label">More work</p>
-    <div class="case-more-grid">
 
+<!-- ═══ MORE WORK ═══ -->
+<div class="case-more">
+  <p class="case-more-label">More work</p>
+  <div class="case-more-grid">
       <a href="../keepeye/" class="case-more-card reveal">
         <img src="../../assets/projects/keepeye/keepeye-cover.png" alt="Keepeye" class="case-more-thumb" loading="lazy" />
         <p class="case-more-name">Keepeye</p>
@@ -1100,4 +1095,35 @@
         <p class="case-more-meta">UX Engineering · B2B SaaS · 2022–2023</p>
       </a>
 
-      <a href="../included/" class="case-more-card reveal" style="transition-delay:0.07s"
+      <a href="../included/" class="case-more-card reveal" style="transition-delay:0.07s">
+        <img src="../../assets/projects/included-pixelpunk/included-cover.png" alt="IncludED" class="case-more-thumb" loading="lazy" />
+        <p class="case-more-name">IncludED</p>
+        <p class="case-more-desc">Co-founder and Lead Product Designer at PixelPunk. Built a SaaS platform for inclusive education from zero to first paying customers.</p>
+        <p class="case-more-meta">Product Design · EdTech SaaS · 2024–Present</p>
+      </a>
+
+      <a href="../electrolux/" class="case-more-card reveal" style="transition-delay:0.14s">
+        <img src="../../assets/projects/electrolux/electrolux-cover.png" alt="Electrolux" class="case-more-thumb" loading="lazy" />
+        <p class="case-more-name">Electrolux</p>
+        <p class="case-more-desc">Dashboard visual identity and design system for global markets, via Dojo Smart Ways.</p>
+        <p class="case-more-meta">Data Viz · Design System · 2023</p>
+      </a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <span class="footer-name">Lucas Nascimento</span>
+  <div class="footer-links">
+    <a href="../about/" data-i18n="nav.about">About</a>
+    <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:lucas.luizdonascimento@gmail.com">Email</a>
+  </div>
+  <span class="footer-year">&copy; 2026</span>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+</body>
+</html>

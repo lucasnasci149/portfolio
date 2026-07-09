@@ -26,7 +26,7 @@
   <style>
     /* ── CONTAINER WIDTH OVERRIDE ── */
     .container {
-      max-width: min(88vw, 1440px);
+      max-width: min(92vw, 1800px);
       padding-inline: clamp(1rem, 2vw, 2rem);
     }
 
@@ -59,7 +59,6 @@
       font-size: 1.1rem;
       color: var(--text-2);
       margin-top: 1rem;
-      max-width: 800px;
       line-height: 1.7;
     }
 
@@ -117,7 +116,6 @@
       top: 5rem;
     }
     .split-h em { font-style: italic; color: var(--accent-text); }
-    .split > div > p { max-width: 660px; }
 
     /* ── TWO-COLUMN BODY ── */
     .body-2col {
@@ -152,7 +150,6 @@
       font-size: clamp(1.3rem, 2.5vw, 1.85rem);
       line-height: 1.55;
       color: var(--text-1);
-      max-width: 1000px;
     }
 
     /* ── ORIGIN BLOCK ── */
@@ -235,15 +232,7 @@
       transition: background var(--transition);
     }
     .gestor-row:hover { background: var(--bg-2); }
-    .gestor-row-label {
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent-text);
-      margin-bottom: 0.35rem;
-    }
-    .gestor-row-title { font-family: var(--font-serif); font-weight: 300; font-size: clamp(1.05rem, 1.5vw, 1.3rem); }
+    .gestor-row-title { font-family: var(--font-serif); font-weight: 300; font-size: clamp(1.05rem, 1.5vw, 1.3rem); color: var(--accent-text); }
     .gestor-row-desc { font-size: 0.85rem; color: var(--text-2); line-height: 1.7; padding-top: 0.1rem; }
 
     /* ── AI STRIP ── */
@@ -297,19 +286,10 @@
       font-size: clamp(1.2rem, 2.5vw, 1.65rem);
       line-height: 1.65;
       color: var(--text-1);
-      max-width: 1050px;
+     
     }
 
     /* ── NEXT PROJECT ── */
-    .next-project { padding-block: 3.5rem; text-align: center; background: var(--bg-2); }
-    .next-project-title {
-      font-family: var(--font-serif);
-      font-weight: 300;
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      line-height: 1.15;
-      margin-bottom: 2rem;
-    }
-    .next-project-title em { font-style: italic; color: var(--accent-text); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
@@ -326,6 +306,45 @@
     }
     @media (max-width: 640px) {
       .case-meta-strip { grid-template-columns: 1fr; }
+    }
+
+    /* ── MORE WORK ── */
+    .case-more {
+      padding-block: clamp(5rem, 7vw, 7rem);
+      padding-inline: clamp(2rem, 5vw, 5rem);
+      background: var(--bg-2);
+    }
+    .case-more-label {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--text-3); margin-bottom: 3rem;
+    }
+    .case-more-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+    }
+    .case-more-card {
+      text-decoration: none; color: inherit; display: block;
+    }
+    .case-more-card:hover .case-more-thumb { opacity: 0.88; }
+    .case-more-thumb {
+      width: 100%; aspect-ratio: 16/10; object-fit: cover;
+      border-radius: 10px; display: block; margin-bottom: 1.75rem;
+      transition: opacity 0.3s ease;
+    }
+    .case-more-name {
+      font-family: var(--font-serif); font-weight: 300;
+      font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+      line-height: 1.2; margin-bottom: 0.5rem; color: var(--text-1);
+    }
+    .case-more-desc {
+      font-size: 0.85rem; color: var(--text-2); line-height: 1.65; margin-bottom: 0.75rem;
+    }
+    .case-more-meta {
+      font-size: 0.72rem; color: var(--text-3); letter-spacing: 0.04em;
+    }
+    @media (max-width: 768px) {
+      .case-more-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -478,10 +497,6 @@
       <h2 class="split-h reveal">Neuroscience, design, <em>and a problem worth solving.</em></h2>
       <div class="reveal" style="transition-delay:0.05s">
         <div class="origin-block">
-          <blockquote>
-            "I have always been drawn to the intersection of how the brain works and how design communicates.
-            IncludED is the project where those two stopped being separate interests."
-          </blockquote>
           <p>
             Neuroscience has shaped how I think about UX for years: cognitive load, attention systems,
             the way working memory constraints map directly to interface decisions. When the opportunity
@@ -621,35 +636,30 @@
     <div class="gestor-list">
       <div class="gestor-row reveal">
         <div>
-          <p class="gestor-row-label">Legislation</p>
           <p class="gestor-row-title">Brazilian Inclusion Law and PEI requirements</p>
         </div>
         <p class="gestor-row-desc">The Lei Brasileira de Inclusao (Lei 13.146/2015) establishes the legal right to a PEI for every student with a disability, global developmental disorder, or high intellectual ability. The research mapped exactly what a compliant PEI must contain, who is responsible for producing and signing it, how it must be reviewed across the school year, and what documentation a school must maintain. These requirements became IncludED's structural foundation, not optional features.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
-          <p class="gestor-row-label">Curriculum</p>
           <p class="gestor-row-title">BNCC architecture and how it applies to inclusion</p>
         </div>
         <p class="gestor-row-desc">The BNCC organizes learning goals differently across each educational stage: experience fields for Early Childhood Education, skills within competencies for Elementary and High School. For an inclusion student, every pedagogical objective in the PEI must be anchored to BNCC descriptors, adapted to the student's profile. The team studied this architecture in detail with the pedagogical consultant to understand how to make BNCC navigation practical for teachers who need to select the right descriptors quickly, without reading the full document every time.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
-          <p class="gestor-row-label">Classroom Reality</p>
           <p class="gestor-row-title">How teachers actually work with inclusion students</p>
         </div>
         <p class="gestor-row-desc">Sessions with the pedagogical consultant revealed the real daily workflow: a teacher managing twenty students may have four or five with PEIs, each requiring individual documentation, separate behavioral records, and progress tracking that coordinators can review. The consultant described how schools handle rotating teachers, mid-year student transfers, and the constant challenge of keeping records when each professional uses a different format. Every pain point she described became a product requirement.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
-          <p class="gestor-row-label">Clinical Gap</p>
           <p class="gestor-row-title">What neuropsychological reports mean in the classroom</p>
         </div>
         <p class="gestor-row-desc">The neuropsychologist walked the team through how clinical assessments are structured: the diagnostic language neurologists, psychologists, and speech therapists use, why that language is inaccessible to most teachers, and what the pedagogical implications of each diagnosis type actually are. This session was the foundation of IncludED's report translation pipeline. Without understanding how clinical and pedagogical language diverge, the AI integration would have been superficial. The Adaptation Council feature was born directly from this research.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
-          <p class="gestor-row-label">Regulatory Framework</p>
           <p class="gestor-row-title">AEE requirements and institutional oversight</p>
         </div>
         <p class="gestor-row-desc">The Atendimento Educacional Especializado (AEE) is a federally mandated specialized support service that operates alongside regular schooling. It has its own documentation requirements (the PAEE), its own professional category (Profissional AEE), and its own relationship to the student's classroom PEI. Understanding how MEC guidelines, state secretaries of education, and school coordinators interact around AEE compliance was essential to designing an access model where AEE professionals see the right students, and teachers see only their own contributions.</p>
@@ -704,52 +714,39 @@
 <!-- ═══ PRODUCT MODULES ═══ -->
 <section class="section" style="padding-bottom: clamp(2rem, 4vw, 3rem);">
   <div class="container">
-    <div class="split" style="margin-bottom: clamp(2rem, 4vw, 3rem);">
-      <h2 class="split-h reveal">A complete layer for <em>inclusive education.</em></h2>
-      <p class="reveal" style="font-size:0.95rem; color:var(--text-2); line-height:1.8; transition-delay:0.05s">
-        Every module came from a specific gap identified in the expert sessions and market research.
-        Nothing was built speculatively.
-      </p>
-    </div>
     <div class="gestor-list">
       <div class="gestor-row reveal">
         <div>
-          <p class="gestor-row-label">Core Module</p>
           <p class="gestor-row-title">PEI Creation and Management</p>
         </div>
         <p class="gestor-row-desc">The core of the platform. Administrators open a school period and the system automatically generates one PEI per active student. Teachers fill contributions by discipline; coordinators have full visibility. The PEI is always tied to a student, a class, and a school period. Never a floating document. It exports as PDF, consolidating all contributions, objectives, behaviors, and the PAEE into a single compliant document.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
-          <p class="gestor-row-label">Core Module</p>
           <p class="gestor-row-title">BNCC Goal Mapping with AI</p>
         </div>
         <p class="gestor-row-desc">Teachers set pedagogical objectives linked to BNCC descriptors: skills within competencies for Elementary and High School, experience fields for Early Childhood Education. The platform includes the full BNCC glossary indexed for navigation. For each BNCC descriptor selected, AI suggests a goal text tailored to the student's profile. The teacher edits; the AI starts. This reduced goal-writing time significantly while improving BNCC alignment across the board.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
-          <p class="gestor-row-label">Core Module</p>
           <p class="gestor-row-title">Student Evolution and Progress Tracking</p>
         </div>
         <p class="gestor-row-desc">Objectives break into activities, each tracked quantitatively (numeric target and running progress) or qualitatively (achieved/not achieved). Teachers update progress, and the platform aggregates it by objective, discipline, and period, giving coordinators a longitudinal view of each student's development across the year. This turns subjective impressions into structured, auditable evidence.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
-          <p class="gestor-row-label">Core Module</p>
           <p class="gestor-row-title">Clinical Report Processing</p>
         </div>
         <p class="gestor-row-desc">Administrators upload clinical reports from neurologists, psychologists, and speech therapists. The platform uses OCR for scanned documents and AI to translate medical language into pedagogical guidance. A teacher who receives a neurological evaluation can now read, in plain language, what it means for their classroom practice. Only accepted reports feed into the Adaptation Council, a deliberate quality gate designed with the neuropsychologist.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
-          <p class="gestor-row-label">Core Module</p>
           <p class="gestor-row-title">PAEE: Specialized Support Plan</p>
         </div>
         <p class="gestor-row-desc">A module exclusive to AEE professionals: therapists and specialists who support students outside the regular classroom. The PAEE captures work axes (communication, cognition, autonomy, motor skills) with objectives, strategies, frequency, and session duration. AI suggests objectives and indicators for each axis based on the student profile.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
-          <p class="gestor-row-label">Core Module</p>
           <p class="gestor-row-title">Multi-Role Collaboration</p>
         </div>
         <p class="gestor-row-desc">Different users have fundamentally different relationships with the same student: the coordinator sees everything, the math teacher sees only their contribution, the AEE professional sees only the students assigned to them. This is not just a permissions model: it reflects how school teams actually function. Getting this information architecture right required multiple sessions with the pedagogical consultant to map real access patterns before any screen was built.</p>
@@ -832,19 +829,34 @@
   </div>
 </div>
 
-<!-- ═══ NEXT PROJECT ═══ -->
-<div class="next-project">
-  <div class="container">
-    <h2 class="next-project-title">Explore more <em>case studies.</em></h2>
-    <div style="display:flex; align-items:center; justify-content:center; gap:1rem; flex-wrap:wrap;">
-      <a href="../multipedidos/" class="btn-primary">
-        Multipedidos: Design System
-        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+</div>
+
+
+<!-- ═══ MORE WORK ═══ -->
+<div class="case-more">
+  <p class="case-more-label">More work</p>
+  <div class="case-more-grid">
+      <a href="../multipedidos/" class="case-more-card reveal">
+        <img src="../../assets/projects/pedir-delivery/cover.png" alt="Multipedidos" class="case-more-thumb" loading="lazy" />
+        <p class="case-more-name">Multipedidos</p>
+        <p class="case-more-desc">Senior Product Designer at the largest food-ordering platform in Brazil. Design system, consumer product, and AI-assisted workflows.</p>
+        <p class="case-more-meta">Product Design · Food Tech · 2024–2026</p>
       </a>
-      <a href="../electrolux/" class="btn-secondary">Electrolux: Data Viz</a>
-      <a href="../keepeye/" class="btn-secondary">Keepeye: KPI Platform</a>
-      <a href="../#work-preview" class="btn-secondary">Back to Work</a>
-    </div>
+
+      <a href="../keepeye/" class="case-more-card reveal" style="transition-delay:0.07s">
+        <img src="../../assets/projects/keepeye/keepeye-cover.png" alt="Keepeye" class="case-more-thumb" loading="lazy" />
+        <p class="case-more-name">Keepeye</p>
+        <p class="case-more-desc">KPI management platform for Dojo Smart Ways. Sole UX Engineer: designed the full product and built production components in React.</p>
+        <p class="case-more-meta">UX Engineering · B2B SaaS · 2022–2023</p>
+      </a>
+
+      <a href="../electrolux/" class="case-more-card reveal" style="transition-delay:0.14s">
+        <img src="../../assets/projects/electrolux/electrolux-cover.png" alt="Electrolux" class="case-more-thumb" loading="lazy" />
+        <p class="case-more-name">Electrolux</p>
+        <p class="case-more-desc">Dashboard visual identity and design system for global markets, via Dojo Smart Ways.</p>
+        <p class="case-more-meta">Data Viz · Design System · 2023</p>
+      </a>
   </div>
 </div>
 
