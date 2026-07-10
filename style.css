@@ -257,6 +257,12 @@ ul { list-style: none; }
 }
 .section { padding-block: clamp(5rem, 10vw, 8rem); }
 
+/* Spacing between tinted sections and full-bleed images */
+.section.bg-tinted + .img-full,
+.img-full + .section.bg-tinted,
+.pull-quote-wrap + .img-full,
+.img-full + .pull-quote-wrap { margin-top: clamp(2.5rem, 5vw, 5rem); }
+
 /* ── TYPOGRAPHY UTILITIES ── */
 .section-label {
   font-size: 0.72rem;
