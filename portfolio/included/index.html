@@ -62,7 +62,7 @@
       line-height: 1.7;
     }
 
-    /* ── HERO — full bleed ── */
+    /* ── HERO · full bleed ── */
     .case-hero {
       width: 100%;
       background: var(--bg-3);
@@ -140,7 +140,7 @@
 
     /* ── PULL QUOTE ── */
     .pull-quote-wrap {
-      padding-block: clamp(3rem, 4.5vw, 4.5rem);
+      padding-block: clamp(1.75rem, 3vw, 2.5rem);
       background: var(--bg-2);
     }
     .pull-quote {
@@ -177,7 +177,7 @@
     }
     .origin-block p + p { margin-top: 0.75rem; }
 
-    /* ── PROCESS — open, no cards ── */
+    /* ── PROCESS · open, no cards ── */
     .process-open {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -264,7 +264,7 @@
     }
     .ai-strip-panel p { font-size: 0.95rem; color: var(--text-2); line-height: 1.7; }
 
-    /* ── OUTCOMES — open ── */
+    /* ── OUTCOMES · open ── */
     .outcomes-open {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -274,11 +274,11 @@
     .outcome-open .metric-desc { font-size: 0.85rem; color: var(--text-2); margin-top: 0.6rem; line-height: 1.45; }
 
     /* ── SECTION ── */
-    .section { padding-block: clamp(4rem, 6vw, 5.5rem); }
-    .section.bg-tinted { background: var(--bg-2); padding-block: clamp(3.5rem, 5vw, 5rem); }
+    .section { padding-block: clamp(2rem, 4vw, 3.5rem); }
+    .section.bg-tinted { background: var(--bg-2); padding-block: clamp(2rem, 4vw, 3rem); }
 
     /* ── REFLECTION ── */
-    .reflection-block { padding-block: clamp(4rem, 6vw, 6rem); }
+    .reflection-block { padding-block: clamp(2rem, 4vw, 3rem); }
     .reflection-inner p {
       font-family: var(--font-serif);
       font-weight: 300;
@@ -397,16 +397,11 @@
       <span class="tag">Co-founder</span>
     </div>
     <h1 class="case-header-title case-header-entrance" style="--delay:0.13s">IncludED<br /><em>Inclusive Education Platform</em></h1>
-    <p class="case-header-subtitle case-header-entrance" style="--delay:0.21s">
-      Neuroscience, education law, and design collide in a product that changes how
-      Brazilian schools support inclusion students. Built with a neuropsychologist, a
-      pedagogical consultant, and two developers, and deployed in schools across
-      multiple states in under six months.
-    </p>
+    <p class="case-header-subtitle case-header-entrance" style="--delay:0.21s">Every Brazilian inclusion student has a legal right to an individualized education plan. Almost no school has the tools to produce one. I co-founded PixelPunk and designed IncludED with a neuropsychologist, a pedagogical consultant, and two developers. Six months after launch, it runs in 25 schools with 1,000+ students registered.</p>
   </div>
 </header>
 
-<!-- ═══ HERO — full bleed ═══ -->
+<!-- ═══ HERO · full bleed ═══ -->
 <div class="case-hero case-header-entrance" style="--delay:0.28s">
   <img src="../../assets/projects/included-pixelpunk/included-gif.gif" alt="IncludED platform screens" loading="lazy" />
 </div>
@@ -440,41 +435,20 @@
 </div>
 
 <!-- ═══ OVERVIEW ═══ -->
-<section class="section" style="padding-top: clamp(2rem, 4vw, 3rem);">
+<section class="section">
   <div class="container">
     <div class="split">
-      <h2 class="split-h reveal">The mandate <br><em>and the human cost.</em></h2>
+      <h2 class="split-h reveal">A legal right without <em>the infrastructure to exist.</em></h2>
       <div class="body-2col">
         <div class="body-col reveal">
           <p class="col-label">The Legal Mandate</p>
-          <p>
-            In Brazil, any student with a disability, global developmental disorder, or high
-            intellectual ability has a legal right to a PEI: an Individualized Educational Plan.
-            This document must define the student's pedagogical goals, the curricular adaptations
-            required, and a track record of progress over time. The law is unambiguous.
-            The implementation is chaos.
-          </p>
-          <p>
-            Most schools produce PEIs in Word files, spreadsheets, or physical notebooks,
-            each teacher using their own format and keeping their own records. The process
-            is entirely manual: no standardized digital tool, no shared structure, no common
-            workflow between teachers and coordinators.
-          </p>
+          <p>Any student with a disability, global developmental disorder, or high intellectual ability has a legal right to a PEI, an Individualized Educational Plan: pedagogical goals, curricular adaptations, and a record of progress over time. More than 1.7 million students in Brazilian basic education hold that right today. The law is unambiguous.</p>
+          <p>The practice is Word files, spreadsheets, and paper notebooks, each teacher with their own format and their own drawer. No shared structure, no collaboration between teachers, no traceability for the school.</p>
         </div>
         <div class="body-col reveal" style="transition-delay:0.05s">
           <p class="col-label">The Human Cost</p>
-          <p>
-            The person absorbing the most friction is the teacher. Writing a compliant PEI
-            from scratch for each inclusion student, aligned to BNCC, reviewed with
-            specialists, and signed off by the school, takes hours per student. Multiply that
-            by ten or twenty students per class. The documentation burden is real enough that
-            teachers often produce something that satisfies the form but not the function: a
-            paper trail with no pedagogical depth.
-          </p>
-          <p>
-            IncludED was built to fix that. Not by simplifying the PEI, but by giving teachers
-            the structure and tools to produce a meaningful one in a fraction of the time.
-          </p>
+          <p>The teacher absorbs the friction. A compliant PEI, aligned to BNCC and reviewed with specialists, takes hours per student, multiplied by every inclusion student in the class. Under that load, many PEIs end up satisfying the form and losing the function: a paper trail with no pedagogical depth.</p>
+          <p>IncludED exists to give teachers the structure to produce a meaningful PEI in a fraction of the time.</p>
         </div>
       </div>
     </div>
@@ -494,22 +468,11 @@
 <section class="section">
   <div class="container">
     <div class="split">
-      <h2 class="split-h reveal">Neuroscience, design, <em>and a problem worth solving.</em></h2>
+      <h2 class="split-h reveal">Why this was <em>our first product.</em></h2>
       <div class="reveal" style="transition-delay:0.05s">
         <div class="origin-block">
-          <p>
-            Neuroscience has shaped how I think about UX for years: cognitive load, attention systems,
-            the way working memory constraints map directly to interface decisions. When the opportunity
-            to co-found PixelPunk arrived in October 2024, the product we chose to build was not an
-            accident. A platform for inclusion students sits at the intersection of educational
-            neuroscience, pedagogy, and design in a way that few products do.
-          </p>
-          <p>
-            The decision to build IncludED as our first product was also deliberate. This is a
-            problem with real stakes: the students on the other end of every PEI created in our
-            platform are children who depend on proper documentation to receive the support they
-            are legally entitled to. That weight shaped every decision from day one.
-          </p>
+          <p>Neuroscience has shaped how I design for years: cognitive load, attention, the way working memory limits map onto interface decisions. So when we founded PixelPunk in October 2024 and had to choose a first product, a platform for inclusion students was not a random pick. It sits exactly where educational neuroscience, pedagogy, and design meet.</p>
+          <p>It also carries weight. Behind every PEI created in the platform there is a child whose legal right to support depends on that document being real. We built with that in mind.</p>
         </div>
       </div>
     </div>
@@ -517,22 +480,14 @@
 </section>
 
 <!-- ═══ PROCESS ═══ -->
-<section class="section" style="padding-top: 0; padding-bottom: clamp(2rem, 4vw, 3rem);">
+<section class="section" style="padding-top: 0;">
   <div class="container">
     <div class="split">
-      <h2 class="split-h reveal">Built on the design system <em>before the first screen.</em></h2>
+      <h2 class="split-h reveal">The work before <em>the first wireframe.</em></h2>
       <div class="process-open">
         <div class="process-open-item reveal">
           <h3>Accio: the Design System that made everything else possible</h3>
-          <p>
-            Before any product screen existed, we built Accio: PixelPunk's design system.
-            The decision was not about organization for its own sake. With two developers,
-            a new codebase, and a tool targeting educators with no technical background,
-            we needed every component to be accessible by default, consistent across
-            contexts, and fast to implement via Storybook. Building the DS first meant every
-            screen that followed was built faster, with fewer inconsistencies and no
-            accessibility debt from the start.
-          </p>
+          <p>Before the first product screen, we built Accio, PixelPunk's design system: 32 components, accessible by default, documented in Storybook. With two developers and an audience of educators, we couldn't afford per-screen accessibility fixes. The documented components also made AI-assisted development faster: every screen after that was born quicker and consistent.</p>
           <div class="process-tags">
             <span class="tag">Accio Design System</span>
             <span class="tag">Storybook</span>
@@ -541,15 +496,7 @@
         </div>
         <div class="process-open-item reveal" style="transition-delay:0.05s">
           <h3>Weeks of structured learning before a single wireframe</h3>
-          <p>
-            We ran a comprehensive research program guided by two education professionals
-            with 20+ years of in-school experience. The scope covered every dimension of the
-            problem: Brazilian inclusion legislation, BNCC architecture across all educational
-            stages, how teachers build PEIs today, how neuropsychological assessments reach
-            classrooms and what teachers can actually do with them, and what the AEE
-            regulations require from specialized support professionals. This was not a
-            discovery sprint. It was weeks of structured study.
-          </p>
+          <p>We spent weeks studying the domain with two specialists who have 20+ years inside schools: inclusion legislation, BNCC architecture across every educational stage, how teachers build PEIs today, how clinical reports reach classrooms, and what AEE regulation requires from support professionals.</p>
           <div class="process-tags">
             <span class="tag">Domain Research</span>
             <span class="tag">BNCC Mapping</span>
@@ -559,16 +506,7 @@
         </div>
         <div class="process-open-item reveal" style="transition-delay:0.1s">
           <h3>Mapping what existed and exactly where it fell short</h3>
-          <p>
-            With domain knowledge established, we audited the existing tools landscape:
-            generic school ERPs, Word templates, spreadsheet-based PEI builders, and
-            broader edtech platforms. What we found was a category built around school
-            administration, not inclusion. BNCC-aligned objective writing, AEE-specific
-            workflows, and the clinical-to-pedagogical translation that specialists depend on
-            were missing across the board. The market research didn't just confirm the gap:
-            it defined precisely the requirements IncludED had to meet to be genuinely useful
-            rather than another tool teachers would abandon.
-          </p>
+          <p>We audited school ERPs, Word templates, spreadsheet PEI builders, and edtech platforms. The category was built for school administration, not inclusion: no BNCC-aligned goal writing, no AEE workflow, no clinical-to-pedagogical translation. The audit defined the exact requirements IncludED had to meet to be useful instead of abandoned.</p>
           <div class="process-tags">
             <span class="tag">Market Research</span>
             <span class="tag">Competitive Analysis</span>
@@ -577,14 +515,7 @@
         </div>
         <div class="process-open-item reveal" style="transition-delay:0.15s">
           <h3>Screens + AI, faster because the foundation was ready</h3>
-          <p>
-            With the Design System in place and the domain knowledge established, screen
-            production moved fast. Lead Product Designer, both developers, the pedagogical
-            consultant, and the neuropsychologist all participated throughout the build phase:
-            reviewing prototypes, flagging terminology, validating flows against real classroom
-            workflows. AI was integrated across multiple product touchpoints. Less than six
-            months after launch, IncludED was live in schools across multiple Brazilian states.
-          </p>
+          <p>With the design system and the domain knowledge in place, screen production moved fast. The developers, the consultant, and the neuropsychologist reviewed prototypes, flagged terminology, and validated flows against real classroom routines. The MVP was tested in a São Paulo school with 45 users and around 60 students before wider rollout.</p>
           <div class="process-tags">
             <span class="tag">Collaborative Design</span>
             <span class="tag">AI Integration</span>
@@ -597,173 +528,96 @@
 </section>
 
 <!-- ═══ RESEARCH IN PRACTICE ═══ -->
-<section class="section" style="padding-top:0; padding-bottom:0;">
+<section class="section" style="padding-top: 0;">
   <div class="container">
     <div class="research-split">
       <div class="reveal">
         <img src="../../assets/projects/included-pixelpunk/included-header.png" alt="IncludED platform" loading="lazy" />
       </div>
       <div class="research-split-text reveal" style="transition-delay:0.05s;">
-        <p>
-          The research phase looked nothing like a typical discovery sprint. Sessions with
-          the neuropsychologist and pedagogical consultant were structured around specific
-          questions: how does a teacher actually receive a clinical report? What does
-          "BNCC-aligned" mean for a student who cannot achieve a standard learning objective? How
-          does a school coordinator track compliance across thirty PEIs at once?
-        </p>
-        <p>
-          Every session produced an artifact: a documented decision, a product rule, a
-          terminology choice. The sessions shaped how the platform uses language, how it
-          structures information, and which user roles can see what. The research was not
-          input to the design. It was the design.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ RESEARCH DEPTH ═══ -->
-<section class="section" style="padding-bottom: clamp(2rem, 4vw, 3rem);">
-  <div class="container">
-    <div class="split" style="margin-bottom: clamp(2rem, 4vw, 3rem);">
-      <h2 class="split-h reveal">Six research dimensions, <em>each with a direct design consequence.</em></h2>
-      <p class="reveal" style="font-size:0.95rem; color:var(--text-2); line-height:1.8; transition-delay:0.05s">
-        Each dimension of the research directly shaped a product decision. Nothing in IncludED
-        was assumed. Every flow, every piece of terminology, every access rule was grounded in
-        something specific the team learned before building.
-      </p>
-    </div>
-    <div class="gestor-list">
-      <div class="gestor-row reveal">
-        <div>
-          <p class="gestor-row-title">Brazilian Inclusion Law and PEI requirements</p>
-        </div>
-        <p class="gestor-row-desc">The Lei Brasileira de Inclusao (Lei 13.146/2015) establishes the legal right to a PEI for every student with a disability, global developmental disorder, or high intellectual ability. The research mapped exactly what a compliant PEI must contain, who is responsible for producing and signing it, how it must be reviewed across the school year, and what documentation a school must maintain. These requirements became IncludED's structural foundation, not optional features.</p>
-      </div>
-      <div class="gestor-row reveal">
-        <div>
-          <p class="gestor-row-title">BNCC architecture and how it applies to inclusion</p>
-        </div>
-        <p class="gestor-row-desc">The BNCC organizes learning goals differently across each educational stage: experience fields for Early Childhood Education, skills within competencies for Elementary and High School. For an inclusion student, every pedagogical objective in the PEI must be anchored to BNCC descriptors, adapted to the student's profile. The team studied this architecture in detail with the pedagogical consultant to understand how to make BNCC navigation practical for teachers who need to select the right descriptors quickly, without reading the full document every time.</p>
-      </div>
-      <div class="gestor-row reveal">
-        <div>
-          <p class="gestor-row-title">How teachers actually work with inclusion students</p>
-        </div>
-        <p class="gestor-row-desc">Sessions with the pedagogical consultant revealed the real daily workflow: a teacher managing twenty students may have four or five with PEIs, each requiring individual documentation, separate behavioral records, and progress tracking that coordinators can review. The consultant described how schools handle rotating teachers, mid-year student transfers, and the constant challenge of keeping records when each professional uses a different format. Every pain point she described became a product requirement.</p>
-      </div>
-      <div class="gestor-row reveal">
-        <div>
-          <p class="gestor-row-title">What neuropsychological reports mean in the classroom</p>
-        </div>
-        <p class="gestor-row-desc">The neuropsychologist walked the team through how clinical assessments are structured: the diagnostic language neurologists, psychologists, and speech therapists use, why that language is inaccessible to most teachers, and what the pedagogical implications of each diagnosis type actually are. This session was the foundation of IncludED's report translation pipeline. Without understanding how clinical and pedagogical language diverge, the AI integration would have been superficial. The Adaptation Council feature was born directly from this research.</p>
-      </div>
-      <div class="gestor-row reveal">
-        <div>
-          <p class="gestor-row-title">AEE requirements and institutional oversight</p>
-        </div>
-        <p class="gestor-row-desc">The Atendimento Educacional Especializado (AEE) is a federally mandated specialized support service that operates alongside regular schooling. It has its own documentation requirements (the PAEE), its own professional category (Profissional AEE), and its own relationship to the student's classroom PEI. Understanding how MEC guidelines, state secretaries of education, and school coordinators interact around AEE compliance was essential to designing an access model where AEE professionals see the right students, and teachers see only their own contributions.</p>
+        <p>Sessions with the neuropsychologist and the pedagogical consultant were structured around concrete questions: how does a teacher actually receive a clinical report? What does BNCC-aligned mean for a student who cannot reach a standard objective? How does a coordinator track thirty PEIs at once?</p>
+        <p>Every session produced an artifact: a documented decision, a product rule, a terminology choice. Those artifacts defined the platform's language, its information structure, and what each role can see.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══ EXPERT KNOWLEDGE ═══ -->
-<section class="section bg-tinted" style="padding-block: clamp(2rem, 4vw, 3rem);">
+<section class="section bg-tinted">
   <div class="container">
-    <h2 class="section-heading" style="margin-bottom:2.5rem;">Three experts, <em>three product constraints they unlocked.</em></h2>
+    <h2 class="section-heading" style="margin-bottom:2.5rem;">The people who <em>kept us honest.</em></h2>
     <div class="editorial-grid">
       <div class="editorial-item reveal">
         <p class="editorial-title">20+ years in schools, in the room</p>
-        <p class="editorial-body">
-          The pedagogical consultant shaped how the platform handles teacher workflow: the
-          distinction between PEI and PAEE, how goals are structured by BNCC stage, how
-          behavioral observations should be recorded separately from pedagogical objectives.
-          Without this knowledge, the platform would have merged what must stay separated,
-          making it non-compliant and confusing for educators.
-        </p>
+        <p class="editorial-body">The pedagogical consultant defined how the platform handles teacher workflow: the split between PEI and PAEE, goal structure by BNCC stage, and behavioral records kept apart from pedagogical objectives. She also walked us through the classroom reality: rotating teachers, mid-year transfers, four or five PEIs per class of twenty. Merging what must stay separated would have made the product non-compliant.</p>
       </div>
       <div class="editorial-item reveal" style="transition-delay:0.05s">
         <p class="editorial-title">The clinical lens, translated for teachers</p>
-        <p class="editorial-body">
-          Clinical reports from neurologists, psychologists, and speech therapists arrive
-          in language most teachers cannot act on. The neuropsychologist defined how
-          IncludED should translate these documents: preserving diagnostic accuracy while
-          reformulating the language into pedagogical guidance. The Adaptation Council
-          feature was her direct contribution to the product.
-        </p>
+        <p class="editorial-body">Clinical reports arrive in language most teachers cannot act on. The neuropsychologist defined how IncludED translates them: preserving diagnostic accuracy while reformulating the content into pedagogical guidance. The Adaptation Council is her direct contribution to the product.</p>
       </div>
       <div class="editorial-item reveal" style="transition-delay:0.1s">
         <p class="editorial-title">The gap the market confirmed</p>
-        <p class="editorial-body">
-          Research into existing tools revealed that school management platforms in Brazil
-          were built for administration, not for inclusion. None had BNCC-aligned PEI
-          workflows, AI-assisted goal writing, or multi-role collaboration between teachers,
-          AEE professionals, and coordinators. The gap was not just present: it was wide.
-        </p>
+        <p class="editorial-body">School management platforms in Brazil were built for administration. None had BNCC-aligned PEI workflows, AI-assisted goal writing, or multi-role collaboration between teachers, AEE professionals, and coordinators. The space IncludED occupies was empty.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ PROJECT IMAGE — full bleed ═══ -->
+<!-- ═══ PROJECT IMAGE · full bleed ═══ -->
 <div class="img-full reveal">
   <img src="../../assets/projects/included-pixelpunk/included-project.png" alt="IncludED platform screens" loading="lazy" />
 </div>
 
 <!-- ═══ PRODUCT MODULES ═══ -->
-<section class="section" style="padding-bottom: clamp(2rem, 4vw, 3rem);">
+<section class="section">
   <div class="container">
     <div class="gestor-list">
       <div class="gestor-row reveal">
         <div>
           <p class="gestor-row-title">PEI Creation and Management</p>
         </div>
-        <p class="gestor-row-desc">The core of the platform. Administrators open a school period and the system automatically generates one PEI per active student. Teachers fill contributions by discipline; coordinators have full visibility. The PEI is always tied to a student, a class, and a school period. Never a floating document. It exports as PDF, consolidating all contributions, objectives, behaviors, and the PAEE into a single compliant document.</p>
+        <p class="gestor-row-desc">The core of the platform. Administrators open a school period and the system generates one PEI per active student. Creation runs as a four-step wizard (student information, repertoire, behavior, curricular adaptations), so the teacher never faces a blank page. Teachers contribute by discipline; coordinators see the whole. Every PEI exports as a single compliant PDF with all contributions, objectives, behaviors, and the PAEE.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
           <p class="gestor-row-title">BNCC Goal Mapping with AI</p>
         </div>
-        <p class="gestor-row-desc">Teachers set pedagogical objectives linked to BNCC descriptors: skills within competencies for Elementary and High School, experience fields for Early Childhood Education. The platform includes the full BNCC glossary indexed for navigation. For each BNCC descriptor selected, AI suggests a goal text tailored to the student's profile. The teacher edits; the AI starts. This reduced goal-writing time significantly while improving BNCC alignment across the board.</p>
+        <p class="gestor-row-desc">Teachers link objectives to BNCC descriptors, with the full glossary indexed for navigation and every component covered, including Religious Education and Computing. For each descriptor, AI drafts a goal in SMART format tailored to the student's profile. The teacher edits; the AI starts. Goal writing got faster and BNCC alignment got tighter at the same time.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
           <p class="gestor-row-title">Student Evolution and Progress Tracking</p>
         </div>
-        <p class="gestor-row-desc">Objectives break into activities, each tracked quantitatively (numeric target and running progress) or qualitatively (achieved/not achieved). Teachers update progress, and the platform aggregates it by objective, discipline, and period, giving coordinators a longitudinal view of each student's development across the year. This turns subjective impressions into structured, auditable evidence.</p>
+        <p class="gestor-row-desc">Objectives break into activities tracked quantitatively or qualitatively, each advance recorded with who registered it, when, and how much. The platform aggregates progress by objective, discipline, and period, and the record survives the school year: when classes or teachers change, the student's history carries over intact.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
           <p class="gestor-row-title">Clinical Report Processing</p>
         </div>
-        <p class="gestor-row-desc">Administrators upload clinical reports from neurologists, psychologists, and speech therapists. The platform uses OCR for scanned documents and AI to translate medical language into pedagogical guidance. A teacher who receives a neurological evaluation can now read, in plain language, what it means for their classroom practice. Only accepted reports feed into the Adaptation Council, a deliberate quality gate designed with the neuropsychologist.</p>
+        <p class="gestor-row-desc">Administrators upload reports from neurologists, psychologists, and speech therapists. OCR handles scans; AI translates medical language into classroom guidance. Only accepted reports feed the Adaptation Council, a quality gate we designed with the neuropsychologist.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
           <p class="gestor-row-title">PAEE: Specialized Support Plan</p>
         </div>
-        <p class="gestor-row-desc">A module exclusive to AEE professionals: therapists and specialists who support students outside the regular classroom. The PAEE captures work axes (communication, cognition, autonomy, motor skills) with objectives, strategies, frequency, and session duration. AI suggests objectives and indicators for each axis based on the student profile.</p>
+        <p class="gestor-row-desc">A module exclusive to AEE professionals. The PAEE captures work axes (communication, cognition, autonomy, motor skills) with objectives, strategies, frequency, and session duration. AI suggests objectives and indicators per axis based on the student profile.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
           <p class="gestor-row-title">Multi-Role Collaboration</p>
         </div>
-        <p class="gestor-row-desc">Different users have fundamentally different relationships with the same student: the coordinator sees everything, the math teacher sees only their contribution, the AEE professional sees only the students assigned to them. This is not just a permissions model: it reflects how school teams actually function. Getting this information architecture right required multiple sessions with the pedagogical consultant to map real access patterns before any screen was built.</p>
+        <p class="gestor-row-desc">The coordinator sees everything, the math teacher sees their contribution, the AEE professional sees a fixed list of assigned students, independent of class. The rules are structural: administrator and AEE roles are mutually exclusive, and a teacher only reaches a student through two independent gates, discipline permission and enrollment. LGPD compliance was designed in from the start: documented legal basis, consent records, audit log, and retention rules.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══ AI INTEGRATION ═══ -->
-<section class="section bg-tinted" style="padding-block: clamp(2rem, 4vw, 3rem);">
+<section class="section bg-tinted">
   <div class="container">
     <div class="split" style="margin-bottom: 2.5rem;">
-      <h2 class="split-h reveal">Eight distinct AI integrations, <em>each with a specific job.</em></h2>
-      <p class="reveal" style="font-size:0.95rem; color:var(--text-2); line-height:1.8; transition-delay:0.05s">
-        AI in IncludED was designed as a teaching assistant, not a replacement for teacher
-        judgment. Every integration has a specific job, a defined output, and a human review gate.
-      </p>
+      <h2 class="split-h reveal">AI drafts. <em>The teacher decides.</em></h2>
+      <p class="reveal" style="font-size:0.95rem; color:var(--text-2); line-height:1.8; transition-delay:0.05s">AI in IncludED works as a teaching assistant, not a substitute for teacher judgment. Every integration has one job, a defined output, and a human review gate, and generated content stays grounded in the school's own material.</p>
     </div>
     <div class="ai-strip">
       <div class="ai-strip-panel reveal">
@@ -797,23 +651,40 @@
   </div>
 </section>
 
-<!-- ═══ OUTCOMES ═══ -->
-<section class="section" style="padding-top: clamp(2rem, 4vw, 3rem); padding-bottom: clamp(2rem, 4vw, 3rem);">
+<!-- ═══ PILOT TEST ═══ -->
+<section class="section">
   <div class="container">
     <div class="split">
-      <h2 class="split-h reveal">Live in schools, <em>growing fast.</em></h2>
+      <h2 class="split-h reveal">The MVP met a real school <em>before it met the market.</em></h2>
+      <div class="reveal" style="transition-delay:0.05s">
+        <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8;">
+          We tested the MVP in a São Paulo school: 45 users and around 60 students across Early
+          Childhood, Elementary I and II. The test covered the full PEI creation flow, period
+          contributions, and PEI management.
+        </p>
+        <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8; margin-top:1rem;">The sessions also set the roadmap. Student evolution tracking, the BNCC glossary as a support tool, and plan management all entered the product as direct responses to what we watched teachers and coordinators do during the pilot. Since then, every feature follows the same loop: understanding meeting, prototype, design critique with the developers and consultants, user test, release.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OUTCOMES ═══ -->
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <h2 class="split-h reveal">What six months <em>in production looks like.</em></h2>
       <div class="outcomes-open">
         <div class="outcome-open reveal">
-          <span class="metric-value">&lt;6<span style="font-size:1.6rem;">mo</span></span>
-          <span class="metric-desc">From launch to active in schools across multiple Brazilian states</span>
+          <span class="metric-value">25</span>
+          <span class="metric-desc">Schools in the IncludED ecosystem</span>
         </div>
         <div class="outcome-open reveal" style="transition-delay:0.05s">
-          <span class="metric-value">20<span style="font-size:1.6rem;">+</span></span>
-          <span class="metric-desc">Combined years of pedagogical and neuropsychological expertise guiding every product decision</span>
+          <span class="metric-value">1,000<span style="font-size:1.6rem;">+</span></span>
+          <span class="metric-desc">Students registered on the platform</span>
         </div>
         <div class="outcome-open reveal" style="transition-delay:0.1s">
-          <span class="metric-value">8</span>
-          <span class="metric-desc">Distinct AI touchpoints embedded in the product, each with a specific job and human review gate</span>
+          <span class="metric-value">30<span style="font-size:1.6rem;">min</span></span>
+          <span class="metric-desc">Average time to create a complete PEI</span>
         </div>
       </div>
     </div>
@@ -824,12 +695,9 @@
 <div class="reflection-block">
   <div class="container">
     <div class="reflection-inner reveal-blur">
-      <p>Domain depth is not optional. IncludED reinforced this at scale: a product this complex cannot be built from empathy alone. The expert sessions were not a formality. They were the foundation.</p>
+      <p>IncludED confirmed something I suspected: in a domain this dense, expert knowledge is the design material. Every hour with the specialists saved weeks of building the wrong thing.</p>
     </div>
   </div>
-</div>
-
-</div>
 </div>
 
 
@@ -840,14 +708,14 @@
       <a href="../multipedidos/" class="case-more-card reveal">
         <img src="../../assets/projects/pedir-delivery/cover.png" alt="Multipedidos" class="case-more-thumb" loading="lazy" />
         <p class="case-more-name">Multipedidos</p>
-        <p class="case-more-desc">Senior Product Designer at the largest food-ordering platform in Brazil. Design system, consumer product, and AI-assisted workflows.</p>
+        <p class="case-more-desc">Senior Product Designer at a food platform serving 4M+ orders a month. Design system, consumer product, and AI-assisted workflows.</p>
         <p class="case-more-meta">Product Design · Food Tech</p>
       </a>
 
       <a href="../keepeye/" class="case-more-card reveal" style="transition-delay:0.07s">
         <img src="../../assets/projects/keepeye/keepeye-cover.png" alt="Keepeye" class="case-more-thumb" loading="lazy" />
         <p class="case-more-name">Keepeye</p>
-        <p class="case-more-desc">KPI management platform for Dojo Smart Ways. Sole UX Engineer: designed the full product and built production components in React.</p>
+        <p class="case-more-desc">KPI management platform for Dojo Smart Ways. Sole UX Engineer: designed the full product and built production components in Angular.</p>
         <p class="case-more-meta">UX Engineering · B2B SaaS</p>
       </a>
 
