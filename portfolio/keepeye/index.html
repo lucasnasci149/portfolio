@@ -10,17 +10,18 @@
   <title>Keepeye: KPI Management Platform | Lucas Nascimento</title>
   <meta name="description" content="Case study: Keepeye, a KPI SaaS built as Dojo Smart Ways' first own product. Product design, design system, and collaborative front-end development by Lucas Nascimento at Dojo Smart Ways." />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://lucasdonascimento.com/project-keepeye" />
+  <link rel="canonical" href="https://lucasdonascimento.com/portfolio/keepeye/" />
   <meta property="og:title" content="Keepeye: KPI Management Platform" />
   <meta property="og:description" content="From manual spreadsheets to an automated KPI management platform: a case study in product design, design systems, and collaborative front-end development." />
-  <meta property="og:url" content="https://lucasdonascimento.com/project-keepeye" />
+  <meta property="og:url" content="https://lucasdonascimento.com/portfolio/keepeye/" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="../../style.css?v=20260728" />
   <script>window._ASSET_ROOT="../../";</script>
-  <script src="../../transitions.js" defer></script>
+  <script src="../../transitions.js?v=20260728" defer></script>
+  <script src="../../i18n.js?v=20260728" defer></script>
   <noscript><style>body { opacity: 1 !important; }</style></noscript>
 
   <style>
@@ -210,18 +211,39 @@
     .section { padding-block: clamp(2rem, 4vw, 3.5rem); }
     .section.bg-tinted { background: var(--bg-2); padding-block: clamp(2rem, 4vw, 3rem); }
 
-    /* ── REFLECTION ── */
-    .reflection-block { padding-block: clamp(2rem, 4vw, 3rem); }
-    .reflection-inner p {
+    /* ── REFLECTION (closing statement) ── */
+    .reflection-block {
+      padding-block: clamp(3.5rem, 7vw, 5.5rem);
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+    }
+    .reflection-inner {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: start;
+    }
+    .reflection-label {
+      font-family: var(--font-sans);
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; font-style: normal;
+      color: var(--accent-text);
+      padding-top: 0.6rem;
+    }
+    .reflection-statement {
       font-family: var(--font-serif);
       font-weight: 300;
       font-style: italic;
-      font-size: clamp(1.2rem, 2.5vw, 1.65rem);
-      line-height: 1.65;
+      font-size: clamp(1.35rem, 2.6vw, 1.95rem);
+      line-height: 1.42;
+      letter-spacing: -0.01em;
       color: var(--text-1);
-     
+      max-width: 46ch;
     }
-
+    @media (max-width: 960px) {
+      .reflection-inner { grid-template-columns: 1fr; gap: 1rem; }
+      .reflection-label { padding-top: 0; }
+    }
     /* ── STORY STRUCTURE (eyebrows, phases, goals, values, captions) ── */
     .eyebrow {
       font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em;
@@ -372,6 +394,45 @@
     @supports not (background: color-mix(in srgb, red 10%, blue)) {
       .case-header { background: var(--bg-2); }
     }
+    /* ── LANGUAGE MENU (dropdown with flags) ── */
+    .lang-menu { position: relative; }
+    .lang-menu-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: none; border: none; cursor: pointer;
+      font-family: var(--font-sans); font-size: 0.85rem; font-weight: 400;
+      color: var(--text-2); padding: 0.25rem 0.35rem; border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .lang-menu-btn:hover { color: var(--text-1); background: var(--bg-2); }
+    .lang-menu-btn[aria-expanded="true"] .contact-caret { transform: rotate(180deg); }
+    .lang-current { display: inline-flex; align-items: center; gap: 0.4rem; }
+    .lang-current[hidden] { display: none; }
+    .flag { width: 18px; height: 13px; border-radius: 2px; display: block; flex-shrink: 0; }
+    .lang-panel {
+      position: absolute; top: calc(100% + 0.75rem); left: 0;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 8px; padding: 0.3rem; min-width: 168px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+      z-index: 300; opacity: 0; transform: translateY(-6px);
+      pointer-events: none; transition: opacity 0.15s, transform 0.15s;
+    }
+    .lang-panel.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .lang-option {
+      display: flex; align-items: center; gap: 0.6rem; width: 100%;
+      background: none; border: none; cursor: pointer; text-align: left;
+      font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-1);
+      padding: 0.6rem 0.75rem; border-radius: 6px; transition: background 0.15s;
+    }
+    .lang-option:hover { background: var(--bg-2); }
+    .lang-option.is-active { background: var(--bg-2); font-weight: 500; }
+    .lang-option.is-active::after {
+      content: '\2713'; margin-left: auto; font-size: 0.8rem; color: var(--accent-text);
+    }
+    .mobile-nav .lang-menu { padding: 1.15rem 0; }
+    .mobile-nav .lang-menu-btn { font-size: 1.05rem; padding: 0.35rem 0.5rem; }
+    .mobile-nav .lang-panel { top: auto; bottom: calc(100% + 0.5rem); }
+    .mobile-nav .flag { width: 22px; height: 16px; }
+
   </style>
 </head>
 <body>
@@ -379,20 +440,32 @@
 <header class="site-header" id="siteHeader">
   <a href="../../" class="site-name">Lucas Nascimento</a>
   <div class="site-nav-right">
+    <div class="lang-menu">
+      <button class="lang-menu-btn" id="langBtn" aria-expanded="false" aria-haspopup="true" aria-label="Language" data-i18n-attr="aria-label:nav.lang_label">
+        <span class="lang-current" data-lang-current="en"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#012169"/><path d="M0 0l20 14M20 0L0 14" stroke="#fff" stroke-width="2.8"/><path d="M0 0l20 14M20 0L0 14" stroke="#C8102E" stroke-width="1.5"/><path d="M10 0v14M0 7h20" stroke="#fff" stroke-width="4.6"/><path d="M10 0v14M0 7h20" stroke="#C8102E" stroke-width="2.8"/></svg><span>EN</span></span>
+        <span class="lang-current" data-lang-current="pt" hidden><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#009B3A"/><path d="M10 1.6 18.4 7 10 12.4 1.6 7Z" fill="#FEDF00"/><circle cx="10" cy="7" r="3.05" fill="#002776"/></svg><span>PT</span></span>
+        <span class="contact-caret">&#9662;</span>
+      </button>
+      <div class="lang-panel" id="langPanel" role="menu">
+        <button type="button" class="lang-option" data-lang-btn="en" role="menuitem"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#012169"/><path d="M0 0l20 14M20 0L0 14" stroke="#fff" stroke-width="2.8"/><path d="M0 0l20 14M20 0L0 14" stroke="#C8102E" stroke-width="1.5"/><path d="M10 0v14M0 7h20" stroke="#fff" stroke-width="4.6"/><path d="M10 0v14M0 7h20" stroke="#C8102E" stroke-width="2.8"/></svg><span data-i18n="nav.lang_en">English</span></button>
+        <button type="button" class="lang-option" data-lang-btn="pt" role="menuitem"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#009B3A"/><path d="M10 1.6 18.4 7 10 12.4 1.6 7Z" fill="#FEDF00"/><circle cx="10" cy="7" r="3.05" fill="#002776"/></svg><span data-i18n="nav.lang_pt">Portuguese</span></button>
+      </div>
+    </div>
+
     <a href="../about/" class="site-nav-link" data-i18n="nav.about">About</a>
     <div class="contact-menu">
       <button class="contact-menu-btn" id="contactBtn" aria-expanded="false" aria-haspopup="true">
-        Contact <span class="contact-caret">&#9662;</span>
+        <span data-i18n="nav.contact">Contact</span> <span class="contact-caret">&#9662;</span>
       </button>
       <div class="contact-panel" id="contactPanel" role="menu">
         <a href="mailto:lucas.luizdonascimento@gmail.com" class="contact-option" role="menuitem">
-          <span class="co-label">Email</span><span class="co-sub">Send a message</span>
+          <span class="co-label">Email</span><span class="co-sub" data-i18n="nav.email_sub">Send a message</span>
         </a>
         <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener" class="contact-option" role="menuitem">
-          <span class="co-label">LinkedIn</span><span class="co-sub">Open profile</span>
+          <span class="co-label">LinkedIn</span><span class="co-sub" data-i18n="nav.linkedin_sub">Open profile</span>
         </a>
         <a href="https://drive.google.com/file/d/1aY000U3QAsV1sFIsoOYqmMnzElnNSoA0/view?usp=sharing" target="_blank" rel="noopener" class="contact-option" role="menuitem">
-          <span class="co-label">Resume</span><span class="co-sub">Download PDF</span>
+          <span class="co-label" data-i18n="nav.resume">Resume</span><span class="co-sub" data-i18n="nav.resume_sub">Download PDF</span>
         </a>
       </div>
     </div>
@@ -400,10 +473,21 @@
   </div>
 </header>
 <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
-  <a href="../about/">About <span class="mobile-nav-arrow">&#8594;</span></a>
+  <a href="../about/"><span data-i18n="nav.about">About</span> <span class="mobile-nav-arrow">&#8594;</span></a>
   <a href="mailto:lucas.luizdonascimento@gmail.com">Email <span class="mobile-nav-arrow">&#8594;</span></a>
   <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn <span class="mobile-nav-arrow">&#8594;</span></a>
-  <a href="https://drive.google.com/file/d/1aY000U3QAsV1sFIsoOYqmMnzElnNSoA0/view?usp=sharing" target="_blank" rel="noopener">Resume PDF <span class="mobile-nav-arrow">&#8594;</span></a>
+  <a href="https://drive.google.com/file/d/1aY000U3QAsV1sFIsoOYqmMnzElnNSoA0/view?usp=sharing" target="_blank" rel="noopener"><span data-i18n="nav.resume_pdf">Resume PDF</span> <span class="mobile-nav-arrow">&#8594;</span></a>
+  <div class="lang-menu">
+    <button class="lang-menu-btn" id="langBtnM" aria-expanded="false" aria-haspopup="true" aria-label="Language" data-i18n-attr="aria-label:nav.lang_label">
+      <span class="lang-current" data-lang-current="en"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#012169"/><path d="M0 0l20 14M20 0L0 14" stroke="#fff" stroke-width="2.8"/><path d="M0 0l20 14M20 0L0 14" stroke="#C8102E" stroke-width="1.5"/><path d="M10 0v14M0 7h20" stroke="#fff" stroke-width="4.6"/><path d="M10 0v14M0 7h20" stroke="#C8102E" stroke-width="2.8"/></svg><span>EN</span></span>
+      <span class="lang-current" data-lang-current="pt" hidden><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#009B3A"/><path d="M10 1.6 18.4 7 10 12.4 1.6 7Z" fill="#FEDF00"/><circle cx="10" cy="7" r="3.05" fill="#002776"/></svg><span>PT</span></span>
+      <span class="contact-caret">&#9662;</span>
+    </button>
+    <div class="lang-panel" id="langPanelM" role="menu">
+      <button type="button" class="lang-option" data-lang-btn="en" role="menuitem"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#012169"/><path d="M0 0l20 14M20 0L0 14" stroke="#fff" stroke-width="2.8"/><path d="M0 0l20 14M20 0L0 14" stroke="#C8102E" stroke-width="1.5"/><path d="M10 0v14M0 7h20" stroke="#fff" stroke-width="4.6"/><path d="M10 0v14M0 7h20" stroke="#C8102E" stroke-width="2.8"/></svg><span data-i18n="nav.lang_en">English</span></button>
+      <button type="button" class="lang-option" data-lang-btn="pt" role="menuitem"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#009B3A"/><path d="M10 1.6 18.4 7 10 12.4 1.6 7Z" fill="#FEDF00"/><circle cx="10" cy="7" r="3.05" fill="#002776"/></svg><span data-i18n="nav.lang_pt">Portuguese</span></button>
+    </div>
+  </div>
 </nav>
 
 <div class="reading-progress" aria-hidden="true"></div>
@@ -411,9 +495,9 @@
 <!-- ═══ CASE HEADER ═══ -->
 <header class="case-header">
   <div class="container">
-    <p class="case-label case-header-entrance" style="--delay:0.06s">Case Study</p>
-    <h1 class="case-header-title case-header-entrance" style="--delay:0.13s">Keepeye<br /><em>KPI Management Platform</em></h1>
-    <p class="case-header-subtitle case-header-entrance" style="--delay:0.21s">Dojo lived from project to project and wanted a product of its own. I led the research, designed the platform, wrote part of the Angular front-end, and mentored a developer moving into design. Usability tests of the finished tool scored it 8.2 out of 10.</p>
+    <p class="case-label case-header-entrance" style="--delay:0.06s" data-i18n="kp.1">Case Study</p>
+    <h1 class="case-header-title case-header-entrance" style="--delay:0.13s" data-i18n-html="kp.2">Keepeye<br /><em>KPI Management Platform</em></h1>
+    <p class="case-header-subtitle case-header-entrance" style="--delay:0.21s" data-i18n="kp.3">Dojo lived from project to project and wanted a product of its own. I led the research, designed the platform, wrote part of the Angular front-end, and mentored a developer moving into design. Usability tests of the finished tool scored it 8.2 out of 10.</p>
   </div>
 </header>
 
@@ -426,20 +510,20 @@
 <div class="container">
   <div class="case-meta-strip">
     <div>
-      <p class="case-meta-label">Company</p>
-      <p class="case-meta-val">Dojo Smart Ways<span>Internal product · SaaS</span></p>
+      <p class="case-meta-label" data-i18n="kp.4">Company</p>
+      <p class="case-meta-val" data-i18n-html="kp.5">Dojo Smart Ways<span>Internal product · SaaS</span></p>
     </div>
     <div>
-      <p class="case-meta-label">Role</p>
-      <p class="case-meta-val">UX Engineer<span>Design + Front-End</span></p>
+      <p class="case-meta-label" data-i18n="kp.6">Role</p>
+      <p class="case-meta-val" data-i18n-html="kp.7">UX Engineer<span>Design + Front-End</span></p>
     </div>
     <div>
-      <p class="case-meta-label">Timeline</p>
-      <p class="case-meta-val">2023<span>Built from scratch</span></p>
+      <p class="case-meta-label" data-i18n="kp.8">Timeline</p>
+      <p class="case-meta-val" data-i18n-html="kp.9">2023<span>Built from scratch</span></p>
     </div>
     <div>
-      <p class="case-meta-label">Stack</p>
-      <p class="case-meta-val">Figma, Angular<span>Tailwind CSS</span></p>
+      <p class="case-meta-label" data-i18n="kp.10">Stack</p>
+      <p class="case-meta-val" data-i18n-html="kp.11">Figma, Angular<span>Tailwind CSS</span></p>
     </div>
   </div>
 </div>
@@ -449,19 +533,19 @@
   <div class="container">
     <div class="split">
       <div>
-        <p class="eyebrow reveal">Background</p>
-        <h2 class="split-h reveal">A consultancy betting on <em>its first product.</em></h2>
+        <p class="eyebrow reveal" data-i18n="kp.12">Background</p>
+        <h2 class="split-h reveal" data-i18n-html="kp.13">A consultancy betting on <em>its first product.</em></h2>
       </div>
       <div class="body-2col">
         <div class="body-col reveal">
-          <p class="col-label">The Business Case</p>
-          <p>Dojo Smart Ways ran entirely on project work: revenue stopped whenever a project did. The goal set for Keepeye was explicit: create the company's first product and shift its focus from data projects to products.</p>
-          <p>It had a candidate: an internal metrics tool Dojo had already built for a client project, and that users kept responding well to. Keepeye was the bet to turn that tool into a SaaS.</p>
+          <p class="col-label" data-i18n="kp.14">The Business Case</p>
+          <p data-i18n="kp.15">Dojo Smart Ways ran entirely on project work: revenue stopped whenever a project did. The goal set for Keepeye was explicit: create the company's first product and shift its focus from data projects to products.</p>
+          <p data-i18n="kp.16">It had a candidate: an internal metrics tool Dojo had already built for a client project, and that users kept responding well to. Keepeye was the bet to turn that tool into a SaaS.</p>
         </div>
         <div class="body-col reveal" style="transition-delay:0.05s">
-          <p class="col-label">The User Problem</p>
-          <p>The companies we spoke to had no single place to look at their KPIs. Excel files, Google Sheets, and scattered Power BI dashboards, each maintained by a different team, each calculating the same metric its own way.</p>
-          <p>When leadership asked for a number, the answer depended on who they asked. People spent meetings reconciling reports instead of acting on them.</p>
+          <p class="col-label" data-i18n="kp.17">The User Problem</p>
+          <p data-i18n="kp.18">The companies we spoke to had no single place to look at their KPIs. Excel files, Google Sheets, and scattered Power BI dashboards, each maintained by a different team, each calculating the same metric its own way.</p>
+          <p data-i18n="kp.19">When leadership asked for a number, the answer depended on who they asked. People spent meetings reconciling reports instead of acting on them.</p>
         </div>
       </div>
     </div>
@@ -471,7 +555,7 @@
 <!-- ═══ PULL QUOTE ═══ -->
 <div class="pull-quote-wrap">
   <div class="container">
-    <blockquote class="pull-quote reveal-blur">
+    <blockquote class="pull-quote reveal-blur" data-i18n-html="kp.20">
       Everyone had the data. <em>Nobody trusted their version of it.</em>
     </blockquote>
   </div>
@@ -480,18 +564,18 @@
 <!-- ═══ BUSINESS GOALS ═══ -->
 <section class="section">
   <div class="container">
-    <p class="eyebrow reveal">The goals</p>
-    <h2 class="section-heading reveal" style="margin-bottom:2rem;">Two goals set <em>before any screen.</em></h2>
+    <p class="eyebrow reveal" data-i18n="kp.21">The goals</p>
+    <h2 class="section-heading reveal" style="margin-bottom:2rem;" data-i18n-html="kp.22">Two goals set <em>before any screen.</em></h2>
     <div class="goal-cards">
       <div class="goal-card reveal">
         <p class="goal-num">01</p>
-        <h3>Create the company's first product</h3>
-        <p>Build a solution that could attract new clients and shift Dojo's focus from data projects to products, opening a recurring revenue line beside project work.</p>
+        <h3 data-i18n="kp.23">Create the company's first product</h3>
+        <p data-i18n="kp.24">Build a solution that could attract new clients and shift Dojo's focus from data projects to products, opening a recurring revenue line beside project work.</p>
       </div>
       <div class="goal-card reveal" style="transition-delay:0.05s">
         <p class="goal-num">02</p>
-        <h3>Automate the data</h3>
-        <p>Replace manual data entry with a robust, easy-to-use platform: safer inputs, automated metrics, and a better day for the people who maintain them.</p>
+        <h3 data-i18n="kp.25">Automate the data</h3>
+        <p data-i18n="kp.26">Replace manual data entry with a robust, easy-to-use platform: safer inputs, automated metrics, and a better day for the people who maintain them.</p>
       </div>
     </div>
   </div>
@@ -500,28 +584,28 @@
 <!-- ═══ PROCESS OVERVIEW ═══ -->
 <section class="section" style="padding-top: 0;">
   <div class="container">
-    <p class="eyebrow reveal">The process</p>
-    <h2 class="section-heading reveal" style="margin-bottom:2rem;">One Double Diamond, <em>four phases.</em></h2>
+    <p class="eyebrow reveal" data-i18n="kp.27">The process</p>
+    <h2 class="section-heading reveal" style="margin-bottom:2rem;" data-i18n-html="kp.28">One Double Diamond, <em>four phases.</em></h2>
     <div class="phase-strip reveal">
       <div class="phase-cell">
         <p class="phase-num">01</p>
-        <p class="phase-name">Discover</p>
-        <p class="phase-methods">Brainstorming with directors<br>Proto-personas<br>Market benchmarking<br>Survey with 40+ professionals<br>Interviews + usability tests</p>
+        <p class="phase-name" data-i18n="kp.29">Discover</p>
+        <p class="phase-methods" data-i18n-html="kp.30">Brainstorming with directors<br>Proto-personas<br>Market benchmarking<br>Survey with 40+ professionals<br>Interviews + usability tests</p>
       </div>
       <div class="phase-cell">
         <p class="phase-num">02</p>
-        <p class="phase-name">Define</p>
-        <p class="phase-methods">User journey<br>Word cloud<br>UX Canvas<br>RICE prioritization</p>
+        <p class="phase-name" data-i18n="kp.31">Define</p>
+        <p class="phase-methods" data-i18n-html="kp.32">User journey<br>Word cloud<br>UX Canvas<br>RICE prioritization</p>
       </div>
       <div class="phase-cell">
         <p class="phase-num">03</p>
-        <p class="phase-name">Develop</p>
-        <p class="phase-methods">Blue Squid design system<br>Wireframes<br>Low to high fidelity<br>Visual identity<br>Angular + Tailwind build</p>
+        <p class="phase-name" data-i18n="kp.33">Develop</p>
+        <p class="phase-methods" data-i18n-html="kp.34">Blue Squid design system<br>Wireframes<br>Low to high fidelity<br>Visual identity<br>Angular + Tailwind build</p>
       </div>
       <div class="phase-cell">
         <p class="phase-num">04</p>
-        <p class="phase-name">Deliver</p>
-        <p class="phase-methods">MVP launch<br>Usability tests<br>Metrics monitoring<br>Feedback + roadmap</p>
+        <p class="phase-name" data-i18n="kp.35">Deliver</p>
+        <p class="phase-methods" data-i18n-html="kp.36">MVP launch<br>Usability tests<br>Metrics monitoring<br>Feedback + roadmap</p>
       </div>
     </div>
   </div>
@@ -531,32 +615,32 @@
 <section class="section">
   <div class="container">
     <div style="margin-bottom: clamp(2.5rem, 4vw, 3.5rem);">
-      <p class="eyebrow reveal">01 · Discover</p>
-      <h2 class="split-h reveal" style="position: static;">Listening to the people <em>who live in KPIs.</em></h2>
+      <p class="eyebrow reveal" data-i18n="kp.37">01 · Discover</p>
+      <h2 class="split-h reveal" style="position: static;" data-i18n-html="kp.38">Listening to the people <em>who live in KPIs.</em></h2>
     </div>
     <div class="media-stack">
       <div class="media-row reveal">
         <div class="media-text">
-          <h3>Understanding the problem from the inside out</h3>
-          <p>The existing tool was a starting point, not an answer. Discovery opened with brainstorming sessions involving the dev team and Dojo's directors, connecting business expectations to the pains the product had to solve. The board captured objectives, client complaints, and the features people expected before a single screen existed.</p>
+          <h3 data-i18n="kp.39">Understanding the problem from the inside out</h3>
+          <p data-i18n="kp.40">The existing tool was a starting point, not an answer. Discovery opened with brainstorming sessions involving the dev team and Dojo's directors, connecting business expectations to the pains the product had to solve. The board captured objectives, client complaints, and the features people expected before a single screen existed.</p>
           <div class="process-tags">
-            <span class="tag">Brainstorming</span>
-            <span class="tag">Benchmarking</span>
+            <span class="tag" data-i18n="kp.41">Brainstorming</span>
+            <span class="tag" data-i18n="kp.42">Benchmarking</span>
           </div>
         </div>
         <div class="media-img">
           <div class="artifact">
             <img src="../../assets/projects/keepeye/brainstorming.png" alt="Brainstorming board from the discovery sessions" loading="lazy" />
           </div>
-          <p class="img-cap">&#8593; The brainstorming board with the dev team and Dojo's directors: objectives, pains, and expectations</p>
+          <p class="img-cap" data-i18n="kp.43">&#8593; The brainstorming board with the dev team and Dojo's directors: objectives, pains, and expectations</p>
         </div>
       </div>
       <div class="media-row flip reveal">
         <div class="media-text">
-          <h3>Personifying the user</h3>
-          <p>With the product values discerned, proto-personas captured who we were designing for: production engineers turned managers, analysts living inside spreadsheets. They kept the expected user base concrete for the whole team through every later decision.</p>
+          <h3 data-i18n="kp.44">Personifying the user</h3>
+          <p data-i18n="kp.45">With the product values discerned, proto-personas captured who we were designing for: production engineers turned managers, analysts living inside spreadsheets. They kept the expected user base concrete for the whole team through every later decision.</p>
           <div class="process-tags">
-            <span class="tag">Proto-personas</span>
+            <span class="tag" data-i18n="kp.46">Proto-personas</span>
           </div>
         </div>
         <div class="media-img">
@@ -566,40 +650,40 @@
           <div class="artifact" style="margin-top: 1.25rem;">
             <img src="../../assets/projects/keepeye/proto-persona-b.png" alt="Proto-persona Juliana" loading="lazy" />
           </div>
-          <p class="img-cap">&#8593; Proto-personas built from the discovery sessions</p>
+          <p class="img-cap" data-i18n="kp.47">&#8593; Proto-personas built from the discovery sessions</p>
         </div>
       </div>
       <div>
-        <p class="eyebrow reveal" style="margin-bottom: 0;">Product values defined in the brainstorms</p>
+        <p class="eyebrow reveal" style="margin-bottom: 0;" data-i18n="kp.48">Product values defined in the brainstorms</p>
         <div class="values-row">
           <div class="value-item reveal">
-            <p class="value-word">aggregate</p>
-            <p class="value-tag">value, purpose, and practicality</p>
+            <p class="value-word" data-i18n="kp.49">aggregate</p>
+            <p class="value-tag" data-i18n="kp.50">value, purpose, and practicality</p>
           </div>
           <div class="value-item reveal" style="transition-delay:0.05s">
-            <p class="value-word">connect</p>
-            <p class="value-tag">people, data, and goals</p>
+            <p class="value-word" data-i18n="kp.51">connect</p>
+            <p class="value-tag" data-i18n="kp.52">people, data, and goals</p>
           </div>
           <div class="value-item reveal" style="transition-delay:0.1s">
-            <p class="value-word">simplify</p>
-            <p class="value-tag">the everyday work around metrics</p>
+            <p class="value-word" data-i18n="kp.53">simplify</p>
+            <p class="value-tag" data-i18n="kp.54">the everyday work around metrics</p>
           </div>
         </div>
       </div>
       <div class="media-row reveal">
         <div class="media-text">
-          <h3>Validating what we heard at scale</h3>
-          <p>Interviews give depth but can mislead, so we surveyed more than 40 professionals who use metrics tools day to day, asking about their management methods, current platforms, and where those platforms failed them. Then we ran interviews and usability sessions on the existing tool, watching real users hit the exact walls the survey described.</p>
+          <h3 data-i18n="kp.55">Validating what we heard at scale</h3>
+          <p data-i18n="kp.56">Interviews give depth but can mislead, so we surveyed more than 40 professionals who use metrics tools day to day, asking about their management methods, current platforms, and where those platforms failed them. Then we ran interviews and usability sessions on the existing tool, watching real users hit the exact walls the survey described.</p>
           <div class="process-tags">
-            <span class="tag">Survey Research</span>
-            <span class="tag">Usability Testing</span>
+            <span class="tag" data-i18n="kp.57">Survey Research</span>
+            <span class="tag" data-i18n="kp.58">Usability Testing</span>
           </div>
         </div>
         <div class="media-img">
           <div class="artifact">
             <img src="../../assets/projects/keepeye/interview-usability.png" alt="Remote interview and usability session on the existing KPI tool" loading="lazy" />
           </div>
-          <p class="img-cap">&#8593; Interview and usability session on the existing KPI tool, run remotely with real users</p>
+          <p class="img-cap" data-i18n="kp.59">&#8593; Interview and usability session on the existing KPI tool, run remotely with real users</p>
         </div>
       </div>
     </div>
@@ -609,20 +693,20 @@
 <!-- ═══ RESEARCH FINDINGS ═══ -->
 <section class="section bg-tinted">
   <div class="container">
-    <p class="eyebrow reveal">Discover · What we learned</p>
-    <h2 class="section-heading reveal" style="margin-bottom:2.5rem;">Three findings that <em>redefined the product.</em></h2>
+    <p class="eyebrow reveal" data-i18n="kp.60">Discover · What we learned</p>
+    <h2 class="section-heading reveal" style="margin-bottom:2.5rem;" data-i18n-html="kp.61">Three findings that <em>redefined the product.</em></h2>
     <div class="editorial-grid">
       <div class="editorial-item reveal">
-        <p class="editorial-title">One metric, many versions</p>
-        <p class="editorial-body">The most consistent finding: the same KPI produced different numbers depending on which system or export it came from. Not because formulas differed, but because the underlying data was never the same to begin with. The inconsistency was structural.</p>
+        <p class="editorial-title" data-i18n="kp.62">One metric, many versions</p>
+        <p class="editorial-body" data-i18n="kp.63">The most consistent finding: the same KPI produced different numbers depending on which system or export it came from. Not because formulas differed, but because the underlying data was never the same to begin with. The inconsistency was structural.</p>
       </div>
       <div class="editorial-item reveal" style="transition-delay:0.05s">
-        <p class="editorial-title">Built for analysts, not managers</p>
-        <p class="editorial-body">Most KPI tools needed technical configuration or an analyst to produce a usable dashboard, so the managers who needed the numbers depended on someone else for the view. The opening was a tool a manager could own without SQL or a BI specialist.</p>
+        <p class="editorial-title" data-i18n="kp.64">Built for analysts, not managers</p>
+        <p class="editorial-body" data-i18n="kp.65">Most KPI tools needed technical configuration or an analyst to produce a usable dashboard, so the managers who needed the numbers depended on someone else for the view. The opening was a tool a manager could own without SQL or a BI specialist.</p>
       </div>
       <div class="editorial-item reveal" style="transition-delay:0.1s">
-        <p class="editorial-title">Bad data leads to paralysis, not bad decisions</p>
-        <p class="editorial-body">When professionals don't trust a number, they don't act on it, they investigate it. Meetings become reconciliation sessions and decisions wait. This reframed what we were building: not a prettier dashboard, but a single source of truth. The formula calculator came directly from this finding.</p>
+        <p class="editorial-title" data-i18n="kp.66">Bad data leads to paralysis, not bad decisions</p>
+        <p class="editorial-body" data-i18n="kp.67">When professionals don't trust a number, they don't act on it, they investigate it. Meetings become reconciliation sessions and decisions wait. This reframed what we were building: not a prettier dashboard, but a single source of truth. The formula calculator came directly from this finding.</p>
       </div>
     </div>
   </div>
@@ -633,25 +717,25 @@
   <div class="container">
     <div class="split">
       <div>
-        <p class="eyebrow reveal">02 · Define</p>
-        <h2 class="split-h reveal">Turning research <em>into decisions.</em></h2>
+        <p class="eyebrow reveal" data-i18n="kp.68">02 · Define</p>
+        <h2 class="split-h reveal" data-i18n-html="kp.69">Turning research <em>into decisions.</em></h2>
       </div>
       <div class="process-open">
         <div class="process-open-item reveal">
-          <h3>User Journey</h3>
-          <p>During the usability tests we mapped every step and interaction users had with the tool, start to finish. The journey showed not just where people struggled, but where the product lost them entirely.</p>
+          <h3 data-i18n="kp.70">User Journey</h3>
+          <p data-i18n="kp.71">During the usability tests we mapped every step and interaction users had with the tool, start to finish. The journey showed not just where people struggled, but where the product lost them entirely.</p>
         </div>
         <div class="process-open-item reveal" style="transition-delay:0.05s">
-          <h3>Word Cloud</h3>
-          <p>The quantitative responses were distilled into a word cloud that surfaced the most repeated pains and needs. It kept the loudest problems in front of the team instead of buried in a spreadsheet.</p>
+          <h3 data-i18n="kp.72">Word Cloud</h3>
+          <p data-i18n="kp.73">The quantitative responses were distilled into a word cloud that surfaced the most repeated pains and needs. It kept the loudest problems in front of the team instead of buried in a spreadsheet.</p>
         </div>
         <div class="process-open-item reveal" style="transition-delay:0.1s">
-          <h3>UX Canvas</h3>
-          <p>With the problems understood, I consolidated them into a UX Canvas: one document stating what the product's experience had to deliver. Every later decision was checked against it.</p>
+          <h3 data-i18n="kp.74">UX Canvas</h3>
+          <p data-i18n="kp.75">With the problems understood, I consolidated them into a UX Canvas: one document stating what the product's experience had to deliver. Every later decision was checked against it.</p>
         </div>
         <div class="process-open-item reveal" style="transition-delay:0.15s">
-          <h3>RICE Prioritization</h3>
-          <p>With solutions drafted and development effort estimated, the RICE matrix ranked priorities analytically instead of intuitively. With four people and a fixed window, this decided what the MVP would and would not be.</p>
+          <h3 data-i18n="kp.76">RICE Prioritization</h3>
+          <p data-i18n="kp.77">With solutions drafted and development effort estimated, the RICE matrix ranked priorities analytically instead of intuitively. With four people and a fixed window, this decided what the MVP would and would not be.</p>
         </div>
       </div>
     </div>
@@ -663,15 +747,15 @@
   <div class="container">
     <div class="split">
       <div>
-        <p class="eyebrow reveal">03 · Develop</p>
-        <h2 class="split-h reveal" style="position: static;">A design system first, <em>then every screen.</em></h2>
+        <p class="eyebrow reveal" data-i18n="kp.78">03 · Develop</p>
+        <h2 class="split-h reveal" style="position: static;" data-i18n-html="kp.79">A design system first, <em>then every screen.</em></h2>
       </div>
       <div class="body-2col">
         <div class="body-col reveal">
-          <p>Development started with Blue Squid, a design system created to standardize components and carry a visual identity that Dojo's future products could inherit. With the system and the information architecture defined, I wireframed every screen of the product.</p>
+          <p data-i18n="kp.80">Development started with Blue Squid, a design system created to standardize components and carry a visual identity that Dojo's future products could inherit. With the system and the information architecture defined, I wireframed every screen of the product.</p>
         </div>
         <div class="body-col reveal" style="transition-delay:0.05s">
-          <p>Screens moved from low to medium to high fidelity, validated at each step. The brand rested on three pillars: security, robustness, and simplicity. I built the components and screens in TypeScript, Angular, and Tailwind, and we shipped the MVP for real-world use.</p>
+          <p data-i18n="kp.81">Screens moved from low to medium to high fidelity, validated at each step. The brand rested on three pillars: security, robustness, and simplicity. I built the components and screens in TypeScript, Angular, and Tailwind, and we shipped the MVP for real-world use.</p>
         </div>
       </div>
     </div>
@@ -682,28 +766,28 @@
   <img src="../../assets/projects/keepeye/keepeye-wireframe.png" alt="Keepeye wireframes and early exploration" loading="lazy" />
 </div>
 <div class="container">
-  <p class="img-cap reveal">&#8593; Wireframes covering every screen, drawn on top of Blue Squid and the information architecture</p>
+  <p class="img-cap reveal" data-i18n="kp.82">&#8593; Wireframes covering every screen, drawn on top of Blue Squid and the information architecture</p>
 </div>
 
 <div class="img-full reveal" style="margin-top: clamp(2rem, 4vw, 3rem);">
   <img src="../../assets/projects/keepeye/keepeye-components.png" alt="Keepeye component library" loading="lazy" />
 </div>
 <div class="container">
-  <p class="img-cap reveal">&#8593; Blue Squid components, later implemented in TypeScript, Angular, and Tailwind</p>
+  <p class="img-cap reveal" data-i18n="kp.83">&#8593; Blue Squid components, later implemented in TypeScript, Angular, and Tailwind</p>
 </div>
 
 <div class="container" style="padding-block: clamp(2rem, 4vw, 3rem);">
   <div class="media-row flip reveal">
     <div class="media-text">
-      <p class="eyebrow">03 · Develop · Visual identity</p>
-      <h3>A brand built on three pillars</h3>
-      <p>The logo construction started from concept pillars defined for the brand: security and robustness in how the product presents itself, aligned with the simplicity the tool offers the user. The identity runs through every screen, starting at login.</p>
+      <p class="eyebrow" data-i18n="kp.84">03 · Develop · Visual identity</p>
+      <h3 data-i18n="kp.85">A brand built on three pillars</h3>
+      <p data-i18n="kp.86">The logo construction started from concept pillars defined for the brand: security and robustness in how the product presents itself, aligned with the simplicity the tool offers the user. The identity runs through every screen, starting at login.</p>
     </div>
     <div class="media-img">
       <div class="artifact">
         <img src="../../assets/projects/keepeye/screen-login.png" alt="Keepeye login screen with the new visual identity" loading="lazy" />
       </div>
-      <p class="img-cap">&#8593; The login screen carrying the new identity</p>
+      <p class="img-cap" data-i18n="kp.87">&#8593; The login screen carrying the new identity</p>
     </div>
   </div>
 </div>
@@ -713,10 +797,10 @@
   <div class="container">
     <div class="split" style="margin-bottom: clamp(2rem, 4vw, 3rem);">
       <div>
-        <p class="eyebrow reveal">The solution</p>
-        <h2 class="split-h reveal" style="position: static;">Four features, <em>each traced to a finding.</em></h2>
+        <p class="eyebrow reveal" data-i18n="kp.88">The solution</p>
+        <h2 class="split-h reveal" style="position: static;" data-i18n-html="kp.89">Four features, <em>each traced to a finding.</em></h2>
       </div>
-      <p class="reveal" style="font-size:0.95rem; color:var(--text-2); line-height:1.8; transition-delay:0.05s">
+      <p class="reveal" style="font-size:0.95rem; color:var(--text-2); line-height:1.8; transition-delay:0.05s" data-i18n="kp.90">
         The RICE exercise shaped the feature set directly. What scored highest was not always
         what we expected, but the research consistently pointed toward the same needs:
         centralization, formula consistency, and managerial autonomy.
@@ -725,31 +809,31 @@
     <div class="gestor-list">
       <div class="gestor-row reveal">
         <div>
-          <p class="gestor-row-label">Monitoring</p>
-          <p class="gestor-row-title">KPI Dashboards</p>
+          <p class="gestor-row-label" data-i18n="kp.91">Monitoring</p>
+          <p class="gestor-row-title" data-i18n="kp.92">KPI Dashboards</p>
         </div>
-        <p class="gestor-row-desc">All active KPIs in one view: status, trend, goal. The first screen answers "how are we doing?" without a single click. Drill-down exists, but the summary stands on its own.</p>
+        <p class="gestor-row-desc" data-i18n="kp.93">All active KPIs in one view: status, trend, goal. The first screen answers "how are we doing?" without a single click. Drill-down exists, but the summary stands on its own.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
-          <p class="gestor-row-label">Data Trust</p>
-          <p class="gestor-row-title">Metric Formula Calculator</p>
+          <p class="gestor-row-label" data-i18n="kp.94">Data Trust</p>
+          <p class="gestor-row-title" data-i18n="kp.95">Metric Formula Calculator</p>
         </div>
-        <p class="gestor-row-desc">The highest-scoring feature in the RICE exercise, and the one that attacked the trust deficit directly. Each metric connects to a centralized data source with a single formula, so every department reads the same number. No diverging exports, no parallel spreadsheets.</p>
+        <p class="gestor-row-desc" data-i18n="kp.96">The highest-scoring feature in the RICE exercise, and the one that attacked the trust deficit directly. Each metric connects to a centralized data source with a single formula, so every department reads the same number. No diverging exports, no parallel spreadsheets.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
-          <p class="gestor-row-label">Configuration</p>
-          <p class="gestor-row-title">KPI and Metrics Management</p>
+          <p class="gestor-row-label" data-i18n="kp.97">Configuration</p>
+          <p class="gestor-row-title" data-i18n="kp.98">KPI and Metrics Management</p>
         </div>
-        <p class="gestor-row-desc">Create, edit, categorize, and link KPIs to the metrics that feed them. Research showed teams track 15 to 40 active KPIs, each with different owners, cadences, and sources. The management view had to absorb that complexity without becoming a spreadsheet itself.</p>
+        <p class="gestor-row-desc" data-i18n="kp.99">Create, edit, categorize, and link KPIs to the metrics that feed them. Research showed teams track 15 to 40 active KPIs, each with different owners, cadences, and sources. The management view had to absorb that complexity without becoming a spreadsheet itself.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
-          <p class="gestor-row-label">Governance</p>
-          <p class="gestor-row-title">User Area and Access Control</p>
+          <p class="gestor-row-label" data-i18n="kp.100">Governance</p>
+          <p class="gestor-row-title" data-i18n="kp.101">User Area and Access Control</p>
         </div>
-        <p class="gestor-row-desc">Some users configure, some monitor, some only read. Roles, permissions, and data scope decide who sees floor metrics and who sees consolidated results. Role definition came early and shaped the information hierarchy of the entire product.</p>
+        <p class="gestor-row-desc" data-i18n="kp.102">Some users configure, some monitor, some only read. Roles, permissions, and data scope decide who sees floor metrics and who sees consolidated results. Role definition came early and shaped the information hierarchy of the entire product.</p>
       </div>
     </div>
   </div>
@@ -764,7 +848,7 @@
       <img src="../../assets/projects/keepeye/keepeye-screens.png" alt="Keepeye product screens" loading="lazy" />
     </div>
   </div>
-  <p class="img-cap reveal">&#8593; High-fidelity screens of the shipped product: dashboards, metric management, and user area</p>
+  <p class="img-cap reveal" data-i18n="kp.103">&#8593; High-fidelity screens of the shipped product: dashboards, metric management, and user area</p>
 </div>
 
 <div class="container" style="padding-bottom: clamp(2rem, 4vw, 3rem);">
@@ -782,7 +866,7 @@
       <img src="../../assets/projects/keepeye/user-area.png" alt="Keepeye user area and access control" loading="lazy" />
     </div>
   </div>
-  <p class="img-cap reveal">&#8593; Core screens of the MVP: home with KPI options, dashboards, metric management, and the user area</p>
+  <p class="img-cap reveal" data-i18n="kp.104">&#8593; Core screens of the MVP: home with KPI options, dashboards, metric management, and the user area</p>
 </div>
 
 <!-- ═══ HOW I WORKED ═══ -->
@@ -790,19 +874,19 @@
   <div class="container">
     <div class="split">
       <div>
-        <p class="eyebrow reveal">The role</p>
-        <h2 class="split-h reveal">I stayed for <em>the implementation.</em></h2>
+        <p class="eyebrow reveal" data-i18n="kp.105">The role</p>
+        <h2 class="split-h reveal" data-i18n-html="kp.106">I stayed for <em>the implementation.</em></h2>
       </div>
       <div class="body-2col">
         <div class="body-col reveal">
-          <p class="col-label">UX Engineering</p>
-          <p>After handoff I joined the build as a front-end developer, writing the design system components and screens in TypeScript, Angular, and Tailwind alongside the team. Designing and implementing the same product removes the translation layer: when a component didn't survive contact with real data, I adjusted the design at the source.</p>
-          <p>It also meant I understood constraints before they became blockers. When the team hit a component complexity problem, I was already in the room.</p>
+          <p class="col-label" data-i18n="kp.107">UX Engineering</p>
+          <p data-i18n="kp.108">After handoff I joined the build as a front-end developer, writing the design system components and screens in TypeScript, Angular, and Tailwind alongside the team. Designing and implementing the same product removes the translation layer: when a component didn't survive contact with real data, I adjusted the design at the source.</p>
+          <p data-i18n="kp.109">It also meant I understood constraints before they became blockers. When the team hit a component complexity problem, I was already in the room.</p>
         </div>
         <div class="body-col reveal" style="transition-delay:0.05s">
-          <p class="col-label">Mentoring in Transition</p>
-          <p>One developer on the team was moving from front-end into UI/UX design. I reviewed her work throughout the project, walked through the reasoning behind decisions, and gave structured feedback on her interface choices.</p>
-          <p>Explaining why a pattern works forces you to articulate principles you normally apply on instinct. It sharpened my own thinking as much as hers.</p>
+          <p class="col-label" data-i18n="kp.110">Mentoring in Transition</p>
+          <p data-i18n="kp.111">One developer on the team was moving from front-end into UI/UX design. I reviewed her work throughout the project, walked through the reasoning behind decisions, and gave structured feedback on her interface choices.</p>
+          <p data-i18n="kp.112">Explaining why a pattern works forces you to articulate principles you normally apply on instinct. It sharpened my own thinking as much as hers.</p>
         </div>
       </div>
     </div>
@@ -814,22 +898,22 @@
   <div class="container">
     <div class="split">
       <div>
-        <p class="eyebrow reveal">04 · Deliver</p>
-        <h2 class="split-h reveal" style="position: static;">8.2 out of 10, <em>and how we measured it.</em></h2>
-        <p class="reveal" style="font-size:0.95rem; color:var(--text-2); line-height:1.8; margin-top:1rem;">Delivery didn't end at launch. We kept collecting: usability tests on the finished tool, key-metric monitoring, and a backlog of integration ideas straight from user feedback.</p>
+        <p class="eyebrow reveal" data-i18n="kp.113">04 · Deliver</p>
+        <h2 class="split-h reveal" style="position: static;" data-i18n-html="kp.114">8.2 out of 10, <em>and how we measured it.</em></h2>
+        <p class="reveal" style="font-size:0.95rem; color:var(--text-2); line-height:1.8; margin-top:1rem;" data-i18n="kp.115">Delivery didn't end at launch. We kept collecting: usability tests on the finished tool, key-metric monitoring, and a backlog of integration ideas straight from user feedback.</p>
       </div>
       <div class="outcomes-open">
         <div class="outcome-open reveal">
-          <span class="metric-value">8.2<span style="font-size:1.6rem;">/10</span></span>
-          <span class="metric-desc">Average user satisfaction in the post-delivery usability tests, with minor fixes shipped from the findings</span>
+          <span class="metric-value" data-i18n-html="kp.116">8.2<span style="font-size:1.6rem;">/10</span></span>
+          <span class="metric-desc" data-i18n="kp.117">Average user satisfaction in the post-delivery usability tests, with minor fixes shipped from the findings</span>
         </div>
         <div class="outcome-open reveal" style="transition-delay:0.05s">
           <span class="metric-value">4</span>
-          <span class="metric-desc">Team members, including one designer mentored through her career transition</span>
+          <span class="metric-desc" data-i18n="kp.118">Team members, including one designer mentored through her career transition</span>
         </div>
         <div class="outcome-open reveal" style="transition-delay:0.1s">
-          <span class="metric-value">MVP</span>
-          <span class="metric-desc">Launched as Dojo's first product, opening a product revenue line beside project work</span>
+          <span class="metric-value" data-i18n="kp.119">MVP</span>
+          <span class="metric-desc" data-i18n="kp.120">Launched as Dojo's first product, opening a product revenue line beside project work</span>
         </div>
       </div>
     </div>
@@ -840,7 +924,8 @@
 <div class="reflection-block">
   <div class="container">
     <div class="reflection-inner reveal-blur">
-      <p>Keepeye compressed the whole cycle into one project: research, prioritization, design, code, mentoring. It confirmed a rule I still work by: whatever you skip in discovery, you pay for in delivery.</p>
+      <p class="reflection-label" data-i18n="case.takeaway">Takeaway</p>
+      <p class="reflection-statement" data-i18n="kp.121">Keepeye compressed the whole cycle into one project: research, prioritization, design, code, mentoring. It confirmed a rule I still work by: whatever you skip in discovery, you pay for in delivery.</p>
     </div>
   </div>
 </div>
@@ -848,27 +933,27 @@
 
 <!-- ═══ MORE WORK ═══ -->
 <div class="case-more">
-  <p class="case-more-label">More work</p>
+  <p class="case-more-label" data-i18n="case.more">More work</p>
   <div class="case-more-grid">
       <a href="../multipedidos/" class="case-more-card reveal">
         <img src="../../assets/projects/pedir-delivery/cover.png" alt="Multipedidos" class="case-more-thumb" loading="lazy" />
         <p class="case-more-name">Multipedidos</p>
-        <p class="case-more-desc">Senior Product Designer at a food platform serving 4M+ orders a month. Design system, consumer product, and AI-assisted workflows.</p>
-        <p class="case-more-meta">Product Design · Food Tech</p>
+        <p class="case-more-desc" data-i18n="case.card.mp.desc">Senior Product Designer at a food platform serving 4M+ orders a month. Design system, consumer product, and AI-assisted workflows.</p>
+        <p class="case-more-meta" data-i18n="case.card.mp.meta">Product Design · Food Tech</p>
       </a>
 
       <a href="../included/" class="case-more-card reveal" style="transition-delay:0.07s">
         <img src="../../assets/projects/included-pixelpunk/included-cover.png" alt="IncludED" class="case-more-thumb" loading="lazy" />
         <p class="case-more-name">IncludED</p>
-        <p class="case-more-desc">Co-founder and Lead Product Designer at PixelPunk. Built a SaaS platform for inclusive education from zero to first paying customers.</p>
-        <p class="case-more-meta">Product Design · EdTech SaaS</p>
+        <p class="case-more-desc" data-i18n="case.card.inc.desc">Co-founder and Lead Product Designer at PixelPunk. Built a SaaS platform for inclusive education from zero to first paying customers.</p>
+        <p class="case-more-meta" data-i18n="case.card.inc.meta">Product Design · EdTech SaaS</p>
       </a>
 
       <a href="../electrolux/" class="case-more-card reveal" style="transition-delay:0.14s">
         <img src="../../assets/projects/electrolux/electrolux-cover.png" alt="Electrolux" class="case-more-thumb" loading="lazy" />
         <p class="case-more-name">Electrolux</p>
-        <p class="case-more-desc">Dashboard visual identity and design system for global markets, via Dojo Smart Ways.</p>
-        <p class="case-more-meta">Data Viz · Design System</p>
+        <p class="case-more-desc" data-i18n="case.card.elx.desc">Dashboard visual identity and design system for global markets, via Dojo Smart Ways.</p>
+        <p class="case-more-meta" data-i18n="case.card.elx.meta">Data Viz · Design System</p>
       </a>
   </div>
 </div>
@@ -883,7 +968,7 @@
   <span class="footer-year">&copy; 2026</span>
 </footer>
 
-<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+<button class="back-to-top" id="backToTop" aria-label="Back to top" data-i18n-attr="aria-label:nav.back_to_top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
 

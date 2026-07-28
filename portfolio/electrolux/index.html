@@ -10,17 +10,18 @@
   <title>Electrolux: Data Visualization System | Lucas Nascimento</title>
   <meta name="description" content="Case study: how I created a standardized data visualization system for Electrolux that started in LATAM and was adopted globally across the company." />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://lucasdonascimento.com/project-electrolux" />
+  <link rel="canonical" href="https://lucasdonascimento.com/portfolio/electrolux/" />
   <meta property="og:title" content="Electrolux: Data Visualization System" />
   <meta property="og:description" content="From scattered spreadsheets to a global standard: designing a unified data visualization system for Electrolux that scaled across LATAM and was adopted worldwide." />
-  <meta property="og:url" content="https://lucasdonascimento.com/project-electrolux" />
+  <meta property="og:url" content="https://lucasdonascimento.com/portfolio/electrolux/" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="../../style.css?v=20260728" />
   <script>window._ASSET_ROOT="../../";</script>
-  <script src="../../transitions.js" defer></script>
+  <script src="../../transitions.js?v=20260728" defer></script>
+  <script src="../../i18n.js?v=20260728" defer></script>
   <noscript><style>body { opacity: 1 !important; }</style></noscript>
 
   <style>
@@ -229,18 +230,39 @@
     .section { padding-block: clamp(2rem, 4vw, 3.5rem); }
     .section.bg-tinted { background: var(--bg-2); padding-block: clamp(2rem, 4vw, 3rem); }
 
-    /* ── REFLECTION ── */
-    .reflection-block { padding-block: clamp(2rem, 4vw, 3rem); }
-    .reflection-inner p {
+    /* ── REFLECTION (closing statement) ── */
+    .reflection-block {
+      padding-block: clamp(3.5rem, 7vw, 5.5rem);
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+    }
+    .reflection-inner {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: start;
+    }
+    .reflection-label {
+      font-family: var(--font-sans);
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; font-style: normal;
+      color: var(--accent-text);
+      padding-top: 0.6rem;
+    }
+    .reflection-statement {
       font-family: var(--font-serif);
       font-weight: 300;
       font-style: italic;
-      font-size: clamp(1.2rem, 2.5vw, 1.65rem);
-      line-height: 1.65;
+      font-size: clamp(1.35rem, 2.6vw, 1.95rem);
+      line-height: 1.42;
+      letter-spacing: -0.01em;
       color: var(--text-1);
-     
+      max-width: 46ch;
     }
-
+    @media (max-width: 960px) {
+      .reflection-inner { grid-template-columns: 1fr; gap: 1rem; }
+      .reflection-label { padding-top: 0; }
+    }
     /* ── NEXT PROJECT ── */
 
     /* ── STORY STRUCTURE ── */
@@ -375,6 +397,45 @@
     @supports not (background: color-mix(in srgb, red 10%, blue)) {
       .case-header { background: var(--bg-2); }
     }
+    /* ── LANGUAGE MENU (dropdown with flags) ── */
+    .lang-menu { position: relative; }
+    .lang-menu-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: none; border: none; cursor: pointer;
+      font-family: var(--font-sans); font-size: 0.85rem; font-weight: 400;
+      color: var(--text-2); padding: 0.25rem 0.35rem; border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .lang-menu-btn:hover { color: var(--text-1); background: var(--bg-2); }
+    .lang-menu-btn[aria-expanded="true"] .contact-caret { transform: rotate(180deg); }
+    .lang-current { display: inline-flex; align-items: center; gap: 0.4rem; }
+    .lang-current[hidden] { display: none; }
+    .flag { width: 18px; height: 13px; border-radius: 2px; display: block; flex-shrink: 0; }
+    .lang-panel {
+      position: absolute; top: calc(100% + 0.75rem); left: 0;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 8px; padding: 0.3rem; min-width: 168px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+      z-index: 300; opacity: 0; transform: translateY(-6px);
+      pointer-events: none; transition: opacity 0.15s, transform 0.15s;
+    }
+    .lang-panel.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .lang-option {
+      display: flex; align-items: center; gap: 0.6rem; width: 100%;
+      background: none; border: none; cursor: pointer; text-align: left;
+      font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-1);
+      padding: 0.6rem 0.75rem; border-radius: 6px; transition: background 0.15s;
+    }
+    .lang-option:hover { background: var(--bg-2); }
+    .lang-option.is-active { background: var(--bg-2); font-weight: 500; }
+    .lang-option.is-active::after {
+      content: '\2713'; margin-left: auto; font-size: 0.8rem; color: var(--accent-text);
+    }
+    .mobile-nav .lang-menu { padding: 1.15rem 0; }
+    .mobile-nav .lang-menu-btn { font-size: 1.05rem; padding: 0.35rem 0.5rem; }
+    .mobile-nav .lang-panel { top: auto; bottom: calc(100% + 0.5rem); }
+    .mobile-nav .flag { width: 22px; height: 16px; }
+
   </style>
 </head>
 <body>
@@ -382,20 +443,32 @@
 <header class="site-header" id="siteHeader">
   <a href="../../" class="site-name">Lucas Nascimento</a>
   <div class="site-nav-right">
+    <div class="lang-menu">
+      <button class="lang-menu-btn" id="langBtn" aria-expanded="false" aria-haspopup="true" aria-label="Language" data-i18n-attr="aria-label:nav.lang_label">
+        <span class="lang-current" data-lang-current="en"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#012169"/><path d="M0 0l20 14M20 0L0 14" stroke="#fff" stroke-width="2.8"/><path d="M0 0l20 14M20 0L0 14" stroke="#C8102E" stroke-width="1.5"/><path d="M10 0v14M0 7h20" stroke="#fff" stroke-width="4.6"/><path d="M10 0v14M0 7h20" stroke="#C8102E" stroke-width="2.8"/></svg><span>EN</span></span>
+        <span class="lang-current" data-lang-current="pt" hidden><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#009B3A"/><path d="M10 1.6 18.4 7 10 12.4 1.6 7Z" fill="#FEDF00"/><circle cx="10" cy="7" r="3.05" fill="#002776"/></svg><span>PT</span></span>
+        <span class="contact-caret">&#9662;</span>
+      </button>
+      <div class="lang-panel" id="langPanel" role="menu">
+        <button type="button" class="lang-option" data-lang-btn="en" role="menuitem"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#012169"/><path d="M0 0l20 14M20 0L0 14" stroke="#fff" stroke-width="2.8"/><path d="M0 0l20 14M20 0L0 14" stroke="#C8102E" stroke-width="1.5"/><path d="M10 0v14M0 7h20" stroke="#fff" stroke-width="4.6"/><path d="M10 0v14M0 7h20" stroke="#C8102E" stroke-width="2.8"/></svg><span data-i18n="nav.lang_en">English</span></button>
+        <button type="button" class="lang-option" data-lang-btn="pt" role="menuitem"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#009B3A"/><path d="M10 1.6 18.4 7 10 12.4 1.6 7Z" fill="#FEDF00"/><circle cx="10" cy="7" r="3.05" fill="#002776"/></svg><span data-i18n="nav.lang_pt">Portuguese</span></button>
+      </div>
+    </div>
+
     <a href="../about/" class="site-nav-link" data-i18n="nav.about">About</a>
     <div class="contact-menu">
       <button class="contact-menu-btn" id="contactBtn" aria-expanded="false" aria-haspopup="true">
-        Contact <span class="contact-caret">&#9662;</span>
+        <span data-i18n="nav.contact">Contact</span> <span class="contact-caret">&#9662;</span>
       </button>
       <div class="contact-panel" id="contactPanel" role="menu">
         <a href="mailto:lucas.luizdonascimento@gmail.com" class="contact-option" role="menuitem">
-          <span class="co-label">Email</span><span class="co-sub">Send a message</span>
+          <span class="co-label">Email</span><span class="co-sub" data-i18n="nav.email_sub">Send a message</span>
         </a>
         <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener" class="contact-option" role="menuitem">
-          <span class="co-label">LinkedIn</span><span class="co-sub">Open profile</span>
+          <span class="co-label">LinkedIn</span><span class="co-sub" data-i18n="nav.linkedin_sub">Open profile</span>
         </a>
         <a href="https://drive.google.com/file/d/1aY000U3QAsV1sFIsoOYqmMnzElnNSoA0/view?usp=sharing" target="_blank" rel="noopener" class="contact-option" role="menuitem">
-          <span class="co-label">Resume</span><span class="co-sub">Download PDF</span>
+          <span class="co-label" data-i18n="nav.resume">Resume</span><span class="co-sub" data-i18n="nav.resume_sub">Download PDF</span>
         </a>
       </div>
     </div>
@@ -403,10 +476,21 @@
   </div>
 </header>
 <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
-  <a href="../about/">About <span class="mobile-nav-arrow">&#8594;</span></a>
+  <a href="../about/"><span data-i18n="nav.about">About</span> <span class="mobile-nav-arrow">&#8594;</span></a>
   <a href="mailto:lucas.luizdonascimento@gmail.com">Email <span class="mobile-nav-arrow">&#8594;</span></a>
   <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn <span class="mobile-nav-arrow">&#8594;</span></a>
-  <a href="https://drive.google.com/file/d/1aY000U3QAsV1sFIsoOYqmMnzElnNSoA0/view?usp=sharing" target="_blank" rel="noopener">Resume PDF <span class="mobile-nav-arrow">&#8594;</span></a>
+  <a href="https://drive.google.com/file/d/1aY000U3QAsV1sFIsoOYqmMnzElnNSoA0/view?usp=sharing" target="_blank" rel="noopener"><span data-i18n="nav.resume_pdf">Resume PDF</span> <span class="mobile-nav-arrow">&#8594;</span></a>
+  <div class="lang-menu">
+    <button class="lang-menu-btn" id="langBtnM" aria-expanded="false" aria-haspopup="true" aria-label="Language" data-i18n-attr="aria-label:nav.lang_label">
+      <span class="lang-current" data-lang-current="en"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#012169"/><path d="M0 0l20 14M20 0L0 14" stroke="#fff" stroke-width="2.8"/><path d="M0 0l20 14M20 0L0 14" stroke="#C8102E" stroke-width="1.5"/><path d="M10 0v14M0 7h20" stroke="#fff" stroke-width="4.6"/><path d="M10 0v14M0 7h20" stroke="#C8102E" stroke-width="2.8"/></svg><span>EN</span></span>
+      <span class="lang-current" data-lang-current="pt" hidden><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#009B3A"/><path d="M10 1.6 18.4 7 10 12.4 1.6 7Z" fill="#FEDF00"/><circle cx="10" cy="7" r="3.05" fill="#002776"/></svg><span>PT</span></span>
+      <span class="contact-caret">&#9662;</span>
+    </button>
+    <div class="lang-panel" id="langPanelM" role="menu">
+      <button type="button" class="lang-option" data-lang-btn="en" role="menuitem"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#012169"/><path d="M0 0l20 14M20 0L0 14" stroke="#fff" stroke-width="2.8"/><path d="M0 0l20 14M20 0L0 14" stroke="#C8102E" stroke-width="1.5"/><path d="M10 0v14M0 7h20" stroke="#fff" stroke-width="4.6"/><path d="M10 0v14M0 7h20" stroke="#C8102E" stroke-width="2.8"/></svg><span data-i18n="nav.lang_en">English</span></button>
+      <button type="button" class="lang-option" data-lang-btn="pt" role="menuitem"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#009B3A"/><path d="M10 1.6 18.4 7 10 12.4 1.6 7Z" fill="#FEDF00"/><circle cx="10" cy="7" r="3.05" fill="#002776"/></svg><span data-i18n="nav.lang_pt">Portuguese</span></button>
+    </div>
+  </div>
 </nav>
 
 <div class="reading-progress" aria-hidden="true"></div>
@@ -414,12 +498,12 @@
 <!-- ═══ CASE HEADER ═══ -->
 <header class="case-header">
   <div class="container">
-    <p class="case-label case-header-entrance" style="--delay:0.06s">Case Study</p>
-    <h1 class="case-header-title case-header-entrance" style="--delay:0.13s">Electrolux<br /><em>Data Visualization System</em></h1>
-    <p class="case-header-subtitle case-header-entrance" style="--delay:0.21s">Electrolux read its own operation through disconnected spreadsheets and unstandardized dashboards. I designed a data visualization system in Power BI: three dashboard contexts, reusable templates, and a manual any team could follow without a designer. The board adopted it as the global standard.</p>
+    <p class="case-label case-header-entrance" style="--delay:0.06s" data-i18n="elx.1">Case Study</p>
+    <h1 class="case-header-title case-header-entrance" style="--delay:0.13s" data-i18n-html="elx.2">Electrolux<br /><em>Data Visualization System</em></h1>
+    <p class="case-header-subtitle case-header-entrance" style="--delay:0.21s" data-i18n="elx.3">Electrolux read its own operation through disconnected spreadsheets and unstandardized dashboards. I designed a data visualization system in Power BI: three dashboard contexts, reusable templates, and a manual any team could follow without a designer. The board adopted it as the global standard.</p>
     <div class="nda-notice case-header-entrance" style="--delay:0.28s">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span><strong>NDA-aware case study.</strong> This project is covered by a non-disclosure agreement. Visual content has been abstracted. What follows focuses on process, methodology, and outcomes rather than proprietary data or internal screens.</span>
+      <span data-i18n-html="elx.4"><strong>NDA-aware case study.</strong> This project is covered by a non-disclosure agreement. Visual content has been abstracted. What follows focuses on process, methodology, and outcomes rather than proprietary data or internal screens.</span>
     </div>
   </div>
 </header>
@@ -428,20 +512,20 @@
 <div class="container">
   <div class="case-meta-strip">
     <div>
-      <p class="case-meta-label">Company</p>
-      <p class="case-meta-val">Dojo Smart Ways<span>Client: Electrolux</span></p>
+      <p class="case-meta-label" data-i18n="elx.5">Company</p>
+      <p class="case-meta-val" data-i18n-html="elx.6">Dojo Smart Ways<span>Client: Electrolux</span></p>
     </div>
     <div>
-      <p class="case-meta-label">Role</p>
-      <p class="case-meta-val">Data Visualization Designer<span>Power BI + System Design</span></p>
+      <p class="case-meta-label" data-i18n="elx.7">Role</p>
+      <p class="case-meta-val" data-i18n-html="elx.8">Data Visualization Designer<span>Power BI + System Design</span></p>
     </div>
     <div>
-      <p class="case-meta-label">Scope</p>
-      <p class="case-meta-val">5 Waves<span>LATAM, global rollout</span></p>
+      <p class="case-meta-label" data-i18n="elx.9">Scope</p>
+      <p class="case-meta-val" data-i18n-html="elx.10">5 Waves<span>LATAM, global rollout</span></p>
     </div>
     <div>
-      <p class="case-meta-label">Stack</p>
-      <p class="case-meta-val">Power BI, Figma<span>+ Documentation</span></p>
+      <p class="case-meta-label" data-i18n="elx.11">Stack</p>
+      <p class="case-meta-val" data-i18n-html="elx.12">Power BI, Figma<span>+ Documentation</span></p>
     </div>
   </div>
 </div>
@@ -449,7 +533,7 @@
 <!-- ═══ PULL QUOTE ═══ -->
 <div class="pull-quote-wrap">
   <div class="container">
-    <blockquote class="pull-quote reveal-blur">
+    <blockquote class="pull-quote reveal-blur" data-i18n-html="elx.13">
       Ten people could read the same metric and reach ten different numbers.
       The data was not the problem. The missing part was a <em>shared language</em> for displaying it.
     </blockquote>
@@ -461,21 +545,21 @@
   <div class="container">
     <div class="split">
       <div>
-        <p class="eyebrow reveal">Background</p>
-        <h2 class="split-h reveal">Ten versions <em>of the truth.</em></h2>
+        <p class="eyebrow reveal" data-i18n="elx.14">Background</p>
+        <h2 class="split-h reveal" data-i18n-html="elx.15">Ten versions <em>of the truth.</em></h2>
       </div>
       <div class="body-2col">
         <div class="body-col reveal">
-          <p class="col-label">The Situation</p>
-          <p>Electrolux teams each managed reporting their own way: Excel here, Google Sheets there, Power BI dashboards built without a standard. Every team had a version of the truth, and no two versions matched.</p>
-          <p>Leadership couldn't consolidate a view across regions, and analysts spent their time reformatting instead of analyzing.</p>
-          <p>Dojo was hired to build dashboards from a centralized Data Lake. The brief: connect the data, make it readable. I saw room for something more permanent.</p>
+          <p class="col-label" data-i18n="elx.16">The Situation</p>
+          <p data-i18n="elx.17">Electrolux teams each managed reporting their own way: Excel here, Google Sheets there, Power BI dashboards built without a standard. Every team had a version of the truth, and no two versions matched.</p>
+          <p data-i18n="elx.18">Leadership couldn't consolidate a view across regions, and analysts spent their time reformatting instead of analyzing.</p>
+          <p data-i18n="elx.19">Dojo was hired to build dashboards from a centralized Data Lake. The brief: connect the data, make it readable. I saw room for something more permanent.</p>
         </div>
         <div class="body-col reveal" style="transition-delay:0.05s">
-          <p class="col-label">The Mandate</p>
-          <p>I delivered the brief across five waves in LATAM, one per business area: Power BI dashboards connected to the Data Lake, giving teams a unified way to read operational and strategic data.</p>
-          <p>But the brief had a hole. If every dashboard was custom-built, the fragmentation would return the moment Dojo left. Teams would diverge again.</p>
-          <p>So alongside the dashboards, I built a template system and a documentation manual: a standard any Electrolux team could replicate without a designer in the room. That decision is what made the work outlast the engagement.</p>
+          <p class="col-label" data-i18n="elx.20">The Mandate</p>
+          <p data-i18n="elx.21">I delivered the brief across five waves in LATAM, one per business area: Power BI dashboards connected to the Data Lake, giving teams a unified way to read operational and strategic data.</p>
+          <p data-i18n="elx.22">But the brief had a hole. If every dashboard was custom-built, the fragmentation would return the moment Dojo left. Teams would diverge again.</p>
+          <p data-i18n="elx.23">So alongside the dashboards, I built a template system and a documentation manual: a standard any Electrolux team could replicate without a designer in the room. That decision is what made the work outlast the engagement.</p>
         </div>
       </div>
     </div>
@@ -487,40 +571,40 @@
   <div class="container">
     <div class="split">
       <div>
-        <p class="eyebrow reveal">The three contexts</p>
-        <h2 class="split-h reveal">Executive, operational, analytical: <em>one visual language.</em></h2>
+        <p class="eyebrow reveal" data-i18n="elx.24">The three contexts</p>
+        <h2 class="split-h reveal" data-i18n-html="elx.25">Executive, operational, analytical: <em>one visual language.</em></h2>
       </div>
       <div class="reveal" style="transition-delay:0.05s">
-        <p style="font-size:0.92rem; color:var(--text-2); line-height:1.8;">
+        <p style="font-size:0.92rem; color:var(--text-2); line-height:1.8;" data-i18n="elx.26">
           Not every audience needs the same view. The system was designed around three distinct
           dashboard contexts, each with a defined purpose, visual hierarchy, and interaction depth.
         </p>
         <div class="ds-highlights">
           <div class="ds-card">
-            <h3><em>Executive</em> Dashboard</h3>
-            <p>Goal attainment, regional performance, and strategic KPIs at a glance. Low interaction by design: the first screen answers the key question without drill-down.</p>
+            <h3 data-i18n-html="elx.27"><em>Executive</em> Dashboard</h3>
+            <p data-i18n="elx.28">Goal attainment, regional performance, and strategic KPIs at a glance. Low interaction by design: the first screen answers the key question without drill-down.</p>
             <div class="case-tags">
-              <span class="tag">Summary view</span>
-              <span class="tag">Low density</span>
-              <span class="tag">Goal tracking</span>
+              <span class="tag" data-i18n="elx.29">Summary view</span>
+              <span class="tag" data-i18n="elx.30">Low density</span>
+              <span class="tag" data-i18n="elx.31">Goal tracking</span>
             </div>
           </div>
           <div class="ds-card">
-            <h3><em>Operational</em> Dashboard</h3>
-            <p>Daily monitoring for team leads: output by period, process efficiency, and deviation flags that surface problems before they grow.</p>
+            <h3 data-i18n-html="elx.32"><em>Operational</em> Dashboard</h3>
+            <p data-i18n="elx.33">Daily monitoring for team leads: output by period, process efficiency, and deviation flags that surface problems before they grow.</p>
             <div class="case-tags">
-              <span class="tag">Time series</span>
-              <span class="tag">Deviation alerts</span>
-              <span class="tag">Daily cadence</span>
+              <span class="tag" data-i18n="elx.34">Time series</span>
+              <span class="tag" data-i18n="elx.35">Deviation alerts</span>
+              <span class="tag" data-i18n="elx.36">Daily cadence</span>
             </div>
           </div>
           <div class="ds-card">
-            <h3><em>Analytical</em> Dashboard</h3>
-            <p>Deep-dive views for analysts: variance distribution, cross-dimensional breakdowns, trend analysis. Built for exploration, with high interaction depth.</p>
+            <h3 data-i18n-html="elx.37"><em>Analytical</em> Dashboard</h3>
+            <p data-i18n="elx.38">Deep-dive views for analysts: variance distribution, cross-dimensional breakdowns, trend analysis. Built for exploration, with high interaction depth.</p>
             <div class="case-tags">
-              <span class="tag">Variance analysis</span>
-              <span class="tag">Cross-dimensional</span>
-              <span class="tag">High interaction</span>
+              <span class="tag" data-i18n="elx.39">Variance analysis</span>
+              <span class="tag" data-i18n="elx.40">Cross-dimensional</span>
+              <span class="tag" data-i18n="elx.41">High interaction</span>
             </div>
           </div>
         </div>
@@ -534,11 +618,11 @@
   <div class="container">
     <div class="split" style="margin-bottom: clamp(2rem, 4vw, 3rem);">
       <div>
-        <p class="eyebrow reveal">The key decision</p>
-        <h2 class="split-h reveal">Treating dashboards <em>as a design system.</em></h2>
+        <p class="eyebrow reveal" data-i18n="elx.42">The key decision</p>
+        <h2 class="split-h reveal" data-i18n-html="elx.43">Treating dashboards <em>as a design system.</em></h2>
       </div>
       <div class="reveal" style="transition-delay:0.05s">
-        <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8;">
+        <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8;" data-i18n="elx.44">
           A style guide would have been the obvious answer, and it would have died in a folder.
           I approached the standard the way you approach a design system: as components with
           defined behavior, living in the tools people already work in. One pattern had to serve
@@ -549,47 +633,47 @@
     <div class="triad">
       <div class="triad-item reveal">
         <p class="triad-num">01</p>
-        <h3>Sketch in Figma</h3>
-        <p>Anyone can draft a dashboard in Figma using data visualization components that behave and read exactly like the final result. What you sketch is what ships.</p>
+        <h3 data-i18n="elx.45">Sketch in Figma</h3>
+        <p data-i18n="elx.46">Anyone can draft a dashboard in Figma using data visualization components that behave and read exactly like the final result. What you sketch is what ships.</p>
       </div>
       <div class="triad-item reveal" style="transition-delay:0.05s">
         <p class="triad-num">02</p>
-        <h3>Build in Power BI</h3>
-        <p>The same components exist as Power BI visuals following the standard. Building a new dashboard means placing components and connecting them to the Data Lake, not redesigning from zero.</p>
+        <h3 data-i18n="elx.47">Build in Power BI</h3>
+        <p data-i18n="elx.48">The same components exist as Power BI visuals following the standard. Building a new dashboard means placing components and connecting them to the Data Lake, not redesigning from zero.</p>
       </div>
       <div class="triad-item reveal" style="transition-delay:0.1s">
         <p class="triad-num">03</p>
-        <h3>Documented globally</h3>
-        <p>Every pattern lives in an official standards document, valid across the company worldwide. The system is not tribal knowledge; it is something a new team can adopt without meeting me.</p>
+        <h3 data-i18n="elx.49">Documented globally</h3>
+        <p data-i18n="elx.50">Every pattern lives in an official standards document, valid across the company worldwide. The system is not tribal knowledge; it is something a new team can adopt without meeting me.</p>
       </div>
     </div>
     <div class="media-row reveal" style="margin-top: clamp(2.5rem, 4vw, 3.5rem);">
       <div class="media-text">
-        <h3>Layouts as components, not as files</h3>
-        <p>The library covers the layout situations a dashboard actually runs into: a single dominant chart, a KPI band over a detail table, side-by-side comparisons, breakdowns that need three panels of equal weight. Each one encodes the decisions nobody should have to make twice, including grid, header structure, KPI band position, and which slots accept which visualization type.</p>
-        <p>Choosing a layout became a question about the audience rather than a design exercise. How much detail does this reader need, and how fast? An executive scanning attainment and an analyst hunting a variance get different structures from the same system, so the numbers stay comparable across every screen in the company.</p>
-        <p>Because the identical structure exists in Figma and in Power BI, a sketch and a shipped dashboard line up without translation. A business analyst can propose a view in the morning and have it built on the standard the same day, without a designer in between.</p>
+        <h3 data-i18n="elx.51">Layouts as components, not as files</h3>
+        <p data-i18n="elx.52">The library covers the layout situations a dashboard actually runs into: a single dominant chart, a KPI band over a detail table, side-by-side comparisons, breakdowns that need three panels of equal weight. Each one encodes the decisions nobody should have to make twice, including grid, header structure, KPI band position, and which slots accept which visualization type.</p>
+        <p data-i18n="elx.53">Choosing a layout became a question about the audience rather than a design exercise. How much detail does this reader need, and how fast? An executive scanning attainment and an analyst hunting a variance get different structures from the same system, so the numbers stay comparable across every screen in the company.</p>
+        <p data-i18n="elx.54">Because the identical structure exists in Figma and in Power BI, a sketch and a shipped dashboard line up without translation. A business analyst can propose a view in the morning and have it built on the standard the same day, without a designer in between.</p>
         <div class="process-tags">
-          <span class="tag">Layout System</span>
-          <span class="tag">Component Slots</span>
-          <span class="tag">Figma to Power BI</span>
+          <span class="tag" data-i18n="elx.55">Layout System</span>
+          <span class="tag" data-i18n="elx.56">Component Slots</span>
+          <span class="tag" data-i18n="elx.57">Figma to Power BI</span>
         </div>
       </div>
       <div class="media-img">
         <div class="artifact">
           <img src="../../assets/projects/electrolux/templates.png" alt="Sample dashboard layout templates from the standard" loading="lazy" />
         </div>
-        <p class="img-cap">&#8593; A sample of the layout templates. Data and content removed under NDA; the structure is the deliverable</p>
+        <p class="img-cap" data-i18n="elx.58">&#8593; A sample of the layout templates. Data and content removed under NDA; the structure is the deliverable</p>
       </div>
     </div>
     <div class="doc-row">
       <div class="doc-block reveal">
-        <h4>Every dashboard shipped with its documentation</h4>
-        <p>Each delivery included a document listing its KPIs, the real data source behind each one, and the reasoning for using it. Anyone reading a number could trace where it came from and why it was there.</p>
+        <h4 data-i18n="elx.59">Every dashboard shipped with its documentation</h4>
+        <p data-i18n="elx.60">Each delivery included a document listing its KPIs, the real data source behind each one, and the reasoning for using it. Anyone reading a number could trace where it came from and why it was there.</p>
       </div>
       <div class="doc-block reveal" style="transition-delay:0.05s">
-        <h4>And with the means to repeat it</h4>
-        <p>I also built the standard documents and processes for replicating that documentation on any new dashboard, so the practice would survive without me writing each one.</p>
+        <h4 data-i18n="elx.61">And with the means to repeat it</h4>
+        <p data-i18n="elx.62">I also built the standard documents and processes for replicating that documentation on any new dashboard, so the practice would survive without me writing each one.</p>
       </div>
     </div>
   </div>
@@ -600,44 +684,44 @@
   <div class="container">
     <div class="split">
       <div>
-        <p class="eyebrow reveal">The process · 5 waves across LATAM</p>
-        <h2 class="split-h reveal">The process that <em>repeated five times.</em></h2>
+        <p class="eyebrow reveal" data-i18n="elx.63">The process · 5 waves across LATAM</p>
+        <h2 class="split-h reveal" data-i18n-html="elx.64">The process that <em>repeated five times.</em></h2>
       </div>
       <div class="process-open">
         <div class="process-open-item reveal">
-          <h3>Business Understanding</h3>
-          <p>Every wave started with structured stakeholder meetings to capture the rules behind the numbers: what each metric means, who owns it, what decision it enables, what threshold triggers action. Skipping this produces consistent dashboards that answer the wrong questions.</p>
+          <h3 data-i18n="elx.65">Business Understanding</h3>
+          <p data-i18n="elx.66">Every wave started with structured stakeholder meetings to capture the rules behind the numbers: what each metric means, who owns it, what decision it enables, what threshold triggers action. Skipping this produces consistent dashboards that answer the wrong questions.</p>
           <div class="process-tags">
-            <span class="tag">Stakeholder interviews</span>
-            <span class="tag">KPI mapping</span>
-            <span class="tag">Business rules</span>
+            <span class="tag" data-i18n="elx.67">Stakeholder interviews</span>
+            <span class="tag" data-i18n="elx.68">KPI mapping</span>
+            <span class="tag" data-i18n="elx.69">Business rules</span>
           </div>
         </div>
         <div class="process-open-item reveal" style="transition-delay:0.05s">
-          <h3>Data Alignment</h3>
-          <p>With the rules captured, I worked with data analysts from Dojo and Electrolux to map what the Data Lake could actually deliver: available fields, required transformations, and gaps between business expectation and data reality. This surfaced quality issues early, before they became rework.</p>
+          <h3 data-i18n="elx.70">Data Alignment</h3>
+          <p data-i18n="elx.71">With the rules captured, I worked with data analysts from Dojo and Electrolux to map what the Data Lake could actually deliver: available fields, required transformations, and gaps between business expectation and data reality. This surfaced quality issues early, before they became rework.</p>
           <div class="process-tags">
-            <span class="tag">Data Lake review</span>
-            <span class="tag">Analyst collaboration</span>
-            <span class="tag">Gap analysis</span>
+            <span class="tag" data-i18n="elx.72">Data Lake review</span>
+            <span class="tag" data-i18n="elx.73">Analyst collaboration</span>
+            <span class="tag" data-i18n="elx.74">Gap analysis</span>
           </div>
         </div>
         <div class="process-open-item reveal" style="transition-delay:0.1s">
-          <h3>Template Design</h3>
-          <p>Instead of building each dashboard from zero, I designed the template system first: grid, color semantics, typography scale, and component patterns. Each dashboard then applied the template to its context. This was the decision that made the system scalable.</p>
+          <h3 data-i18n="elx.75">Template Design</h3>
+          <p data-i18n="elx.76">Instead of building each dashboard from zero, I designed the template system first: grid, color semantics, typography scale, and component patterns. Each dashboard then applied the template to its context. This was the decision that made the system scalable.</p>
           <div class="process-tags">
-            <span class="tag">Visual system</span>
-            <span class="tag">Component patterns</span>
-            <span class="tag">Reusable templates</span>
+            <span class="tag" data-i18n="elx.77">Visual system</span>
+            <span class="tag" data-i18n="elx.78">Component patterns</span>
+            <span class="tag" data-i18n="elx.79">Reusable templates</span>
           </div>
         </div>
         <div class="process-open-item reveal" style="transition-delay:0.15s">
-          <h3>Build and Validate</h3>
-          <p>Dashboards were built in Power BI, connected to the Data Lake, and validated with business and data teams. Validation went beyond visuals: numbers checked against the phase-one business rules, filters tested, and the view held against the original question the stakeholder brought to the first meeting.</p>
+          <h3 data-i18n="elx.80">Build and Validate</h3>
+          <p data-i18n="elx.81">Dashboards were built in Power BI, connected to the Data Lake, and validated with business and data teams. Validation went beyond visuals: numbers checked against the phase-one business rules, filters tested, and the view held against the original question the stakeholder brought to the first meeting.</p>
           <div class="process-tags">
-            <span class="tag">Power BI</span>
-            <span class="tag">Data binding</span>
-            <span class="tag">Stakeholder validation</span>
+            <span class="tag" data-i18n="elx.82">Power BI</span>
+            <span class="tag" data-i18n="elx.83">Data binding</span>
+            <span class="tag" data-i18n="elx.84">Stakeholder validation</span>
           </div>
         </div>
       </div>
@@ -650,10 +734,10 @@
   <div class="container">
     <div class="split" style="margin-bottom: clamp(2rem, 4vw, 3rem);">
       <div>
-        <p class="eyebrow reveal">Deliverables</p>
-        <h2 class="split-h reveal">What stayed after <em>the engagement ended.</em></h2>
+        <p class="eyebrow reveal" data-i18n="elx.85">Deliverables</p>
+        <h2 class="split-h reveal" data-i18n-html="elx.86">What stayed after <em>the engagement ended.</em></h2>
       </div>
-      <p class="reveal" style="font-size:0.95rem; color:var(--text-2); line-height:1.8; transition-delay:0.05s">
+      <p class="reveal" style="font-size:0.95rem; color:var(--text-2); line-height:1.8; transition-delay:0.05s" data-i18n="elx.87">
         The work produced more than dashboards. It produced a system anyone inside Electrolux
         could pick up and continue without needing Dojo in the room.
       </p>
@@ -661,24 +745,24 @@
     <div class="gestor-list">
       <div class="gestor-row reveal">
         <div>
-          <p class="gestor-row-label">Templates</p>
-          <p class="gestor-row-title">Reusable Dashboard Templates</p>
+          <p class="gestor-row-label" data-i18n="elx.88">Templates</p>
+          <p class="gestor-row-title" data-i18n="elx.89">Reusable Dashboard Templates</p>
         </div>
-        <p class="gestor-row-desc">Three base templates, one per context, with defined grids, placeholder components, and annotation layers. Any team could adapt one to a new business area without redesigning the visual logic, and without requesting a designer.</p>
+        <p class="gestor-row-desc" data-i18n="elx.90">Three base templates, one per context, with defined grids, placeholder components, and annotation layers. Any team could adapt one to a new business area without redesigning the visual logic, and without requesting a designer.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
-          <p class="gestor-row-label">Documentation</p>
-          <p class="gestor-row-title">Visualization Manual</p>
+          <p class="gestor-row-label" data-i18n="elx.91">Documentation</p>
+          <p class="gestor-row-title" data-i18n="elx.92">Visualization Manual</p>
         </div>
-        <p class="gestor-row-desc">A guide covering color semantics, chart selection by data type, and layout rules per context, with step-by-step replication instructions. Written for a business analyst with basic Power BI skills, no design support required.</p>
+        <p class="gestor-row-desc" data-i18n="elx.93">A guide covering color semantics, chart selection by data type, and layout rules per context, with step-by-step replication instructions. Written for a business analyst with basic Power BI skills, no design support required.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
-          <p class="gestor-row-label">Rollout</p>
-          <p class="gestor-row-title">5-Wave Deployment</p>
+          <p class="gestor-row-label" data-i18n="elx.94">Rollout</p>
+          <p class="gestor-row-title" data-i18n="elx.95">5-Wave Deployment</p>
         </div>
-        <p class="gestor-row-desc">Each wave covered a different business area across LATAM. Because design and build followed the established pattern, each wave shipped faster than the last; business understanding became the only real variable.</p>
+        <p class="gestor-row-desc" data-i18n="elx.96">Each wave covered a different business area across LATAM. Because design and build followed the established pattern, each wave shipped faster than the last; business understanding became the only real variable.</p>
       </div>
     </div>
   </div>
@@ -687,20 +771,20 @@
 <!-- ═══ SCALE ═══ -->
 <section class="section bg-tinted">
   <div class="container">
-    <p class="eyebrow reveal">The outcome</p>
-    <h2 class="section-heading reveal" style="margin-bottom:0.5rem;">The board made it <em>the global standard.</em></h2>
+    <p class="eyebrow reveal" data-i18n="elx.97">The outcome</p>
+    <h2 class="section-heading reveal" style="margin-bottom:0.5rem;" data-i18n-html="elx.98">The board made it <em>the global standard.</em></h2>
     <div class="editorial-grid">
       <div class="editorial-item reveal">
-        <p class="editorial-title">Five waves, compounding speed</p>
-        <p class="editorial-body">Five deployment waves across LATAM, each covering a different business area. Business understanding was the only variable that reset with each wave: template and build followed the established pattern, so every wave shipped faster than the one before.</p>
+        <p class="editorial-title" data-i18n="elx.99">Five waves, compounding speed</p>
+        <p class="editorial-body" data-i18n="elx.100">Five deployment waves across LATAM, each covering a different business area. Business understanding was the only variable that reset with each wave: template and build followed the established pattern, so every wave shipped faster than the one before.</p>
       </div>
       <div class="editorial-item reveal" style="transition-delay:0.05s">
-        <p class="editorial-title">One presentation changed the scope</p>
-        <p class="editorial-body">Dojo's engagement was LATAM. When the standard was presented to Electrolux's global board, it was approved as the company-wide pattern for data visualization and extended to the group's operations worldwide.</p>
+        <p class="editorial-title" data-i18n="elx.101">One presentation changed the scope</p>
+        <p class="editorial-body" data-i18n="elx.102">Dojo's engagement was LATAM. When the standard was presented to Electrolux's global board, it was approved as the company-wide pattern for data visualization and extended to the group's operations worldwide.</p>
       </div>
       <div class="editorial-item reveal" style="transition-delay:0.1s">
-        <p class="editorial-title">A system, not just three views</p>
-        <p class="editorial-body">The delivery was the executive, operational, and analytical dashboards, and also the system underneath them: scattered spreadsheets replaced by one true source in the Data Lake, and a standard internal analysts extend on their own, long after the consultancy's exit.</p>
+        <p class="editorial-title" data-i18n="elx.103">A system, not just three views</p>
+        <p class="editorial-body" data-i18n="elx.104">The delivery was the executive, operational, and analytical dashboards, and also the system underneath them: scattered spreadsheets replaced by one true source in the Data Lake, and a standard internal analysts extend on their own, long after the consultancy's exit.</p>
       </div>
     </div>
   </div>
@@ -710,7 +794,8 @@
 <div class="reflection-block">
   <div class="container">
     <div class="reflection-inner reveal-blur">
-      <p>The brief described a deliverable. The real problem was a system. Dashboards without a standard would have answered the request and preserved the fragmentation, so I solved for the standard. That is why the work is still in use.</p>
+      <p class="reflection-label" data-i18n="case.takeaway">Takeaway</p>
+      <p class="reflection-statement" data-i18n="elx.105">The brief described a deliverable. The real problem was a system. Dashboards without a standard would have answered the request and preserved the fragmentation, so I solved for the standard. That is why the work is still in use.</p>
     </div>
   </div>
 </div>
@@ -718,27 +803,27 @@
 
 <!-- ═══ MORE WORK ═══ -->
 <div class="case-more">
-  <p class="case-more-label">More work</p>
+  <p class="case-more-label" data-i18n="case.more">More work</p>
   <div class="case-more-grid">
       <a href="../multipedidos/" class="case-more-card reveal">
         <img src="../../assets/projects/pedir-delivery/cover.png" alt="Multipedidos" class="case-more-thumb" loading="lazy" />
         <p class="case-more-name">Multipedidos</p>
-        <p class="case-more-desc">Senior Product Designer at a food platform serving 4M+ orders a month. Design system, consumer product, and AI-assisted workflows.</p>
-        <p class="case-more-meta">Product Design · Food Tech</p>
+        <p class="case-more-desc" data-i18n="case.card.mp.desc">Senior Product Designer at a food platform serving 4M+ orders a month. Design system, consumer product, and AI-assisted workflows.</p>
+        <p class="case-more-meta" data-i18n="case.card.mp.meta">Product Design · Food Tech</p>
       </a>
 
       <a href="../keepeye/" class="case-more-card reveal" style="transition-delay:0.07s">
         <img src="../../assets/projects/keepeye/keepeye-cover.png" alt="Keepeye" class="case-more-thumb" loading="lazy" />
         <p class="case-more-name">Keepeye</p>
-        <p class="case-more-desc">KPI management platform for Dojo Smart Ways. Sole UX Engineer: designed the full product and built production components in Angular.</p>
-        <p class="case-more-meta">UX Engineering · B2B SaaS</p>
+        <p class="case-more-desc" data-i18n="case.card.kp.desc">KPI management platform for Dojo Smart Ways. Sole UX Engineer: designed the full product and built production components in Angular.</p>
+        <p class="case-more-meta" data-i18n="case.card.kp.meta">UX Engineering · B2B SaaS</p>
       </a>
 
       <a href="../included/" class="case-more-card reveal" style="transition-delay:0.14s">
         <img src="../../assets/projects/included-pixelpunk/included-cover.png" alt="IncludED" class="case-more-thumb" loading="lazy" />
         <p class="case-more-name">IncludED</p>
-        <p class="case-more-desc">Co-founder and Lead Product Designer at PixelPunk. Built a SaaS platform for inclusive education from zero to first paying customers.</p>
-        <p class="case-more-meta">Product Design · EdTech SaaS</p>
+        <p class="case-more-desc" data-i18n="case.card.inc.desc">Co-founder and Lead Product Designer at PixelPunk. Built a SaaS platform for inclusive education from zero to first paying customers.</p>
+        <p class="case-more-meta" data-i18n="case.card.inc.meta">Product Design · EdTech SaaS</p>
       </a>
   </div>
 </div>
@@ -753,7 +838,7 @@
   <span class="footer-year">&copy; 2026</span>
 </footer>
 
-<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+<button class="back-to-top" id="backToTop" aria-label="Back to top" data-i18n-attr="aria-label:nav.back_to_top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
 

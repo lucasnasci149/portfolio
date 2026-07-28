@@ -43,9 +43,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=20260728" />
   <script>window._ASSET_ROOT="";</script>
-  <script src="transitions.js" defer></script>
+  <script src="transitions.js?v=20260728" defer></script>
+  <script src="i18n.js?v=20260728" defer></script>
   <noscript><style>body { opacity: 1 !important; }</style></noscript>
 
   <style>
@@ -80,6 +81,45 @@
 
     .site-nav-link { font-size: 0.85rem; color: var(--text-2); transition: color 0.2s; }
     .site-nav-link:hover { color: var(--text-1); }
+
+    /* ── LANGUAGE MENU (dropdown with flags) ── */
+    .lang-menu { position: relative; }
+    .lang-menu-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: none; border: none; cursor: pointer;
+      font-family: var(--font-sans); font-size: 0.85rem; font-weight: 400;
+      color: var(--text-2); padding: 0.25rem 0.35rem; border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .lang-menu-btn:hover { color: var(--text-1); background: var(--bg-2); }
+    .lang-menu-btn[aria-expanded="true"] .contact-caret { transform: rotate(180deg); }
+    .lang-current { display: inline-flex; align-items: center; gap: 0.4rem; }
+    .lang-current[hidden] { display: none; }
+    .flag { width: 18px; height: 13px; border-radius: 2px; display: block; flex-shrink: 0; }
+    .lang-panel {
+      position: absolute; top: calc(100% + 0.75rem); left: 0;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 8px; padding: 0.3rem; min-width: 168px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+      z-index: 300; opacity: 0; transform: translateY(-6px);
+      pointer-events: none; transition: opacity 0.15s, transform 0.15s;
+    }
+    .lang-panel.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .lang-option {
+      display: flex; align-items: center; gap: 0.6rem; width: 100%;
+      background: none; border: none; cursor: pointer; text-align: left;
+      font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-1);
+      padding: 0.6rem 0.75rem; border-radius: 6px; transition: background 0.15s;
+    }
+    .lang-option:hover { background: var(--bg-2); }
+    .lang-option.is-active { background: var(--bg-2); font-weight: 500; }
+    .lang-option.is-active::after {
+      content: '\2713'; margin-left: auto; font-size: 0.8rem; color: var(--accent-text);
+    }
+    .mobile-nav .lang-menu { padding: 1.15rem 0; }
+    .mobile-nav .lang-menu-btn { font-size: 1.05rem; padding: 0.35rem 0.5rem; }
+    .mobile-nav .lang-panel { top: auto; bottom: calc(100% + 0.5rem); }
+    .mobile-nav .flag { width: 22px; height: 16px; }
 
     .contact-menu { position: relative; }
 
@@ -192,7 +232,7 @@
       font-size: 0.95rem;
       color: var(--text-3);
       line-height: 1.7;
-      max-width: 520px;
+      max-width: 600px;
     }
 
     /* ── WORK SECTION ── */
@@ -327,6 +367,7 @@
     @media (max-width: 600px) {
       .site-header { padding: 0 1.25rem; }
       .site-nav-right .site-nav-link, .contact-menu { display: none; }
+      .site-nav-right .lang-menu { display: none; }
       .nav-mobile-btn { display: block; }
       .hero { padding: calc(56px + 2.5rem) 1.25rem 2rem; }
       .work-section { padding: 0 0.5rem; }
@@ -354,38 +395,63 @@
   <a href="/" class="site-name">Lucas Nascimento</a>
 
   <div class="site-nav-right">
+
+    <div class="lang-menu">
+      <button class="lang-menu-btn" id="langBtn" aria-expanded="false" aria-haspopup="true" aria-label="Language" data-i18n-attr="aria-label:nav.lang_label">
+        <span class="lang-current" data-lang-current="en"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#012169"/><path d="M0 0l20 14M20 0L0 14" stroke="#fff" stroke-width="2.8"/><path d="M0 0l20 14M20 0L0 14" stroke="#C8102E" stroke-width="1.5"/><path d="M10 0v14M0 7h20" stroke="#fff" stroke-width="4.6"/><path d="M10 0v14M0 7h20" stroke="#C8102E" stroke-width="2.8"/></svg><span>EN</span></span>
+        <span class="lang-current" data-lang-current="pt" hidden><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#009B3A"/><path d="M10 1.6 18.4 7 10 12.4 1.6 7Z" fill="#FEDF00"/><circle cx="10" cy="7" r="3.05" fill="#002776"/></svg><span>PT</span></span>
+        <span class="contact-caret">&#9662;</span>
+      </button>
+      <div class="lang-panel" id="langPanel" role="menu">
+        <button type="button" class="lang-option" data-lang-btn="en" role="menuitem"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#012169"/><path d="M0 0l20 14M20 0L0 14" stroke="#fff" stroke-width="2.8"/><path d="M0 0l20 14M20 0L0 14" stroke="#C8102E" stroke-width="1.5"/><path d="M10 0v14M0 7h20" stroke="#fff" stroke-width="4.6"/><path d="M10 0v14M0 7h20" stroke="#C8102E" stroke-width="2.8"/></svg><span data-i18n="nav.lang_en">English</span></button>
+        <button type="button" class="lang-option" data-lang-btn="pt" role="menuitem"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#009B3A"/><path d="M10 1.6 18.4 7 10 12.4 1.6 7Z" fill="#FEDF00"/><circle cx="10" cy="7" r="3.05" fill="#002776"/></svg><span data-i18n="nav.lang_pt">Portuguese</span></button>
+      </div>
+    </div>
+
     <a href="about.html" class="site-nav-link" data-i18n="nav.about">About</a>
 
     <div class="contact-menu">
       <button class="contact-menu-btn" id="contactBtn" aria-expanded="false" aria-haspopup="true">
-        Contact <span class="contact-caret">▾</span>
+        <span data-i18n="nav.contact">Contact</span> <span class="contact-caret">▾</span>
       </button>
       <div class="contact-panel" id="contactPanel" role="menu">
         <a href="mailto:lucas.luizdonascimento@gmail.com" class="contact-option" role="menuitem">
           <span class="co-label">Email</span>
-          <span class="co-sub">Send a message</span>
+          <span class="co-sub" data-i18n="nav.email_sub">Send a message</span>
         </a>
         <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener" class="contact-option" role="menuitem">
           <span class="co-label">LinkedIn</span>
-          <span class="co-sub">Open profile</span>
+          <span class="co-sub" data-i18n="nav.linkedin_sub">Open profile</span>
         </a>
         <a href="https://drive.google.com/file/d/1aY000U3QAsV1sFIsoOYqmMnzElnNSoA0/view?usp=sharing" target="_blank" rel="noopener" class="contact-option" role="menuitem">
-          <span class="co-label">Resume</span>
-          <span class="co-sub">Download PDF</span>
+          <span class="co-label" data-i18n="nav.resume">Resume</span>
+          <span class="co-sub" data-i18n="nav.resume_sub">Download PDF</span>
         </a>
       </div>
     </div>
 
-    <button class="nav-mobile-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+
+    <button class="nav-mobile-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" data-i18n-attr="aria-label:nav.menu_open">☰</button>
   </div>
 </header>
 
 <!-- Mobile navigation -->
 <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
-  <a href="about.html">About <span class="mobile-nav-arrow">→</span></a>
+  <a href="about.html"><span data-i18n="nav.about">About</span> <span class="mobile-nav-arrow">→</span></a>
   <a href="mailto:lucas.luizdonascimento@gmail.com">Email <span class="mobile-nav-arrow">→</span></a>
   <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn <span class="mobile-nav-arrow">→</span></a>
-  <a href="https://drive.google.com/file/d/1aY000U3QAsV1sFIsoOYqmMnzElnNSoA0/view?usp=sharing" target="_blank" rel="noopener">Resume PDF <span class="mobile-nav-arrow">→</span></a>
+  <a href="https://drive.google.com/file/d/1aY000U3QAsV1sFIsoOYqmMnzElnNSoA0/view?usp=sharing" target="_blank" rel="noopener"><span data-i18n="nav.resume_pdf">Resume PDF</span> <span class="mobile-nav-arrow">→</span></a>
+  <div class="lang-menu">
+    <button class="lang-menu-btn" id="langBtnM" aria-expanded="false" aria-haspopup="true" aria-label="Language" data-i18n-attr="aria-label:nav.lang_label">
+      <span class="lang-current" data-lang-current="en"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#012169"/><path d="M0 0l20 14M20 0L0 14" stroke="#fff" stroke-width="2.8"/><path d="M0 0l20 14M20 0L0 14" stroke="#C8102E" stroke-width="1.5"/><path d="M10 0v14M0 7h20" stroke="#fff" stroke-width="4.6"/><path d="M10 0v14M0 7h20" stroke="#C8102E" stroke-width="2.8"/></svg><span>EN</span></span>
+      <span class="lang-current" data-lang-current="pt" hidden><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#009B3A"/><path d="M10 1.6 18.4 7 10 12.4 1.6 7Z" fill="#FEDF00"/><circle cx="10" cy="7" r="3.05" fill="#002776"/></svg><span>PT</span></span>
+      <span class="contact-caret">&#9662;</span>
+    </button>
+    <div class="lang-panel" id="langPanelM" role="menu">
+      <button type="button" class="lang-option" data-lang-btn="en" role="menuitem"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#012169"/><path d="M0 0l20 14M20 0L0 14" stroke="#fff" stroke-width="2.8"/><path d="M0 0l20 14M20 0L0 14" stroke="#C8102E" stroke-width="1.5"/><path d="M10 0v14M0 7h20" stroke="#fff" stroke-width="4.6"/><path d="M10 0v14M0 7h20" stroke="#C8102E" stroke-width="2.8"/></svg><span data-i18n="nav.lang_en">English</span></button>
+      <button type="button" class="lang-option" data-lang-btn="pt" role="menuitem"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#009B3A"/><path d="M10 1.6 18.4 7 10 12.4 1.6 7Z" fill="#FEDF00"/><circle cx="10" cy="7" r="3.05" fill="#002776"/></svg><span data-i18n="nav.lang_pt">Portuguese</span></button>
+    </div>
+  </div>
 </nav>
 
 <!-- ── HERO ── -->
@@ -394,7 +460,7 @@
     <span data-i18n-html="hero.headline">11 years turning complex<br />problems into experiences<br />that <em>work.</em></span>
   </h1>
   <p class="hero-sub">
-    <span data-i18n="hero.sub">I'm a Lead Product Designer bridging strategy, UX, and Product Development. From zero-to-one products to enterprise design systems, with Figma at an advanced level and AI integrated throughout the process.</span>
+    <span data-i18n="hero.sub">Lead Product Designer bridging strategy, UX, and code. From zero-to-one products to enterprise design systems, with AI throughout.</span>
   </p>
 </section>
 
@@ -417,7 +483,7 @@
         <div class="work-item-info">
           <div class="work-item-meta">
             <span class="work-item-name">Multipedidos</span>
-            <span class="work-item-type">Product Design · Design System</span>
+            <span class="work-item-type" data-i18n="work.multipedidos.type">Product Design · Design System</span>
           </div>
         </div>
       </div>
@@ -435,7 +501,7 @@
         <div class="work-item-info">
           <div class="work-item-meta">
             <span class="work-item-name">IncludED</span>
-            <span class="work-item-type">Product Design · EdTech SaaS</span>
+            <span class="work-item-type" data-i18n="work.included.type">Product Design · EdTech SaaS</span>
           </div>
         </div>
       </div>
@@ -452,13 +518,13 @@
         <div class="work-item-info">
           <div class="work-item-meta">
             <span class="work-item-name">Keepeye</span>
-            <span class="work-item-type">UX Engineering · B2B SaaS</span>
+            <span class="work-item-type" data-i18n="work.keepeye.type">UX Engineering · B2B SaaS</span>
           </div>
         </div>
       </div>
     </a>
 
-    <!-- Electrolux — wide card (spans 2 columns) -->
+    <!-- Electrolux · wide card (spans 2 columns) -->
     <a href="portfolio/electrolux/" class="work-item">
       <div class="work-item-visual">
         <img
@@ -469,13 +535,13 @@
         <div class="work-item-info">
           <div class="work-item-meta">
             <span class="work-item-name">Electrolux</span>
-            <span class="work-item-type">Design System · Data Viz · Global</span>
+            <span class="work-item-type" data-i18n="work.electrolux.type">Design System · Data Viz · Global</span>
           </div>
         </div>
       </div>
     </a>
 
-    <!-- Archives — placeholder -->
+    <!-- Archives · placeholder -->
     <a href="archives.html" class="work-item">
       <div class="work-item-visual">
         <img
@@ -485,8 +551,8 @@
         />
         <div class="work-item-info">
           <div class="work-item-meta">
-            <span class="work-item-name">Archives</span>
-            <span class="work-item-type">Older work · Various projects</span>
+            <span class="work-item-name" data-i18n="work.archives.name">Archives</span>
+            <span class="work-item-type" data-i18n="work.archives.type">Older work · Various projects</span>
           </div>
         </div>
       </div>
@@ -506,7 +572,7 @@
   <span class="footer-year">© 2026</span>
 </footer>
 
-<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+<button class="back-to-top" id="backToTop" aria-label="Back to top" data-i18n-attr="aria-label:nav.back_to_top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
 
@@ -548,7 +614,9 @@
     menuBtn.addEventListener('click', function () {
       var isOpen = mobileNav.classList.toggle('open');
       menuBtn.setAttribute('aria-expanded', String(isOpen));
-      menuBtn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      menuBtn.setAttribute('aria-label', isOpen
+        ? (window.t ? window.t('nav.menu_close', 'Close menu') : 'Close menu')
+        : (window.t ? window.t('nav.menu_open', 'Open menu') : 'Open menu'));
       menuBtn.textContent = isOpen ? '✕' : '☰';
     });
   })();

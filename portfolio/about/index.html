@@ -13,7 +13,7 @@
     })();
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Lucas Nascimento, Lead Product Designer</title>
+  <title data-i18n="ab.exp.lepper.role">About Lucas Nascimento, Lead Product Designer</title>
   <meta name="description" content="Get to know Lucas Nascimento: Lead Product Designer with 11+ years of experience, also a musician and storyteller. Career, experience, and services." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://lucasdonascimento.com/about" />
@@ -24,9 +24,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="../../style.css?v=20260728" />
   <script>window._ASSET_ROOT="../../";</script>
-  <script src="../../transitions.js" defer></script>
+  <script src="../../transitions.js?v=20260728" defer></script>
+  <script src="../../i18n.js?v=20260728" defer></script>
   <noscript><style>body { opacity: 1 !important; }</style></noscript>
 
   <style>
@@ -239,6 +240,45 @@
       .story-photo-group { grid-template-columns: 1fr; }
       .story-photo-group .story-photo:nth-child(2n) { margin-top: 0; }
     }
+    /* ── LANGUAGE MENU (dropdown with flags) ── */
+    .lang-menu { position: relative; }
+    .lang-menu-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: none; border: none; cursor: pointer;
+      font-family: var(--font-sans); font-size: 0.85rem; font-weight: 400;
+      color: var(--text-2); padding: 0.25rem 0.35rem; border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .lang-menu-btn:hover { color: var(--text-1); background: var(--bg-2); }
+    .lang-menu-btn[aria-expanded="true"] .contact-caret { transform: rotate(180deg); }
+    .lang-current { display: inline-flex; align-items: center; gap: 0.4rem; }
+    .lang-current[hidden] { display: none; }
+    .flag { width: 18px; height: 13px; border-radius: 2px; display: block; flex-shrink: 0; }
+    .lang-panel {
+      position: absolute; top: calc(100% + 0.75rem); left: 0;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 8px; padding: 0.3rem; min-width: 168px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+      z-index: 300; opacity: 0; transform: translateY(-6px);
+      pointer-events: none; transition: opacity 0.15s, transform 0.15s;
+    }
+    .lang-panel.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .lang-option {
+      display: flex; align-items: center; gap: 0.6rem; width: 100%;
+      background: none; border: none; cursor: pointer; text-align: left;
+      font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-1);
+      padding: 0.6rem 0.75rem; border-radius: 6px; transition: background 0.15s;
+    }
+    .lang-option:hover { background: var(--bg-2); }
+    .lang-option.is-active { background: var(--bg-2); font-weight: 500; }
+    .lang-option.is-active::after {
+      content: '\2713'; margin-left: auto; font-size: 0.8rem; color: var(--accent-text);
+    }
+    .mobile-nav .lang-menu { padding: 1.15rem 0; }
+    .mobile-nav .lang-menu-btn { font-size: 1.05rem; padding: 0.35rem 0.5rem; }
+    .mobile-nav .lang-panel { top: auto; bottom: calc(100% + 0.5rem); }
+    .mobile-nav .flag { width: 22px; height: 16px; }
+
   </style>
 </head>
 <body>
@@ -246,20 +286,32 @@
 <header class="site-header" id="siteHeader">
   <a href="../../" class="site-name">Lucas Nascimento</a>
   <div class="site-nav-right">
+    <div class="lang-menu">
+      <button class="lang-menu-btn" id="langBtn" aria-expanded="false" aria-haspopup="true" aria-label="Language" data-i18n-attr="aria-label:nav.lang_label">
+        <span class="lang-current" data-lang-current="en"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#012169"/><path d="M0 0l20 14M20 0L0 14" stroke="#fff" stroke-width="2.8"/><path d="M0 0l20 14M20 0L0 14" stroke="#C8102E" stroke-width="1.5"/><path d="M10 0v14M0 7h20" stroke="#fff" stroke-width="4.6"/><path d="M10 0v14M0 7h20" stroke="#C8102E" stroke-width="2.8"/></svg><span>EN</span></span>
+        <span class="lang-current" data-lang-current="pt" hidden><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#009B3A"/><path d="M10 1.6 18.4 7 10 12.4 1.6 7Z" fill="#FEDF00"/><circle cx="10" cy="7" r="3.05" fill="#002776"/></svg><span>PT</span></span>
+        <span class="contact-caret">&#9662;</span>
+      </button>
+      <div class="lang-panel" id="langPanel" role="menu">
+        <button type="button" class="lang-option" data-lang-btn="en" role="menuitem"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#012169"/><path d="M0 0l20 14M20 0L0 14" stroke="#fff" stroke-width="2.8"/><path d="M0 0l20 14M20 0L0 14" stroke="#C8102E" stroke-width="1.5"/><path d="M10 0v14M0 7h20" stroke="#fff" stroke-width="4.6"/><path d="M10 0v14M0 7h20" stroke="#C8102E" stroke-width="2.8"/></svg><span data-i18n="nav.lang_en">English</span></button>
+        <button type="button" class="lang-option" data-lang-btn="pt" role="menuitem"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#009B3A"/><path d="M10 1.6 18.4 7 10 12.4 1.6 7Z" fill="#FEDF00"/><circle cx="10" cy="7" r="3.05" fill="#002776"/></svg><span data-i18n="nav.lang_pt">Portuguese</span></button>
+      </div>
+    </div>
+
     <a href="../about/" class="site-nav-link" data-i18n="nav.about">About</a>
     <div class="contact-menu">
       <button class="contact-menu-btn" id="contactBtn" aria-expanded="false" aria-haspopup="true">
-        Contact <span class="contact-caret">&#9662;</span>
+        <span data-i18n="nav.contact">Contact</span> <span class="contact-caret">&#9662;</span>
       </button>
       <div class="contact-panel" id="contactPanel" role="menu">
         <a href="mailto:lucas.luizdonascimento@gmail.com" class="contact-option" role="menuitem">
-          <span class="co-label">Email</span><span class="co-sub">Send a message</span>
+          <span class="co-label">Email</span><span class="co-sub" data-i18n="nav.email_sub">Send a message</span>
         </a>
         <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener" class="contact-option" role="menuitem">
-          <span class="co-label">LinkedIn</span><span class="co-sub">Open profile</span>
+          <span class="co-label">LinkedIn</span><span class="co-sub" data-i18n="nav.linkedin_sub">Open profile</span>
         </a>
         <a href="https://drive.google.com/file/d/1aY000U3QAsV1sFIsoOYqmMnzElnNSoA0/view?usp=sharing" target="_blank" rel="noopener" class="contact-option" role="menuitem">
-          <span class="co-label">Resume</span><span class="co-sub">Download PDF</span>
+          <span class="co-label" data-i18n="nav.resume">Resume</span><span class="co-sub" data-i18n="nav.resume_sub">Download PDF</span>
         </a>
       </div>
     </div>
@@ -267,20 +319,31 @@
   </div>
 </header>
 <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
-  <a href="../about/">About <span class="mobile-nav-arrow">&#8594;</span></a>
+  <a href="../about/"><span data-i18n="nav.about">About</span> <span class="mobile-nav-arrow">&#8594;</span></a>
   <a href="mailto:lucas.luizdonascimento@gmail.com">Email <span class="mobile-nav-arrow">&#8594;</span></a>
   <a href="https://www.linkedin.com/in/lucasluiznascimento/" target="_blank" rel="noopener">LinkedIn <span class="mobile-nav-arrow">&#8594;</span></a>
-  <a href="https://drive.google.com/file/d/1aY000U3QAsV1sFIsoOYqmMnzElnNSoA0/view?usp=sharing" target="_blank" rel="noopener">Resume PDF <span class="mobile-nav-arrow">&#8594;</span></a>
+  <a href="https://drive.google.com/file/d/1aY000U3QAsV1sFIsoOYqmMnzElnNSoA0/view?usp=sharing" target="_blank" rel="noopener"><span data-i18n="nav.resume_pdf">Resume PDF</span> <span class="mobile-nav-arrow">&#8594;</span></a>
+  <div class="lang-menu">
+    <button class="lang-menu-btn" id="langBtnM" aria-expanded="false" aria-haspopup="true" aria-label="Language" data-i18n-attr="aria-label:nav.lang_label">
+      <span class="lang-current" data-lang-current="en"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#012169"/><path d="M0 0l20 14M20 0L0 14" stroke="#fff" stroke-width="2.8"/><path d="M0 0l20 14M20 0L0 14" stroke="#C8102E" stroke-width="1.5"/><path d="M10 0v14M0 7h20" stroke="#fff" stroke-width="4.6"/><path d="M10 0v14M0 7h20" stroke="#C8102E" stroke-width="2.8"/></svg><span>EN</span></span>
+      <span class="lang-current" data-lang-current="pt" hidden><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#009B3A"/><path d="M10 1.6 18.4 7 10 12.4 1.6 7Z" fill="#FEDF00"/><circle cx="10" cy="7" r="3.05" fill="#002776"/></svg><span>PT</span></span>
+      <span class="contact-caret">&#9662;</span>
+    </button>
+    <div class="lang-panel" id="langPanelM" role="menu">
+      <button type="button" class="lang-option" data-lang-btn="en" role="menuitem"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#012169"/><path d="M0 0l20 14M20 0L0 14" stroke="#fff" stroke-width="2.8"/><path d="M0 0l20 14M20 0L0 14" stroke="#C8102E" stroke-width="1.5"/><path d="M10 0v14M0 7h20" stroke="#fff" stroke-width="4.6"/><path d="M10 0v14M0 7h20" stroke="#C8102E" stroke-width="2.8"/></svg><span data-i18n="nav.lang_en">English</span></button>
+      <button type="button" class="lang-option" data-lang-btn="pt" role="menuitem"><svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#009B3A"/><path d="M10 1.6 18.4 7 10 12.4 1.6 7Z" fill="#FEDF00"/><circle cx="10" cy="7" r="3.05" fill="#002776"/></svg><span data-i18n="nav.lang_pt">Portuguese</span></button>
+    </div>
+  </div>
 </nav>
 
 <!-- ═══ ABOUT HERO ═══ -->
 <section id="about-hero" class="section" aria-label="About Lucas">
   <div class="container">
     <h1 class="about-hero-name reveal">Lucas Nascimento</h1>
-    <p class="about-hero-tagline reveal" style="transition-delay:0.1s">
+    <p class="about-hero-tagline reveal" style="transition-delay:0.1s" data-i18n-html="ab.hero.role">
       <strong>Lead Product Designer</strong> based in Joinville, Brazil, also a musician and always a storyteller.
     </p>
-    <p class="about-hero-text reveal" style="transition-delay:0.15s">
+    <p class="about-hero-text reveal" style="transition-delay:0.15s" data-i18n="ab.hero.sub">
       I design digital products end to end, from research and strategy to interface and
       front-end code. Outside of product work, music and storytelling are quiet habits that
       shape how I think about rhythm, structure, and communication in design.
@@ -297,25 +360,25 @@
 <section class="section bio-split" aria-label="More about Lucas">
   <div class="container">
     <div class="bio-split-grid">
-      <h2 class="bio-split-heading reveal">
-        Brazilian. Product designer. <span class="dim">Builder, musician &amp; storyteller.</span>
+      <h2 class="bio-split-heading reveal" data-i18n-html="ab.intro.title">
+        Brazilian. Product designer. <span class="dim" data-i18n="ab.intro.subtitle">Builder, musician &amp; storyteller.</span>
       </h2>
       <div class="bio-split-text reveal" style="transition-delay:0.1s">
-        <h3>...a bit more about me</h3>
-        <p class="about-text">
+        <h3 data-i18n="ab.intro.label">...a bit more about me</h3>
+        <p class="about-text" data-i18n-html="ab.intro.p1">
           I'm a Product Designer with <strong>11+ years</strong> across multiple disciplines:
           product design, design systems, data visualization, branding, front-end development,
           and audiovisual. That breadth isn't scattered: it's what lets me move between
           strategy and execution without losing the thread of either.
         </p>
-        <p class="about-text">
+        <p class="about-text" data-i18n-html="ab.intro.p2">
           Most of my career has been spent entering companies with little to no design structure
           and leaving them with <strong>processes, systems, and culture</strong> that continue
           long after. I've built three product design sectors from scratch, created design systems
           adopted globally, and co-founded a software company whose first product is already
           running in schools across Brazil.
         </p>
-        <p class="about-text">
+        <p class="about-text" data-i18n-html="ab.intro.p3">
           I believe design is fundamentally about <strong>storytelling</strong>: whether it's
           a product narrative, a dashboard that makes millions of data points readable, or a
           visual system that gives distributed teams a shared language. That's the same thread
@@ -335,19 +398,19 @@
       <div class="story-photo-group">
         <div class="story-photo reveal">
           <img src="../../assets/about-story/01.jpg" alt="" loading="lazy" />
-          <div class="story-photo-caption"><p>Professional travel planner. Execution rate: roughly 1 in 10.</p></div>
+          <div class="story-photo-caption"><p data-i18n="ab.hob.travel">Professional travel planner. Execution rate: roughly 1 in 10.</p></div>
         </div>
         <div class="story-photo reveal" style="transition-delay:0.05s">
           <img src="../../assets/about-story/02.jpg" alt="" loading="lazy" />
-          <div class="story-photo-caption"><p>Maker of what is very likely the best Carbonara on my street. Uncontested.</p></div>
+          <div class="story-photo-caption"><p data-i18n="ab.hob.food">Maker of what is very likely the best Carbonara on my street. Uncontested.</p></div>
         </div>
         <div class="story-photo reveal" style="transition-delay:0.1s">
           <img src="../../assets/about-story/03.jpg" alt="" loading="lazy" />
-          <div class="story-photo-caption"><p>Games taught me storytelling before I knew that's what I was learning.</p></div>
+          <div class="story-photo-caption"><p data-i18n="ab.hob.games">Games taught me storytelling before I knew that's what I was learning.</p></div>
         </div>
         <div class="story-photo reveal" style="transition-delay:0.15s">
           <img src="../../assets/about-story/04.jpg" alt="" loading="lazy" />
-          <div class="story-photo-caption"><p>Commonly spotted behind a camera, quietly documenting things nobody asked me to.</p></div>
+          <div class="story-photo-caption"><p data-i18n="ab.hob.camera">Commonly spotted behind a camera, quietly documenting things nobody asked me to.</p></div>
         </div>
       </div>
 
@@ -355,19 +418,19 @@
       <div class="story-photo-group">
         <div class="story-photo reveal">
           <img src="../../assets/about-story/05.jpg" alt="" loading="lazy" />
-          <div class="story-photo-caption"><p>If I'm not home, there's a good chance I'm at a festival somewhere.</p></div>
+          <div class="story-photo-caption"><p data-i18n="ab.hob.festival">If I'm not home, there's a good chance I'm at a festival somewhere.</p></div>
         </div>
         <div class="story-photo reveal" style="transition-delay:0.05s">
           <img src="../../assets/about-story/06.jpg" alt="" loading="lazy" />
-          <div class="story-photo-caption"><p>I've been a musician for more than half my life. It started as a habit and never stopped.</p></div>
+          <div class="story-photo-caption"><p data-i18n="ab.hob.music">I've been a musician for more than half my life. It started as a habit and never stopped.</p></div>
         </div>
         <div class="story-photo reveal" style="transition-delay:0.1s">
           <img src="../../assets/about-story/07.jpeg" alt="" loading="lazy" />
-          <div class="story-photo-caption"><p>Active part of the local music and audiovisual community, for better or worse.</p></div>
+          <div class="story-photo-caption"><p data-i18n="ab.hob.community">Active part of the local music and audiovisual community, for better or worse.</p></div>
         </div>
         <div class="story-photo reveal" style="transition-delay:0.15s">
           <img src="../../assets/about-story/08.jpg" alt="" loading="lazy" />
-          <div class="story-photo-caption"><p>Always chasing ways to collapse the line between audio and image into something new.</p></div>
+          <div class="story-photo-caption"><p data-i18n="ab.hob.audio">Always chasing ways to collapse the line between audio and image into something new.</p></div>
         </div>
       </div>
 
@@ -375,19 +438,19 @@
       <div class="story-photo-group">
         <div class="story-photo reveal">
           <img src="../../assets/about-story/09.jpg" alt="" loading="lazy" />
-          <div class="story-photo-caption"><p>Always looking for another angle in the ordinary, one frame at a time.</p></div>
+          <div class="story-photo-caption"><p data-i18n="ab.hob.frame">Always looking for another angle in the ordinary, one frame at a time.</p></div>
         </div>
         <div class="story-photo reveal" style="transition-delay:0.05s">
           <img src="../../assets/about-story/10.JPG" alt="" loading="lazy" />
-          <div class="story-photo-caption"><p>Composing, writing, and spending an unreasonable amount of time thinking about time.</p></div>
+          <div class="story-photo-caption"><p data-i18n="ab.hob.compose">Composing, writing, and spending an unreasonable amount of time thinking about time.</p></div>
         </div>
         <div class="story-photo reveal" style="transition-delay:0.1s">
           <img src="../../assets/about-story/11.jpeg" alt="" loading="lazy" />
-          <div class="story-photo-caption"><p>Architecture fan. The kind who walks slowly past buildings other people rush by.</p></div>
+          <div class="story-photo-caption"><p data-i18n="ab.hob.arch">Architecture fan. The kind who walks slowly past buildings other people rush by.</p></div>
         </div>
         <div class="story-photo reveal" style="transition-delay:0.15s">
           <img src="../../assets/about-story/12.jpg" alt="" loading="lazy" />
-          <div class="story-photo-caption"><p>Genuinely obsessed with medieval culture, history, and the aesthetics of that whole era.</p></div>
+          <div class="story-photo-caption"><p data-i18n="ab.hob.medieval">Genuinely obsessed with medieval culture, history, and the aesthetics of that whole era.</p></div>
         </div>
       </div>
     </div>
@@ -395,8 +458,8 @@
     <div class="story-texts">
       <div class="story-text-block">
         <div class="story-text">
-          <h2 class="im-a-heading reveal">I'm a <em>designer.</em></h2>
-          <p class="im-a-intro reveal" style="transition-delay:0.1s">
+          <h2 class="im-a-heading reveal" data-i18n-html="ab.imA.designer">I'm a <em>designer.</em></h2>
+          <p class="im-a-intro reveal" style="transition-delay:0.1s" data-i18n-html="ab.facet.designer">
             Design is where I spend most of my hours, and most of my curiosity. I care about
             <strong>systems over screens</strong>: the logic, tokens, and patterns that make a
             product feel coherent at scale. I'm equally comfortable leading discovery, drawing the
@@ -407,8 +470,8 @@
 
       <div class="story-text-block">
         <div class="story-text">
-          <h2 class="im-a-heading reveal">I'm a <em>musician.</em></h2>
-          <p class="im-a-intro reveal" style="transition-delay:0.1s">
+          <h2 class="im-a-heading reveal" data-i18n-html="ab.imA.musician">I'm a <em>musician.</em></h2>
+          <p class="im-a-intro reveal" style="transition-delay:0.1s" data-i18n-html="ab.facet.musician">
             Music has been part of my life for as long as design has. There's something about
             practicing an instrument, the patience, the repetition, the small adjustments, that
             maps directly onto how I approach design problems: iterate quietly until it feels right.
@@ -418,8 +481,8 @@
 
       <div class="story-text-block">
         <div class="story-text">
-          <h2 class="im-a-heading reveal">I'm a <em>storyteller.</em></h2>
-          <p class="im-a-intro reveal" style="transition-delay:0.1s">
+          <h2 class="im-a-heading reveal" data-i18n-html="ab.imA.storyteller">I'm a <em>storyteller.</em></h2>
+          <p class="im-a-intro reveal" style="transition-delay:0.1s" data-i18n-html="ab.facet.storyteller">
             Whether it's a product, a song, a photograph, or a conversation, I'm always looking for the story underneath. Storytelling isn't a skill I use at work. It's how I move through the world and how I connect with the people in it.
           </p>
         </div>
@@ -435,40 +498,40 @@
 
     <div class="story-mobile-block">
       <div class="story-text">
-        <h2 class="im-a-heading">I'm a <em>designer.</em></h2>
-        <p class="im-a-intro">Design is where I spend most of my hours, and most of my curiosity. I care about <strong>systems over screens</strong>: the logic, tokens, and patterns that make a product feel coherent at scale. I'm equally comfortable leading discovery, drawing the details, and writing the front-end code that brings a component to life.</p>
+        <h2 class="im-a-heading" data-i18n-html="ab.imA.designer">I'm a <em>designer.</em></h2>
+        <p class="im-a-intro" data-i18n-html="ab.facet.designer">Design is where I spend most of my hours, and most of my curiosity. I care about <strong>systems over screens</strong>: the logic, tokens, and patterns that make a product feel coherent at scale. I'm equally comfortable leading discovery, drawing the details, and writing the front-end code that brings a component to life.</p>
       </div>
       <div class="story-photo-group">
-        <div class="story-photo"><img src="../../assets/about-story/01.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>Professional travel planner. Execution rate: roughly 1 in 10.</p></div></div>
-        <div class="story-photo"><img src="../../assets/about-story/02.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>Maker of what is very likely the best Carbonara on my street. Uncontested.</p></div></div>
-        <div class="story-photo"><img src="../../assets/about-story/03.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>Games taught me storytelling before I knew that's what I was learning.</p></div></div>
-        <div class="story-photo"><img src="../../assets/about-story/04.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>Commonly spotted behind a camera, quietly documenting things nobody asked me to.</p></div></div>
+        <div class="story-photo"><img src="../../assets/about-story/01.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p data-i18n="ab.hob.travel">Professional travel planner. Execution rate: roughly 1 in 10.</p></div></div>
+        <div class="story-photo"><img src="../../assets/about-story/02.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p data-i18n="ab.hob.food">Maker of what is very likely the best Carbonara on my street. Uncontested.</p></div></div>
+        <div class="story-photo"><img src="../../assets/about-story/03.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p data-i18n="ab.hob.games">Games taught me storytelling before I knew that's what I was learning.</p></div></div>
+        <div class="story-photo"><img src="../../assets/about-story/04.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p data-i18n="ab.hob.camera">Commonly spotted behind a camera, quietly documenting things nobody asked me to.</p></div></div>
       </div>
     </div>
 
     <div class="story-mobile-block">
       <div class="story-text">
-        <h2 class="im-a-heading">I'm a <em>musician.</em></h2>
-        <p class="im-a-intro">Music has been part of my life for as long as design has. There's something about practicing an instrument, the patience, the repetition, the small adjustments, that maps directly onto how I approach design problems: iterate quietly until it feels right.</p>
+        <h2 class="im-a-heading" data-i18n-html="ab.imA.musician">I'm a <em>musician.</em></h2>
+        <p class="im-a-intro" data-i18n-html="ab.facet.musician">Music has been part of my life for as long as design has. There's something about practicing an instrument, the patience, the repetition, the small adjustments, that maps directly onto how I approach design problems: iterate quietly until it feels right.</p>
       </div>
       <div class="story-photo-group">
-        <div class="story-photo"><img src="../../assets/about-story/05.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>If I'm not home, there's a good chance I'm at a festival somewhere.</p></div></div>
-        <div class="story-photo"><img src="../../assets/about-story/06.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>I've been a musician for more than half my life. It started as a habit and never stopped.</p></div></div>
-        <div class="story-photo"><img src="../../assets/about-story/07.jpeg" alt="" loading="lazy"><div class="story-photo-caption"><p>Active part of the local music and audiovisual community, for better or worse.</p></div></div>
-        <div class="story-photo"><img src="../../assets/about-story/08.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>Always chasing ways to collapse the line between audio and image into something new.</p></div></div>
+        <div class="story-photo"><img src="../../assets/about-story/05.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p data-i18n="ab.hob.festival">If I'm not home, there's a good chance I'm at a festival somewhere.</p></div></div>
+        <div class="story-photo"><img src="../../assets/about-story/06.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p data-i18n="ab.hob.music">I've been a musician for more than half my life. It started as a habit and never stopped.</p></div></div>
+        <div class="story-photo"><img src="../../assets/about-story/07.jpeg" alt="" loading="lazy"><div class="story-photo-caption"><p data-i18n="ab.hob.community">Active part of the local music and audiovisual community, for better or worse.</p></div></div>
+        <div class="story-photo"><img src="../../assets/about-story/08.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p data-i18n="ab.hob.audio">Always chasing ways to collapse the line between audio and image into something new.</p></div></div>
       </div>
     </div>
 
     <div class="story-mobile-block">
       <div class="story-text">
-        <h2 class="im-a-heading">I'm a <em>storyteller.</em></h2>
-        <p class="im-a-intro">Whether it's a product, a song, a photograph, or a conversation, I'm always looking for the story underneath. Storytelling isn't a skill I use at work. It's how I move through the world and how I connect with the people in it.</p>
+        <h2 class="im-a-heading" data-i18n-html="ab.imA.storyteller">I'm a <em>storyteller.</em></h2>
+        <p class="im-a-intro" data-i18n-html="ab.facet.storyteller">Whether it's a product, a song, a photograph, or a conversation, I'm always looking for the story underneath. Storytelling isn't a skill I use at work. It's how I move through the world and how I connect with the people in it.</p>
       </div>
       <div class="story-photo-group">
-        <div class="story-photo"><img src="../../assets/about-story/09.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>Always looking for another angle in the ordinary, one frame at a time.</p></div></div>
-        <div class="story-photo"><img src="../../assets/about-story/10.JPG" alt="" loading="lazy"><div class="story-photo-caption"><p>Composing, writing, and spending an unreasonable amount of time thinking about time.</p></div></div>
-        <div class="story-photo"><img src="../../assets/about-story/11.jpeg" alt="" loading="lazy"><div class="story-photo-caption"><p>Architecture fan. The kind who walks slowly past buildings other people rush by.</p></div></div>
-        <div class="story-photo"><img src="../../assets/about-story/12.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p>Genuinely obsessed with medieval culture, history, and the aesthetics of that whole era.</p></div></div>
+        <div class="story-photo"><img src="../../assets/about-story/09.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p data-i18n="ab.hob.frame">Always looking for another angle in the ordinary, one frame at a time.</p></div></div>
+        <div class="story-photo"><img src="../../assets/about-story/10.JPG" alt="" loading="lazy"><div class="story-photo-caption"><p data-i18n="ab.hob.compose">Composing, writing, and spending an unreasonable amount of time thinking about time.</p></div></div>
+        <div class="story-photo"><img src="../../assets/about-story/11.jpeg" alt="" loading="lazy"><div class="story-photo-caption"><p data-i18n="ab.hob.arch">Architecture fan. The kind who walks slowly past buildings other people rush by.</p></div></div>
+        <div class="story-photo"><img src="../../assets/about-story/12.jpg" alt="" loading="lazy"><div class="story-photo-caption"><p data-i18n="ab.hob.medieval">Genuinely obsessed with medieval culture, history, and the aesthetics of that whole era.</p></div></div>
       </div>
     </div>
 
@@ -477,27 +540,27 @@
 <!-- ═══ EXPERIENCE ═══ -->
 <section id="experience" class="section" aria-label="Work Experience">
   <div class="container">
-    <p class="section-label">Experience</p>
-    <h2 class="section-heading">Where I've built,<br />led, and shipped.</h2>
+    <p class="section-label" data-i18n="ab.exp.label">Experience</p>
+    <h2 class="section-heading" data-i18n-html="ab.exp.title">Where I've built,<br />led, and shipped.</h2>
     <div class="experience-list">
 
       <div class="exp-accordion reveal">
         <button class="exp-trigger" aria-expanded="false">
           <div class="exp-trigger-left">
-            <span class="exp-role-text">Co-founder &amp; Lead Product Designer <span class="exp-current"><span aria-hidden="true">●</span> Current</span></span>
+            <span class="exp-role-text" data-i18n-html="ab.exp.pixelpunk.role">Co-founder &amp; Lead Product Designer <span class="exp-current"><span aria-hidden="true">●</span> Current</span></span>
             <span class="exp-company-text">PixelPunk</span>
           </div>
-          <span class="exp-period-text">Oct 2024 – Present</span>
+          <span class="exp-period-text" data-i18n="ab.exp.pixelpunk.date">Oct 2024 – Present</span>
           <span class="exp-chevron" aria-hidden="true">▾</span>
         </button>
         <div class="exp-body" role="region">
           <div class="exp-body-inner">
-            <p class="exp-description">Co-founded a software company with two partners and built the entire design ecosystem from scratch. Led the end-to-end design of IncludED, a BNCC-compliant SaaS for creating and managing Individualized Education Plans (PEIs) for inclusion students. Built in close collaboration with a neuropsychologist and a pedagogical consultant with 20+ combined years inside schools. Already deployed in schools across Brazil.</p>
+            <p class="exp-description" data-i18n="ab.exp.pixelpunk.desc">Co-founded a software company with two partners and built the entire design ecosystem from scratch. Led the end-to-end design of IncludED, a BNCC-compliant SaaS for creating and managing Individualized Education Plans (PEIs) for inclusion students. Built in close collaboration with a neuropsychologist and a pedagogical consultant with 20+ combined years inside schools. Already deployed in schools across Brazil.</p>
             <ul class="exp-bullets">
-              <li>Built the Design System first, then all product screens, ensuring consistency from day one</li>
-              <li>Designed all UX flows with accessibility as a core requirement, not a feature</li>
-              <li>Created full branding for IncludED: logo, visual identity, and support materials</li>
-              <li>Used AI tools throughout the process for faster prototyping and spec generation</li>
+              <li data-i18n="ab.b1">Built the Design System first, then all product screens, ensuring consistency from day one</li>
+              <li data-i18n="ab.b2">Designed all UX flows with accessibility as a core requirement, not a feature</li>
+              <li data-i18n="ab.b3">Created full branding for IncludED: logo, visual identity, and support materials</li>
+              <li data-i18n="ab.b4">Used AI tools throughout the process for faster prototyping and spec generation</li>
             </ul>
           </div>
         </div>
@@ -506,22 +569,22 @@
       <div class="exp-accordion reveal">
         <button class="exp-trigger" aria-expanded="false">
           <div class="exp-trigger-left">
-            <span class="exp-role-text">Senior Product Designer</span>
+            <span class="exp-role-text" data-i18n="ab.exp.multi.role">Senior Product Designer</span>
             <span class="exp-company-text">Multipedidos</span>
           </div>
-          <span class="exp-period-text">Jan 2024 – Jun 2026</span>
+          <span class="exp-period-text" data-i18n="ab.exp.multi.date">Jan 2024 – Jun 2026</span>
           <span class="exp-chevron" aria-hidden="true">▾</span>
         </button>
         <div class="exp-body" role="region">
           <div class="exp-body-inner">
-            <p class="exp-description">Sole designer at a food-tech company with two core products: Gestor de Pedidos (restaurant management) and Pedir.Delivery (online menu with 10M+ monthly accesses and 4M+ monthly orders). Entered as freelancer via Estúdio 149 in January 2024, became fixed contractor in June 2024. Built the product design sector from scratch and deeply integrated design into the engineering workflow.</p>
+            <p class="exp-description" data-i18n="ab.exp.multi.desc">Sole designer at a food-tech company with two core products: Gestor de Pedidos (restaurant management) and Pedir.Delivery (online menu with 10M+ monthly accesses and 4M+ monthly orders). Entered as freelancer via Estúdio 149 in January 2024, became fixed contractor in June 2024. Built the product design sector from scratch and deeply integrated design into the engineering workflow.</p>
             <ul class="exp-bullets">
-              <li>Created the company Design System: 40+ demands, 1,000+ responsive screens for mobile and web</li>
-              <li>Reduced prototype delivery time from 5 to 2 days (60% improvement) using AI-assisted prototyping with Claude + MCP + design system tokens</li>
-              <li>Implemented Design Critiques involving devs, QA, CX, commercial, and directors for cross-functional alignment</li>
-              <li>Added usability testing and external client critiques to the design process</li>
-              <li>Introduced A/B testing, SEQ scoring, and OKR-based product decisions</li>
-              <li>Implemented Figma DEV Mode for all developers, enabling high-fidelity implementation directly from design tokens</li>
+              <li data-i18n="ab.b5">Created the company Design System: 40+ demands, 1,000+ responsive screens for mobile and web</li>
+              <li data-i18n="ab.b6">Reduced prototype delivery time from 5 to 2 days (60% improvement) using AI-assisted prototyping with Claude + MCP + design system tokens</li>
+              <li data-i18n="ab.b7">Implemented Design Critiques involving devs, QA, CX, commercial, and directors for cross-functional alignment</li>
+              <li data-i18n="ab.b8">Added usability testing and external client critiques to the design process</li>
+              <li data-i18n="ab.b9">Introduced A/B testing, SEQ scoring, and OKR-based product decisions</li>
+              <li data-i18n="ab.b10">Implemented Figma DEV Mode for all developers, enabling high-fidelity implementation directly from design tokens</li>
             </ul>
           </div>
         </div>
@@ -530,22 +593,22 @@
       <div class="exp-accordion reveal">
         <button class="exp-trigger" aria-expanded="false">
           <div class="exp-trigger-left">
-            <span class="exp-role-text">UX Engineer</span>
+            <span class="exp-role-text" data-i18n="ab.exp.dojo.role">UX Engineer</span>
             <span class="exp-company-text">Dojo Smart Ways</span>
           </div>
-          <span class="exp-period-text">Jun 2022 – Dec 2023</span>
+          <span class="exp-period-text" data-i18n="ab.exp.dojo.date">Jun 2022 – Dec 2023</span>
           <span class="exp-chevron" aria-hidden="true">▾</span>
         </button>
         <div class="exp-body" role="region">
           <div class="exp-body-inner">
-            <p class="exp-description">Joined as the first and lead product designer, building the product design sector from scratch. Led the design of Keepeye (KPI management SaaS) in a small team: two developers and a front-end developer transitioning into UX/UI. Led all design layers; collaborated on front-end implementation (Angular + Tailwind CSS) alongside the team. Also covered data visualization for global enterprise clients including Electrolux and Nidec.</p>
+            <p class="exp-description" data-i18n="ab.exp.dojo.desc">Joined as the first and lead product designer, building the product design sector from scratch. Led the design of Keepeye (KPI management SaaS) in a small team: two developers and a front-end developer transitioning into UX/UI. Led all design layers; collaborated on front-end implementation (Angular + Tailwind CSS) alongside the team. Also covered data visualization for global enterprise clients including Electrolux and Nidec.</p>
             <ul class="exp-bullets">
-              <li>Led design of Keepeye end-to-end: UX research, IA, UI, component library, and handoff, achieving 8.8/10 satisfaction in professional testing. Collaborated on Angular + Tailwind CSS front-end implementation alongside the team</li>
-              <li>Created the visual identity and dashboard construction standards for Electrolux, adopted first in LATAM then approved by the global board and rolled out company-wide</li>
-              <li>Created the branding and visual identity for Keepeye: logo, brand guidelines, and product visual language</li>
-              <li>Developed dashboard standards for Nidec across LATAM; later contracted directly by Nidec Motor (USA) as an independent consultant</li>
-              <li>Learned Power BI in one week; contributing to live client projects by week two</li>
-              <li>Ran Business Understanding sessions with Data Analysts and Data Engineers to define data rules, KPIs, and visualization strategies</li>
+              <li data-i18n="ab.b11">Led design of Keepeye end-to-end: UX research, IA, UI, component library, and handoff, achieving 8.2/10 satisfaction in usability testing. Collaborated on Angular + Tailwind CSS front-end implementation alongside the team</li>
+              <li data-i18n="ab.b12">Created the visual identity and dashboard construction standards for Electrolux, adopted first in LATAM then approved by the global board and rolled out company-wide</li>
+              <li data-i18n="ab.b13">Created the branding and visual identity for Keepeye: logo, brand guidelines, and product visual language</li>
+              <li data-i18n="ab.b14">Developed dashboard standards for Nidec across LATAM; later contracted directly by Nidec Motor (USA) as an independent consultant</li>
+              <li data-i18n="ab.b15">Learned Power BI in one week; contributing to live client projects by week two</li>
+              <li data-i18n="ab.b16">Ran Business Understanding sessions with Data Analysts and Data Engineers to define data rules, KPIs, and visualization strategies</li>
             </ul>
           </div>
         </div>
@@ -554,20 +617,20 @@
       <div class="exp-accordion reveal">
         <button class="exp-trigger" aria-expanded="false">
           <div class="exp-trigger-left">
-            <span class="exp-role-text">Freelance Designer</span>
+            <span class="exp-role-text" data-i18n="ab.exp.estudio.role">Freelance Designer</span>
             <span class="exp-company-text">Estúdio 149</span>
           </div>
-          <span class="exp-period-text">Feb 2018 – Jun 2024 · parallel</span>
+          <span class="exp-period-text" data-i18n="ab.exp.estudio.date">Feb 2018 – Jun 2024 · parallel</span>
           <span class="exp-chevron" aria-hidden="true">▾</span>
         </button>
         <div class="exp-body" role="region">
           <div class="exp-body-inner">
-            <p class="exp-description">Independent studio running in parallel with full-time roles. Covered digital products, visual identities, branding, photography, and audiovisual for local and global clients, including the early freelance work that became the Multipedidos contract.</p>
+            <p class="exp-description" data-i18n="ab.exp.estudio.desc">Independent studio running in parallel with full-time roles. Covered digital products, visual identities, branding, photography, and audiovisual for local and global clients, including the early freelance work that became the Multipedidos contract.</p>
             <ul class="exp-bullets">
-              <li>Designed and developed digital products and web applications end-to-end</li>
-              <li>Created brand identities and visual systems for diverse clients</li>
-              <li>Produced lifestyle, product, and event photography, and audiovisual work</li>
-              <li>Worked as a contractor for Nidec Motor (USA) on data visualization projects</li>
+              <li data-i18n="ab.b17">Designed and developed digital products and web applications end-to-end</li>
+              <li data-i18n="ab.b18">Created brand identities and visual systems for diverse clients</li>
+              <li data-i18n="ab.b19">Produced lifestyle, product, and event photography, and audiovisual work</li>
+              <li data-i18n="ab.b20">Worked as a contractor for Nidec Motor (USA) on data visualization projects</li>
             </ul>
           </div>
         </div>
@@ -579,19 +642,19 @@
             <span class="exp-role-text">Product Designer</span>
             <span class="exp-company-text">Cia. Fabril Lepper</span>
           </div>
-          <span class="exp-period-text">Feb 2016 – Jun 2022</span>
+          <span class="exp-period-text" data-i18n="ab.exp.lepper.date">Feb 2016 – Jun 2022</span>
           <span class="exp-chevron" aria-hidden="true">▾</span>
         </button>
         <div class="exp-body" role="region">
           <div class="exp-body-inner">
-            <p class="exp-description">Six years at one of Brazil's largest textile companies (founded 1907, 100+ year history), owning the full product lifecycle for licensed and original collections. Licensed brands included Marvel, Disney, Dragon Ball (Toei), Warner, and PlayStation. A constraint-driven, cross-functional environment where design decisions had direct consequences on the factory floor, and my first real experience of what it means to ship a product end-to-end.</p>
+            <p class="exp-description" data-i18n="ab.exp.lepper.desc">Six years at one of Brazil's largest textile companies (founded 1907, 100+ year history), owning the full product lifecycle for licensed and original collections. Licensed brands included Marvel, Disney, Dragon Ball (Toei), Warner, and PlayStation. A constraint-driven, cross-functional environment where design decisions had direct consequences on the factory floor, and my first real experience of what it means to ship a product end-to-end.</p>
             <ul class="exp-bullets">
-              <li>Owned the full product lifecycle: from market research and concept briefs through design, production oversight, launch, and collection performance tracking</li>
-              <li>Mastered the color separation process for rotary stamping and silk-screen printing: a highly technical, cross-functional workflow where design decisions had direct consequences on the factory floor, and errors cost hundreds in re-engraving</li>
-              <li>Created the "Manual da Criação", the official complete guide for the color separation and creation process, adopted company-wide for onboarding designers and briefing external partners. First experience building documentation meant to outlast my time in a role</li>
-              <li>Mentored 5 designers across 6 years on color separation and company design standards</li>
-              <li>Proposed a sustainable packaging initiative, presented to the full board of directors</li>
-              <li>Participated in brand events and sales conventions representing licensed product lines</li>
+              <li data-i18n="ab.b21">Owned the full product lifecycle: from market research and concept briefs through design, production oversight, launch, and collection performance tracking</li>
+              <li data-i18n="ab.b22">Mastered the color separation process for rotary stamping and silk-screen printing: a highly technical, cross-functional workflow where design decisions had direct consequences on the factory floor, and errors cost hundreds in re-engraving</li>
+              <li data-i18n="ab.b23">Created the "Manual da Criação", the official complete guide for the color separation and creation process, adopted company-wide for onboarding designers and briefing external partners. First experience building documentation meant to outlast my time in a role</li>
+              <li data-i18n="ab.b24">Mentored 5 designers across 6 years on color separation and company design standards</li>
+              <li data-i18n="ab.b25">Proposed a sustainable packaging initiative, presented to the full board of directors</li>
+              <li data-i18n="ab.b26">Participated in brand events and sales conventions representing licensed product lines</li>
             </ul>
           </div>
         </div>
@@ -600,19 +663,19 @@
       <div class="exp-accordion reveal">
         <button class="exp-trigger" aria-expanded="false">
           <div class="exp-trigger-left">
-            <span class="exp-role-text">Graphic Designer</span>
+            <span class="exp-role-text" data-i18n="ab.exp.pronto.role">Graphic Designer</span>
             <span class="exp-company-text">Pronto! Gráfica Expressa</span>
           </div>
-          <span class="exp-period-text">Jun 2015 – Jan 2016</span>
+          <span class="exp-period-text" data-i18n="ab.exp.pronto.date">Jun 2015 – Jan 2016</span>
           <span class="exp-chevron" aria-hidden="true">▾</span>
         </button>
         <div class="exp-body" role="region">
           <div class="exp-body-inner">
-            <p class="exp-description">First professional role, at a fast-paced express print studio. Handled hundreds of jobs per week across file closure, print preparation, and graphic creation, often delivering logos in under one hour and complete event kits (business card, flyer, folder) in two.</p>
+            <p class="exp-description" data-i18n="ab.exp.pronto.desc">First professional role, at a fast-paced express print studio. Handled hundreds of jobs per week across file closure, print preparation, and graphic creation, often delivering logos in under one hour and complete event kits (business card, flyer, folder) in two.</p>
             <ul class="exp-bullets">
-              <li>Prepared files for offset, silk-screen, laser, and custom die-cut printing processes</li>
-              <li>Developed logotypes, visual identities, flyers, banners, and event materials under extreme time constraints</li>
-              <li>Gained practical knowledge of printing equipment, materials, and the end-to-end print production process</li>
+              <li data-i18n="ab.b27">Prepared files for offset, silk-screen, laser, and custom die-cut printing processes</li>
+              <li data-i18n="ab.b28">Developed logotypes, visual identities, flyers, banners, and event materials under extreme time constraints</li>
+              <li data-i18n="ab.b29">Gained practical knowledge of printing equipment, materials, and the end-to-end print production process</li>
             </ul>
           </div>
         </div>
@@ -625,13 +688,13 @@
 <!-- ═══ SERVICES ═══ -->
 <section id="services" class="section" aria-label="Services" style="background: var(--bg-2); display: none;">
   <div class="container">
-    <p class="section-label">Services</p>
-    <h2 class="section-heading">How I can<br />help your team.</h2>
+    <p class="section-label" data-i18n="ab.svc.label">Services</p>
+    <h2 class="section-heading" data-i18n-html="ab.svc.title">How I can<br />help your team.</h2>
     <div class="expertise-grid" style="margin-top:3rem;">
 
       <div class="expertise-card highlight-card reveal">
-        <h3 class="expertise-name">Figma Systems & Prototyping</h3>
-        <p class="expertise-desc">Advanced use of Figma as a design system platform, not just a drawing tool. Variables, tokens, dev mode, complex components, and interactive prototypes that developers can actually use.</p>
+        <h3 class="expertise-name" data-i18n="ab.svc.figma.title">Figma Systems & Prototyping</h3>
+        <p class="expertise-desc" data-i18n="ab.svc.figma.desc">Advanced use of Figma as a design system platform, not just a drawing tool. Variables, tokens, dev mode, complex components, and interactive prototypes that developers can actually use.</p>
         <div class="expertise-tools">
           <span class="tool-chip">Auto Layout</span>
           <span class="tool-chip">Variables & Tokens</span>
@@ -643,8 +706,8 @@
       </div>
 
       <div class="expertise-card highlight-card reveal" style="transition-delay:0.1s">
-        <h3 class="expertise-name">AI-Augmented Design</h3>
-        <p class="expertise-desc">AI and Vibe Coding as a strategic process layer: from research synthesis and handoff documentation to building functional prototypes with Claude and Lovable. Speed without sacrificing design quality.</p>
+        <h3 class="expertise-name" data-i18n="ab.svc.ai.title">AI-Augmented Design</h3>
+        <p class="expertise-desc" data-i18n="ab.svc.ai.desc">AI and Vibe Coding as a strategic process layer: from research synthesis and handoff documentation to building functional prototypes with Claude and Lovable. Speed without sacrificing design quality.</p>
         <div class="expertise-tools">
           <span class="tool-chip">Vibe Coding</span>
           <span class="tool-chip">Handoff Docs</span>
@@ -656,8 +719,8 @@
       </div>
 
       <div class="expertise-card reveal" style="transition-delay:0.2s">
-        <h3 class="expertise-name">UX Research & Strategy</h3>
-        <p class="expertise-desc">Discovery, user interviews, jobs-to-be-done, competitive analysis, and translating insights into product strategy that stakeholders align on.</p>
+        <h3 class="expertise-name" data-i18n="ab.svc.research.title">UX Research & Strategy</h3>
+        <p class="expertise-desc" data-i18n="ab.svc.research.desc">Discovery, user interviews, jobs-to-be-done, competitive analysis, and translating insights into product strategy that stakeholders align on.</p>
         <div class="expertise-tools">
           <span class="tool-chip">User Interviews</span>
           <span class="tool-chip">Usability Testing</span>
@@ -667,8 +730,8 @@
       </div>
 
       <div class="expertise-card reveal">
-        <h3 class="expertise-name">Product Design (E2E)</h3>
-        <p class="expertise-desc">Information architecture, interaction design, and prototyping from low to high fidelity, balancing user needs with business goals and technical constraints.</p>
+        <h3 class="expertise-name" data-i18n="ab.svc.product.title">Product Design (E2E)</h3>
+        <p class="expertise-desc" data-i18n="ab.svc.product.desc">Information architecture, interaction design, and prototyping from low to high fidelity, balancing user needs with business goals and technical constraints.</p>
         <div class="expertise-tools">
           <span class="tool-chip">IA & User Flows</span>
           <span class="tool-chip">Wireframing</span>
@@ -678,8 +741,8 @@
       </div>
 
       <div class="expertise-card reveal" style="transition-delay:0.1s">
-        <h3 class="expertise-name">Design Systems</h3>
-        <p class="expertise-desc">Scalable component libraries and design tokens that bridge design and engineering, reducing inconsistency, rework, and dev friction across teams.</p>
+        <h3 class="expertise-name" data-i18n="ab.svc.ds.title">Design Systems</h3>
+        <p class="expertise-desc" data-i18n="ab.svc.ds.desc">Scalable component libraries and design tokens that bridge design and engineering, reducing inconsistency, rework, and dev friction across teams.</p>
         <div class="expertise-tools">
           <span class="tool-chip">Component Library</span>
           <span class="tool-chip">Design Tokens</span>
@@ -689,8 +752,8 @@
       </div>
 
       <div class="expertise-card reveal" style="transition-delay:0.2s">
-        <h3 class="expertise-name">Data Visualization</h3>
-        <p class="expertise-desc">Dashboards and data products that make complex information scannable and actionable, combining UX thinking with Data Visualization tools and data storytelling.</p>
+        <h3 class="expertise-name" data-i18n="ab.svc.dataviz.title">Data Visualization</h3>
+        <p class="expertise-desc" data-i18n="ab.svc.dataviz.desc">Dashboards and data products that make complex information scannable and actionable, combining UX thinking with Data Visualization tools and data storytelling.</p>
         <div class="expertise-tools">
           <span class="tool-chip">Power BI</span>
           <span class="tool-chip">DAX</span>
@@ -706,16 +769,16 @@
 <!-- ═══ CLOSING / CTA ═══ -->
 <section class="about-closing" aria-label="Get in touch">
   <div class="container">
-    <h2 class="about-closing-heading reveal">Let's build <em>something</em> together.</h2>
-    <p class="about-closing-text reveal" style="transition-delay:0.1s">
+    <h2 class="about-closing-heading reveal" data-i18n-html="ab.cta.title">Let's build <em>something</em> together.</h2>
+    <p class="about-closing-text reveal" style="transition-delay:0.1s" data-i18n="ab.cta.sub">
       If you're looking for a Product Designer who can own a problem end to end, from research
       to a working interface, I'd love to hear about it.
     </p>
     <div class="hero-actions reveal" style="justify-content:center; transition-delay:0.15s">
-      <a href="../contact/" class="btn-primary">
+      <a href="../contact/" class="btn-primary" data-i18n="ab.cta.btn1">
         Get in Touch
       </a>
-      <a href="../#work-preview" class="btn-secondary">View My Work</a>
+      <a href="../#work-preview" class="btn-secondary" data-i18n="ab.cta.btn2">View My Work</a>
     </div>
   </div>
 </section>
@@ -729,7 +792,7 @@
   <span class="footer-year">&copy; 2026</span>
 </footer>
 
-<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+<button class="back-to-top" id="backToTop" aria-label="Back to top" data-i18n-attr="aria-label:nav.back_to_top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
 

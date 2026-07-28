@@ -35,7 +35,7 @@
 })();
 
 /* ═══════════════════════════════════════════════════════════
-   PAGE TRANSITIONS — CURTAIN SWEEP (top → bottom)
+   PAGE TRANSITIONS · CURTAIN SWEEP (top → bottom)
    ENTER: html::before (CSS) already covers the new page from
    first paint. JS adds .curtain-reveal → it slides downward
    off-screen, revealing content. No flash possible.
@@ -225,7 +225,7 @@
 })();
 
 /* ═══════════════════════════════════════════════════════════
- SITE HEADER — contact dropdown, mobile menu, scroll-hide
+ SITE HEADER · contact dropdown, mobile menu, scroll-hide
  ═══════════════════════════════════════════════════════════ */
 (function () {
  // Contact dropdown
