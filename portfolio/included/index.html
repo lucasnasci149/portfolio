@@ -17,7 +17,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../style.css" />
   <script>window._ASSET_ROOT="../../";</script>
   <script src="../../transitions.js" defer></script>
@@ -192,20 +192,29 @@
     .process-open-item p { font-size: 0.95rem; color: var(--text-2); line-height: 1.75; }
     .process-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.75rem; }
 
-    /* ── RESEARCH IMAGE + TEXT ── */
-    .research-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(2rem, 5vw, 5rem);
-      align-items: start;
+    /* ── EXPERTS: MEDIA + LIST ── */
+    .eyebrow {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent-text); margin-bottom: 0.9rem;
     }
-    .research-split img { width: 100%; display: block; border-radius: var(--radius-lg); }
-    .research-split-text p {
-      font-size: 0.95rem;
-      color: var(--text-2);
-      line-height: 1.8;
+    .expert-split {
+      display: grid; grid-template-columns: 5fr 6fr;
+      gap: clamp(2rem, 4vw, 3.5rem); align-items: start;
     }
-    .research-split-text p + p { margin-top: 1rem; }
+    .expert-media .artifact { border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; }
+    .expert-media img { width: 100%; display: block; }
+    .expert-media .img-cap { font-size: 0.78rem; color: var(--text-3); margin-top: 0.75rem; }
+    .expert-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .expert-item { border-left: 2px solid var(--accent); padding-left: 1.25rem; }
+    .expert-role {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent-text); margin-bottom: 0.3rem;
+    }
+    .expert-item h3 {
+      font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600;
+      font-size: 1.1rem; margin-bottom: 0.45rem;
+    }
+    .expert-item p { font-size: 0.92rem; color: var(--text-2); line-height: 1.7; }
 
     /* ── EDITORIAL GRID ── */
     .editorial-grid {
@@ -298,7 +307,7 @@
       .body-2col { grid-template-columns: 1fr; gap: 1.5rem; }
       .case-meta-strip { grid-template-columns: repeat(2, 1fr); }
       .process-open { grid-template-columns: 1fr; gap: 2rem; }
-      .research-split { grid-template-columns: 1fr; gap: 2rem; }
+      .expert-split { grid-template-columns: 1fr; gap: 2rem; }
       .editorial-grid { grid-template-columns: 1fr; gap: 2rem; }
       .ai-strip { grid-template-columns: 1fr; }
       .outcomes-open { grid-template-columns: 1fr; gap: 2rem; }
@@ -346,6 +355,42 @@
     @media (max-width: 768px) {
       .case-more-grid { grid-template-columns: 1fr; }
     }
+    /* ── DISPLAY TYPE: Bricolage Grotesque headings, Fraunces italic accents ── */
+    .case-label {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--accent-text); margin-bottom: 1.25rem;
+    }
+    .case-header-title {
+      font-family: 'Bricolage Grotesque', var(--font-sans, sans-serif);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.02;
+    }
+    .case-header-title em {
+      font-family: inherit; font-style: normal; font-weight: inherit; color: var(--accent-text);
+    }
+    .split-h, .section-heading {
+      font-family: 'Bricolage Grotesque', var(--font-sans, sans-serif);
+      font-weight: 700; letter-spacing: -0.015em;
+    }
+    .split-h em, .section-heading em {
+      font-family: inherit; font-style: normal; font-weight: inherit; color: var(--accent-text);
+    }
+    .media-text h3, .process-open-item h3, .goal-card h3, .ds-card h3,
+    .phase-name, .editorial-title, .gestor-row-title, .strip-item h4,
+    .funnel-step-title, .case-more-name, .ai-strip-title, .mb-panel-label {
+      font-family: 'Bricolage Grotesque', var(--font-sans, sans-serif); font-weight: 600;
+    }
+    .ai-statement-heading { font-family: 'Bricolage Grotesque', var(--font-sans, sans-serif); font-weight: 700; }
+    .ai-statement-heading em { font-family: inherit; font-style: normal; font-weight: inherit; color: var(--accent-text); }
+    /* ── PROJECT HEADER BAND (identidade por projeto, tema-aware) ── */
+    .case-header {
+      background: linear-gradient(180deg,
+        color-mix(in srgb, #7C5CFF 16%, var(--bg-1)) 0%,
+        color-mix(in srgb, #7C5CFF 7%, var(--bg-1)) 100%);
+      border-bottom: 1px solid color-mix(in srgb, #7C5CFF 22%, var(--border));
+    }
+    @supports not (background: color-mix(in srgb, red 10%, blue)) {
+      .case-header { background: var(--bg-2); }
+    }
   </style>
 </head>
 <body>
@@ -389,13 +434,7 @@
       <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Back to Work
     </a>
-    <div class="case-tags case-header-entrance" style="--delay:0.06s">
-      <span class="tag accent">EdTech</span>
-      <span class="tag">Product Design</span>
-      <span class="tag">Design System</span>
-      <span class="tag">Accessibility</span>
-      <span class="tag">Co-founder</span>
-    </div>
+    <p class="case-label case-header-entrance" style="--delay:0.06s">Case Study</p>
     <h1 class="case-header-title case-header-entrance" style="--delay:0.13s">IncludED<br /><em>Inclusive Education Platform</em></h1>
     <p class="case-header-subtitle case-header-entrance" style="--delay:0.21s">Every Brazilian inclusion student has a legal right to an individualized education plan. Almost no school has the tools to produce one. I co-founded PixelPunk and designed IncludED with a neuropsychologist, a pedagogical consultant, and two developers. Six months after launch, it runs in 25 schools with 1,000+ students registered.</p>
   </div>
@@ -527,37 +566,36 @@
   </div>
 </section>
 
-<!-- ═══ RESEARCH IN PRACTICE ═══ -->
-<section class="section" style="padding-top: 0;">
-  <div class="container">
-    <div class="research-split">
-      <div class="reveal">
-        <img src="../../assets/projects/included-pixelpunk/included-header.png" alt="IncludED platform" loading="lazy" />
-      </div>
-      <div class="research-split-text reveal" style="transition-delay:0.05s;">
-        <p>Sessions with the neuropsychologist and the pedagogical consultant were structured around concrete questions: how does a teacher actually receive a clinical report? What does BNCC-aligned mean for a student who cannot reach a standard objective? How does a coordinator track thirty PEIs at once?</p>
-        <p>Every session produced an artifact: a documented decision, a product rule, a terminology choice. Those artifacts defined the platform's language, its information structure, and what each role can see.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ═══ EXPERT KNOWLEDGE ═══ -->
 <section class="section bg-tinted">
   <div class="container">
-    <h2 class="section-heading" style="margin-bottom:2.5rem;">The people who <em>kept us honest.</em></h2>
-    <div class="editorial-grid">
-      <div class="editorial-item reveal">
-        <p class="editorial-title">20+ years in schools, in the room</p>
-        <p class="editorial-body">The pedagogical consultant defined how the platform handles teacher workflow: the split between PEI and PAEE, goal structure by BNCC stage, and behavioral records kept apart from pedagogical objectives. She also walked us through the classroom reality: rotating teachers, mid-year transfers, four or five PEIs per class of twenty. Merging what must stay separated would have made the product non-compliant.</p>
+    <div style="margin-bottom: clamp(2rem, 4vw, 3rem);">
+      <p class="eyebrow reveal">The research</p>
+      <h2 class="section-heading reveal">The people who <em>kept us honest.</em></h2>
+    </div>
+    <div class="expert-split">
+      <div class="expert-media reveal">
+        <div class="artifact">
+          <img src="../../assets/projects/included-pixelpunk/included-header.png" alt="IncludED platform" loading="lazy" />
+        </div>
+        <p class="img-cap">&#8593; Every session produced an artifact: a documented decision, a product rule, a terminology choice</p>
       </div>
-      <div class="editorial-item reveal" style="transition-delay:0.05s">
-        <p class="editorial-title">The clinical lens, translated for teachers</p>
-        <p class="editorial-body">Clinical reports arrive in language most teachers cannot act on. The neuropsychologist defined how IncludED translates them: preserving diagnostic accuracy while reformulating the content into pedagogical guidance. The Adaptation Council is her direct contribution to the product.</p>
-      </div>
-      <div class="editorial-item reveal" style="transition-delay:0.1s">
-        <p class="editorial-title">The gap the market confirmed</p>
-        <p class="editorial-body">School management platforms in Brazil were built for administration. None had BNCC-aligned PEI workflows, AI-assisted goal writing, or multi-role collaboration between teachers, AEE professionals, and coordinators. The space IncludED occupies was empty.</p>
+      <div class="expert-list">
+        <div class="expert-item reveal">
+          <p class="expert-role">Pedagogical consultant</p>
+          <h3>20+ years in schools, in the room</h3>
+          <p>She defined the split between PEI and PAEE, goal structure by BNCC stage, and behavioral records kept apart from pedagogical objectives. Merging what must stay separated would have made the product non-compliant.</p>
+        </div>
+        <div class="expert-item reveal" style="transition-delay:0.05s">
+          <p class="expert-role">Neuropsychologist</p>
+          <h3>The clinical lens, translated</h3>
+          <p>Clinical reports arrive in language most teachers cannot act on. She defined how IncludED translates them, preserving diagnostic accuracy while reformulating content into pedagogical guidance. The Adaptation Council is her direct contribution.</p>
+        </div>
+        <div class="expert-item reveal" style="transition-delay:0.1s">
+          <p class="expert-role">Market audit</p>
+          <h3>The gap the market confirmed</h3>
+          <p>School platforms in Brazil were built for administration. None had BNCC-aligned PEI workflows, AI-assisted goal writing, or multi-role collaboration. The space IncludED occupies was empty.</p>
+        </div>
       </div>
     </div>
   </div>

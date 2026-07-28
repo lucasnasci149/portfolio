@@ -8,7 +8,7 @@
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Keepeye: KPI Management Platform | Lucas Nascimento</title>
-  <meta name="description" content="Case study: Keepeye, a KPI management platform designed for Nidec GA. Product design, design system, and collaborative front-end development by Lucas Nascimento at Dojo Smart Ways." />
+  <meta name="description" content="Case study: Keepeye, a KPI SaaS built as Dojo Smart Ways' first own product. Product design, design system, and collaborative front-end development by Lucas Nascimento at Dojo Smart Ways." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://lucasdonascimento.com/project-keepeye" />
   <meta property="og:title" content="Keepeye: KPI Management Platform" />
@@ -17,7 +17,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../style.css" />
   <script>window._ASSET_ROOT="../../";</script>
   <script src="../../transitions.js" defer></script>
@@ -233,6 +233,64 @@
      
     }
 
+    /* ── STORY STRUCTURE (eyebrows, phases, goals, values, captions) ── */
+    .eyebrow {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent-text); margin-bottom: 0.9rem;
+    }
+    .phase-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); overflow: hidden;
+    }
+    .phase-cell { padding: 1.6rem 1.5rem; border-right: 1px solid var(--border); }
+    .phase-cell:last-child { border-right: none; }
+    .phase-num {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent-text); margin-bottom: 0.4rem;
+    }
+    .phase-name { font-family: var(--font-serif); font-weight: 300; font-size: 1.15rem; margin-bottom: 0.6rem; }
+    .phase-methods { font-size: 0.8rem; color: var(--text-3); line-height: 1.7; }
+    .goal-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .goal-card {
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 2rem 2.25rem; background: var(--bg-2);
+    }
+    .goal-num {
+      font-family: 'Bricolage Grotesque', var(--font-sans, sans-serif); font-weight: 700;
+      font-size: 1.8rem; color: var(--accent-text); line-height: 1; margin-bottom: 0.75rem;
+    }
+    .goal-card h3 { font-family: var(--font-serif); font-weight: 300; font-size: 1.15rem; margin-bottom: 0.5rem; }
+    .goal-card p { font-size: 0.95rem; color: var(--text-2); line-height: 1.7; }
+    .values-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1.25rem; }
+    .value-item { border-top: 2px solid var(--accent); padding-top: 0.9rem; }
+    .value-word { font-family: var(--font-serif); font-style: italic; font-weight: 300; font-size: 1.35rem; margin-bottom: 0.25rem; }
+    .value-tag { font-size: 0.82rem; color: var(--text-3); line-height: 1.5; }
+    .img-cap { font-size: 0.78rem; color: var(--text-3); margin-top: 0.75rem; }
+    @media (max-width: 960px) {
+      .phase-strip { grid-template-columns: repeat(2, 1fr); }
+      .phase-cell:nth-child(2n) { border-right: none; }
+      .goal-cards { grid-template-columns: 1fr; }
+      .values-row { grid-template-columns: 1fr; gap: 1.25rem; }
+    }
+
+    .artifact { border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; }
+    .artifact img { width: 100%; display: block; }
+    .artifact-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    @media (max-width: 960px) { .artifact-pair { grid-template-columns: 1fr; } }
+
+    .media-stack > * + * { margin-top: clamp(2.5rem, 4vw, 3.5rem); }
+    .media-row { display: grid; grid-template-columns: 5fr 6fr; gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+    .media-row.flip .media-text { order: 2; }
+    .media-row.flip .media-img { order: 1; }
+    .media-text h3 { font-family: var(--font-serif); font-weight: 300; font-size: 1.2rem; margin-bottom: 0.6rem; }
+    .media-text p { font-size: 0.95rem; color: var(--text-2); line-height: 1.75; }
+    @media (max-width: 960px) {
+      .media-row { grid-template-columns: 1fr; gap: 1.25rem; }
+      .media-row.flip .media-text { order: initial; }
+      .media-row.flip .media-img { order: initial; }
+    }
+
     /* ── NEXT PROJECT ── */
 
     /* ── RESPONSIVE ── */
@@ -289,6 +347,42 @@
     @media (max-width: 768px) {
       .case-more-grid { grid-template-columns: 1fr; }
     }
+    /* ── DISPLAY TYPE: Bricolage Grotesque headings, Fraunces italic accents ── */
+    .case-label {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--accent-text); margin-bottom: 1.25rem;
+    }
+    .case-header-title {
+      font-family: 'Bricolage Grotesque', var(--font-sans, sans-serif);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.02;
+    }
+    .case-header-title em {
+      font-family: inherit; font-style: normal; font-weight: inherit; color: var(--accent-text);
+    }
+    .split-h, .section-heading {
+      font-family: 'Bricolage Grotesque', var(--font-sans, sans-serif);
+      font-weight: 700; letter-spacing: -0.015em;
+    }
+    .split-h em, .section-heading em {
+      font-family: inherit; font-style: normal; font-weight: inherit; color: var(--accent-text);
+    }
+    .media-text h3, .process-open-item h3, .goal-card h3, .ds-card h3,
+    .phase-name, .editorial-title, .gestor-row-title, .strip-item h4,
+    .funnel-step-title, .case-more-name, .ai-strip-title, .mb-panel-label {
+      font-family: 'Bricolage Grotesque', var(--font-sans, sans-serif); font-weight: 600;
+    }
+    .ai-statement-heading { font-family: 'Bricolage Grotesque', var(--font-sans, sans-serif); font-weight: 700; }
+    .ai-statement-heading em { font-family: inherit; font-style: normal; font-weight: inherit; color: var(--accent-text); }
+    /* ── PROJECT HEADER BAND (identidade por projeto, tema-aware) ── */
+    .case-header {
+      background: linear-gradient(180deg,
+        color-mix(in srgb, #2F6BFF 16%, var(--bg-1)) 0%,
+        color-mix(in srgb, #2F6BFF 7%, var(--bg-1)) 100%);
+      border-bottom: 1px solid color-mix(in srgb, #2F6BFF 22%, var(--border));
+    }
+    @supports not (background: color-mix(in srgb, red 10%, blue)) {
+      .case-header { background: var(--bg-2); }
+    }
   </style>
 </head>
 <body>
@@ -332,15 +426,9 @@
       <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Back to Work
     </a>
-    <div class="case-tags case-header-entrance" style="--delay:0.06s">
-      <span class="tag accent">Featured</span>
-      <span class="tag">Product Design</span>
-      <span class="tag">Design System</span>
-      <span class="tag">Data Viz</span>
-      <span class="tag">B2B SaaS</span>
-    </div>
+    <p class="case-label case-header-entrance" style="--delay:0.06s">Case Study</p>
     <h1 class="case-header-title case-header-entrance" style="--delay:0.13s">Keepeye<br /><em>KPI Management Platform</em></h1>
-    <p class="case-header-subtitle case-header-entrance" style="--delay:0.21s">Dojo lived from project to project and wanted a product of its own. I led the research, designed the platform, wrote part of the Angular front-end, and mentored a developer moving into design. Post-launch interviews scored it 8.8 out of 10.</p>
+    <p class="case-header-subtitle case-header-entrance" style="--delay:0.21s">Dojo lived from project to project and wanted a product of its own. I led the research, designed the platform, wrote part of the Angular front-end, and mentored a developer moving into design. Usability tests of the finished tool scored it 8.2 out of 10.</p>
   </div>
 </header>
 
@@ -354,11 +442,11 @@
   <div class="case-meta-strip">
     <div>
       <p class="case-meta-label">Company</p>
-      <p class="case-meta-val">Dojo Smart Ways<span>Client: Nidec GA</span></p>
+      <p class="case-meta-val">Dojo Smart Ways<span>Internal product · SaaS</span></p>
     </div>
     <div>
       <p class="case-meta-label">Role</p>
-      <p class="case-meta-val">Lead Product Designer<span>&amp; Front-End Developer</span></p>
+      <p class="case-meta-val">UX Engineer<span>Design + Front-End</span></p>
     </div>
     <div>
       <p class="case-meta-label">Timeline</p>
@@ -371,16 +459,19 @@
   </div>
 </div>
 
-<!-- ═══ OVERVIEW ═══ -->
+<!-- ═══ BACKGROUND ═══ -->
 <section class="section">
   <div class="container">
     <div class="split">
-      <h2 class="split-h reveal">A consultancy betting on <em>its first product.</em></h2>
+      <div>
+        <p class="eyebrow reveal">Background</p>
+        <h2 class="split-h reveal">A consultancy betting on <em>its first product.</em></h2>
+      </div>
       <div class="body-2col">
         <div class="body-col reveal">
           <p class="col-label">The Business Case</p>
           <p>Dojo Smart Ways ran entirely on project work: revenue stopped whenever a project did. The goal set for Keepeye was explicit: create the company's first product and shift its focus from data projects to products.</p>
-          <p>It had a candidate: an internal metrics platform built for Nidec that clients kept responding well to. Keepeye was the bet to turn that tool into a SaaS.</p>
+          <p>It had a candidate: an internal metrics tool Dojo had already built for a client project, and that users kept responding well to. Keepeye was the bet to turn that tool into a SaaS.</p>
         </div>
         <div class="body-col reveal" style="transition-delay:0.05s">
           <p class="col-label">The User Problem</p>
@@ -401,61 +492,140 @@
   </div>
 </div>
 
-<!-- ═══ PROCESS ═══ -->
+<!-- ═══ BUSINESS GOALS ═══ -->
 <section class="section">
   <div class="container">
-    <div class="split">
-      <h2 class="split-h reveal">Listening to the people <em>who live in KPIs.</em></h2>
-      <div class="process-open">
-        <div class="process-open-item reveal">
+    <p class="eyebrow reveal">The goals</p>
+    <h2 class="section-heading reveal" style="margin-bottom:2rem;">Two goals set <em>before any screen.</em></h2>
+    <div class="goal-cards">
+      <div class="goal-card reveal">
+        <p class="goal-num">01</p>
+        <h3>Create the company's first product</h3>
+        <p>Build a solution that could attract new clients and shift Dojo's focus from data projects to products, opening a recurring revenue line beside project work.</p>
+      </div>
+      <div class="goal-card reveal" style="transition-delay:0.05s">
+        <p class="goal-num">02</p>
+        <h3>Automate the data</h3>
+        <p>Replace manual data entry with a robust, easy-to-use platform: safer inputs, automated metrics, and a better day for the people who maintain them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS OVERVIEW ═══ -->
+<section class="section" style="padding-top: 0;">
+  <div class="container">
+    <p class="eyebrow reveal">The process</p>
+    <h2 class="section-heading reveal" style="margin-bottom:2rem;">One Double Diamond, <em>four phases.</em></h2>
+    <div class="phase-strip reveal">
+      <div class="phase-cell">
+        <p class="phase-num">01</p>
+        <p class="phase-name">Discover</p>
+        <p class="phase-methods">Brainstorming with directors<br>Proto-personas<br>Market benchmarking<br>Survey with 40+ professionals<br>Interviews + usability tests</p>
+      </div>
+      <div class="phase-cell">
+        <p class="phase-num">02</p>
+        <p class="phase-name">Define</p>
+        <p class="phase-methods">User journey<br>Word cloud<br>UX Canvas<br>RICE prioritization</p>
+      </div>
+      <div class="phase-cell">
+        <p class="phase-num">03</p>
+        <p class="phase-name">Develop</p>
+        <p class="phase-methods">Blue Squid design system<br>Wireframes<br>Low to high fidelity<br>Visual identity<br>Angular + Tailwind build</p>
+      </div>
+      <div class="phase-cell">
+        <p class="phase-num">04</p>
+        <p class="phase-name">Deliver</p>
+        <p class="phase-methods">MVP launch<br>Usability tests<br>Metrics monitoring<br>Feedback + roadmap</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DISCOVER ═══ -->
+<section class="section">
+  <div class="container">
+    <div style="margin-bottom: clamp(2.5rem, 4vw, 3.5rem);">
+      <p class="eyebrow reveal">01 · Discover</p>
+      <h2 class="split-h reveal" style="position: static;">Listening to the people <em>who live in KPIs.</em></h2>
+    </div>
+    <div class="media-stack">
+      <div class="media-row reveal">
+        <div class="media-text">
           <h3>Understanding the problem from the inside out</h3>
-          <p>The Nidec tool was a starting point, not an answer. The project ran on the Double Diamond, and discovery opened wide: brainstorming sessions with the dev team and Dojo's directors connected business expectations to user needs, and proto-personas captured who we were designing for. We then ran usability sessions on the existing tool, mapping the full user journey to see exactly where it broke down.</p>
+          <p>The existing tool was a starting point, not an answer. Discovery opened with brainstorming sessions involving the dev team and Dojo's directors, connecting business expectations to the pains the product had to solve. The board captured objectives, client complaints, and the features people expected before a single screen existed.</p>
           <div class="process-tags">
-            <span class="tag">Usability Testing</span>
-            <span class="tag">Domain Interviews</span>
+            <span class="tag">Brainstorming</span>
             <span class="tag">Benchmarking</span>
           </div>
         </div>
-        <div class="process-open-item reveal" style="transition-delay:0.05s">
+        <div class="media-img">
+          <div class="artifact">
+            <img src="../../assets/projects/keepeye/brainstorming.png" alt="Brainstorming board from the discovery sessions" loading="lazy" />
+          </div>
+          <p class="img-cap">&#8593; The brainstorming board with the dev team and Dojo's directors: objectives, pains, and expectations</p>
+        </div>
+      </div>
+      <div class="media-row flip reveal">
+        <div class="media-text">
+          <h3>Personifying the user</h3>
+          <p>With the product values discerned, proto-personas captured who we were designing for: production engineers turned managers, analysts living inside spreadsheets. They kept the expected user base concrete for the whole team through every later decision.</p>
+          <div class="process-tags">
+            <span class="tag">Proto-personas</span>
+          </div>
+        </div>
+        <div class="media-img">
+          <div class="artifact">
+            <img src="../../assets/projects/keepeye/proto-persona-a.png" alt="Proto-persona Fernando" loading="lazy" />
+          </div>
+          <div class="artifact" style="margin-top: 1.25rem;">
+            <img src="../../assets/projects/keepeye/proto-persona-b.png" alt="Proto-persona Juliana" loading="lazy" />
+          </div>
+          <p class="img-cap">&#8593; Proto-personas built from the discovery sessions</p>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow reveal" style="margin-bottom: 0;">Product values defined in the brainstorms</p>
+        <div class="values-row">
+          <div class="value-item reveal">
+            <p class="value-word">aggregate</p>
+            <p class="value-tag">value, purpose, and practicality</p>
+          </div>
+          <div class="value-item reveal" style="transition-delay:0.05s">
+            <p class="value-word">connect</p>
+            <p class="value-tag">people, data, and goals</p>
+          </div>
+          <div class="value-item reveal" style="transition-delay:0.1s">
+            <p class="value-word">simplify</p>
+            <p class="value-tag">the everyday work around metrics</p>
+          </div>
+        </div>
+      </div>
+      <div class="media-row reveal">
+        <div class="media-text">
           <h3>Validating what we heard at scale</h3>
-          <p>Interviews give depth but can mislead, so we surveyed more than 40 professionals who use metrics tools day to day, asking about their management methods, current platforms, and where those platforms failed them. A word cloud built from the responses made the recurring pain points impossible to ignore. They were structural, not edge cases.</p>
+          <p>Interviews give depth but can mislead, so we surveyed more than 40 professionals who use metrics tools day to day, asking about their management methods, current platforms, and where those platforms failed them. Then we ran interviews and usability sessions on the existing tool, watching real users hit the exact walls the survey described.</p>
           <div class="process-tags">
             <span class="tag">Survey Research</span>
-            <span class="tag">Quantitative Validation</span>
+            <span class="tag">Usability Testing</span>
           </div>
         </div>
-        <div class="process-open-item reveal" style="transition-delay:0.1s">
-          <h3>Prioritizing with RICE, not gut feeling</h3>
-          <p>With four people and a fixed development window, we couldn't build everything. We benchmarked competing tools to map the market, consolidated what we had learned into a UX Canvas that stated the expectations for the product's experience, then scored every opportunity with RICE, turning prioritization from a debate into a decision.</p>
-          <div class="process-tags">
-            <span class="tag">Benchmarking</span>
-            <span class="tag">RICE Prioritization</span>
-            <span class="tag">UX Canvas</span>
+        <div class="media-img">
+          <div class="artifact">
+            <img src="../../assets/projects/keepeye/interview-usability.png" alt="Remote interview and usability session on the existing KPI tool" loading="lazy" />
           </div>
-        </div>
-        <div class="process-open-item reveal" style="transition-delay:0.15s">
-          <h3>From architecture to shipped code</h3>
-          <p>I designed the information architecture and a design system named Blue Squid, built to serve not just Keepeye but Dojo's future products. Screens went from low to medium to high fidelity, with validation at each step, before I crossed roles and wrote front-end code in Angular and Tailwind alongside the developers. Pre-launch usability tests scored 8.2/10 and surfaced minor fixes we shipped before release; post-launch interviews measured the result.</p>
-          <div class="process-tags">
-            <span class="tag">IA + UI Design</span>
-            <span class="tag">Design System</span>
-            <span class="tag">Angular + Tailwind</span>
-          </div>
+          <p class="img-cap">&#8593; Interview and usability session on the existing KPI tool, run remotely with real users</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ WIREFRAME · full bleed ═══ -->
-<div class="img-full reveal">
-  <img src="../../assets/projects/keepeye/keepeye-wireframe.png" alt="Keepeye wireframes and early exploration" loading="lazy" />
-</div>
-
 <!-- ═══ RESEARCH FINDINGS ═══ -->
 <section class="section bg-tinted">
   <div class="container">
-    <h2 class="section-heading" style="margin-bottom:2.5rem;">Three findings that <em>redefined the product.</em></h2>
+    <p class="eyebrow reveal">Discover · What we learned</p>
+    <h2 class="section-heading reveal" style="margin-bottom:2.5rem;">Three findings that <em>redefined the product.</em></h2>
     <div class="editorial-grid">
       <div class="editorial-item reveal">
         <p class="editorial-title">One metric, many versions</p>
@@ -473,11 +643,94 @@
   </div>
 </section>
 
-<!-- ═══ THE PRODUCT ═══ -->
+<!-- ═══ DEFINE ═══ -->
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div>
+        <p class="eyebrow reveal">02 · Define</p>
+        <h2 class="split-h reveal">Turning research <em>into decisions.</em></h2>
+      </div>
+      <div class="process-open">
+        <div class="process-open-item reveal">
+          <h3>User Journey</h3>
+          <p>During the usability tests we mapped every step and interaction users had with the tool, start to finish. The journey showed not just where people struggled, but where the product lost them entirely.</p>
+        </div>
+        <div class="process-open-item reveal" style="transition-delay:0.05s">
+          <h3>Word Cloud</h3>
+          <p>The quantitative responses were distilled into a word cloud that surfaced the most repeated pains and needs. It kept the loudest problems in front of the team instead of buried in a spreadsheet.</p>
+        </div>
+        <div class="process-open-item reveal" style="transition-delay:0.1s">
+          <h3>UX Canvas</h3>
+          <p>With the problems understood, I consolidated them into a UX Canvas: one document stating what the product's experience had to deliver. Every later decision was checked against it.</p>
+        </div>
+        <div class="process-open-item reveal" style="transition-delay:0.15s">
+          <h3>RICE Prioritization</h3>
+          <p>With solutions drafted and development effort estimated, the RICE matrix ranked priorities analytically instead of intuitively. With four people and a fixed window, this decided what the MVP would and would not be.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DEVELOP ═══ -->
+<section class="section bg-tinted">
+  <div class="container">
+    <div class="split">
+      <div>
+        <p class="eyebrow reveal">03 · Develop</p>
+        <h2 class="split-h reveal" style="position: static;">A design system first, <em>then every screen.</em></h2>
+      </div>
+      <div class="body-2col">
+        <div class="body-col reveal">
+          <p>Development started with Blue Squid, a design system created to standardize components and carry a visual identity that Dojo's future products could inherit. With the system and the information architecture defined, I wireframed every screen of the product.</p>
+        </div>
+        <div class="body-col reveal" style="transition-delay:0.05s">
+          <p>Screens moved from low to medium to high fidelity, validated at each step. The brand rested on three pillars: security, robustness, and simplicity. I built the components and screens in TypeScript, Angular, and Tailwind, and we shipped the MVP for real-world use.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="img-full reveal">
+  <img src="../../assets/projects/keepeye/keepeye-wireframe.png" alt="Keepeye wireframes and early exploration" loading="lazy" />
+</div>
+<div class="container">
+  <p class="img-cap reveal">&#8593; Wireframes covering every screen, drawn on top of Blue Squid and the information architecture</p>
+</div>
+
+<div class="img-full reveal" style="margin-top: clamp(2rem, 4vw, 3rem);">
+  <img src="../../assets/projects/keepeye/keepeye-components.png" alt="Keepeye component library" loading="lazy" />
+</div>
+<div class="container">
+  <p class="img-cap reveal">&#8593; Blue Squid components, later implemented in TypeScript, Angular, and Tailwind</p>
+</div>
+
+<div class="container" style="padding-block: clamp(2rem, 4vw, 3rem);">
+  <div class="media-row flip reveal">
+    <div class="media-text">
+      <p class="eyebrow">03 · Develop · Visual identity</p>
+      <h3>A brand built on three pillars</h3>
+      <p>The logo construction started from concept pillars defined for the brand: security and robustness in how the product presents itself, aligned with the simplicity the tool offers the user. The identity runs through every screen, starting at login.</p>
+    </div>
+    <div class="media-img">
+      <div class="artifact">
+        <img src="../../assets/projects/keepeye/screen-login.png" alt="Keepeye login screen with the new visual identity" loading="lazy" />
+      </div>
+      <p class="img-cap">&#8593; The login screen carrying the new identity</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ THE SOLUTION ═══ -->
 <section class="section">
   <div class="container">
     <div class="split" style="margin-bottom: clamp(2rem, 4vw, 3rem);">
-      <h2 class="split-h reveal" style="font-size: clamp(1.3rem, 2vw, 1.8rem); font-weight: 400;">Four features, <em>each traced to a finding.</em></h2>
+      <div>
+        <p class="eyebrow reveal">The solution</p>
+        <h2 class="split-h reveal" style="position: static;">Four features, <em>each traced to a finding.</em></h2>
+      </div>
       <p class="reveal" style="font-size:0.95rem; color:var(--text-2); line-height:1.8; transition-delay:0.05s">
         The RICE exercise shaped the feature set directly. What scored highest was not always
         what we expected, but the research consistently pointed toward the same needs:
@@ -517,13 +770,7 @@
   </div>
 </section>
 
-<!-- ═══ COMPONENTS · full bleed ═══ -->
-<div class="img-full reveal">
-  <img src="../../assets/projects/keepeye/keepeye-components.png" alt="Keepeye component library" loading="lazy" />
-</div>
-
-<!-- ═══ VISUALS ═══ -->
-<div class="container" style="padding-block: clamp(2rem, 4vw, 3rem);">
+<div class="container" style="padding-bottom: clamp(2rem, 4vw, 3rem);">
   <div class="solution-visuals">
     <div class="solution-visual reveal">
       <img src="../../assets/projects/keepeye/keepeye-mockup.png" alt="Keepeye dashboard interface" loading="lazy" />
@@ -532,16 +779,38 @@
       <img src="../../assets/projects/keepeye/keepeye-screens.png" alt="Keepeye product screens" loading="lazy" />
     </div>
   </div>
+  <p class="img-cap reveal">&#8593; High-fidelity screens of the shipped product: dashboards, metric management, and user area</p>
+</div>
+
+<div class="container" style="padding-bottom: clamp(2rem, 4vw, 3rem);">
+  <div class="artifact-pair">
+    <div class="artifact reveal">
+      <img src="../../assets/projects/keepeye/screen-home.png" alt="Keepeye home with KPI options" loading="lazy" />
+    </div>
+    <div class="artifact reveal" style="transition-delay:0.05s">
+      <img src="../../assets/projects/keepeye/dashboards.png" alt="Keepeye dashboards" loading="lazy" />
+    </div>
+    <div class="artifact reveal" style="transition-delay:0.1s">
+      <img src="../../assets/projects/keepeye/screen-metric-management.png" alt="Keepeye metric management" loading="lazy" />
+    </div>
+    <div class="artifact reveal" style="transition-delay:0.15s">
+      <img src="../../assets/projects/keepeye/user-area.png" alt="Keepeye user area and access control" loading="lazy" />
+    </div>
+  </div>
+  <p class="img-cap reveal">&#8593; Core screens of the MVP: home with KPI options, dashboards, metric management, and the user area</p>
 </div>
 
 <!-- ═══ HOW I WORKED ═══ -->
 <section class="section bg-tinted">
   <div class="container">
     <div class="split">
-      <h2 class="split-h reveal">I stayed for <em>the implementation.</em></h2>
+      <div>
+        <p class="eyebrow reveal">The role</p>
+        <h2 class="split-h reveal">I stayed for <em>the implementation.</em></h2>
+      </div>
       <div class="body-2col">
         <div class="body-col reveal">
-          <p class="col-label">Full-Stack Contribution</p>
+          <p class="col-label">UX Engineering</p>
           <p>After handoff I joined the build as a front-end developer, writing the design system components and screens in TypeScript, Angular, and Tailwind alongside the team. Designing and implementing the same product removes the translation layer: when a component didn't survive contact with real data, I adjusted the design at the source.</p>
           <p>It also meant I understood constraints before they became blockers. When the team hit a component complexity problem, I was already in the room.</p>
         </div>
@@ -555,19 +824,27 @@
   </div>
 </section>
 
-<!-- ═══ OUTCOMES ═══ -->
+<!-- ═══ DELIVER · OUTCOMES ═══ -->
 <section class="section">
   <div class="container">
     <div class="split">
-      <h2 class="split-h reveal">8.8 out of 10, <em>and how we measured it.</em></h2>
+      <div>
+        <p class="eyebrow reveal">04 · Deliver</p>
+        <h2 class="split-h reveal" style="position: static;">8.2 out of 10, <em>and how we measured it.</em></h2>
+        <p class="reveal" style="font-size:0.95rem; color:var(--text-2); line-height:1.8; margin-top:1rem;">Delivery didn't end at launch. We kept collecting: usability tests on the finished tool, key-metric monitoring, and a backlog of integration ideas straight from user feedback.</p>
+      </div>
       <div class="outcomes-open">
         <div class="outcome-open reveal">
-          <span class="metric-value">8.8<span style="font-size:1.6rem;">/10</span></span>
-          <span class="metric-desc">Average satisfaction across post-launch validation interviews with internal and external users</span>
+          <span class="metric-value">8.2<span style="font-size:1.6rem;">/10</span></span>
+          <span class="metric-desc">Average user satisfaction in the post-delivery usability tests, with minor fixes shipped from the findings</span>
         </div>
         <div class="outcome-open reveal" style="transition-delay:0.05s">
           <span class="metric-value">4</span>
           <span class="metric-desc">Team members, including one designer mentored through her career transition</span>
+        </div>
+        <div class="outcome-open reveal" style="transition-delay:0.1s">
+          <span class="metric-value">MVP</span>
+          <span class="metric-desc">Launched as Dojo's first product, opening a product revenue line beside project work</span>
         </div>
       </div>
     </div>

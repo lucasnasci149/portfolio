@@ -17,7 +17,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../style.css" />
   <script>window._ASSET_ROOT="../../";</script>
   <script src="../../transitions.js" defer></script>
@@ -312,6 +312,42 @@
     @media (max-width: 768px) {
       .case-more-grid { grid-template-columns: 1fr; }
     }
+    /* ── DISPLAY TYPE: Bricolage Grotesque headings, Fraunces italic accents ── */
+    .case-label {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--accent-text); margin-bottom: 1.25rem;
+    }
+    .case-header-title {
+      font-family: 'Bricolage Grotesque', var(--font-sans, sans-serif);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.02;
+    }
+    .case-header-title em {
+      font-family: inherit; font-style: normal; font-weight: inherit; color: var(--accent-text);
+    }
+    .split-h, .section-heading {
+      font-family: 'Bricolage Grotesque', var(--font-sans, sans-serif);
+      font-weight: 700; letter-spacing: -0.015em;
+    }
+    .split-h em, .section-heading em {
+      font-family: inherit; font-style: normal; font-weight: inherit; color: var(--accent-text);
+    }
+    .media-text h3, .process-open-item h3, .goal-card h3, .ds-card h3,
+    .phase-name, .editorial-title, .gestor-row-title, .strip-item h4,
+    .funnel-step-title, .case-more-name, .ai-strip-title, .mb-panel-label {
+      font-family: 'Bricolage Grotesque', var(--font-sans, sans-serif); font-weight: 600;
+    }
+    .ai-statement-heading { font-family: 'Bricolage Grotesque', var(--font-sans, sans-serif); font-weight: 700; }
+    .ai-statement-heading em { font-family: inherit; font-style: normal; font-weight: inherit; color: var(--accent-text); }
+    /* ── PROJECT HEADER BAND (identidade por projeto, tema-aware) ── */
+    .case-header {
+      background: linear-gradient(180deg,
+        color-mix(in srgb, #2FA3A0 16%, var(--bg-1)) 0%,
+        color-mix(in srgb, #2FA3A0 7%, var(--bg-1)) 100%);
+      border-bottom: 1px solid color-mix(in srgb, #2FA3A0 22%, var(--border));
+    }
+    @supports not (background: color-mix(in srgb, red 10%, blue)) {
+      .case-header { background: var(--bg-2); }
+    }
   </style>
 </head>
 <body>
@@ -355,13 +391,7 @@
       <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Back to Work
     </a>
-    <div class="case-tags case-header-entrance" style="--delay:0.06s">
-      <span class="tag accent">Featured</span>
-      <span class="tag">Data Visualization</span>
-      <span class="tag">Power BI</span>
-      <span class="tag">Design System</span>
-      <span class="tag">Enterprise</span>
-    </div>
+    <p class="case-label case-header-entrance" style="--delay:0.06s">Case Study</p>
     <h1 class="case-header-title case-header-entrance" style="--delay:0.13s">Electrolux<br /><em>Data Visualization System</em></h1>
     <p class="case-header-subtitle case-header-entrance" style="--delay:0.21s">Electrolux read its own operation through disconnected spreadsheets and unstandardized dashboards. I designed a data visualization system in Power BI: three dashboard contexts, reusable templates, and a manual any team could follow without a designer. The board adopted it as the global standard.</p>
     <div class="nda-notice case-header-entrance" style="--delay:0.28s">

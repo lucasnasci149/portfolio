@@ -15,7 +15,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../style.css" />
   <script>window._ASSET_ROOT="../../";</script>
   <script src="../../transitions.js" defer></script>
@@ -438,6 +438,27 @@
     .mb-exit { color: var(--accent-2); font-weight: 500; }
     @media (max-width: 960px) { .mb-compare { grid-template-columns: 1fr; } }
 
+    /* ── STORY STRUCTURE ── */
+    .eyebrow {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent-text); margin-bottom: 0.9rem;
+    }
+    .media-stack > * + * { margin-top: clamp(2.5rem, 4vw, 3.5rem); }
+    .media-row { display: grid; grid-template-columns: 5fr 6fr; gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+    .media-row.flip .media-text { order: 2; }
+    .media-row.flip .media-img { order: 1; }
+    .media-text h3 { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 1.2rem; margin-bottom: 0.6rem; }
+    .media-text p { font-size: 0.95rem; color: var(--text-2); line-height: 1.75; }
+    .media-text p + p { margin-top: 1rem; }
+    .artifact { border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; }
+    .artifact img { width: 100%; display: block; }
+    .img-cap { font-size: 0.78rem; color: var(--text-3); margin-top: 0.75rem; }
+    @media (max-width: 960px) {
+      .media-row { grid-template-columns: 1fr; gap: 1.25rem; }
+      .media-row.flip .media-text { order: initial; }
+      .media-row.flip .media-img { order: initial; }
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
       .split { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -466,6 +487,42 @@
       .metrics-row { grid-template-columns: repeat(2, 1fr); }
       .checkout-flow { grid-template-columns: repeat(2, 1fr); }
       .focus-callout-sep { display: none; }
+    }
+    /* ── DISPLAY TYPE: Bricolage Grotesque headings, Fraunces italic accents ── */
+    .case-label {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--accent-text); margin-bottom: 1.25rem;
+    }
+    .case-header-title {
+      font-family: 'Bricolage Grotesque', var(--font-sans, sans-serif);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.02;
+    }
+    .case-header-title em {
+      font-family: inherit; font-style: normal; font-weight: inherit; color: var(--accent-text);
+    }
+    .split-h, .section-heading {
+      font-family: 'Bricolage Grotesque', var(--font-sans, sans-serif);
+      font-weight: 700; letter-spacing: -0.015em;
+    }
+    .split-h em, .section-heading em {
+      font-family: inherit; font-style: normal; font-weight: inherit; color: var(--accent-text);
+    }
+    .media-text h3, .process-open-item h3, .goal-card h3, .ds-card h3,
+    .phase-name, .editorial-title, .gestor-row-title, .strip-item h4,
+    .funnel-step-title, .case-more-name, .ai-strip-title, .mb-panel-label {
+      font-family: 'Bricolage Grotesque', var(--font-sans, sans-serif); font-weight: 600;
+    }
+    .ai-statement-heading { font-family: 'Bricolage Grotesque', var(--font-sans, sans-serif); font-weight: 700; }
+    .ai-statement-heading em { font-family: inherit; font-style: normal; font-weight: inherit; color: var(--accent-text); }
+    /* ── PROJECT HEADER BAND (identidade por projeto, tema-aware) ── */
+    .case-header {
+      background: linear-gradient(180deg,
+        color-mix(in srgb, #F08A4B 16%, var(--bg-1)) 0%,
+        color-mix(in srgb, #F08A4B 7%, var(--bg-1)) 100%);
+      border-bottom: 1px solid color-mix(in srgb, #F08A4B 22%, var(--border));
+    }
+    @supports not (background: color-mix(in srgb, red 10%, blue)) {
+      .case-header { background: var(--bg-2); }
     }
   </style>
 </head>
@@ -510,13 +567,7 @@
       <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Back to Work
     </a>
-    <div class="case-tags case-header-entrance" style="--delay:0.06s">
-      <span class="tag accent">Featured</span>
-      <span class="tag">Product Design</span>
-      <span class="tag">Design System</span>
-      <span class="tag">B2B SaaS</span>
-      <span class="tag">Food Tech</span>
-    </div>
+    <p class="case-label case-header-entrance" style="--delay:0.06s">Case Study</p>
     <h1 class="case-header-title case-header-entrance" style="--delay:0.13s">Multipedidos<br /><em>Design System &amp; Product</em></h1>
     <p class="case-header-subtitle case-header-entrance" style="--delay:0.21s">Two products, six teams, and 4,000+ restaurant clients, with one designer in the room. I built the design system and the product design practice while shipping more than 40 features.</p>
   </div>
@@ -553,7 +604,10 @@
 <section class="section">
   <div class="container">
     <div class="split">
-      <h2 class="split-h reveal">One designer, <em>two products, six teams.</em></h2>
+      <div>
+        <p class="eyebrow reveal">Background</p>
+        <h2 class="split-h reveal">One designer, <em>two products, six teams.</em></h2>
+      </div>
       <div class="body-2col">
         <div class="body-col reveal">
           <p class="col-label">The Situation</p>
@@ -563,7 +617,7 @@
         <div class="body-col reveal" style="transition-delay:0.05s">
           <p class="col-label">The Mandate</p>
           <p>My job was to make design something the business could depend on: a component system engineering could consume directly, a process that caught problems before production, and eventually, proof that design decisions moved business metrics.</p>
-          <p>The hard part was doing this while fielding demands from six teams at once. I couldn't pause the delivery rhythm to build infrastructure, so I had to build it in motion.</p>
+          <p>The hard part was the timing: six teams asking for screens at once, and no pause in the delivery rhythm to set up the infrastructure first.</p>
         </div>
       </div>
     </div>
@@ -594,11 +648,6 @@
   </div>
 </section>
 
-<!-- ═══ GESTOR SCREEN · full bleed ═══ -->
-<div class="img-full reveal">
-  <img src="../../assets/projects/pedir-delivery/project-screen.png" alt="Gestor de Pedidos mockup screens" loading="lazy" />
-</div>
-
 <!-- ═══ PULL QUOTE ═══ -->
 <div class="pull-quote-wrap">
   <div class="container">
@@ -606,11 +655,22 @@
   </div>
 </div>
 
+<!-- ═══ GESTOR SCREEN · full bleed ═══ -->
+<div class="img-full reveal">
+  <img src="../../assets/projects/pedir-delivery/project-screen.png" alt="Gestor de Pedidos mockup screens" loading="lazy" />
+</div>
+<div class="container">
+  <p class="img-cap reveal">&#8593; Gestor de Pedidos, the B2B system restaurants run their whole operation on</p>
+</div>
+
 <!-- ═══ DESIGN SYSTEM ═══ -->
 <section class="section">
   <div class="container">
     <div class="split" style="margin-bottom: clamp(2rem, 4vw, 3rem);">
-      <h2 class="split-h reveal">Why tokens came <em>before screens.</em></h2>
+      <div>
+        <p class="eyebrow reveal">The foundation</p>
+        <h2 class="split-h reveal">Why tokens came <em>before screens.</em></h2>
+      </div>
       <div class="reveal" style="transition-delay:0.05s">
         <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8; margin-bottom:0;">With six teams asking for screens, the tempting move was to just draw them. I started with tokens instead: color, spacing, typography, radius, and elevation. It cost speed in the first weeks and paid it back on every screen since.</p>
       </div>
@@ -632,17 +692,29 @@
   </div>
 </section>
 
-<!-- ═══ PRODUCT IMAGE · full bleed ═══ -->
-<div class="img-full reveal">
-  <img src="../../assets/projects/pedir-delivery/project-image.png" alt="Pedir.Delivery product screens" loading="lazy" />
-</div>
-
 <!-- ═══ CONSUMER PLATFORM ═══ -->
 <section class="section">
   <div class="container">
     <div style="margin-bottom: clamp(2.5rem, 4vw, 3.5rem);">
-      <h2 class="split-h reveal" style="position: static; margin-bottom: clamp(1.25rem, 2vw, 1.75rem);">Designing the order, <em>from first tap to delivery.</em></h2>
-      <p class="consumer-intro reveal" style="transition-delay:0.05s;">Every decision on Pedir.Delivery served one goal: more completed orders. I owned the full funnel, from opening a restaurant's menu to payment confirmation, because drop-off doesn't care which screen it happens on.</p>
+      <p class="eyebrow reveal">01 · Consumer product</p>
+      <h2 class="split-h reveal" style="position: static;">Designing the order, <em>from first tap to delivery.</em></h2>
+    </div>
+    <div class="media-row reveal" style="margin-bottom: clamp(2.5rem, 4vw, 3.5rem);">
+      <div class="media-text">
+        <h3>Research before redraw</h3>
+        <p>The redesign started with competitor benchmarking and interviews with restaurants from the base: what they expected from an online menu, what they were missing, and which parts of the daily routine hurt.</p>
+        <p>From there I owned the full funnel, from ordering flows and item viewing to cart, payment, and delivery or pickup. Every decision served one goal: more completed orders, because drop-off doesn't care which screen it happens on.</p>
+        <div class="process-tags">
+          <span class="tag">Benchmarking</span>
+          <span class="tag">User Interviews</span>
+        </div>
+      </div>
+      <div class="media-img">
+        <div class="artifact">
+          <img src="../../assets/projects/pedir-delivery/project-image.png" alt="Pedir.Delivery product screens" loading="lazy" />
+        </div>
+        <p class="img-cap">&#8593; The redesigned consumer experience, rebuilt for the market it competes in</p>
+      </div>
     </div>
     <div class="order-funnel reveal">
       <div class="funnel-step">
@@ -690,6 +762,7 @@
     <div class="checkout-divider"></div>
 
     <div style="margin-bottom: clamp(2.5rem, 4vw, 3.5rem);">
+      <p class="eyebrow reveal">01 · Consumer product · Transactions</p>
       <h2 class="split-h reveal" style="position: static; margin-bottom: clamp(1.25rem, 2vw, 1.75rem);">End-to-end ownership of <em>checkout and payment.</em></h2>
       <p class="checkout-section-intro reveal" style="transition-delay:0.05s;">Checkout is where the order either completes or dies. I owned the whole transactional layer: six payment methods across two contexts, cashback, coupons, three delivery modes, and A/B tests running on the live flow.</p>
     </div>
@@ -777,22 +850,29 @@
          aria-label="Pedir.Delivery app screens walkthrough">
     <source src="../../assets/projects/pedir-delivery/pedir-delivery.mp4" type="video/mp4">
   </video>
+  <div class="container">
+    <p class="img-cap reveal">&#8593; Pedir.Delivery in use: browsing, item customization, cart, and checkout</p>
+  </div>
 </div>
 
 <!-- ═══ B2B PLATFORM ═══ -->
 <section class="section">
   <div class="container">
-    <div class="split" style="margin-bottom: clamp(2rem, 4vw, 3rem);">
-      <h2 class="split-h reveal">The other half: <em>everything a restaurant runs on.</em></h2>
-      <div class="body-2col">
-        <div class="body-col reveal" style="transition-delay:0.05s">
-          <p>Gestor de Pedidos is the other half of the product: the system restaurant owners and staff use to receive orders, manage menus, charge at the counter, and close the day.</p>
-          <p>Most of its flows had never been touched by a designer. I was the first one to look at them, which meant every redesign started from observing how restaurants actually operate.</p>
+    <div style="margin-bottom: clamp(2.5rem, 4vw, 3.5rem);">
+      <p class="eyebrow reveal">02 · B2B platform</p>
+      <h2 class="split-h reveal" style="position: static;">The other half: <em>everything a restaurant runs on.</em></h2>
+    </div>
+    <div class="media-row flip reveal" style="margin-bottom: clamp(2.5rem, 4vw, 3.5rem);">
+      <div class="media-text">
+        <h3>The first designer to look at it</h3>
+        <p>Gestor de Pedidos is the system restaurant owners and staff use to receive orders, manage menus, charge at the counter, and close the day. Most of its flows had never been touched by a designer, so every redesign started from observing how restaurants actually operate.</p>
+        <p>The scope ran from core infrastructure (menu builder, KDS, navigation) to payments (POS, multiple payers, PIX, wallet, cashback) to operational tooling (print queue, reports, integrations) to growth (CRM, onboarding agent). Every structural change shipped in stages, because a mistake at the base would hit 4,000+ live restaurants at once.</p>
+      </div>
+      <div class="media-img">
+        <div class="artifact">
+          <img src="../../assets/projects/pedir-delivery/gestor-mockup.png" alt="Gestor de Pedidos interface" loading="lazy" />
         </div>
-        <div class="body-col reveal" style="transition-delay:0.1s">
-          <p>The scope ran from core infrastructure (menu builder, KDS, navigation) to payments (POS, multiple payers, PIX, wallet, cashback) to operational tooling (print queue, reports, integrations) to growth (CRM, onboarding agent for new clients).</p>
-          <p>Every structural change shipped in stages, because a mistake at the base would hit 4,000+ live restaurants at once. I coordinated those rollouts directly with engineering and product.</p>
-        </div>
+        <p class="img-cap">&#8593; Gestor de Pedidos: order reception, menu, POS, and the daily close in one system</p>
       </div>
     </div>
 
@@ -856,15 +936,20 @@
 <section class="section" style="padding-top: 0;">
   <div class="container">
     <div class="split" style="margin-bottom: 0;">
-      <h2 class="split-h reveal">Deep dive: the menu builder <em>was losing users mid-task.</em></h2>
+      <div>
+        <p class="eyebrow reveal">Deep dive · New menu builder</p>
+        <h2 class="split-h reveal">The menu builder <em>was losing users mid-task.</em></h2>
+      </div>
       <div class="reveal" style="transition-delay:0.05s">
         <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8;">
           The most requested fix in Gestor was also the most structural one. Creating a menu item
           required every dependency to already exist: to build a chicken pizza, the operator left
-          the pizza flow, created the chicken flavor, came back, and started over. Each missing
-          dependency meant another exit. Client interviews and usability sessions kept pointing at
-          the same spot, so I rebuilt the flow around one principle: nothing you are missing should
-          throw you out of what you are doing.
+          the pizza flow, created the chicken flavor, came back, and started over. I ran the full
+          product cycle on the new version: discovery, usability tests with users on the first
+          release, Design Critiques with the internal teams, prototyping, and development,
+          rebuilding the flow around one principle: nothing you are missing should throw you out
+          of what you are doing. While the new menu took shape, I orchestrated the migration
+          strategy in parallel, so the rollout was ready the day the product was.
         </p>
       </div>
     </div>
@@ -887,19 +972,31 @@
         <div class="mb-step"><span class="mb-step-num">05</span><span>One session, one finished item</span></div>
       </div>
     </div>
+    <div class="metrics-row" style="grid-template-columns: repeat(3, 1fr); padding-bottom: 0;">
+      <div class="metric-open reveal">
+        <span class="metric-value">6.9<span style="font-size:1.6rem;">&#8594;</span>8.8</span>
+        <span class="metric-desc">SEQ satisfaction score after the redesign, a 1.9 point gain over the legacy menu</span>
+      </div>
+      <div class="metric-open reveal" style="transition-delay:0.05s">
+        <span class="metric-value">4,500</span>
+        <span class="metric-desc">Accounts migrated in a rollout orchestrated with Marketing, Customer Success, and Implementation Success</span>
+      </div>
+      <div class="metric-open reveal" style="transition-delay:0.1s">
+        <span class="metric-value">100<span style="font-size:1.6rem;">%</span></span>
+        <span class="metric-desc">Of the base moved, which let the company discontinue the legacy version entirely</span>
+      </div>
+    </div>
   </div>
 </section>
-
-<!-- ═══ GESTOR IMAGE · full bleed ═══ -->
-<div class="img-full reveal">
-  <img src="../../assets/projects/pedir-delivery/gestor-mockup.png" alt="Gestor de Pedidos interface" loading="lazy" />
-</div>
 
 <!-- ═══ PROCESS ═══ -->
 <section class="section bg-tinted">
   <div class="container">
     <div class="split">
-      <h2 class="split-h reveal">A design practice the <em>whole company could join.</em></h2>
+      <div>
+        <p class="eyebrow reveal">The practice</p>
+        <h2 class="split-h reveal">A design practice the <em>whole company could join.</em></h2>
+      </div>
       <div class="process-open">
         <div class="process-open-item reveal">
           <h3>Design Critiques</h3>
@@ -933,6 +1030,30 @@
             <span class="tag">Figma DEV Mode</span>
           </div>
         </div>
+        <div class="process-open-item reveal" style="transition-delay:0.2s">
+          <h3>Product + Technical Discovery</h3>
+          <p>
+            I built independent product-discovery and technical-discovery processes, with their
+            own documentation, for the six teams under my responsibility, and wired both into
+            the agile routine. Pre-development time dropped 30% and rework fell by more than 80%.
+          </p>
+          <div class="process-tags">
+            <span class="tag">Discovery Process</span>
+            <span class="tag">Documentation</span>
+          </div>
+        </div>
+        <div class="process-open-item reveal" style="transition-delay:0.25s">
+          <h3>Squad Management</h3>
+          <p>
+            Technical management of the multidisciplinary squads connected to product projects:
+            activities, metrics tracking, OKRs, documentation, and supporting diagrams and flows.
+            I also onboarded new Product hires and joined the area's technical interviews.
+          </p>
+          <div class="process-tags">
+            <span class="tag">OKRs</span>
+            <span class="tag">Onboarding</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -964,19 +1085,22 @@
 <section class="section">
   <div class="container">
     <div class="split">
-      <h2 class="split-h reveal">Where it <em>stands today.</em></h2>
+      <div>
+        <p class="eyebrow reveal">Results</p>
+        <h2 class="split-h reveal">Where it <em>stands today.</em></h2>
+      </div>
       <div class="outcomes-open">
         <div class="outcome-open reveal">
-          <span class="metric-value">4K<span style="font-size:1.6rem;">+</span></span>
-          <span class="metric-desc">Active restaurants protected through staged migrations of every structural change</span>
+          <span class="metric-value">30<span style="font-size:1.6rem;">%</span></span>
+          <span class="metric-desc">Less pre-development time after product and technical discovery entered the agile routine</span>
         </div>
         <div class="outcome-open reveal" style="transition-delay:0.05s">
           <span class="metric-value">6</span>
           <span class="metric-desc">Teams shipping through one process: weekly critique, usability tests, and A/B experiments</span>
         </div>
         <div class="outcome-open reveal" style="transition-delay:0.1s">
-          <span class="metric-value">0&#8594;1</span>
-          <span class="metric-desc">Design practice built from nothing: tokens, DEV Mode handoff, and a research cadence</span>
+          <span class="metric-value">80<span style="font-size:1.6rem;">%+</span></span>
+          <span class="metric-desc">Reduction in rework rate across the six teams under my responsibility</span>
         </div>
       </div>
     </div>
@@ -987,7 +1111,7 @@
 <div class="reflection-block">
   <div class="container">
     <div class="reflection-inner reveal-blur">
-      <p>The highest-leverage work at Multipedidos was never a single screen. It was the token system, the critique ritual, and the handoff pipeline: the infrastructure that let one designer keep the software behind 4,000 restaurants coherent.</p>
+      <p>The highest-leverage work at Multipedidos was never a single screen. It was the token system, the critique ritual, and the handoff pipeline: the infrastructure that let one designer keep the software behind 4,000+ restaurants coherent.</p>
     </div>
   </div>
 </div>

@@ -13,3 +13,8 @@ assets/projects/pedir-delivery/pedir.delivery.gif
 
 # Logs
 *.log
+
+# Fonte de verdade local dos projetos (uso interno, nunca publicar)
+PROJETOS.md
+rewrite-draft.md
+estrutura-draft.md
