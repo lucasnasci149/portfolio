@@ -243,6 +243,44 @@
 
     /* ── NEXT PROJECT ── */
 
+    /* ── STORY STRUCTURE ── */
+    .eyebrow {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent-text); margin-bottom: 0.9rem;
+    }
+    .triad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+    .triad-item { background: var(--bg); padding: 2rem 2.25rem; }
+    .triad-num {
+      font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700;
+      font-size: 1.5rem; color: var(--accent-text); line-height: 1; margin-bottom: 0.75rem;
+    }
+    .triad-item h3 { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 1.05rem; margin-bottom: 0.5rem; }
+    .triad-item p { font-size: 0.92rem; color: var(--text-2); line-height: 1.7; }
+    .doc-row { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 3vw, 2.5rem); margin-top: clamp(2rem, 4vw, 3rem); }
+    .doc-block { border-left: 2px solid var(--accent); padding-left: 1.25rem; }
+    .doc-block h4 { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 1rem; margin-bottom: 0.45rem; }
+    .doc-block p { font-size: 0.92rem; color: var(--text-2); line-height: 1.7; }
+    @media (max-width: 960px) {
+      .triad { grid-template-columns: 1fr; }
+      .doc-row { grid-template-columns: 1fr; }
+    }
+
+    .media-stack > * + * { margin-top: clamp(2.5rem, 4vw, 3.5rem); }
+    .media-row { display: grid; grid-template-columns: 5fr 6fr; gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+    .media-row.flip .media-text { order: 2; }
+    .media-row.flip .media-img { order: 1; }
+    .media-text h3 { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 1.2rem; margin-bottom: 0.6rem; }
+    .media-text p { font-size: 0.95rem; color: var(--text-2); line-height: 1.75; }
+    .media-text p + p { margin-top: 1rem; }
+    .artifact { border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; }
+    .artifact img { width: 100%; display: block; }
+    .img-cap { font-size: 0.78rem; color: var(--text-3); margin-top: 0.75rem; }
+    @media (max-width: 960px) {
+      .media-row { grid-template-columns: 1fr; gap: 1.25rem; }
+      .media-row.flip .media-text { order: initial; }
+      .media-row.flip .media-img { order: initial; }
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
       .split { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -391,7 +429,7 @@
   <div class="case-meta-strip">
     <div>
       <p class="case-meta-label">Company</p>
-      <p class="case-meta-val">Dojo Smart Ways<span>Clients: Electrolux + Nidec</span></p>
+      <p class="case-meta-val">Dojo Smart Ways<span>Client: Electrolux</span></p>
     </div>
     <div>
       <p class="case-meta-label">Role</p>
@@ -408,30 +446,6 @@
   </div>
 </div>
 
-<!-- ═══ SCALE NUMBERS ═══ -->
-<section class="section" style="padding-top: 0; padding-bottom: clamp(1.5rem, 3vw, 2.5rem);">
-  <div class="container">
-    <div class="metrics-row">
-      <div class="metric-open reveal">
-        <span class="metric-value">5</span>
-        <span class="metric-desc">Deployment waves across LATAM</span>
-      </div>
-      <div class="metric-open reveal" style="transition-delay:0.05s">
-        <span class="metric-value">3</span>
-        <span class="metric-desc">Dashboard contexts: Executive, Operational, Analytical</span>
-      </div>
-      <div class="metric-open reveal" style="transition-delay:0.1s">
-        <span class="metric-value">2</span>
-        <span class="metric-desc">Enterprise clients served in parallel</span>
-      </div>
-      <div class="metric-open reveal" style="transition-delay:0.15s">
-        <span class="metric-value">Global</span>
-        <span class="metric-desc">Standard adopted worldwide after board presentation</span>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ═══ PULL QUOTE ═══ -->
 <div class="pull-quote-wrap">
   <div class="container">
@@ -446,7 +460,10 @@
 <section class="section">
   <div class="container">
     <div class="split">
-      <h2 class="split-h reveal">Ten versions <em>of the truth.</em></h2>
+      <div>
+        <p class="eyebrow reveal">Background</p>
+        <h2 class="split-h reveal">Ten versions <em>of the truth.</em></h2>
+      </div>
       <div class="body-2col">
         <div class="body-col reveal">
           <p class="col-label">The Situation</p>
@@ -469,7 +486,10 @@
 <section class="section bg-tinted">
   <div class="container">
     <div class="split">
-      <h2 class="split-h reveal">Executive, operational, analytical: <em>one visual language.</em></h2>
+      <div>
+        <p class="eyebrow reveal">The three contexts</p>
+        <h2 class="split-h reveal">Executive, operational, analytical: <em>one visual language.</em></h2>
+      </div>
       <div class="reveal" style="transition-delay:0.05s">
         <p style="font-size:0.92rem; color:var(--text-2); line-height:1.8;">
           Not every audience needs the same view. The system was designed around three distinct
@@ -509,11 +529,80 @@
   </div>
 </section>
 
+<!-- ═══ THE DESIGN SYSTEM DECISION ═══ -->
+<section class="section">
+  <div class="container">
+    <div class="split" style="margin-bottom: clamp(2rem, 4vw, 3rem);">
+      <div>
+        <p class="eyebrow reveal">The key decision</p>
+        <h2 class="split-h reveal">Treating dashboards <em>as a design system.</em></h2>
+      </div>
+      <div class="reveal" style="transition-delay:0.05s">
+        <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8;">
+          A style guide would have been the obvious answer, and it would have died in a folder.
+          I approached the standard the way you approach a design system: as components with
+          defined behavior, living in the tools people already work in. One pattern had to serve
+          three destinations at once, or it would only ever be followed by the person who wrote it.
+        </p>
+      </div>
+    </div>
+    <div class="triad">
+      <div class="triad-item reveal">
+        <p class="triad-num">01</p>
+        <h3>Sketch in Figma</h3>
+        <p>Anyone can draft a dashboard in Figma using data visualization components that behave and read exactly like the final result. What you sketch is what ships.</p>
+      </div>
+      <div class="triad-item reveal" style="transition-delay:0.05s">
+        <p class="triad-num">02</p>
+        <h3>Build in Power BI</h3>
+        <p>The same components exist as Power BI visuals following the standard. Building a new dashboard means placing components and connecting them to the Data Lake, not redesigning from zero.</p>
+      </div>
+      <div class="triad-item reveal" style="transition-delay:0.1s">
+        <p class="triad-num">03</p>
+        <h3>Documented globally</h3>
+        <p>Every pattern lives in an official standards document, valid across the company worldwide. The system is not tribal knowledge; it is something a new team can adopt without meeting me.</p>
+      </div>
+    </div>
+    <div class="media-row reveal" style="margin-top: clamp(2.5rem, 4vw, 3.5rem);">
+      <div class="media-text">
+        <h3>Layouts as components, not as files</h3>
+        <p>The library covers the layout situations a dashboard actually runs into: a single dominant chart, a KPI band over a detail table, side-by-side comparisons, breakdowns that need three panels of equal weight. Each one encodes the decisions nobody should have to make twice, including grid, header structure, KPI band position, and which slots accept which visualization type.</p>
+        <p>Choosing a layout became a question about the audience rather than a design exercise. How much detail does this reader need, and how fast? An executive scanning attainment and an analyst hunting a variance get different structures from the same system, so the numbers stay comparable across every screen in the company.</p>
+        <p>Because the identical structure exists in Figma and in Power BI, a sketch and a shipped dashboard line up without translation. A business analyst can propose a view in the morning and have it built on the standard the same day, without a designer in between.</p>
+        <div class="process-tags">
+          <span class="tag">Layout System</span>
+          <span class="tag">Component Slots</span>
+          <span class="tag">Figma to Power BI</span>
+        </div>
+      </div>
+      <div class="media-img">
+        <div class="artifact">
+          <img src="../../assets/projects/electrolux/templates.png" alt="Sample dashboard layout templates from the standard" loading="lazy" />
+        </div>
+        <p class="img-cap">&#8593; A sample of the layout templates. Data and content removed under NDA; the structure is the deliverable</p>
+      </div>
+    </div>
+    <div class="doc-row">
+      <div class="doc-block reveal">
+        <h4>Every dashboard shipped with its documentation</h4>
+        <p>Each delivery included a document listing its KPIs, the real data source behind each one, and the reasoning for using it. Anyone reading a number could trace where it came from and why it was there.</p>
+      </div>
+      <div class="doc-block reveal" style="transition-delay:0.05s">
+        <h4>And with the means to repeat it</h4>
+        <p>I also built the standard documents and processes for replicating that documentation on any new dashboard, so the practice would survive without me writing each one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ PROCESS ═══ -->
 <section class="section">
   <div class="container">
     <div class="split">
-      <h2 class="split-h reveal">The process that <em>repeated five times.</em></h2>
+      <div>
+        <p class="eyebrow reveal">The process · 5 waves across LATAM</p>
+        <h2 class="split-h reveal">The process that <em>repeated five times.</em></h2>
+      </div>
       <div class="process-open">
         <div class="process-open-item reveal">
           <h3>Business Understanding</h3>
@@ -560,7 +649,10 @@
 <section class="section" style="padding-top:0;">
   <div class="container">
     <div class="split" style="margin-bottom: clamp(2rem, 4vw, 3rem);">
-      <h2 class="split-h reveal">What stayed after <em>the engagement ended.</em></h2>
+      <div>
+        <p class="eyebrow reveal">Deliverables</p>
+        <h2 class="split-h reveal">What stayed after <em>the engagement ended.</em></h2>
+      </div>
       <p class="reveal" style="font-size:0.95rem; color:var(--text-2); line-height:1.8; transition-delay:0.05s">
         The work produced more than dashboards. It produced a system anyone inside Electrolux
         could pick up and continue without needing Dojo in the room.
@@ -569,27 +661,24 @@
     <div class="gestor-list">
       <div class="gestor-row reveal">
         <div>
+          <p class="gestor-row-label">Templates</p>
           <p class="gestor-row-title">Reusable Dashboard Templates</p>
         </div>
         <p class="gestor-row-desc">Three base templates, one per context, with defined grids, placeholder components, and annotation layers. Any team could adapt one to a new business area without redesigning the visual logic, and without requesting a designer.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
+          <p class="gestor-row-label">Documentation</p>
           <p class="gestor-row-title">Visualization Manual</p>
         </div>
         <p class="gestor-row-desc">A guide covering color semantics, chart selection by data type, and layout rules per context, with step-by-step replication instructions. Written for a business analyst with basic Power BI skills, no design support required.</p>
       </div>
       <div class="gestor-row reveal">
         <div>
+          <p class="gestor-row-label">Rollout</p>
           <p class="gestor-row-title">5-Wave Deployment</p>
         </div>
         <p class="gestor-row-desc">Each wave covered a different business area across LATAM. Because design and build followed the established pattern, each wave shipped faster than the last; business understanding became the only real variable.</p>
-      </div>
-      <div class="gestor-row reveal">
-        <div>
-          <p class="gestor-row-title">Nidec: Same Methodology</p>
-        </div>
-        <p class="gestor-row-desc">In parallel, I ran the same process for Nidec: business understanding, data alignment with analysts, template design, documentation. Two clients, two data contexts, one repeatable methodology.</p>
       </div>
     </div>
   </div>
@@ -598,19 +687,20 @@
 <!-- ═══ SCALE ═══ -->
 <section class="section bg-tinted">
   <div class="container">
-    <h2 class="section-heading" style="margin-bottom:0.5rem;">The board made it <em>the global standard.</em></h2>
+    <p class="eyebrow reveal">The outcome</p>
+    <h2 class="section-heading reveal" style="margin-bottom:0.5rem;">The board made it <em>the global standard.</em></h2>
     <div class="editorial-grid">
       <div class="editorial-item reveal">
         <p class="editorial-title">Five waves, compounding speed</p>
-        <p class="editorial-body">Business understanding was the only variable that reset with each wave. Template and build followed the established pattern, so every wave shipped faster than the one before.</p>
+        <p class="editorial-body">Five deployment waves across LATAM, each covering a different business area. Business understanding was the only variable that reset with each wave: template and build followed the established pattern, so every wave shipped faster than the one before.</p>
       </div>
       <div class="editorial-item reveal" style="transition-delay:0.05s">
         <p class="editorial-title">One presentation changed the scope</p>
         <p class="editorial-body">Dojo's engagement was LATAM. When the standard was presented to Electrolux's global board, it was approved as the company-wide pattern for data visualization and extended to the group's operations worldwide.</p>
       </div>
       <div class="editorial-item reveal" style="transition-delay:0.1s">
-        <p class="editorial-title">Built to run without a designer</p>
-        <p class="editorial-body">The manual and templates were designed so internal analysts can create new dashboards on the standard without a design team in the loop, long after the consultancy's exit.</p>
+        <p class="editorial-title">A system, not just three views</p>
+        <p class="editorial-body">The delivery was the executive, operational, and analytical dashboards, and also the system underneath them: scattered spreadsheets replaced by one true source in the Data Lake, and a standard internal analysts extend on their own, long after the consultancy's exit.</p>
       </div>
     </div>
   </div>

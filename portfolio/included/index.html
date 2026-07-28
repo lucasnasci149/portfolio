@@ -181,6 +181,22 @@
     .process-open-item p { font-size: 0.95rem; color: var(--text-2); line-height: 1.75; }
     .process-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.75rem; }
 
+    .media-stack > * + * { margin-top: clamp(2.5rem, 4vw, 3.5rem); }
+    .media-row { display: grid; grid-template-columns: 5fr 6fr; gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+    .media-row.flip .media-text { order: 2; }
+    .media-row.flip .media-img { order: 1; }
+    .media-text h3 { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 1.2rem; margin-bottom: 0.6rem; }
+    .media-text p { font-size: 0.95rem; color: var(--text-2); line-height: 1.75; }
+    .media-text p + p { margin-top: 1rem; }
+    .artifact { border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; }
+    .artifact img { width: 100%; display: block; }
+    .img-cap { font-size: 0.78rem; color: var(--text-3); margin-top: 0.75rem; }
+    @media (max-width: 960px) {
+      .media-row { grid-template-columns: 1fr; gap: 1.25rem; }
+      .media-row.flip .media-text { order: initial; }
+      .media-row.flip .media-img { order: initial; }
+    }
+
     /* ── EXPERTS: MEDIA + LIST ── */
     .eyebrow {
       font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em;
@@ -462,7 +478,10 @@
 <section class="section">
   <div class="container">
     <div class="split">
+      <div>
+        <p class="eyebrow reveal">Background</p>
       <h2 class="split-h reveal">A legal right without <em>the infrastructure to exist.</em></h2>
+      </div>
       <div class="body-2col">
         <div class="body-col reveal">
           <p class="col-label">The Legal Mandate</p>
@@ -492,7 +511,10 @@
 <section class="section">
   <div class="container">
     <div class="split">
+      <div>
+        <p class="eyebrow reveal">The origin</p>
       <h2 class="split-h reveal">Why this was <em>our first product.</em></h2>
+      </div>
       <div class="reveal" style="transition-delay:0.05s">
         <div class="origin-block">
           <p>Neuroscience has shaped how I design for years: cognitive load, attention, the way working memory limits map onto interface decisions. So when we founded PixelPunk in October 2024 and had to choose a first product, a platform for inclusion students was not a random pick. It sits exactly where educational neuroscience, pedagogy, and design meet.</p>
@@ -507,7 +529,10 @@
 <section class="section" style="padding-top: 0;">
   <div class="container">
     <div class="split">
+      <div>
+        <p class="eyebrow reveal">The process</p>
       <h2 class="split-h reveal">The work before <em>the first wireframe.</em></h2>
+      </div>
       <div class="process-open">
         <div class="process-open-item reveal">
           <h3>Accio: the Design System that made everything else possible</h3>
@@ -594,6 +619,10 @@
 <!-- ═══ PRODUCT MODULES ═══ -->
 <section class="section">
   <div class="container">
+    <div style="margin-bottom: clamp(2rem, 4vw, 3rem);">
+      <p class="eyebrow reveal">The platform</p>
+      <h2 class="section-heading reveal">Six modules, <em>one compliant document.</em></h2>
+    </div>
     <div class="gestor-list">
       <div class="gestor-row reveal">
         <div>
@@ -639,7 +668,10 @@
 <section class="section bg-tinted">
   <div class="container">
     <div class="split" style="margin-bottom: 2.5rem;">
+      <div>
+        <p class="eyebrow reveal">AI in the product</p>
       <h2 class="split-h reveal">AI drafts. <em>The teacher decides.</em></h2>
+      </div>
       <p class="reveal" style="font-size:0.95rem; color:var(--text-2); line-height:1.8; transition-delay:0.05s">AI in IncludED works as a teaching assistant, not a substitute for teacher judgment. Every integration has one job, a defined output, and a human review gate, and generated content stays grounded in the school's own material.</p>
     </div>
     <div class="ai-strip">
@@ -678,7 +710,10 @@
 <section class="section">
   <div class="container">
     <div class="split">
+      <div>
+        <p class="eyebrow reveal">The pilot</p>
       <h2 class="split-h reveal">The MVP met a real school <em>before it met the market.</em></h2>
+      </div>
       <div class="reveal" style="transition-delay:0.05s">
         <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8;">
           We tested the MVP in a São Paulo school: 45 users and around 60 students across Early
@@ -695,7 +730,10 @@
 <section class="section">
   <div class="container">
     <div class="split">
+      <div>
+        <p class="eyebrow reveal">Results</p>
       <h2 class="split-h reveal">What six months <em>in production looks like.</em></h2>
+      </div>
       <div class="outcomes-open">
         <div class="outcome-open reveal">
           <span class="metric-value">25</span>
