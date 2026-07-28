@@ -246,7 +246,10 @@
       display: inline-flex; align-items: center; gap: 0.4rem;
       background: none; border: none; cursor: pointer;
       font-family: var(--font-sans); font-size: 0.85rem; font-weight: 400;
-      color: var(--text-2); padding: 0.25rem 0.35rem; border-radius: 6px;
+      color: var(--text-2); padding: 0.3rem 0.45rem; border-radius: 6px;
+      /* pulls the button padding out of the flow so the optical gap to the
+         next nav item matches the gap between the other items */
+      margin-inline: -0.45rem;
       transition: color 0.2s, background 0.2s;
     }
     .lang-menu-btn:hover { color: var(--text-1); background: var(--bg-2); }
