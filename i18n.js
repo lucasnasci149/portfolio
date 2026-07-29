@@ -732,10 +732,22 @@
     return el[slot];
   }
 
+  /* Runs fn for every match, isolating failures so one bad node can never
+     abort the whole pass (and, more importantly, never abort init). */
+  function each(selector, fn) {
+    var nodes;
+    try { nodes = document.querySelectorAll(selector); } catch (e) { return; }
+    for (var i = 0; i < nodes.length; i++) {
+      try { fn(nodes[i]); } catch (e) {
+        if (window.console && console.warn) console.warn('[i18n]', selector, e);
+      }
+    }
+  }
+
   function apply(lang) {
     var dict = DICT[lang] || {};
 
-    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+    each('[data-i18n]', function (el) {
       /* Guard: data-i18n replaces textContent, which would wipe out any child
          markup. If the element has element children, skip it and report the key
          so it can be re-tagged on the right node (or switched to data-i18n-html). */
@@ -749,31 +761,34 @@
       el.textContent = dict[el.getAttribute('data-i18n')] || original(el, 'text');
     });
 
-    document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+    each('[data-i18n-html]', function (el) {
       el.innerHTML = dict[el.getAttribute('data-i18n-html')] || original(el, 'html');
     });
 
-    document.querySelectorAll('[data-i18n-attr]').forEach(function (el) {
+    each('[data-i18n-attr]', function (el) {
       el.getAttribute('data-i18n-attr').split(',').forEach(function (pair) {
         var bits = pair.split(':');
         var attr = bits[0].trim();
         var key = (bits[1] || '').trim();
+        if (!attr) return;
         el.setAttribute(attr, dict[key] || original(el, 'attr', attr));
       });
     });
 
-    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+    try { document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en'; } catch (e) {}
 
-    document.querySelectorAll('[data-lang-btn]').forEach(function (btn) {
+    each('[data-lang-btn]', function (btn) {
       btn.classList.toggle('is-active', btn.getAttribute('data-lang-btn') === lang);
     });
     /* Trigger shows only the active language */
-    document.querySelectorAll('[data-lang-current]').forEach(function (el) {
+    each('[data-lang-current]', function (el) {
       el.hidden = el.getAttribute('data-lang-current') !== lang;
     });
 
     current = lang;
-    document.dispatchEvent(new CustomEvent('langchange', { detail: { lang: lang } }));
+    try {
+      document.dispatchEvent(new CustomEvent('langchange', { detail: { lang: lang } }));
+    } catch (e) {}
   }
 
   function set(lang) {
@@ -797,41 +812,80 @@
     });
   }
 
-  function init() {
-    apply(detect());
+  function toggleMenu(trigger) {
+    var panel = trigger.parentNode.querySelector('.lang-panel');
+    var willOpen = panel && !panel.classList.contains('open');
+    closeAllPanels();
+    if (willOpen) {
+      panel.classList.add('open');
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+  }
 
-    document.addEventListener('click', function (e) {
-      if (!e.target.closest) return;
+  /* Walks up manually: works even where Element.closest is unavailable. */
+  function ancestor(node, test) {
+    while (node && node.nodeType === 1) {
+      if (test(node)) return node;
+      node = node.parentNode;
+    }
+    return null;
+  }
 
-      /* Toggle the dropdown */
-      var trigger = e.target.closest('.lang-menu-btn');
-      if (trigger) {
-        e.stopPropagation();
-        var panel = trigger.parentNode.querySelector('.lang-panel');
-        var willOpen = panel && !panel.classList.contains('open');
-        closeAllPanels();
-        if (willOpen) {
-          panel.classList.add('open');
-          trigger.setAttribute('aria-expanded', 'true');
-        }
-        return;
-      }
+  function onDocumentClick(e) {
+    var target = e.target;
+    if (!target || target.nodeType !== 1) { closeAllPanels(); return; }
 
-      /* Pick a language */
-      var opt = e.target.closest('[data-lang-btn]');
-      if (opt) {
+    var trigger = ancestor(target, function (n) {
+      return n.classList && n.classList.contains('lang-menu-btn');
+    });
+    if (trigger) { e.stopPropagation(); toggleMenu(trigger); return; }
+
+    var opt = ancestor(target, function (n) {
+      return n.hasAttribute && n.hasAttribute('data-lang-btn');
+    });
+    if (opt) {
+      e.preventDefault();
+      e.stopPropagation();
+      set(opt.getAttribute('data-lang-btn'));
+      closeAllPanels();
+      return;
+    }
+
+    closeAllPanels();
+  }
+
+  /* Direct listeners: a second, independent path in case delegation is blocked
+     by another handler calling stopPropagation before the document is reached. */
+  function bindDirect() {
+    each('.lang-menu-btn', function (btn) {
+      if (btn.__i18nBound) return;
+      btn.__i18nBound = true;
+      btn.addEventListener('click', function (e) { e.stopPropagation(); toggleMenu(btn); });
+    });
+    each('[data-lang-btn]', function (opt) {
+      if (opt.__i18nBound) return;
+      opt.__i18nBound = true;
+      opt.addEventListener('click', function (e) {
         e.preventDefault();
+        e.stopPropagation();
         set(opt.getAttribute('data-lang-btn'));
         closeAllPanels();
-        return;
-      }
-
-      closeAllPanels();
+      });
     });
+  }
 
+  function init() {
+    /* Listeners are registered FIRST and in the capture phase, so the switcher
+       keeps working even if translation throws or another script swallows the
+       event on its way up the tree. */
+    document.addEventListener('click', onDocumentClick, true);
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeAllPanels();
+      if (e.key === 'Escape' || e.keyCode === 27) closeAllPanels();
     });
+    bindDirect();
+
+    try { apply(detect()); }
+    catch (e) { if (window.console) console.error('[i18n] apply falhou:', e); }
   }
 
   if (document.readyState === 'loading') {
