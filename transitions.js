@@ -266,10 +266,13 @@
  var header = document.getElementById('siteHeader');
  if (header) {
   var lastY = window.scrollY;
+  // .at-top lets case pages tint the header only while it sits over the band
+  header.classList.toggle('at-top', window.scrollY <= 8);
   window.addEventListener('scroll', function () {
    var y = window.scrollY;
    if (y > 80) { header.classList.toggle('header-hidden', y > lastY); }
    else { header.classList.remove('header-hidden'); }
+   header.classList.toggle('at-top', y <= 8);
    lastY = y;
   }, { passive: true });
   document.addEventListener('mousemove', function (e) {

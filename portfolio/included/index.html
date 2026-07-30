@@ -12,6 +12,32 @@
   <meta name="description" content="Case study: IncludED, a BNCC-compliant SaaS for creating and managing PEIs for inclusion students, built in collaboration with a neuropsychologist and pedagogical consultant." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://lucasdonascimento.com/portfolio/included/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "IncludED: Inclusive Education Platform",
+    "description": "Co-founder and Lead Product Designer of a BNCC-aligned SaaS for individualized education plans, built with a neuropsychologist and a pedagogical consultant.",
+    "url": "https://lucasdonascimento.com/portfolio/included/",
+    "image": "https://lucasdonascimento.com/assets/projects/included-pixelpunk/included-cover.png",
+    "author": {
+      "@type": "Person",
+      "name": "Lucas Nascimento",
+      "url": "https://lucasdonascimento.com"
+    },
+    "inLanguage": "en"
+  }
+  </script>
+  <meta name="twitter:image" content="https://lucasdonascimento.com/assets/projects/included-pixelpunk/included-cover.png" />
+  <meta name="twitter:description" content="Case study: IncludED, a BNCC-compliant SaaS for creating and managing PEIs for inclusion students, built in collaboration with a neuropsychologist and pedagogical consultant." />
+  <meta name="twitter:title" content="IncludED: Inclusive Education Platform | Lucas Nascimento" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image" content="https://lucasdonascimento.com/assets/projects/included-pixelpunk/included-cover.png" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Lucas Nascimento" />
+  <meta property="og:type" content="article" />
   <meta property="og:title" content="IncludED: Inclusive Education Platform" />
   <meta property="og:description" content="How I co-founded a software company and designed an inclusive education platform from scratch, guided by a neuropsychologist and pedagogical experts." />
   <meta property="og:url" content="https://lucasdonascimento.com/portfolio/included/" />
@@ -19,10 +45,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../../style.css?v=20260728" />
+  <link rel="stylesheet" href="../../style.css?v=eff6d56b" />
   <script>window._ASSET_ROOT="../../";</script>
-  <script src="../../transitions.js?v=20260728" defer></script>
-  <script src="../../i18n.js?v=20260728" defer></script>
+  <script src="../../transitions.js?v=7e5874bc" defer></script>
+  <script src="../../i18n.js?v=c0242749" defer></script>
   <noscript><style>body { opacity: 1 !important; }</style></noscript>
 
   <style>
@@ -212,6 +238,23 @@
     .expert-media img { width: 100%; display: block; }
     .expert-media .img-cap { font-size: 0.78rem; color: var(--text-3); margin-top: 0.75rem; }
     .expert-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    /* Pilot: image bleeds to the left edge, text keeps the page gutter */
+    .pilot-split {
+      display: grid;
+      grid-template-columns: 6fr 5fr;
+      gap: clamp(2rem, 4vw, 4rem);
+      align-items: center;
+    }
+    .pilot-media img {
+      width: 100%; display: block;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+    .pilot-content { padding-right: clamp(1rem, 4vw, 4rem); }
+    @media (max-width: 960px) {
+      .pilot-split { grid-template-columns: 1fr; gap: 1.75rem; }
+      .pilot-media img { border-radius: 0; }
+      .pilot-content { padding-inline: clamp(1rem, 2vw, 2rem); }
+    }
     .expert-item { border-left: 2px solid var(--accent); padding-left: 1.25rem; }
     .expert-role {
       font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em;
@@ -295,7 +338,7 @@
 
     /* ── REFLECTION (closing statement) ── */
     .reflection-block {
-      padding-block: clamp(3.5rem, 7vw, 5.5rem);
+      padding-block: clamp(3rem, 5.5vw, 4.5rem) clamp(2rem, 3vw, 2.5rem);
       background: var(--bg-2);
       border-top: 1px solid var(--border);
     }
@@ -347,7 +390,7 @@
 
     /* ── MORE WORK ── */
     .case-more {
-      padding-block: clamp(5rem, 7vw, 7rem);
+      padding-block: clamp(2.5rem, 4vw, 3.5rem) clamp(4rem, 6vw, 5.5rem);
       padding-inline: clamp(2rem, 5vw, 5rem);
       background: var(--bg-2);
     }
@@ -409,16 +452,13 @@
     }
     .ai-statement-heading { font-family: 'Bricolage Grotesque', var(--font-sans, sans-serif); font-weight: 700; }
     .ai-statement-heading em { font-family: inherit; font-style: normal; font-weight: inherit; color: var(--accent-text); }
-    /* ── PROJECT HEADER BAND (identidade por projeto, tema-aware) ── */
+    /* ── PROJECT HEADER BAND (mesma cor em todos os cases) ── */
     .case-header {
-      background: linear-gradient(180deg,
-        color-mix(in srgb, #7C5CFF 16%, var(--bg-1)) 0%,
-        color-mix(in srgb, #7C5CFF 7%, var(--bg-1)) 100%);
-      border-bottom: 1px solid color-mix(in srgb, #7C5CFF 22%, var(--border));
+      background: var(--bg-band);
+      border-bottom: 1px solid var(--border);
     }
-    @supports not (background: color-mix(in srgb, red 10%, blue)) {
-      .case-header { background: var(--bg-2); }
-    }
+    /* o header acompanha a faixa apenas enquanto esta no topo da pagina */
+    .site-header.at-top { background: var(--bg-band); }
     /* ── LANGUAGE MENU (dropdown with flags) ── */
     .lang-menu { position: relative; }
     .lang-menu-btn {
@@ -796,19 +836,32 @@
 
 <!-- ═══ PILOT TEST ═══ -->
 <section class="section">
-  <div class="container">
-    <div class="split">
-      <div>
-        <p class="eyebrow reveal" data-i18n="inc.86">The pilot</p>
-      <h2 class="split-h reveal" data-i18n-html="inc.87">The MVP met a real school <em>before it met the market.</em></h2>
+  <div class="container" style="margin-bottom: clamp(2rem, 4vw, 3rem);">
+    <p class="eyebrow reveal" data-i18n="inc.86">The pilot</p>
+    <h2 class="section-heading reveal" data-i18n-html="inc.87">The MVP met a real school <em>before it met the market.</em></h2>
+  </div>
+
+  <div class="pilot-split">
+    <div class="pilot-media reveal">
+      <img src="../../assets/projects/included-pixelpunk/included-mvp.png" alt="Four IncludED screens: PEI status with behaviour scales, network dashboard with completion charts, student evolution with activities and progress, and the specialized support plan" loading="lazy" />
+    </div>
+    <div class="pilot-content expert-list">
+      <div class="expert-item reveal">
+        <p class="expert-role" data-i18n="inc.117">The test</p>
+        <h3 data-i18n="inc.118">45 users, 60 students, one real school</h3>
+        <p data-i18n="inc.88">A São Paulo school, 45 users, around 60 students, and the full PEI flow under real use. Watching it told us which parts needed rework and surfaced a problem we had not framed yet.</p>
       </div>
-      <div class="reveal" style="transition-delay:0.05s">
-        <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8;" data-i18n="inc.88">
-          We tested the MVP in a São Paulo school: 45 users and around 60 students across Early
-          Childhood, Elementary I and II. The test covered the full PEI creation flow, period
-          contributions, and PEI management.
-        </p>
-        <p style="font-size:0.95rem; color:var(--text-2); line-height:1.8; margin-top:1rem;" data-i18n="inc.89">The sessions also set the roadmap. Student evolution tracking, the BNCC glossary as a support tool, and plan management all entered the product as direct responses to what we watched teachers and coordinators do during the pilot. Since then, every feature follows the same loop: understanding meeting, prototype, design critique with the developers and consultants, user test, release.</p>
+      <div class="expert-item reveal" style="transition-delay:0.05s">
+        <p class="expert-role" data-i18n="inc.107">What we found</p>
+        <h3 data-i18n="inc.108">Wasted keystrokes, and a document nobody returned to</h3>
+        <p data-i18n="inc.109">Two things surfaced. First, flow: many teachers cover more than one subject, so the same student appears across several of their contributions and they were retyping the same behavioural observations every time. Letting a new contribution carry over what was already filled in for that student cut the repetition and showed us which other flows could be shortened, giving time back for what matters, writing the PEI and defining objectives.</p>
+        <p style="margin-top:0.75rem;" data-i18n="inc.112">Second, retention. The PEI is meant to be a living document, but the real pattern was different: the teacher spends the effort creating it, then only consults it, edits something small, or passes it on. That routine does not require frequent access, and schools were using the platform for a season rather than continuously. The problem was not the document. It was that nothing happened after it.</p>
+      </div>
+      <div class="expert-item reveal" style="transition-delay:0.1s">
+        <p class="expert-role" data-i18n="inc.113">The response</p>
+        <h3 data-i18n="inc.114">From writing a plan to following a student</h3>
+        <p data-i18n="inc.115">Each objective now breaks into activities with dates, targets and a status, so progress stops being a memory and becomes a record: who registered what, when, and how much moved. Charts and a timeline turn that record into a reading of the student across the school period, which is exactly what the coordinator needs for meetings and the teacher needs to decide the next step.</p>
+        <p style="margin-top:0.75rem;" data-i18n="inc.119">That changed the reason to come back. The platform stopped being the place where the PEI is written and became the place where the student is followed, week by week. Managing PEIs turned into the starting point rather than the whole product, and school use turned continuous.</p>
       </div>
     </div>
   </div>

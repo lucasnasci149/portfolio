@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Duplicated mirrors: canonical points to the root versions
+Disallow: /portfolio/about/
+Disallow: /portfolio/archives/
+Disallow: /portfolio/contact/
+
+Sitemap: https://lucasdonascimento.com/sitemap.xml

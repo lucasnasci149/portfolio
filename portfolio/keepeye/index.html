@@ -12,6 +12,32 @@
   <meta name="description" content="Case study: Keepeye, a KPI SaaS built as Dojo Smart Ways' first own product. Product design, design system, and collaborative front-end development by Lucas Nascimento at Dojo Smart Ways." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://lucasdonascimento.com/portfolio/keepeye/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Keepeye: KPI Management Platform",
+    "description": "UX Engineer on Dojo Smart Ways' first own product: research, design system, and Angular front-end for a KPI SaaS.",
+    "url": "https://lucasdonascimento.com/portfolio/keepeye/",
+    "image": "https://lucasdonascimento.com/assets/projects/keepeye/keepeye-cover.png",
+    "author": {
+      "@type": "Person",
+      "name": "Lucas Nascimento",
+      "url": "https://lucasdonascimento.com"
+    },
+    "inLanguage": "en"
+  }
+  </script>
+  <meta name="twitter:image" content="https://lucasdonascimento.com/assets/projects/keepeye/keepeye-cover.png" />
+  <meta name="twitter:description" content="Case study: Keepeye, a KPI SaaS built as Dojo Smart Ways' first own product. Product design, design system, and collaborative front-end development by Lucas Nascimento at Dojo Smart Ways." />
+  <meta name="twitter:title" content="Keepeye: KPI Management Platform | Lucas Nascimento" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image" content="https://lucasdonascimento.com/assets/projects/keepeye/keepeye-cover.png" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Lucas Nascimento" />
+  <meta property="og:type" content="article" />
   <meta property="og:title" content="Keepeye: KPI Management Platform" />
   <meta property="og:description" content="From manual spreadsheets to an automated KPI management platform: a case study in product design, design systems, and collaborative front-end development." />
   <meta property="og:url" content="https://lucasdonascimento.com/portfolio/keepeye/" />
@@ -19,10 +45,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../../style.css?v=20260728" />
+  <link rel="stylesheet" href="../../style.css?v=eff6d56b" />
   <script>window._ASSET_ROOT="../../";</script>
-  <script src="../../transitions.js?v=20260728" defer></script>
-  <script src="../../i18n.js?v=20260728" defer></script>
+  <script src="../../transitions.js?v=7e5874bc" defer></script>
+  <script src="../../i18n.js?v=c0242749" defer></script>
   <noscript><style>body { opacity: 1 !important; }</style></noscript>
 
   <style>
@@ -214,7 +240,7 @@
 
     /* ── REFLECTION (closing statement) ── */
     .reflection-block {
-      padding-block: clamp(3.5rem, 7vw, 5.5rem);
+      padding-block: clamp(3rem, 5.5vw, 4.5rem) clamp(2rem, 3vw, 2.5rem);
       background: var(--bg-2);
       border-top: 1px solid var(--border);
     }
@@ -323,7 +349,7 @@
 
     /* ── MORE WORK ── */
     .case-more {
-      padding-block: clamp(5rem, 7vw, 7rem);
+      padding-block: clamp(2.5rem, 4vw, 3.5rem) clamp(4rem, 6vw, 5.5rem);
       padding-inline: clamp(2rem, 5vw, 5rem);
       background: var(--bg-2);
     }
@@ -385,16 +411,13 @@
     }
     .ai-statement-heading { font-family: 'Bricolage Grotesque', var(--font-sans, sans-serif); font-weight: 700; }
     .ai-statement-heading em { font-family: inherit; font-style: normal; font-weight: inherit; color: var(--accent-text); }
-    /* ── PROJECT HEADER BAND (identidade por projeto, tema-aware) ── */
+    /* ── PROJECT HEADER BAND (mesma cor em todos os cases) ── */
     .case-header {
-      background: linear-gradient(180deg,
-        color-mix(in srgb, #2F6BFF 16%, var(--bg-1)) 0%,
-        color-mix(in srgb, #2F6BFF 7%, var(--bg-1)) 100%);
-      border-bottom: 1px solid color-mix(in srgb, #2F6BFF 22%, var(--border));
+      background: var(--bg-band);
+      border-bottom: 1px solid var(--border);
     }
-    @supports not (background: color-mix(in srgb, red 10%, blue)) {
-      .case-header { background: var(--bg-2); }
-    }
+    /* o header acompanha a faixa apenas enquanto esta no topo da pagina */
+    .site-header.at-top { background: var(--bg-band); }
     /* ── LANGUAGE MENU (dropdown with flags) ── */
     .lang-menu { position: relative; }
     .lang-menu-btn {
