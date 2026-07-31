@@ -1,28 +1,48 @@
-# Sistema operacional
-.DS_Store
-Thumbs.db
-desktop.ini
+# ══════════════════════════════════════════════════════════════════
+# O repositorio e PUBLICO e o GitHub Pages publica a raiz inteira
+# (.github/workflows/deploy.yml usa path: '.'). Entao tudo que estiver
+# versionado aqui fica acessivel em lucasdonascimento.com/<arquivo>,
+# nao so na listagem do GitHub.
+#
+# Regra: so entra no git o que o site precisa para funcionar.
+# Documentacao interna e ferramenta local ficam de fora.
+# ══════════════════════════════════════════════════════════════════
 
-# GIF original (35MB — não subir para o repo)
-assets/projects/pedir-delivery/pedir.delivery.gif
-
-# Editor
-.vscode/
-*.swp
-*.swo
-
-# Logs
-*.log
-
-# Fonte de verdade local dos projetos (uso interno, nunca publicar)
+# ── Documentacao interna (contexto de trabalho, nunca publicar) ──
+CLAUDE.md
 PROJETOS.md
+MASTER_CONTEXT.md
+PORTFOLIO_CONTEXT.md
+CONTEXT_EN.md
+CONTEXT_PT.md
+AI-SLOP-CATALOG.md
+LAYOUT-STANDARD.md
 rewrite-draft.md
 estrutura-draft.md
 
-# Referencia local do i18n antigo (nao publicar)
-i18n-legacy.js.bak
+# ── Ferramentas locais de build e teste ──
+bump-assets.ps1
+bump-assets.py
+langtest.js
+serve-local.bat
 
-# Dependencia so do langtest.js (npm install jsdom). Nao publicar.
+# ── Dependencia so do langtest.js (npm install jsdom) ──
 node_modules/
-package-lock.json
 package.json
+package-lock.json
+
+# ── Sobras e backups ──
+i18n-legacy.js.bak
+*.bak
+
+# GIF original (35MB, nao subir para o repo)
+assets/projects/pedir-delivery/pedir.delivery.gif
+
+# ── Sistema operacional e editor ──
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+*.swp
+*.swo
+*.log
