@@ -21,3 +21,8 @@ estrutura-draft.md
 
 # Referencia local do i18n antigo (nao publicar)
 i18n-legacy.js.bak
+
+# Dependencia so do langtest.js (npm install jsdom). Nao publicar.
+node_modules/
+package-lock.json
+package.json

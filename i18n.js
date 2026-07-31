@@ -15,6 +15,14 @@
 (function () {
   'use strict';
 
+  /* Carimbo de build. O bump-assets reescreve esta linha E grava o mesmo valor
+     em <meta name="assets-build"> de todos os HTMLs. Se os dois nao baterem,
+     este arquivo veio do cache e esta dessincronizado do HTML: o dicionario nao
+     tem as chaves que a pagina pede e ela fica "meio traduzida".
+     Isso importa porque em file:// o Chrome IGNORA a query string, entao o
+     ?v= nao derruba o cache e a falha seria silenciosa. */
+  var BUILD = '20260731094236';
+
   var PT = {
     /* ── Navigation and chrome ── */
     'nav.about': 'Sobre',
@@ -756,8 +764,33 @@
     }
   }
 
+  /* Fotografa o HTML original ANTES de qualquer traducao.
+     Sem isso o ingles se perde: `dict[key] || original(el)` avalia dict[key]
+     primeiro, entao para todo elemento COM traducao PT o original() nunca era
+     chamado e o texto ingles nunca era guardado. Depois, ao voltar para EN
+     (DICT.en e vazio de proposito, o ingles mora no HTML), o original() rodava
+     pela primeira vez e "salvava" o que estava na tela, que ja era portugues:
+     a pagina ficava travada em PT para sempre.
+     So aparecia para quem tem o navegador em pt-BR, porque ai o detect()
+     devolve 'pt' e a PRIMEIRA aplicacao ja e a que destroi o original. */
+  function snapshot() {
+    each('[data-i18n]', function (el) { original(el, 'text'); });
+    each('[data-i18n-html]', function (el) { original(el, 'html'); });
+    each('[data-i18n-attr]', function (el) {
+      (el.getAttribute('data-i18n-attr') || '').split(',').forEach(function (pair) {
+        var attr = (pair.split(':')[0] || '').trim();
+        if (attr) original(el, 'attr', attr);
+      });
+    });
+  }
+
   function apply(lang) {
     var dict = DICT[lang] || {};
+
+    /* idempotente: original() so grava quando o slot esta vazio, entao chamar
+       a cada troca de idioma nao sobrescreve nada e ainda cobre conteudo que
+       tenha sido inserido depois */
+    snapshot();
 
     each('[data-i18n]', function (el) {
       /* Guard: data-i18n replaces textContent, which would wipe out any child
@@ -815,10 +848,36 @@
   };
   window.setLang = set;
   window.getLang = function () { return current; };
+  /* usado pelo langtest.js para detectar dicionario incompleto */
+  window.__i18nHasKey = function (lang, key) { return !!(DICT[lang] && key in DICT[lang]); };
+
+  /* Visibility is driven from JS, not from CSS alone.
+     The rule `.lang-panel.open` lives in style.css AND is duplicated in the
+     inline <style> of every page. Any copy drifting out of sync used to make
+     the panel open invisibly (class present, opacity still 0). Writing the
+     inline style here means the dropdown keeps working even with no CSS at
+     all; the class is kept only so the CSS transition still animates it. */
+  function paint(panel, open) {
+    if (!panel) return;
+    if (open) {
+      panel.classList.add('open');
+      panel.style.opacity = '1';
+      panel.style.transform = 'translateY(0)';
+      panel.style.pointerEvents = 'auto';
+      panel.style.visibility = 'visible';
+    } else {
+      panel.classList.remove('open');
+      panel.style.opacity = '';
+      panel.style.transform = '';
+      panel.style.pointerEvents = '';
+      panel.style.visibility = '';
+    }
+  }
 
   function closeAllPanels() {
-    document.querySelectorAll('.lang-panel.open').forEach(function (p) {
-      p.classList.remove('open');
+    document.querySelectorAll('.lang-panel').forEach(function (p) {
+      if (!p.classList.contains('open') && !p.style.opacity) return;
+      paint(p, false);
       var btn = p.parentNode.querySelector('.lang-menu-btn');
       if (btn) btn.setAttribute('aria-expanded', 'false');
     });
@@ -829,7 +888,7 @@
     var willOpen = panel && !panel.classList.contains('open');
     closeAllPanels();
     if (willOpen) {
-      panel.classList.add('open');
+      paint(panel, true);
       trigger.setAttribute('aria-expanded', 'true');
     }
   }
@@ -908,12 +967,73 @@
     try { apply(detect()); }
     catch (e) { if (window.console) console.error('[i18n] apply falhou:', e); }
 
+    buildCheck();
+    selfCheck();
+
     if (window.console && console.info) {
       console.info('[i18n] pronto · v' + VERSION +
         ' · idioma: ' + current +
         ' · menus: ' + document.querySelectorAll('.lang-menu-btn').length +
         ' · chaves na pagina: ' + document.querySelectorAll('[data-i18n],[data-i18n-html]').length);
     }
+  }
+
+  /* Handshake HTML <-> i18n.js: transforma uma quebra silenciosa numa barra
+     vermelha na tela dizendo exatamente o que fazer.
+     O bump-assets grava o mesmo carimbo em `var BUILD` aqui e em
+     <meta name="assets-build"> no HTML. Se divergirem, este arquivo veio do
+     cache e o dicionario nao tem as chaves que a pagina pede: cada chave
+     ausente cai no fallback em ingles e a pagina fica meio traduzida.
+     Isso importa sobretudo em file://, onde o Chrome IGNORA a query string e
+     o ?v= nao derruba o cache. E a unica defesa que funciona ali. */
+  function buildCheck() {
+    var meta = document.querySelector('meta[name="assets-build"]');
+    var esperado = meta && meta.getAttribute('content');
+    if (!esperado || esperado === BUILD) return;
+
+    var msg = 'Recarregue com Ctrl+Shift+R. Este i18n.js veio do cache e esta ' +
+      'defasado do HTML (build ' + BUILD + ' contra ' + esperado + '), entao a ' +
+      'pagina vai traduzir so pela metade.' +
+      (location.protocol === 'file:'
+        ? ' Abrindo o arquivo direto isso e normal: o Chrome ignora o ?v= em file://.'
+        : ' Rode .\\bump-assets.ps1 antes.');
+
+    if (window.console) console.error('[i18n] ' + msg);
+
+    try {
+      var bar = document.createElement('div');
+      bar.setAttribute('data-i18n-stale', '1');
+      bar.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;' +
+        'background:#b3261e;color:#fff;font:600 13px/1.5 system-ui,sans-serif;' +
+        'padding:10px 16px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.3)';
+      bar.textContent = msg;
+      (document.body || document.documentElement).appendChild(bar);
+    } catch (e) {}
+  }
+
+  function selfCheck() {
+    if (!window.console) return;
+    var pt = DICT.pt || {};
+    var faltando = [];
+    document.querySelectorAll('[data-i18n],[data-i18n-html]').forEach(function (el) {
+      var k = el.getAttribute('data-i18n') || el.getAttribute('data-i18n-html');
+      if (k && !(k in pt) && faltando.indexOf(k) === -1) faltando.push(k);
+    });
+    var total = document.querySelectorAll('[data-i18n],[data-i18n-html]').length;
+    if (!total || !faltando.length) return;
+
+    /* poucas chaves ausentes = nomes proprios e datas, normal */
+    if (faltando.length / total < 0.25) return;
+
+    console.error(
+      '[i18n] DICIONARIO DESATUALIZADO: ' + faltando.length + ' de ' + total +
+      ' chaves desta pagina nao existem no dicionario PT. A pagina vai parecer ' +
+      'meio traduzida.\n' +
+      (location.protocol === 'file:'
+        ? 'Voce esta em file://, onde o cache-busting ?v= NAO funciona (o Chrome ' +
+          'ignora a query string). Recarregue com Ctrl+Shift+R.'
+        : 'Rode .\\bump-assets.ps1 e recarregue com Ctrl+Shift+R.') +
+      '\nExemplos: ' + faltando.slice(0, 8).join(', '));
   }
 
   if (document.readyState === 'loading') {
