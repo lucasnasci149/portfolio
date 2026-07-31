@@ -886,18 +886,33 @@
     });
   }
 
+  var VERSION = '2026-07-31';
+
   function init() {
     /* Listeners are registered FIRST and in the capture phase, so the switcher
        keeps working even if translation throws or another script swallows the
        event on its way up the tree. */
     document.addEventListener('click', onDocumentClick, true);
+    document.addEventListener('pointerdown', onDocumentClick, true);
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' || e.keyCode === 27) closeAllPanels();
     });
     bindDirect();
 
+    /* late-rendered menus (or markup replaced by another script) still get bound */
+    document.addEventListener('mouseover', function (e) {
+      if (e.target && e.target.closest && e.target.closest('.lang-menu')) bindDirect();
+    }, true);
+
     try { apply(detect()); }
     catch (e) { if (window.console) console.error('[i18n] apply falhou:', e); }
+
+    if (window.console && console.info) {
+      console.info('[i18n] pronto · v' + VERSION +
+        ' · idioma: ' + current +
+        ' · menus: ' + document.querySelectorAll('.lang-menu-btn').length +
+        ' · chaves na pagina: ' + document.querySelectorAll('[data-i18n],[data-i18n-html]').length);
+    }
   }
 
   if (document.readyState === 'loading') {
