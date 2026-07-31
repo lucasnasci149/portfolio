@@ -270,8 +270,11 @@
   header.classList.toggle('at-top', window.scrollY <= 8);
   window.addEventListener('scroll', function () {
    var y = window.scrollY;
-   if (y > 80) { header.classList.toggle('header-hidden', y > lastY); }
-   else { header.classList.remove('header-hidden'); }
+   /* a rail jump is navigation, not a scroll-up gesture: leave the header alone */
+   if (!window.__railScrolling) {
+    if (y > 80) { header.classList.toggle('header-hidden', y > lastY); }
+    else { header.classList.remove('header-hidden'); }
+   }
    header.classList.toggle('at-top', y <= 8);
    lastY = y;
   }, { passive: true });
@@ -292,4 +295,135 @@
   window.addEventListener('scroll', adjustBtt, { passive: true });
   window.addEventListener('resize', adjustBtt);
  }
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   CASE SECTION RAIL
+   Right-hand quick nav on case study pages. Builds itself from the
+   sections already in the DOM, so labels follow the active language
+   and no page needs extra markup.
+   ═══════════════════════════════════════════════════════════ */
+(function () {
+  var header = document.querySelector('.case-header');
+  if (!header) return;                 /* case study pages only */
+
+  var entries = [];
+
+  /* "01 · Consumer product · Transactions" -> ["Consumer product", "Transactions"] */
+  function parts(text) {
+    return text.replace(/^\s*\d+\s*[·.\-]\s*/, '')
+      .split(/\s*·\s*/)
+      .map(function (p) { return p.trim(); })
+      .filter(Boolean);
+  }
+
+  /* <br> yields no whitespace in textContent, so normalise through a clone */
+  function readText(el) {
+    var clone = el.cloneNode(true);
+    Array.prototype.forEach.call(clone.querySelectorAll('br'), function (br) {
+      br.parentNode.replaceChild(clone.ownerDocument.createTextNode(' '), br);
+    });
+    return clone.textContent.replace(/\s+/g, ' ').trim();
+  }
+
+  function labelFor(section) {
+    var eyebrow = section.querySelector('.eyebrow');
+    if (eyebrow && eyebrow.textContent.trim()) return parts(readText(eyebrow));
+    var heading = section.querySelector('h2');
+    if (heading && heading.textContent.trim()) {
+      var text = readText(heading).replace(/[.]+$/, '');
+      return [text.length > 30 ? text.slice(0, 28) + '...' : text];
+    }
+    return null;
+  }
+
+  /* keeps every label distinct: falls back to the next segment of the eyebrow */
+  function pickLabel(candidates, used) {
+    for (var i = 0; i < candidates.length; i++) {
+      if (used.indexOf(candidates[i]) === -1) return candidates[i];
+    }
+    return candidates[candidates.length - 1];
+  }
+
+  /* cover first, then every section that can name itself */
+  var used = [];
+  entries.push({ el: header, label: (window.t ? window.t('rail.cover', 'Cover') : 'Cover') });
+  used.push(entries[0].label);
+  Array.prototype.forEach.call(document.querySelectorAll('section.section'), function (section) {
+    var candidates = labelFor(section);
+    if (!candidates || !candidates.length) return;
+    var label = pickLabel(candidates, used);
+    used.push(label);
+    entries.push({ el: section, label: label });
+  });
+  if (entries.length < 3) return;      /* not worth a rail */
+
+  /* a <div> on purpose: a <nav> child of <body> would inherit the full-width
+     navbar rule (left:0 + backdrop-filter) from style.css */
+  var railScrollTimer = null;
+
+  var rail = document.createElement('div');
+  rail.className = 'case-rail';
+  rail.setAttribute('role', 'navigation');
+  rail.setAttribute('aria-label', 'Section navigation');
+
+  entries.forEach(function (entry, i) {
+    if (!entry.el.id) entry.el.id = 'case-section-' + i;
+    var item = document.createElement('a');
+    item.className = 'case-rail-item';
+    item.href = '#' + entry.el.id;
+    item.innerHTML = '<span class="case-rail-label"></span><span class="case-rail-tick"></span>';
+    item.querySelector('.case-rail-label').textContent = entry.label;
+    item.addEventListener('click', function (e) {
+      e.preventDefault();
+      /* land exactly on the section top: the header stays hidden during a
+         rail jump, so no offset is needed and no gap is left behind */
+      var top = entry.el.getBoundingClientRect().top + window.scrollY;
+      window.__railScrolling = true;
+      window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+      window.clearTimeout(railScrollTimer);
+      railScrollTimer = window.setTimeout(function () { window.__railScrolling = false; }, 900);
+    });
+    entry.item = item;
+    rail.appendChild(item);
+  });
+  document.body.appendChild(rail);
+
+  /* active state: the last section whose top has passed a third of the viewport */
+  var ticking = false;
+  function refresh() {
+    ticking = false;
+    var line = window.innerHeight * 0.34;
+    var current = 0;
+    entries.forEach(function (entry, i) {
+      if (entry.el.getBoundingClientRect().top <= line) current = i;
+    });
+    entries.forEach(function (entry, i) {
+      entry.item.classList.toggle('is-active', i === current);
+      if (i === current) entry.item.setAttribute('aria-current', 'true');
+      else entry.item.removeAttribute('aria-current');
+    });
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(refresh); }
+  }, { passive: true });
+  window.addEventListener('resize', refresh);
+  refresh();
+
+  /* labels come from the DOM, so refresh them when the language changes */
+  document.addEventListener('langchange', function () {
+    var seen = [];
+    entries.forEach(function (entry, i) {
+      var label;
+      if (i === 0) label = window.t ? window.t('rail.cover', 'Cover') : 'Cover';
+      else {
+        var candidates = labelFor(entry.el);
+        label = candidates && candidates.length ? pickLabel(candidates, seen) : null;
+      }
+      if (label) {
+        seen.push(label);
+        entry.item.querySelector('.case-rail-label').textContent = label;
+      }
+    });
+  });
 })();
