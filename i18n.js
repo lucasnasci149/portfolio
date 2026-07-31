@@ -892,8 +892,9 @@
     /* Listeners are registered FIRST and in the capture phase, so the switcher
        keeps working even if translation throws or another script swallows the
        event on its way up the tree. */
+    /* click only: adding pointerdown here would toggle the menu twice
+       for a single physical click (open then immediately close) */
     document.addEventListener('click', onDocumentClick, true);
-    document.addEventListener('pointerdown', onDocumentClick, true);
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' || e.keyCode === 27) closeAllPanels();
     });
