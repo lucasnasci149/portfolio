@@ -21,7 +21,7 @@
      tem as chaves que a pagina pede e ela fica "meio traduzida".
      Isso importa porque em file:// o Chrome IGNORA a query string, entao o
      ?v= nao derruba o cache e a falha seria silenciosa. */
-  var BUILD = '20260817183933';
+  var BUILD = '20260818030020';
 
   var PT = {
     /* ── Navigation and chrome ── */
